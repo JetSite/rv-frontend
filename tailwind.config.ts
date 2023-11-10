@@ -8,11 +8,42 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      maxWidth: {
+        content: '1580px',
       },
+      width: {
+        content: '1580px',
+      },
+      maxHeight: {
+        carousel: '560px',
+      },
+      height: {
+        carousel: '560px',
+      },
+      colors: {
+        h: '#144574',
+        first: '#194C81',
+        second: '#EE882B',
+        grey: {
+          '200': '#C9E2F9',
+          '300': '#D9D9D9',
+          '400': '#C8C8C8',
+        },
+      },
+      gap: { '15': '60px' },
+      margin: {
+        '18': '4.5rem',
+      },
+      fontSize: {
+        mobile: '14px',
+      },
+    },
+    screens: {
+      desktop: { min: '1580px' }, // 1215px 1024px
+      tablet: { min: '800px', max: '1579px' },
+      mobile: { max: '799px' },
+      notMobile: { min: '800px' },
+      notDesktop: { max: '1579px' },
     },
   },
   plugins: [],
