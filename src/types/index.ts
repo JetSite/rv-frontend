@@ -5,12 +5,12 @@ export interface ILink {
   title: string
 }
 
-export interface IComponentWithChildren {
-  children: React.ReactNode
-}
+export type IID = string | number
 
-export interface IComponentWithClassName {
-  className?: string
+export type ILocale = 'ru' | 'en' | 'am'
+
+export interface IComponentWithChildren {
+  children?: IChildren
 }
 
 export interface IIcon {

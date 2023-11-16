@@ -1,20 +1,13 @@
 'use client'
-import { langMock, socialsMock } from '@/api/mock'
-import { IComponentWithClassName } from '@/types'
+import { socialsMock } from '@/api/mock'
+import { langConfig } from '@/config'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 
-interface ISoсialsWithLang extends IComponentWithClassName {
+interface ISoсialsWithLang {
   subKey?: string
   footer?: boolean
-}
-
-export interface ILangConfig {
-  value: string
-  alt?: string
-  label: {
-    [K: string]: string
-  }
+  className?: string
 }
 
 export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
@@ -44,7 +37,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
         />
       </div>
       <ul className="flex">
-        {langMock.map((item, i) => (
+        {langConfig.map((item, i) => (
           <li
             key={subKey + ' ' + item.value}
             className="px-2 border-r-2 border-h last:border-none first:pl-0 last:pr-0 text-[18px]"

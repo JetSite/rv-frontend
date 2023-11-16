@@ -15,7 +15,7 @@ export const WrapperMainPage: FC<WrapperMainPageProps> = ({
   endLink,
 }) => {
   return (
-    <section className="flex gap-2.5 mx-auto relative mb-12 pr-12 mobile:flex-col mobile:p-0 desktop:max-w-content">
+    <section className="flex gap-2.5 mx-auto relative mb-12 pr-12 mobile:flex-col mobile:p-0 desktop:max-w-[1580px]">
       <div className={`desktop:w-10  relative ${titleStyles}`}>
         <div className="rotate-[270deg] py-1 px-3 flex justify-end mobile:static mobile:rotate-0 mobile:justify-start mobile:px-7 mobile:text-mobile mobile:py-0 desktop:mt-2">
           {typeof title === 'string' ? <h2>{title}</h2> : title}

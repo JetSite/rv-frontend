@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       maxWidth: {
-        content: '1580px',
+        content: '1480px',
       },
       width: {
-        content: '1580px',
+        content: '1480px',
       },
       maxHeight: {
         carousel: '560px',
@@ -37,9 +37,12 @@ const config: Config = {
       fontSize: {
         mobile: '14px',
       },
+      gridTemplateRows: {
+        '7': 'repeat(7, minmax(0, 0.5fr))',
+      },
     },
     screens: {
-      desktop: { min: '1580px' }, // 1215px 1024px
+      desktop: { min: '1580px' },
       tablet: { min: '800px', max: '1579px' },
       mobile: { max: '799px' },
       notMobile: { min: '800px' },

@@ -2,17 +2,17 @@ import { activityMock, eventMock, newsMock, priorityMock } from '@/api/mock'
 import { ActivityCard } from '@/components/Cards/ActivityCard'
 import { EventCard } from '@/components/Cards/EventCard'
 import { NewsCard } from '@/components/Cards/NewsCard'
+import { NewsPriorityCard } from '@/components/Cards/NewsPriorityCard'
 import { PriorityCard } from '@/components/Cards/PriorityCard'
 import { Carousel } from '@/components/Ui/Carousel'
-import PixelArrowIcon from '@/components/Ui/Icons/PixelArrowIcon'
 import { Wrapper } from '@/components/Ui/Wrappers/Wrapper'
 import { WrapperMainPage } from '@/components/Ui/Wrappers/WrapperMainPage'
-import Link from 'next/link'
 
 export default function Home() {
   return (
     <>
       <Carousel
+        mainPage
         arr={[
           {
             img: '/Mock/slider.png',
@@ -22,8 +22,12 @@ export default function Home() {
             img: '/Mock/slider2.png',
             title: 'Поздравляю м независимости Республики Арцах!',
           },
+          {
+            img: '/Mock/slider3.png',
+            title: 'Поздравляю  независимости Республики Арцах! >',
+          },
         ]}
-      />
+      ></Carousel>
 
       <WrapperMainPage
         titleStyles="bg-gray-400"
@@ -44,19 +48,26 @@ export default function Home() {
         endLink={{ title: 'Все новости >', slug: '#' }}
         title={<h2 className="text-white">НОВОСТИ</h2>}
       >
-        <ul className="flex flex-wrap flex-col max-h-[400px] h-full mobile:flex-col mobile:max-h-none mobile:gap-5">
-          {newsMock.map((item, i) => (
-            <li
-              className={
-                'w-[25%] px-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0 overflow-hidden' +
-                ' ' +
-                (i > 0 && i < 3 ? 'h-1/2' : '')
-              }
-              key={item.title}
-            >
-              <NewsCard i={i} item={item} />
-            </li>
-          ))}
+        <ul className="flex flex-wrap flex-col max-h-[400px] h-full mobile:flex-col mobile:max-h-none mobile:gap-5 overflow-hidden">
+          {newsMock.map(
+            (item, i) =>
+              i < 14 && (
+                <li
+                  className={
+                    'w-[25%] px-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0' +
+                    ' ' +
+                    (i > 0 && i < 3 ? 'h-1/2' : '')
+                  }
+                  key={item.title}
+                >
+                  {i === 0 ? (
+                    <NewsPriorityCard mainPage item={item} />
+                  ) : (
+                    <NewsCard mainPage i={i} item={item} />
+                  )}
+                </li>
+              ),
+          )}
         </ul>
       </WrapperMainPage>
 
@@ -77,6 +88,7 @@ export default function Home() {
       </WrapperMainPage>
 
       <Wrapper
+        mainPage
         sx="bg-first"
         title={
           <h2 className="text-white text-[48px] font-bold pt-10 mb-6 block mobile:text-[24px] mobile:px-7 mobile:pt-4">
