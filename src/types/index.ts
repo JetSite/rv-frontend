@@ -16,6 +16,7 @@ export interface IComponentWithChildren {
 export interface IIcon {
   className?: string
   fill?: string
+  variant?: 'inner' | 'main'
 }
 
 export type IChildren =

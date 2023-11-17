@@ -4,15 +4,14 @@ import { EventCard } from '@/components/Cards/EventCard'
 import { NewsCard } from '@/components/Cards/NewsCard'
 import { NewsPriorityCard } from '@/components/Cards/NewsPriorityCard'
 import { PriorityCard } from '@/components/Cards/PriorityCard'
-import { Carousel } from '@/components/Ui/Carousel'
+import { CarouselMainPage } from '@/components/CarouselMainPage'
 import { Wrapper } from '@/components/Ui/Wrappers/Wrapper'
 import { WrapperMainPage } from '@/components/Ui/Wrappers/WrapperMainPage'
 
 export default function Home() {
   return (
     <>
-      <Carousel
-        mainPage
+      <CarouselMainPage
         arr={[
           {
             img: '/Mock/slider.png',
@@ -27,8 +26,7 @@ export default function Home() {
             title: 'Поздравляю  независимости Республики Арцах! >',
           },
         ]}
-      ></Carousel>
-
+      ></CarouselMainPage>
       <WrapperMainPage
         titleStyles="bg-gray-400"
         endLink={{ title: 'Календарь событий >', slug: '#' }}

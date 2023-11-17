@@ -72,14 +72,15 @@ export const Calendar: FC<CalendarProps> = ({
 
       <ul className="grid grid-rows-5 grid-cols-7 grid-flow-row gap-1">
         {calendarData.data.map((day, index) => {
+          const col = 'col-start-' + day.dateInWeek
           return (
             <li
               className={classNames(
-                index === 0 ? 'col-start-' + day.dateInWeek : '',
                 'text-center relative',
                 evens.find(date => date === day.value)
                   ? 'before:absolute before:w-1.5 before:h-1.5 before:rounded-full before:bg-first  before:-top-1 before:left-[40%]'
                   : 'opacity-60',
+                index === 0 ? col : '',
               )}
             >
               <button disabled={!evens.find(date => date === day.value)}>
