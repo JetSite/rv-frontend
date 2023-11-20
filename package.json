@@ -20,8 +20,11 @@
     "prettier": "^3",
     "prop-types": "^15.8.1",
     "react": "^18",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18",
     "react-responsive": "^9.0.2",
+    "react-scrollbars-custom": "^4.1.1",
     "swiper": "^11.0.3",
     "yup": "^1.2.0",
     "zustand": "^4.3.8"

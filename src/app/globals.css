@@ -2,21 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.archive {
+  height: calc(100vh - 240px - 368px) !important;
 }
 
 .animate-slide-in-left {
   animation: slide-in-left 1s ease;
 }
 
-.mySwiper {
-  margin-left: 0 !important;
+.ScrollbarsCustom-Track {
+  width: 8px !important;
+  background-color: white !important;
+}
+
+.ScrollbarsCustom-Track::before {
+  content: ' ';
+  position: absolute;
+  left: 3px;
+  height: 100%;
+  width: 2px !important;
+  background-color: #194c81 !important;
+}
+
+.ScrollbarsCustom-Thumb {
+  width: 8px;
+  background-color: #194c81 !important;
 }

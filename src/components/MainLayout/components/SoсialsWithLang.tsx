@@ -23,7 +23,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
         {socialsMock.map(item => (
           <li key={item.icon}>
             <Link href={item.slug}>
-              <img src={`images/${item.icon}.svg`} />
+              <img alt={item.icon} src={`/images/${item.icon}.svg`} />
             </Link>
           </li>
         ))}
@@ -33,7 +33,8 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           className="block"
           height={45}
           width={45}
-          src="images/glasses.svg"
+          alt="glasses"
+          src="/images/glasses.svg"
         />
       </div>
       <ul className="flex">
