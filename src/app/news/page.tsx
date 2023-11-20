@@ -9,7 +9,7 @@ const NewsPage = () => {
     <>
       <Wrapper
         sx=""
-        endLink={{ title: 'Архив новостей >', slug: '#' }}
+        endLink={{ title: 'Архив новостей >', slug: 'news/archive' }}
         title={
           <h2 className="text-first text-[48px] font-bold pt-10 mb-6 block mobile:text-[24px] mobile:px-7 mobile:pt-4">
             Новости

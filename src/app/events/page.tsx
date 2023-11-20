@@ -22,6 +22,7 @@ const EventsPage = () => {
 
       <Wrapper
         sx=""
+        endLink={{ title: 'Архив событий >', slug: 'events/archive' }}
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
             <h2 className="text-[22px] text-first font-bold  mobile:text-[18px] whitespace-nowrap">
