@@ -1,7 +1,7 @@
 import { EventCard } from '@/components/Cards/EventCard'
 import { Scrollbar } from '@/components/Ui/Scrollbar'
 import { monthsConfig } from '@/config/calendar'
-import { EventItem } from '@/types/item'
+import { NewsItem } from '@/types/item'
 import Link from 'next/link'
 import { FC } from 'react'
 import { ISelectItem } from '../Ui/Dropdowns'
@@ -9,7 +9,7 @@ import { ISelectItem } from '../Ui/Dropdowns'
 interface ArchiveProps {
   title: string
   subTitle: string
-  itemsArchive: EventItem[]
+  itemsArchive: NewsItem[]
   yearsList: ISelectItem[]
 }
 
@@ -27,27 +27,7 @@ export const Archive: FC<ArchiveProps> = ({
         <Scrollbar isShowTrack className="h-full w-[60%] mr-18">
           <ul>
             {itemsArchive.map(event => (
-              <li className="w-1/2" key={event.title}>
-                <EventCard item={event} />
-              </li>
-            ))}
-            {itemsArchive.map(event => (
-              <li className="w-1/2" key={event.title}>
-                <EventCard item={event} />
-              </li>
-            ))}
-            {itemsArchive.map(event => (
-              <li className="w-1/2" key={event.title}>
-                <EventCard item={event} />
-              </li>
-            ))}
-            {itemsArchive.map(event => (
-              <li className="w-1/2" key={event.title}>
-                <EventCard item={event} />
-              </li>
-            ))}
-            {itemsArchive.map(event => (
-              <li className="w-1/2" id={'1'} key={event.title}>
+              <li className="w-2/3" key={event.title}>
                 <EventCard item={event} />
               </li>
             ))}

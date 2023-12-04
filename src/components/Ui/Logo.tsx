@@ -1,16 +1,32 @@
+'use client'
 import { FC } from 'react'
-import LogoIcon from './Icons/LogoIcon'
 import Link from 'next/link'
+import classNames from '@/utils/classNames'
+import { ILogo } from '@/types'
 
-const Logo: FC = () => {
+interface Props {
+  logoSx?: string
+  titleSx?: string
+  data: ILogo
+}
+
+const Logo: FC<Props> = ({
+  logoSx = 'mobile:w-12 mobile:h-12',
+  titleSx,
+  data,
+}) => {
   return (
     <Link href={'/'} className="flex items-center gap-5">
-      <div>
-        <LogoIcon className="mobile:w-12 mobile:h-12" />
+      <div className="w-[100px]">
+        <img src={data?.img} alt={data?.title} className={logoSx} />
       </div>
-      <h3 className="text-h leading-normal text-4xl font-medium mobile:text-[18px]">
-        Рубен <br /> Варданян
-      </h3>
+      <h3
+        dangerouslySetInnerHTML={{ __html: data?.title }}
+        className={classNames(
+          'text-h leading-normal text-4xl font-medium mobile:text-[18px]',
+          titleSx || '',
+        )}
+      />
     </Link>
   )
 }

@@ -1,38 +1,44 @@
+'use client'
 import { NewsItem } from '@/types/item'
+import { useMediaQuery } from 'react-responsive'
+import classNames from '@/utils/classNames'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 export interface NewsCardProps {
-  mainPage?: boolean
   item: NewsItem
-  i?: number
+  showText?: boolean
+  mainPage?: boolean
 }
 
-export const NewsCard: FC<NewsCardProps> = ({ item, i, mainPage }) => {
-  let main: boolean = true
-  if (mainPage) {
-    if ((i as number) > 2) {
-      main = false
-    }
-  }
+export const NewsCard: FC<NewsCardProps> = ({ item, showText, mainPage }) => {
+  const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1579 })
+  const [tablet, setTablet] = useState<boolean>(false)
+  useEffect(() => {
+    setTablet(isTablet)
+  }, [isTablet])
+
+  item.id === 48 && console.log(item.text)
 
   return (
     <Link
-      className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 mobile:py-1 overflow-hidden"
+      className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:max-h-1/2"
       href={item.slug}
     >
-      <h3 className="text-first font-bold text-[18px] mobile:text-mobile leading-none mb-5">
+      <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5">
         {item.title}
       </h3>
-      {main && (
+      {(showText || tablet) && (
         <p
-          className={`mb-2.5 text-mobile leading-normal mobile:text-[12px] overflow-hidden
-            ${!main ? ' max-h-4' : ''}`}
+          className={classNames(
+            'mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden',
+            !mainPage ? 'max-h-20' : 'max-h-[88px]',
+          )}
         >
           {item.text}
         </p>
       )}
-      <p className="text-end font-medium leading-none text-mobile mobile:text-[12px] text-first ">
+      <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
         {item.date}
       </p>
     </Link>

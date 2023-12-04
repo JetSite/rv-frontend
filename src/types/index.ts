@@ -5,6 +5,11 @@ export interface ILink {
   title: string
 }
 
+export interface ILogo {
+  title: string
+  img: string
+}
+
 export type IID = string | number
 
 export type ILocale = 'ru' | 'en' | 'am'
