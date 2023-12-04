@@ -1,7 +1,8 @@
 import { ILink } from '.'
 
 export interface IItem extends ILink {
-  text: string
+  text: string | null
+  id: string | number
 }
 
 export interface EventItem extends IItem {
@@ -10,8 +11,10 @@ export interface EventItem extends IItem {
 }
 
 export interface NewsItem extends IItem {
-  date: string
-  img: string
+  date: string | null
+  img: string | null
+  important: boolean
+  time: string | null
 }
 
 export interface PriorityItem extends IItem {

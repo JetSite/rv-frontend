@@ -17,7 +17,7 @@ export const MainLink: FC<MainLinkProps> = ({ item }) => {
         pathname === item.slug ? 'before:w-full' : 'over:before:w-full'
       }
       `}
-      href={item.slug}
+      href={'/' + item.slug}
     >
       {item.title}
     </Link>

@@ -25,7 +25,7 @@ export interface IGetCalendarDataResult {
 export type IGetCalendarData = (
   year: number,
   month: number,
-  format: 'yyyy-mm-dd',
+  format: 'yyyy-mm-dd' | 'yyyy-m-d',
   locale: ILocale,
 ) => IGetCalendarDataResult
 
@@ -57,7 +57,10 @@ export const getCalendarData: IGetCalendarData = (
       const date = index + 1
       const dateInWeek = new Date(year, month - 1, index).getDay() + 1
       const value = {
-        ['yyyy-mm-dd']: `${year}-${month}-${date >= 10 ? date : '0' + date}`,
+        ['yyyy-mm-dd']: `${year}-${month >= 10 ? month : '0' + month}-${
+          date >= 10 ? date : '0' + date
+        }`,
+        ['yyyy-m-d']: `${year}-${month}-${date}`,
       }[format]
       return { dateInWeek, value, title: String(date) }
     },

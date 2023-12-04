@@ -33,8 +33,6 @@ const Select: FC<Props> = ({
   return (
     <Listbox value={selected} onChange={handleChange}>
       {({ open }) => {
-        console.log(ref.current)
-
         if (ref.current) {
           ref.current.scrollIntoView({ behavior: 'smooth' })
         }
