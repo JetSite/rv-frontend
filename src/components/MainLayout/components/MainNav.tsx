@@ -1,8 +1,5 @@
-'use client'
-import { navMock } from '@/api/mock'
 import { MainLink } from '@/components/Ui/MainLink'
 import { INavItem } from '@/types/layout'
-import Link from 'next/link'
 import { FC } from 'react'
 
 interface Props {

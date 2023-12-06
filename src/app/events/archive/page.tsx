@@ -1,5 +1,5 @@
 import { API } from '@/api'
-import { Archive } from '@/components/Archive'
+import { Archive } from '@/components/Pages/Archive'
 import { getCalendarData } from '@/utils/getCalendarData'
 import { getDataArray } from '@/utils/getDataArray'
 import React from 'react'
@@ -27,6 +27,7 @@ const ArchiveEvents = async () => {
         yearsList={yearsList}
         title={title}
         subTitle={subTitle}
+        locale="ru"
       />
     </div>
   )

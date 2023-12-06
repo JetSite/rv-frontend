@@ -4,7 +4,6 @@ import { EventCard } from '@/components/Cards/EventCard'
 import { NewsCard } from '@/components/Cards/NewsCard'
 import { NewsPriorityCard } from '@/components/Cards/NewsPriorityCard'
 import { Wrapper } from '@/components/Ui/Wrappers/Wrapper'
-import { changeElementPosition } from '@/utils/changeElementPosition'
 import classNames from '@/utils/classNames'
 import { getDataArray } from '@/utils/getDataArray'
 
@@ -18,6 +17,7 @@ const EventsPage = async () => {
   )
   const dataNews = await resNews.json()
   const normalizeDataNews = getDataArray(dataNews)
+  const locale = 'ru'
 
   return (
     <>
@@ -44,17 +44,24 @@ const EventsPage = async () => {
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8 desktop:max-h-[202px]">
-          {changeElementPosition(normalizeData, [0, 1]).map((item, i) => (
-            <li
-              className={classNames(
-                'tablet:w-[260px] desktop:mb-4 desktop:w-[354px]',
-              )}
-              key={item.title}
-            >
-              <EventCard item={item} />
-            </li>
-          ))}
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8">
+          {normalizeData.map(
+            (item, i) =>
+              i < 8 && (
+                <li
+                  className={classNames(
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] desktop:max-h-[212px] desktop:overflow-hidden',
+                  )}
+                  key={item.title}
+                >
+                  <EventCard
+                    locale={locale}
+                    link={'events/' + item.slug}
+                    item={item}
+                  />
+                </li>
+              ),
+          )}
         </ul>
       </Wrapper>
 
@@ -79,9 +86,18 @@ const EventsPage = async () => {
                   key={item.title + i}
                 >
                   {i < 2 ? (
-                    <NewsPriorityCard item={item} />
+                    <NewsPriorityCard
+                      locale={locale}
+                      link={'news/' + item.slug}
+                      item={item}
+                    />
                   ) : (
-                    <NewsCard showText item={item} />
+                    <NewsCard
+                      locale={locale}
+                      showText
+                      link={'news/' + item.slug}
+                      item={item}
+                    />
                   )}
                 </li>
               ),

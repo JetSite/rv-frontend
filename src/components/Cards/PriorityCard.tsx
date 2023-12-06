@@ -1,18 +1,21 @@
-import { PriorityItem } from '@/types/item'
+import { IStandartItem } from '@/types/item'
 import Link from 'next/link'
 import React, { FC } from 'react'
 
 interface PriorityCardProps {
-  item: PriorityItem
+  item: IStandartItem
+  locale: string
 }
 
-export const PriorityCard: FC<PriorityCardProps> = ({ item }) => {
+export const PriorityCard: FC<PriorityCardProps> = ({ item, locale }) => {
   return (
     <div className="p-1.5 pt-0 block transition-all mobile:px-7 mobile:py-1">
-      <img
-        className=" block mb-2.5 max-h-[475px] object-cover mobile:w-full mobile:min-h-[400px] h-auto mobile:object-top tablet:h-auto tablet:mb-0 tablet:w-full"
-        src={item.img}
-      />
+      {!!item.img && (
+        <img
+          className=" block mb-2.5 max-h-[475px] object-cover mobile:w-full mobile:min-h-[400px] h-auto mobile:object-top tablet:h-auto tablet:mb-0 tablet:w-full"
+          src={item.img}
+        />
+      )}
       <Link
         className="pl-5 w-3/4 bg-first hover:bg-second flex relative -top-8 justify-between pr-2 items-center tablet:static tablet:w-full"
         href={item.slug}

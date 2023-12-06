@@ -7,16 +7,13 @@ const NewsPage = async () => {
     cache: 'no-cache',
   })
   const data = await res.json()
-  const normalizeData = getDataArray(data)
-
   const resEvents = await fetch(
     `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
   )
   const dataEvents = await resEvents.json()
-  const normalizeDataEvents = getDataArray(dataEvents)
 
-  console.log(data.meta.pagination.total)
-  console.log(normalizeData.length)
+  const normalizeData = getDataArray(data)
+  const normalizeDataEvents = getDataArray(dataEvents)
 
   return <News data={normalizeData} eventsData={normalizeDataEvents} />
 }

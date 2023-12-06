@@ -1,5 +1,8 @@
 import { ILocale } from '@/types'
 import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
+import 'dayjs/locale/en'
+import 'dayjs/locale/am'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'

@@ -1,5 +1,4 @@
-'use client'
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import ReactScrollbarsCustom, { ScrollbarProps } from 'react-scrollbars-custom'
 import { ElementPropsWithElementRef } from 'react-scrollbars-custom/dist/types/types'
 
@@ -16,6 +15,7 @@ interface ScrollbarsProps extends ScrollbarProps {
 export function Scrollbar({ isShowTrack, ...props }: ScrollbarsProps) {
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMouseOver, setIsMouseOver] = useState(false)
+  const isShow = isScrolling || isMouseOver
 
   const onScrollStart = () => setIsScrolling(true)
   const onScrollStop = ({ scrollTop }: { scrollTop: number }) => {
@@ -30,25 +30,21 @@ export function Scrollbar({ isShowTrack, ...props }: ScrollbarsProps) {
       elementRef,
       style,
       ...restProps
-    }: ElementPropsWithElementRef) => {
-      if (elementRef) {
-        return (
-          <span
-            {...restProps}
-            ref={elementRef}
-            style={{
-              ...style,
-              opacity: isShowTrack || isScrolling || isMouseOver ? 1 : 0,
-              transition: 'opacity 0.1s ease-in-out',
-              width: '8px',
-              backgroundColor: 'inherit',
-            }}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          />
-        )
-      }
-    },
+    }: ElementPropsWithElementRef) => (
+      <span
+        {...restProps}
+        ref={elementRef}
+        style={{
+          ...style,
+          opacity: isShowTrack || isScrolling || isMouseOver ? 1 : 0,
+          transition: 'opacity 0.1s ease-in-out',
+          width: '8px',
+          backgroundColor: 'inherit',
+        }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      />
+    ),
   }
 
   const wrapperProps = {
@@ -56,16 +52,13 @@ export function Scrollbar({ isShowTrack, ...props }: ScrollbarsProps) {
       elementRef,
       style,
       ...restProps
-    }: ElementPropsWithElementRef) => {
-      if (elementRef) {
-        return (
-          <div {...restProps} ref={elementRef} style={{ ...style, right: 0 }} />
-        )
-      }
-    },
+    }: ElementPropsWithElementRef) => (
+      <div {...restProps} ref={elementRef} style={{ ...style, right: 0 }} />
+    ),
   }
 
   return (
+    // @see https://github.com/xobotyi/react-scrollbars-custom/issues/187
     // @ts-ignore
     <ReactScrollbarsCustom
       wrapperProps={wrapperProps}

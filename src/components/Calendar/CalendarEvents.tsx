@@ -3,10 +3,10 @@ import React, { FC, useState } from 'react'
 import { Calendar } from './Calendar'
 import { ILocale } from '@/types'
 import { CalendarCarousel } from './CalendarCarousel'
-import { NewsItem } from '@/types/item'
+import { IStandartItem } from '@/types/item'
 
 interface Props {
-  data: NewsItem[]
+  data: IStandartItem[]
 }
 
 export const CalendarEvents: FC<Props> = ({ data }) => {

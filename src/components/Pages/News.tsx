@@ -3,19 +3,19 @@ import { CalendarEvents } from '@/components/Calendar/CalendarEvents'
 import { NewsCard } from '@/components/Cards/NewsCard'
 import { NewsPriorityCard } from '@/components/Cards/NewsPriorityCard'
 import { Wrapper } from '@/components/Ui/Wrappers/Wrapper'
-import { NewsItem } from '@/types/item'
+import { IStandartItem } from '@/types/item'
 import { changeElementPosition } from '@/utils/changeElementPosition'
 import classNames from '@/utils/classNames'
 import { FC } from 'react'
 
 interface Props {
-  data: NewsItem[]
-  eventsData: NewsItem[]
+  data: IStandartItem[]
+  eventsData: IStandartItem[]
 }
 
 export const News: FC<Props> = ({ data, eventsData }) => {
   const arr = changeElementPosition(data, [0, 1, 6, 13])
-
+  const locale = 'ru'
   return (
     <>
       <Wrapper
@@ -45,9 +45,18 @@ export const News: FC<Props> = ({ data, eventsData }) => {
                   key={item.id + i.toString()}
                 >
                   {item.important ? (
-                    <NewsPriorityCard item={item} />
+                    <NewsPriorityCard
+                      locale={locale}
+                      link={'news/' + item.slug}
+                      item={item}
+                    />
                   ) : (
-                    <NewsCard showText item={item} />
+                    <NewsCard
+                      locale={locale}
+                      link={'news/' + item.slug}
+                      showText
+                      item={item}
+                    />
                   )}
                 </li>
               )
