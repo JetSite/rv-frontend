@@ -66,13 +66,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {events.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden ',
                   )}
                   key={item.title}
                 >
@@ -97,13 +97,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {events.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden',
                   )}
                   key={item.title}
                 >
@@ -128,13 +128,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {news.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden',
                   )}
                   key={item.title}
                 >
