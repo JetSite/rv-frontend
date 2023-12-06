@@ -8,10 +8,10 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import SwiperCore from 'swiper/core'
-import { NewsItem } from '@/types/item'
+import { IStandartItem } from '@/types/item'
 
 export interface CarouselProps {
-  arr: NewsItem[]
+  arr: IStandartItem[]
   className?: string
 }
 

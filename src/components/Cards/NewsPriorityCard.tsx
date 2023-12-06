@@ -1,13 +1,23 @@
+'use client'
 import Link from 'next/link'
 import { FC } from 'react'
 import { NewsCardProps } from './NewsCard'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
+import 'dayjs/locale/en'
+import 'dayjs/locale/am'
 
-export const NewsPriorityCard: FC<NewsCardProps> = ({ item, mainPage }) => {
+export const NewsPriorityCard: FC<NewsCardProps> = ({
+  item,
+  mainPage,
+  link = '#',
+  locale,
+}) => {
   if (mainPage) {
     return (
       <Link
         className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden"
-        href={item.slug}
+        href={link}
       >
         {!!item.img && (
           <img
@@ -22,7 +32,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({ item, mainPage }) => {
           {item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
-          {item.date}
+          {dayjs(item.date).locale(locale).format('LL')}
         </p>
       </Link>
     )
@@ -31,7 +41,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({ item, mainPage }) => {
   return (
     <Link
       className="p-1.5 flex gap-5 transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:w-full mobile:flex-col"
-      href={item.slug}
+      href={link}
     >
       {!!item.img && (
         <img
@@ -47,7 +57,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({ item, mainPage }) => {
           {item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
-          {item.date}
+          {dayjs(item.date).locale(locale).format('LL')}
         </p>
       </div>
     </Link>

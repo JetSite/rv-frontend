@@ -1,9 +1,9 @@
-import { NewsItem } from '@/types/item'
+import { IStandartItem } from '@/types/item'
 
 type IChangeElementPosition = (
-  arr: NewsItem[],
+  arr: IStandartItem[],
   positions: number[],
-) => NewsItem[]
+) => IStandartItem[]
 
 export const changeElementPosition: IChangeElementPosition = (
   arr,

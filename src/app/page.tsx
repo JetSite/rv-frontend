@@ -1,5 +1,6 @@
+'use client'
 import { API } from '@/api'
-import { activityMock, priorityMock } from '@/api/mock'
+import { priorityMock } from '@/api/mock'
 import { ActivityCard } from '@/components/Cards/ActivityCard'
 import { EventCard } from '@/components/Cards/EventCard'
 import { NewsCard } from '@/components/Cards/NewsCard'
@@ -11,25 +12,53 @@ import { WrapperMainPage } from '@/components/Ui/Wrappers/WrapperMainPage'
 import { getDataArray } from '@/utils/getDataArray'
 
 export default async function Home() {
-  const res = await fetch(`${API.baseUrl}/events?populate=*&sort[0]=date:desc`)
-  const data = await res.json()
-  const normalizeData = getDataArray(data)
+  const getHomePageData = async () => {
+    const eventRes = await fetch(
+      `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
+    )
+    const eventData = await eventRes.json()
 
+    const newsRes = await fetch(
+      `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
+    )
+    const newsData = await newsRes.json()
+
+    const activitiesRes = await fetch(`${API.baseUrl}/activities?populate=*`)
+    const activitiesData = await activitiesRes.json()
+
+    const prioritiesRes = await fetch(`${API.baseUrl}/priorities?populate=*`)
+    const prioritiesData = await prioritiesRes.json()
+
+    return {
+      eventData: getDataArray(eventData),
+      newsData: getDataArray(newsData),
+      activitiesData: getDataArray(activitiesData),
+      prioritiesData: getDataArray(prioritiesData),
+    }
+  }
+
+  const { eventData, newsData, activitiesData, prioritiesData } =
+    await getHomePageData()
+  const locale = 'ru'
   return (
     <>
-      <CarouselMainPage arr={normalizeData}></CarouselMainPage>
+      <CarouselMainPage arr={eventData}></CarouselMainPage>
       <WrapperMainPage
         titleStyles="bg-gray-400"
-        endLink={{ title: 'Календарь событий >', slug: '#' }}
+        endLink={{ title: 'Календарь событий >', slug: 'events' }}
         title={<h2 className="text-first">СОБЫТИЯ</h2>}
       >
         <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[130px] flex-wrap justify-around overflow-hidden tablet:px-8 desktop:max-h-[202px]">
-          {normalizeData.map(item => (
+          {eventData.map(item => (
             <li
               className="tablet:w-[260px] desktop:mb-4 desktop:w-[354px]"
               key={item.title}
             >
-              <EventCard item={item} />
+              <EventCard
+                locale={locale}
+                link={'events/' + item.slug}
+                item={item}
+              />
             </li>
           ))}
         </ul>
@@ -37,11 +66,11 @@ export default async function Home() {
 
       <WrapperMainPage
         titleStyles="bg-first"
-        endLink={{ title: 'Все новости >', slug: '#' }}
+        endLink={{ title: 'Все новости >', slug: 'news' }}
         title={<h2 className="text-white">НОВОСТИ</h2>}
       >
         <ul className="flex flex-wrap flex-col max-h-[400px] h-full  mobile:max-h-none notDesktop:gap-5 overflow-hidden tablet:px-8 tablet:h-[334px]">
-          {normalizeData.map(
+          {newsData.map(
             (item, i) =>
               i < 14 && (
                 <li
@@ -53,9 +82,20 @@ export default async function Home() {
                   key={item.title}
                 >
                   {i === 0 ? (
-                    <NewsPriorityCard mainPage item={item} />
+                    <NewsPriorityCard
+                      locale={locale}
+                      link={'news/' + item.slug}
+                      mainPage
+                      item={item}
+                    />
                   ) : (
-                    <NewsCard mainPage showText={i > 0 && i < 3} item={item} />
+                    <NewsCard
+                      locale={locale}
+                      link={'news/' + item.slug}
+                      mainPage
+                      showText={i > 0 && i < 3}
+                      item={item}
+                    />
                   )}
                 </li>
               ),
@@ -68,12 +108,12 @@ export default async function Home() {
         title={<h2 className="text-white">ПРИОРИТЕТЫ</h2>}
       >
         <ul className="flex mobile:flex-col  mobile:gap-5 tablet:px-8">
-          {priorityMock.map(item => (
+          {prioritiesData.map(item => (
             <li
               className="w-[25%] px-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0"
               key={item.title}
             >
-              <PriorityCard item={item} />
+              <PriorityCard locale="ru" item={item} />
             </li>
           ))}
         </ul>
@@ -89,7 +129,7 @@ export default async function Home() {
         }
       >
         <ul className="flex mobile:flex-col mobile:gap-5 tablet:px-8 tablet:flex-wrap">
-          {activityMock.map(item => (
+          {activitiesData.map(item => (
             <li
               className="w-[25%] px-1 py-2 first:pl-0 last:pr-0 transition-all hover:bg-h hovet:bg-opacity-60 mb-16 mobile:w-full mobile:p-0 mobile:mb-8 tablet:w-1/2"
               key={item.title}

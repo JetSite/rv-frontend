@@ -7,6 +7,9 @@ import classNames from '@/utils/classNames'
 import { langUIConfig } from '@/config'
 import { ILocale } from '@/types'
 import Select from '../Ui/Dropdowns'
+import { getDate } from '@/api/fetch/getDate'
+import { useStoreDate } from '@/store'
+import { getStoreData } from '@/utils/getStore'
 
 interface CalendarProps {
   year: number
@@ -32,6 +35,7 @@ export const Calendar: FC<CalendarProps> = ({
   simple = false,
 }) => {
   const calendarData = getCalendarData(year, month, 'yyyy-mm-dd', locale)
+  const data = useStoreDate(getStoreData)
 
   return (
     <div className="mr-12 mobile:mx-auto mobile:mb-9 tablet:w-full tablet:flex tablet:flex-wrap tablet:items-center tablet:justify-between">

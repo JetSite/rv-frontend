@@ -18,6 +18,9 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { CarouselProps } from '../CarouselMainPage'
 import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
+import 'dayjs/locale/en'
+import 'dayjs/locale/am'
 import { langUIConfig } from '@/config'
 import { ILocale } from '@/types'
 
@@ -48,11 +51,9 @@ export const CalendarCarousel: FC<Props> = ({
     <Swiper
       onSwiper={e => setSwiper(e)}
       onNavigationNext={e => {
-        console.log(e.realIndex)
         setSelectEvent(arr.find((item, i) => i === e.realIndex)?.date as string)
       }}
       onNavigationPrev={e => {
-        console.log(e.realIndex)
         setSelectEvent(arr.find((item, i) => i === e.realIndex)?.date as string)
       }}
       navigation={{

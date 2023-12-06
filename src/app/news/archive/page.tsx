@@ -1,6 +1,5 @@
 import { API } from '@/api'
-import { Archive } from '@/components/Archive'
-import { getCalendarData } from '@/utils/getCalendarData'
+import { Archive } from '@/components/Pages/Archive'
 import { getDataArray } from '@/utils/getDataArray'
 import React from 'react'
 
@@ -13,18 +12,11 @@ const ArchiveNews = async () => {
   const subTitle =
     'На странице “Архив новостей” нашего сайта мы собираем все актуальные и интересные события, которые произошли в последнее время. Вы можете ознакомиться с последними репортажами о главных новостях мира, политики, экономики и культуры. Наша команда постоянно работает над обновлением базы данных, чтобы предоставлять вам наиболее полную и свежую информацию.'
 
-  const { yearsList } = getCalendarData(
-    new Date().getFullYear(),
-    new Date().getMonth(),
-    'yyyy-mm-dd',
-    'ru',
-  )
-
   return (
     <div>
       <Archive
+        locale="ru"
         itemsArchive={normalizeData}
-        yearsList={yearsList}
         title={title}
         subTitle={subTitle}
       />

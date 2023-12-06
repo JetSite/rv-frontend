@@ -1,20 +1,24 @@
 'use client'
-import { navMock } from '@/api/mock'
 import { MainLink } from '@/components/Ui/MainLink'
 import React, { FC, useEffect, useState } from 'react'
 import { SoсialsWithLang } from './SoсialsWithLang'
 import XIcon from '@/components/Ui/Icons/XIcon'
 import { usePathname } from 'next/navigation'
 import { INavItem, ISocialsItem } from '@/types/layout'
+import { IStoreData, useStoreDate } from '@/store'
 
 interface Props {
   data: INavItem[]
   socials: ISocialsItem[]
+  dateArrs: IStoreData | null
 }
 
-export const MobileMav: FC<Props> = ({ data, socials }) => {
+export const MobileMav: FC<Props> = ({ data, socials, dateArrs }) => {
   const [open, setOpen] = useState<boolean>(false)
+  const setData = useStoreDate(state => state.setData)
   const pathname = usePathname()
+
+  if (dateArrs) setData(dateArrs)
 
   useEffect(() => {
     setOpen(false)

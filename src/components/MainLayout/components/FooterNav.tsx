@@ -1,4 +1,3 @@
-import { navMock } from '@/api/mock'
 import { MainLink } from '@/components/Ui/MainLink'
 import { INavItem } from '@/types/layout'
 import { FC } from 'react'
