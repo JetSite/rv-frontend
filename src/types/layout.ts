@@ -2,7 +2,7 @@ import { ILink } from '.'
 
 export interface INavItem extends ILink {
   id: string
-  children: ILink[]
+  children: INavItem[]
 }
 
 export interface ISocialsItem extends ILink {

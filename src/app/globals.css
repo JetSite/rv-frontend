@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .archive {
-  height: calc(100vh - 240px - 368px) !important;
+  height: calc(100vh - 240px - 240px) !important;
 }
 
 .animate-slide-in-left {
@@ -27,4 +27,8 @@
 .ScrollbarsCustom-Thumb {
   width: 8px;
   background-color: #194c81 !important;
+}
+
+.react-photo-album {
+  width: 800px;
 }

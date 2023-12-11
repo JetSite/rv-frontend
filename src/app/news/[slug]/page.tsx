@@ -40,6 +40,7 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
 
   return (
     <SingleItem
+    locale='ru'
       events={getDataArray(events)}
       news={getDataArray(news)}
       data={getDataArray(data)[0]}

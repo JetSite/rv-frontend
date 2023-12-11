@@ -1,6 +1,4 @@
-'use client'
 import { API } from '@/api'
-import { priorityMock } from '@/api/mock'
 import { ActivityCard } from '@/components/Cards/ActivityCard'
 import { EventCard } from '@/components/Cards/EventCard'
 import { NewsCard } from '@/components/Cards/NewsCard'
@@ -13,27 +11,37 @@ import { getDataArray } from '@/utils/getDataArray'
 
 export default async function Home() {
   const getHomePageData = async () => {
-    const eventRes = await fetch(
-      `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
-    )
-    const eventData = await eventRes.json()
+    try {
+      const eventRes = await fetch(
+        `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
+      )
+      const eventData = await eventRes.json()
 
-    const newsRes = await fetch(
-      `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
-    )
-    const newsData = await newsRes.json()
+      const newsRes = await fetch(
+        `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
+      )
+      const newsData = await newsRes.json()
 
-    const activitiesRes = await fetch(`${API.baseUrl}/activities?populate=*`)
-    const activitiesData = await activitiesRes.json()
+      const activitiesRes = await fetch(`${API.baseUrl}/activities?populate=*`)
+      const activitiesData = await activitiesRes.json()
 
-    const prioritiesRes = await fetch(`${API.baseUrl}/priorities?populate=*`)
-    const prioritiesData = await prioritiesRes.json()
+      const prioritiesRes = await fetch(`${API.baseUrl}/priorities?populate=*`)
+      const prioritiesData = await prioritiesRes.json()
 
-    return {
-      eventData: getDataArray(eventData),
-      newsData: getDataArray(newsData),
-      activitiesData: getDataArray(activitiesData),
-      prioritiesData: getDataArray(prioritiesData),
+      return {
+        eventData: getDataArray(eventData),
+        newsData: getDataArray(newsData),
+        activitiesData: getDataArray(activitiesData),
+        prioritiesData: getDataArray(prioritiesData),
+      }
+    } catch {
+      console.log('error')
+      return {
+        eventData: [],
+        newsData: [],
+        activitiesData: [],
+        prioritiesData: [],
+      }
     }
   }
 

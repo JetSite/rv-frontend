@@ -7,7 +7,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
 import 'dayjs/locale/am'
-import { ISelectItem } from '@/components/Ui/Dropdowns'
+import { ISelectItem } from '@/components/Ui/Dropdowns/Select'
 import { calendarConfig } from '@/config/calendar'
 
 dayjs.extend(localizedFormat)

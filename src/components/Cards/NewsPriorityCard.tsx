@@ -2,10 +2,7 @@
 import Link from 'next/link'
 import { FC } from 'react'
 import { NewsCardProps } from './NewsCard'
-import dayjs from 'dayjs'
-import 'dayjs/locale/ru'
-import 'dayjs/locale/en'
-import 'dayjs/locale/am'
+import { getNormalizeDate } from '@/utils/getNormalizeDate'
 
 export const NewsPriorityCard: FC<NewsCardProps> = ({
   item,
@@ -32,7 +29,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
           {item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
-          {dayjs(item.date).locale(locale).format('LL')}
+          {getNormalizeDate(item.date as string, locale)}
         </p>
       </Link>
     )
@@ -57,7 +54,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
           {item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
-          {dayjs(item.date).locale(locale).format('LL')}
+          {getNormalizeDate(item.date as string, locale)}
         </p>
       </div>
     </Link>

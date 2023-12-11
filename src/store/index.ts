@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
 export interface IStoreData {
-  newsDate: string[]
-  eventsDate: string[]
+  newsDate: { year: string; months: { month: string; value: string }[] }[]
+  eventsDate: { year: string; months: { month: string; value: string }[] }[]
 }
 
 export interface IUseStoreState {

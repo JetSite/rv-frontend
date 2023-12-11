@@ -9,12 +9,14 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
 import 'dayjs/locale/am'
+import { ILocale } from '@/types'
+import { getNormalizeDate } from '@/utils/getNormalizeDate'
 
 interface Props {
   data: IStandartItem
   news: IStandartItem[]
   events: IStandartItem[]
-  locale?: string
+  locale: ILocale
 }
 
 export const SingleItem: FC<Props> = ({
@@ -33,7 +35,7 @@ export const SingleItem: FC<Props> = ({
               {data.title}
             </h1>
             <p className="mb-6 text-[14px] font-medium text-first">
-              {dayjs(data.date).locale(locale).format('LL')}
+              {getNormalizeDate(data.date as string, locale)}
             </p>
           </>
         }

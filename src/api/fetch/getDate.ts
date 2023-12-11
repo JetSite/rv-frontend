@@ -1,5 +1,6 @@
+import { YearsWithMonths } from '@/types/item'
 import { API } from '..'
-import { IStoreData, useStoreDate } from '@/store'
+import { IStoreData } from '@/store'
 
 interface IArr {
   attributes: { date: string }
@@ -7,7 +8,10 @@ interface IArr {
 
 export const getDate = async () => {
   try {
-    let allDate: IStoreData = { newsDate: [], eventsDate: [] }
+    let allDate: { newsDate: string[]; eventsDate: string[] } = {
+      newsDate: [],
+      eventsDate: [],
+    }
     let currentNewsPage = 1
     let currentEventsPage = 1
     let totalNewsPages = 1
@@ -46,7 +50,52 @@ export const getDate = async () => {
       currentEventsPage++
     }
 
-    return allDate
+    const yearsWithMonths: IStoreData = {
+      newsDate: allDate.newsDate.reduce((acc: YearsWithMonths[], date) => {
+        const [year, month] = date.split('-')
+
+        const existingYear = acc.find(entry => entry.year === year)
+
+        if (existingYear) {
+          if (!existingYear.months.find(e => e.month === month)) {
+            existingYear.months.push({
+              month: month,
+              value: year + '-' + month,
+            })
+          }
+        } else {
+          acc.push({
+            year,
+            months: [{ month: month, value: year + '-' + month }],
+          })
+        }
+
+        return acc
+      }, []),
+      eventsDate: allDate.eventsDate.reduce((acc: YearsWithMonths[], date) => {
+        const [year, month] = date.split('-')
+
+        const existingYear = acc.find(entry => entry.year === year)
+
+        if (existingYear) {
+          if (!existingYear.months.find(e => e.month === month)) {
+            existingYear.months.push({
+              month: month,
+              value: year + '-' + month,
+            })
+          }
+        } else {
+          acc.push({
+            year,
+            months: [{ month: month, value: year + '-' + month }],
+          })
+        }
+
+        return acc
+      }, []),
+    }
+
+    return yearsWithMonths
   } catch {
     console.log('error in get date')
     return null
