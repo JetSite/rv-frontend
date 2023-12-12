@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const RootLayout: FC<IComponentWithChildren> = async ({ children }) => {
   const res = await fetch(
     `${API.baseUrl}/option?populate[header_menu][populate][menu][populate][0]=menu_item&populate[header_menu][populate][menu][populate][1]=submenu_items&populate[siteLogo][fields][0]=url&populate[social_medias][populate][mediaLogo][fields][1]=url&populate[footer_menus][populate][menu][populate][3]=menu_item&populate[header_menu][populate][menu][populate][4]=submenu_items`,
-    { cache: 'no-cache' },
+    { cache: 'default' },
   )
   const data = await res.json()
 

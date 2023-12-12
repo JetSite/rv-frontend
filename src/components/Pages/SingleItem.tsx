@@ -25,6 +25,8 @@ export const SingleItem: FC<Props> = ({
   events,
   locale = 'ru',
 }) => {
+  console.log(data)
+
   return (
     <div>
       <Wrapper
@@ -32,10 +34,10 @@ export const SingleItem: FC<Props> = ({
         title={
           <>
             <h1 className="text-first text-[48px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
-              {data.title}
+              {data?.title}
             </h1>
             <p className="mb-6 text-[14px] font-medium text-first">
-              {getNormalizeDate(data.date as string, locale)}
+              {getNormalizeDate(data?.date as string, locale)}
             </p>
           </>
         }
@@ -53,7 +55,7 @@ export const SingleItem: FC<Props> = ({
           />
           <p className="text-grey-400">
             <span>Источник: </span>
-            <span>{data.source}</span>
+            <span>{data?.source}</span>
           </p>
         </div>
       </Wrapper>

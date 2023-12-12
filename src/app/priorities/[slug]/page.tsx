@@ -21,7 +21,7 @@ const PriorityPage: FC<Props> = async ({ params }) => {
     const resData = await fetch(
       `${API.baseUrl}/priorities?filters[slug][$eq]=${params.slug}&populate=*`,
       {
-        cache: 'no-cache',
+        cache: 'default',
       },
     )
     const data = await resData.json()
