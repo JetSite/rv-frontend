@@ -31,6 +31,7 @@ export const Archive: FC<ArchiveProps> = ({
   )
   const scrollRef = useRef<HTMLDivElement>(null)
   const elementsRefs = useRef<Array<HTMLLIElement | null>>([])
+  console.log('test')
 
   const elementsWithHeight: { coordinate: number; value: string }[] =
     elementsRefs.current.map((e, i) =>
