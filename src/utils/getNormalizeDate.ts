@@ -8,5 +8,7 @@ import { ILocale } from '@/types'
 type IGetNormalizeDate = (string: string, locale: ILocale) => string
 
 export const getNormalizeDate: IGetNormalizeDate = (string, locale) => {
-  return dayjs(string).locale(locale).format('LL')
+  console.log(locale)
+
+  return dayjs(string).locale(locale).format('DD MMMM YYYY [г.]')
 }

@@ -14,18 +14,34 @@ export default async function Home() {
     try {
       const eventRes = await fetch(
         `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
+        {
+          cache: 'default',
+        },
       )
       const eventData = await eventRes.json()
 
       const newsRes = await fetch(
         `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
+        {
+          cache: 'default',
+        },
       )
       const newsData = await newsRes.json()
 
-      const activitiesRes = await fetch(`${API.baseUrl}/activities?populate=*`)
+      const activitiesRes = await fetch(
+        `${API.baseUrl}/activities?populate=*`,
+        {
+          cache: 'default',
+        },
+      )
       const activitiesData = await activitiesRes.json()
 
-      const prioritiesRes = await fetch(`${API.baseUrl}/priorities?populate=*`)
+      const prioritiesRes = await fetch(
+        `${API.baseUrl}/priorities?populate=*`,
+        {
+          cache: 'default',
+        },
+      )
       const prioritiesData = await prioritiesRes.json()
 
       return {

@@ -21,22 +21,30 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
     const resData = await fetch(
       `${API.baseUrl}/events?filters[slug][$eq]=${params.slug}&populate=*`,
       {
-        cache: 'no-cache',
+        cache: 'default',
       },
     )
     const data = await resData.json()
     const resEvents = await fetch(
       `${API.baseUrl}/events?filters[$not][0][slug][$eq]=${params.slug}&populate=*&sort[0]=date:desc`,
+      {
+        cache: 'default',
+      },
     )
     const news = await resEvents.json()
     const resNews = await fetch(
       `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
+      {
+        cache: 'default',
+      },
     )
     const events = await resNews.json()
     return { data, news, events }
   }
 
   const { data, news, events } = await fetchNewPageData()
+
+  if (!data.data.length) return <div />
 
   return (
     <SingleItem

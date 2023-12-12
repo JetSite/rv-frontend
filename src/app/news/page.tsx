@@ -4,7 +4,7 @@ import { getDataArray } from '@/utils/getDataArray'
 
 const NewsPage = async () => {
   const res = await fetch(`${API.baseUrl}/news?populate=*&sort[0]=date:desc`, {
-    cache: 'no-cache',
+    cache: 'default',
   })
   const data = await res.json()
   const resEvents = await fetch(
