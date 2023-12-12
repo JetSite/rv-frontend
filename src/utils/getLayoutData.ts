@@ -17,8 +17,13 @@ export const getLayoutData: IGetLayoutData = data => {
       (item: any) => ({
         id: item.id,
         title: item.itemName,
-        slug: item.menu_item.data.attributes.slug,
-        children: item.submenu_items.data || [],
+        slug: item.menu_item.data.attributes.slug || '#',
+        children:
+          item.submenu_items.data.map((e: any) => ({
+            id: e.id,
+            title: e.attributes.itemName,
+            slug: e.attributes.slug || '#',
+          })) || [],
       }),
     ),
     logo: {
@@ -27,18 +32,18 @@ export const getLayoutData: IGetLayoutData = data => {
     },
     socials: data.data.attributes.social_medias?.data.map((item: any) => ({
       id: item.id,
-      slug: item.attributes.mediaLink,
+      slug: item.attributes.mediaLink || '#',
       title: item.attributes.mediaTitle,
       img: API.imgUrl + item.attributes.mediaLogo.data.attributes.url,
     })),
     navFooter: data.data.attributes?.footer_menus.data.map((item: any) => ({
       id: item.id,
       title: item.attributes.menuTitle,
-      slug: item.attributes.menuTitleLink,
+      slug: item.attributes.menuTitleLink || '#',
       children: item.attributes.menu.map((children: any) => ({
         id: children.id,
         title: children.itemName,
-        slug: children.menu_item.data.attributes.slug,
+        slug: children.menu_item.data.attributes.slug || '#',
       })),
     })),
   }

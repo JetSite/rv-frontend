@@ -10,6 +10,13 @@ export interface EventItem extends IItem {
   time: string
 }
 
+export interface IGalleryItem {
+  key: string
+  src: string
+  width: number
+  height: number
+}
+
 export interface IStandartItem extends IItem {
   date: string | null
   img: string | null
@@ -17,6 +24,8 @@ export interface IStandartItem extends IItem {
   time: string | null
   source: string | null
   coverCaption: string | null
+  content: string | null
+  gallery: IGalleryItem[] | null
 }
 
 export interface PriorityItem extends IItem {
@@ -25,5 +34,5 @@ export interface PriorityItem extends IItem {
 
 export interface YearsWithMonths {
   year: string
-  months: string[]
+  months: { month: string; value: string }[]
 }

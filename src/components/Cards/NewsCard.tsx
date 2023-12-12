@@ -4,17 +4,15 @@ import { useMediaQuery } from 'react-responsive'
 import classNames from '@/utils/classNames'
 import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
-import dayjs from 'dayjs'
-import 'dayjs/locale/ru'
-import 'dayjs/locale/en'
-import 'dayjs/locale/am'
+import { getNormalizeDate } from '@/utils/getNormalizeDate'
+import { ILocale } from '@/types'
 
 export interface NewsCardProps {
   item: IStandartItem
   showText?: boolean
   mainPage?: boolean
   link: string
-  locale: string
+  locale: ILocale
 }
 
 export const NewsCard: FC<NewsCardProps> = ({
@@ -49,7 +47,7 @@ export const NewsCard: FC<NewsCardProps> = ({
         </p>
       )}
       <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
-        {dayjs(item.date).locale(locale).format('LL')}
+        {getNormalizeDate(item.date as string, locale)}
       </p>
     </Link>
   )

@@ -9,12 +9,14 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
 import 'dayjs/locale/am'
+import { ILocale } from '@/types'
+import { getNormalizeDate } from '@/utils/getNormalizeDate'
 
 interface Props {
   data: IStandartItem
   news: IStandartItem[]
   events: IStandartItem[]
-  locale?: string
+  locale: ILocale
 }
 
 export const SingleItem: FC<Props> = ({
@@ -33,7 +35,7 @@ export const SingleItem: FC<Props> = ({
               {data.title}
             </h1>
             <p className="mb-6 text-[14px] font-medium text-first">
-              {dayjs(data.date).locale(locale).format('LL')}
+              {getNormalizeDate(data.date as string, locale)}
             </p>
           </>
         }
@@ -66,13 +68,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {events.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden ',
                   )}
                   key={item.title}
                 >
@@ -97,13 +99,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {events.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden',
                   )}
                   key={item.title}
                 >
@@ -128,13 +130,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[270px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {news.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden',
                   )}
                   key={item.title}
                 >

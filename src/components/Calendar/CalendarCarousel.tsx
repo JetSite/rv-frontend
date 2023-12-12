@@ -49,7 +49,11 @@ export const CalendarCarousel: FC<Props> = ({
 
   return (
     <Swiper
-      onSwiper={e => setSwiper(e)}
+      onSwiper={e => {
+        console.log(e)
+
+        setSwiper(e)
+      }}
       onNavigationNext={e => {
         setSelectEvent(arr.find((item, i) => i === e.realIndex)?.date as string)
       }}

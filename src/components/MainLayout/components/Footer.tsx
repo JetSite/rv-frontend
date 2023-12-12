@@ -10,7 +10,7 @@ interface Props {
 
 export const Footer: FC<Props> = ({ data }) => {
   return (
-    <footer className="max-w-content w-full mx-12 py-16 flex justify-between text-h items-center gap-28 mobile:flex-col mobile:gap-[68px] mobile:py-7 tablet:px-8">
+    <footer className="max-w-content w-full mx-12 py-10 flex justify-between text-h items-center gap-28 mobile:flex-col mobile:gap-[68px] mobile:py-7 tablet:px-8 relative z-10 border-t-2 border-t-first mt-14">
       <FooterNav data={data.navFooter} />
       <div className="desktop:hidden">
         <Logo

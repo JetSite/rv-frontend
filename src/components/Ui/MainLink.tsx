@@ -6,18 +6,20 @@ import React, { FC } from 'react'
 
 interface MainLinkProps {
   item: ILink
+  slug?: string
 }
 
-export const MainLink: FC<MainLinkProps> = ({ item }) => {
+export const MainLink: FC<MainLinkProps> = ({ item, slug = '' }) => {
   const pathname = usePathname()
+  const show: boolean = pathname.split('/').pop() === item.slug
 
   return (
     <Link
-      className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute hover:before:w-full before:h-0.5 before:bg-h before:left-0 before:-bottom-2 ${
-        pathname === item.slug ? 'before:w-full' : 'over:before:w-full'
+      className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 ${
+        show ? 'before:w-full' : 'hover:before:w-full'
       }
       `}
-      href={'/' + item.slug}
+      href={slug + '/' + item.slug}
     >
       {item.title}
     </Link>

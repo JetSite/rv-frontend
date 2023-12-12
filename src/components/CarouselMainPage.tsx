@@ -1,5 +1,5 @@
 'use client'
-import { FC, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 import ArrowCircleIcon from './Ui/Icons/ArrowCircleIcon'
 import defineHtml from '@/utils/defineHtml'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -20,7 +20,9 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
 
   return (
     <Swiper
-      onSwiper={e => setSwiper(e)}
+      onSwiper={e => {
+        setSwiper(e)
+      }}
       loop
       pagination={{
         clickable: true,

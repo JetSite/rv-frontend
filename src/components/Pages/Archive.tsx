@@ -2,20 +2,20 @@
 import { EventCard } from '@/components/Cards/EventCard'
 import { Scrollbar } from '@/components/Ui/Scrollbar'
 import { monthsConfig } from '@/config/calendar'
-import { IStandartItem, YearsWithMonths } from '@/types/item'
-import Link from 'next/link'
-import { FC, useEffect, useRef, useState } from 'react'
-import { ISelectItem } from '../Ui/Dropdowns'
+import { IStandartItem } from '@/types/item'
+import { FC, MouseEvent, useEffect, useRef, useState } from 'react'
+import { ISelectItem } from '../Ui/Dropdowns/Select'
 import { useStoreDate } from '@/store'
 import { getStoreData } from '@/utils/getStore'
 import classNames from '@/utils/classNames'
+import { ILocale } from '@/types'
 
 interface ArchiveProps {
   title: string
   subTitle: string
   itemsArchive: IStandartItem[]
   yearsList?: ISelectItem[]
-  locale: string
+  locale: ILocale
 }
 
 export const Archive: FC<ArchiveProps> = ({
@@ -26,43 +26,51 @@ export const Archive: FC<ArchiveProps> = ({
 }) => {
   const data = useStoreDate(getStoreData)
   const [scroll, setScroll] = useState<number | undefined>(0)
-  const [asd, setAsd] = useState(itemsArchive[0].date)
+  const [selectDate, setSelectDate] = useState<string | undefined | null>(
+    itemsArchive[0].date,
+  )
   const scrollRef = useRef<HTMLDivElement>(null)
   const elementsRefs = useRef<Array<HTMLLIElement | null>>([])
 
-  const yearsWithMonths = data.newsDate.reduce(
-    (acc: YearsWithMonths[], date) => {
-      const [year, month] = date.split('-')
+  const elementsWithHeight: { coordinate: number; value: string }[] =
+    elementsRefs.current.map((e, i) =>
+      e
+        ? {
+            coordinate: e?.getBoundingClientRect().height,
+            value: e.id,
+          }
+        : { value: '0', coordinate: 0 },
+    )
 
-      const existingYear = acc.find(entry => entry.year === year)
-
-      if (existingYear) {
-        if (!existingYear.months.includes(month)) {
-          existingYear.months.push(month)
-        }
-      } else {
-        acc.push({
-          year,
-          months: [month],
-        })
-      }
-
-      return acc
-    },
-    [],
-  )
-
-  const heightElements: number[] = elementsRefs.current.map(e =>
-    e ? e?.getBoundingClientRect().height : 0,
-  )
-  const coordinatesArray = heightElements.reduce<number[]>((acc, e) => {
-    const sum = acc.length > 0 ? acc[acc.length - 1] + e : e
+  const coordinatesArray = elementsWithHeight.reduce<
+    { coordinate: number; value: string }[]
+  >((acc, e) => {
+    const sum =
+      acc.length > 0
+        ? {
+            coordinate: acc[acc.length - 1].coordinate + e.coordinate / 2,
+            value: e.value,
+          }
+        : { coordinate: 0, value: e.value }
     return [...acc, sum]
   }, [])
 
-  // useEffect(() => {
-  //   console.log(elementsRefs.current.map(e => e?.id))
-  // }, [scroll])
+  const handleSelectDate = (e: MouseEvent<HTMLButtonElement>) => {
+    setSelectDate(e.currentTarget.name)
+    setScroll(
+      coordinatesArray.find(el => el.value.includes(e.currentTarget.name))
+        ?.coordinate,
+    )
+  }
+
+  useEffect(() => {
+    if (coordinatesArray && scroll !== undefined) {
+      setSelectDate(
+        coordinatesArray.find(el => el.coordinate - scroll >= 0)?.value,
+      )
+    }
+    console.log('scrol: ', scroll)
+  }, [scroll])
 
   return (
     <div className="max-w-content w-full mx-auto mt-7">
@@ -100,32 +108,37 @@ export const Archive: FC<ArchiveProps> = ({
           className="!w-[40%] h-full overflow-scroll text-first font-bold"
         >
           <ul>
-            {yearsWithMonths.map((item, i) => (
+            {data.newsDate.map((item, i) => (
               <li key={item.year}>
-                <h4
+                <button
+                  onClick={handleSelectDate}
+                  name={item.year}
                   className={classNames(
                     'text-[48px]',
-                    !asd?.includes(item.year) ? 'opacity-60' : '',
+                    !selectDate?.includes(item.year) ? 'opacity-60' : '',
                   )}
                 >
                   {item.year}
-                </h4>
+                </button>
                 <ul className="ml-5 flex flex-col gap-2.5 mb-18">
                   {item.months.map((month, i) => {
                     const titleMonth = monthsConfig.find(
-                      e => e.value.toString() === month,
+                      e => e.value.toString() === month.month,
                     )
                     return (
-                      <li
-                        key={item.year + '-' + month}
-                        id={item.year + '-' + month}
-                      >
-                        <Link
-                          className={classNames('text-[30px]')}
-                          href={`#${titleMonth?.value}`}
+                      <li key={month.value}>
+                        <button
+                          className={classNames(
+                            'text-[30px]',
+                            !selectDate?.includes(month.value)
+                              ? 'opacity-60'
+                              : '',
+                          )}
+                          onClick={handleSelectDate}
+                          name={month.value}
                         >
                           {titleMonth ? titleMonth['ru'] : ''}
-                        </Link>
+                        </button>
                       </li>
                     )
                   })}

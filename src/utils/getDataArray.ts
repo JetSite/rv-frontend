@@ -36,6 +36,13 @@ export const getDataArray: IGetDataArray = ({ data }) => {
     time: item.attributes.time || null,
     coverCaption: item.attributes.coverCaption,
     source: item.attributes.source,
+    gallery: item.attributes?.gallery?.data.map((e: any) => ({
+      key: e.id.toString(),
+      src: API.imgUrl + e.attributes.url,
+      width: e.attributes.width,
+      height: e.attributes.height,
+    })),
+    content: item.attributes?.content,
   }))
 
   return arr
