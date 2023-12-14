@@ -1,3 +1,4 @@
+'use client'
 import { API } from '@/api'
 import { ActivityCard } from '@/components/Cards/ActivityCard'
 import { EventCard } from '@/components/Cards/EventCard'
@@ -8,6 +9,7 @@ import { CarouselMainPage } from '@/components/CarouselMainPage'
 import { Wrapper } from '@/components/Ui/Wrappers/Wrapper'
 import { WrapperMainPage } from '@/components/Ui/Wrappers/WrapperMainPage'
 import { getDataArray } from '@/utils/getDataArray'
+import { getDataMainSlider } from '@/utils/getDataMainSlider'
 
 export default async function Home() {
   const getHomePageData = async () => {
@@ -44,11 +46,19 @@ export default async function Home() {
       )
       const prioritiesData = await prioritiesRes.json()
 
+      const resMainSlider = await fetch(
+        `${API.baseUrl}/main-slider?populate=*`,
+        {
+          cache: 'no-cache',
+        },
+      )
+      const dataMainSlider = await resMainSlider.json()
       return {
         eventData: getDataArray(eventData),
         newsData: getDataArray(newsData),
         activitiesData: getDataArray(activitiesData),
         prioritiesData: getDataArray(prioritiesData),
+        mainSliderData: getDataMainSlider(dataMainSlider.data),
       }
     } catch {
       console.log('error')
@@ -57,16 +67,23 @@ export default async function Home() {
         newsData: [],
         activitiesData: [],
         prioritiesData: [],
+        mainSliderData: [],
       }
     }
   }
 
-  const { eventData, newsData, activitiesData, prioritiesData } =
-    await getHomePageData()
+  const {
+    eventData,
+    newsData,
+    activitiesData,
+    prioritiesData,
+    mainSliderData,
+  } = await getHomePageData()
   const locale = 'ru'
+
   return (
     <>
-      <CarouselMainPage arr={eventData}></CarouselMainPage>
+      <CarouselMainPage arr={mainSliderData}></CarouselMainPage>
       <WrapperMainPage
         titleStyles="bg-gray-400"
         endLink={{ title: 'Календарь событий >', slug: 'events' }}
@@ -80,7 +97,7 @@ export default async function Home() {
             >
               <EventCard
                 locale={locale}
-                link={'events/' + item.slug}
+                link={'/events/all/' + item.slug}
                 item={item}
               />
             </li>
@@ -108,14 +125,14 @@ export default async function Home() {
                   {i === 0 ? (
                     <NewsPriorityCard
                       locale={locale}
-                      link={'news/' + item.slug}
+                      link={'/news/all/' + item.slug}
                       mainPage
                       item={item}
                     />
                   ) : (
                     <NewsCard
                       locale={locale}
-                      link={'news/' + item.slug}
+                      link={'/news/all/' + item.slug}
                       mainPage
                       showText={i > 0 && i < 3}
                       item={item}

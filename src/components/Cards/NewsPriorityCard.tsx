@@ -1,4 +1,3 @@
-'use client'
 import Link from 'next/link'
 import { FC } from 'react'
 import { NewsCardProps } from './NewsCard'
@@ -46,7 +45,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
           src={item.img}
         />
       )}
-      <div className="flex flex-col relative max-h-[400px]">
+      <div className="flex flex-col relative max-h-[400px] w-full">
         <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 before:absolute before:w-1.5 before:h-1.5 before:bg-red-500 before:rounded-full before:-left-3 before:top-1.5">
           {item.title}
         </h3>

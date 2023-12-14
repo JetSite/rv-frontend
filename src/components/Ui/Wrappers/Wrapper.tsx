@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { MainLink } from '../MainLink'
 
 interface WrapperProps extends IComponentWithChildren {
-  title: IChildren
+  title?: IChildren
   sx?: string
   endLink?: { title: string; slug: string }
   mainPage?: boolean
@@ -25,7 +25,7 @@ export const Wrapper: FC<WrapperProps> = ({
             : 'max-w-content mx-auto'
         }
       >
-        {typeof title === 'string' ? <h2>{title}</h2> : title}
+        {!title ? null : typeof title === 'string' ? <h2>{title}</h2> : title}
         {children}
         {endLink ? (
           <div className="flex gap-2.5 mt-4 items-center text-first mobile:mr-7">

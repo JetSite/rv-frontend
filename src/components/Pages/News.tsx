@@ -47,13 +47,13 @@ export const News: FC<Props> = ({ data, eventsData }) => {
                   {item.important ? (
                     <NewsPriorityCard
                       locale={locale}
-                      link={'news/' + item.slug}
+                      link={'/news/all/' + item.slug}
                       item={item}
                     />
                   ) : (
                     <NewsCard
                       locale={locale}
-                      link={'news/' + item.slug}
+                      link={'/news/all/' + item.slug}
                       showText
                       item={item}
                     />

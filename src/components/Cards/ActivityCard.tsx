@@ -10,7 +10,7 @@ interface ActivityCardProps {
 export const ActivityCard: FC<ActivityCardProps> = ({ item }) => {
   return (
     <Link
-      href={item.slug || '#'}
+      href={'/activities/' + item.slug || '#'}
       className="p-1.5 pt-0 block transition-all mobile:px-7 mobile:py-1"
     >
       {!!item.img && (

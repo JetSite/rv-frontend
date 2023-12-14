@@ -50,8 +50,6 @@ export const CalendarCarousel: FC<Props> = ({
   return (
     <Swiper
       onSwiper={e => {
-        console.log(e)
-
         setSwiper(e)
       }}
       onNavigationNext={e => {

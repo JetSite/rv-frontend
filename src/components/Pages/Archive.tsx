@@ -96,7 +96,7 @@ export const Archive: FC<ArchiveProps> = ({
               >
                 <EventCard
                   locale={locale}
-                  link={'event/' + event.slug}
+                  link={'/event/all/' + event.slug}
                   item={event}
                 />
               </li>

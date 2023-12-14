@@ -9,9 +9,9 @@ interface MainLinkProps {
   slug?: string
 }
 
-export const MainLink: FC<MainLinkProps> = ({ item, slug = '' }) => {
+export const MainLink: FC<MainLinkProps> = ({ item, slug }) => {
   const pathname = usePathname()
-  const show: boolean = pathname.split('/').pop() === item.slug
+  const show: boolean = pathname === item.slug
 
   return (
     <Link
@@ -19,7 +19,7 @@ export const MainLink: FC<MainLinkProps> = ({ item, slug = '' }) => {
         show ? 'before:w-full' : 'hover:before:w-full'
       }
       `}
-      href={slug + '/' + item.slug}
+      href={slug ? slug + '/' + item.slug : item.slug}
     >
       {item.title}
     </Link>

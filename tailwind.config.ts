@@ -23,6 +23,7 @@ const config: Config = {
       colors: {
         h: '#144574',
         first: '#194C81',
+        firstInner: '#2A5781',
         second: '#EE882B',
         warning: '#D2051B',
         text: '#061018',
@@ -62,6 +63,8 @@ const config: Config = {
     'col-start-5',
     'col-start-6',
     'col-start-7',
+    'text-[',
+    'bg-[',
   ],
   plugins: [],
 }
