@@ -19,9 +19,9 @@ interface Props {
 const ActivityPage: FC<Props> = async ({ params }) => {
   const fetchActivityPageData = async () => {
     const resData = await fetch(
-      `${API.baseUrl}/activities?filters[slug][$eq]%3D=${params.slug}&populate[subcategoriesOfActivities][populate][0]=objectOfActivity`,
+      `${API.baseUrl}/activities?filters[slug][$eq]%3D=${params.slug}&populate[subcategoriesOfActivities][populate][0]=objectOfActivity&populate[subcategoriesOfActivities][populate][1]=subcategory_groups`,
       {
-        cache: 'default',
+        cache: 'no-cache',
       },
     )
     const data = await resData.json()
@@ -30,7 +30,7 @@ const ActivityPage: FC<Props> = async ({ params }) => {
   }
   const data = await fetchActivityPageData()
 
-  return <Activity data={getActivityData(data.data[0])} />
+  return <Activity data={getActivityData(data.data[0])} locale="ru" />
 }
 
 export default ActivityPage

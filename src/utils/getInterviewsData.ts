@@ -1,31 +1,30 @@
 import { API } from '@/api'
 import { IData } from '@/types'
+import { IPersone } from './getAudioAndVideosData'
 
-export interface IPersone {
+export interface IInterviewsData {
   title: string
   id: number
-  avatar: string
-}
-
-export interface IAudioAndVideosData {
-  title: string
-  id?: number
   date: string
-  description?: string
-  link: string
+  description: string
+  slug: string
+  content: string | null
   source: string
+  videoLink: string | null
   persons: IPersone[]
 }
 
-type IGetAudioAndVideosData = (data: IData[]) => IAudioAndVideosData[]
+type IGetInterviewData = (data: IData[]) => IInterviewsData[]
 
-export const getAudioAndVideosData: IGetAudioAndVideosData = data => {
+export const getInterviewData: IGetInterviewData = data => {
   return data.map(e => ({
     title: e.attributes.title,
     id: e.id,
     date: e.attributes.date,
-    description: e.attributes.description,
-    link: e.attributes.link,
+    description: e.attributes.shortDescription,
+    content: e.attributes.description,
+    videoLink: e.attributes.videoLink,
+    slug: e.attributes.slug,
     source: e.attributes.source,
     persons: e.attributes.persons?.data.map((persone: IData) => ({
       title: persone.attributes.name,

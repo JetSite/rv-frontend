@@ -69,6 +69,7 @@ export interface ILangPlaceholders {
 export const langUIConfig: ILangUIConfig = {
   today: { ru: 'Сегодня', en: 'Today', am: 'Այսօր' },
   tomorrow: { ru: 'Завтра', en: 'Tomorrow', am: 'Վաղը' },
+  now: { ru: 'настоящее время', en: 'present time', am: 'ներկա ժամանակ' },
 }
 
 export const langPlaceholders: ILangPlaceholders = {

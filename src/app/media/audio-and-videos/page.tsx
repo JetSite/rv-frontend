@@ -1,5 +1,6 @@
 import { API } from '@/api'
 import { AudioAndVideos } from '@/components/Pages/AudioAndVideos'
+import { getAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 
 const AudioAndVideosPage = async () => {
   const fetchMediaItems = async () => {
@@ -13,7 +14,7 @@ const AudioAndVideosPage = async () => {
   }
   const data = await fetchMediaItems()
 
-  return <AudioAndVideos data={data} />
+  return <AudioAndVideos data={getAudioAndVideosData(data.data)} />
 }
 
 export default AudioAndVideosPage

@@ -1,24 +1,20 @@
 import { FC } from 'react'
-import { VideoPlayer } from './VideoPlayer'
-import { getVideoId } from '@/utils/getVideoId'
-import { IAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import Link from 'next/link'
 import VideoIcon from '../Ui/Icons/VideoIcon'
+import { IInterviewsData } from '@/utils/getInterviewsData'
 
 interface Props {
-  videos: IAudioAndVideosData[]
+  interviews: IInterviewsData[]
 }
 
-export const VideosLine: FC<Props> = ({ videos }) => {
-  console.log(videos)
-
+export const InterviewsLine: FC<Props> = ({ interviews }) => {
   return (
     <ul className="flex flex-col">
-      {videos.map(video => {
+      {interviews.map(interview => {
         return (
-          <li key={video.id} className="flex w-full gap-10">
+          <li key={interview.id} className="flex w-full gap-10">
             <ul className="">
-              {video.persons.map(persone => (
+              {interview.persons.map(persone => (
                 <li key={persone.id} className="pb-14 -mt-4">
                   <div className="">
                     <img
@@ -38,21 +34,22 @@ export const VideosLine: FC<Props> = ({ videos }) => {
             <div className="bg-first bg-opacity-20 w-px relative">
               <VideoIcon className="absolute -left-[14px]" />
             </div>
-            <div className="w-full pb-14">
-              <h3 className="text-[18px] text-first mb-1.5">{video.title}</h3>
+            <Link
+              href={'/media/interviews/' + interview.slug}
+              className="w-full pb-14"
+            >
+              <h3 className="text-[18px] text-first mb-1.5">
+                {interview.title}
+              </h3>
               <p className="text-14 flex gap-1 font-medium mb-2.5">
-                <Link href={video.source}>
-                  {video.source}
+                <Link href={interview.source}>
+                  {interview.source}
                   {','}
                 </Link>
-                <span>{video.date}</span>
+                <span>{interview.date}</span>
               </p>
-              <VideoPlayer
-                videoId={getVideoId(video.link)}
-                height="514px"
-                width="100%"
-              />
-            </div>
+              <p className="text-gray-500">{interview.description}</p>
+            </Link>
           </li>
         )
       })}

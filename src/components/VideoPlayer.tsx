@@ -1,6 +1,6 @@
 'use client'
 import { FC } from 'react'
-import { YOUTUBE_KEY } from '../../../vatiables'
+import { YOUTUBE_KEY } from '../../vatiables'
 import YouTube from 'react-youtube'
 
 interface Props {

@@ -1,12 +1,7 @@
-'use client'
-
-import { getAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { FC } from 'react'
-import { VideoPlayer } from '../Videos/VideoPlayer'
-import { getVideoId } from '@/utils/getVideoId'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { FilterVideo } from '../Filters/FilterVideo'
-import { VideosLine } from '../Videos/VideosLine'
+import { VideosLine } from '../Lines/VideosLine'
 import { MainLink } from '../Ui/MainLink'
 
 interface Props {
@@ -15,9 +10,6 @@ interface Props {
 
 export const AudioAndVideos: FC<Props> = ({ data }) => {
   // console.log(data.data)
-  // console.log(getAudioAndVideosData(data.data))
-
-  const datata = getAudioAndVideosData(data.data)
 
   return (
     <Wrapper
@@ -39,7 +31,7 @@ export const AudioAndVideos: FC<Props> = ({ data }) => {
           только звук, но и визуальную информацию.
         </p>
         <FilterVideo />
-        <VideosLine videos={datata} />
+        <VideosLine videos={data} />
         <p className="ml-[54px] mt-4">
           <MainLink item={{ title: 'Больше интервью', slug: '#' }} />
         </p>
