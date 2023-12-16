@@ -17,7 +17,6 @@ export const CalendarEvents: FC<Props> = ({ data }) => {
   const eventsDates = data.map(event => (event.date ? event.date : ''))
   const [selectEvent, setSelectEvent] = useState<string>(eventsDates[0])
 
-  // console.log(selectMonth, selectYear)
   const lang: ILocale = 'ru'
 
   return (

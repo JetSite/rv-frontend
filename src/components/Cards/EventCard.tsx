@@ -1,4 +1,3 @@
-'use client'
 import { IStandartItem } from '@/types/item'
 import Link from 'next/link'
 import { FC } from 'react'

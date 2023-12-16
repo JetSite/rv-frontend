@@ -5,12 +5,9 @@ import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { EventCard } from '../Cards/EventCard'
 import { IStandartItem } from '@/types/item'
 import { FC } from 'react'
-import dayjs from 'dayjs'
-import 'dayjs/locale/ru'
-import 'dayjs/locale/en'
-import 'dayjs/locale/am'
 import { ILocale } from '@/types'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
+import { API } from '@/api'
 
 interface Props {
   data: IStandartItem
@@ -25,8 +22,7 @@ export const SingleItem: FC<Props> = ({
   events,
   locale = 'ru',
 }) => {
-  console.log(data)
-
+  //`${API.baseUrl}/main-slider?populate=*`
   return (
     <div>
       <Wrapper
@@ -82,7 +78,7 @@ export const SingleItem: FC<Props> = ({
                 >
                   <EventCard
                     locale={locale}
-                    link={'/events/' + item.slug}
+                    link={'/events/all/' + item.slug}
                     item={item}
                   />
                 </li>
@@ -113,7 +109,7 @@ export const SingleItem: FC<Props> = ({
                 >
                   <EventCard
                     locale={locale}
-                    link={'/events/' + item.slug}
+                    link={'/events/all/' + item.slug}
                     item={item}
                   />
                 </li>
@@ -144,7 +140,7 @@ export const SingleItem: FC<Props> = ({
                 >
                   <EventCard
                     locale={locale}
-                    link={'/news/' + item.slug}
+                    link={'/news/all/' + item.slug}
                     item={item}
                   />
                 </li>

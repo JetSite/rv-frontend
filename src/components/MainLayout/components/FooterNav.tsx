@@ -22,7 +22,7 @@ export const FooterNav: FC<Props> = ({ data }) => {
                   className="block text-[20px] text-base font-normal"
                   key={children.title}
                 >
-                  <MainLink slug={'/' + item.slug} item={children} />
+                  <MainLink item={children} />
                 </li>
               ))}
             </ul>

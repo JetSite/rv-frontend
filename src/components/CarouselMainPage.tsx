@@ -8,10 +8,11 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import SwiperCore from 'swiper/core'
-import { IStandartItem } from '@/types/item'
+import { IDataMainSlider } from '@/utils/getDataMainSlider'
+import classNames from '@/utils/classNames'
 
 export interface CarouselProps {
-  arr: IStandartItem[]
+  arr: IDataMainSlider[]
   className?: string
 }
 
@@ -43,8 +44,33 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                 }}
               />
             ) : (
-              <h2 className="text-6xl w-3/4 text-white z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
-                {item.title}
+              <h2 className="text-6xl w-3/4 z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
+                <span
+                  style={{
+                    color: item.titleFirstLineTextColor
+                      ? item.titleFirstLineTextColor
+                      : 'white',
+                    backgroundColor: item.titleFirstLineBackgroundColor
+                      ? item.titleFirstLineBackgroundColor
+                      : '',
+                  }}
+                  className={classNames('block')}
+                >
+                  {item.titleFirstLine}
+                </span>
+                <span
+                  style={{
+                    color: item.titleSecondLineTextColor
+                      ? item.titleSecondLineTextColor
+                      : 'white',
+                    backgroundColor: item.titleSecondLineBackgroundColor
+                      ? item.titleSecondLineBackgroundColor
+                      : '',
+                  }}
+                  className={classNames('block')}
+                >
+                  {item.titleSecondLine}
+                </span>
               </h2>
             )}
           </div>

@@ -1,5 +1,10 @@
 import { ReactElement } from 'react'
 
+export interface IData {
+  attributes: { [K: string]: any }
+  id: number
+}
+
 export interface ILink {
   slug: string
   title: string

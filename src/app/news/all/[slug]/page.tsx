@@ -44,8 +44,6 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
 
   const { data, news, events } = await fetchNewPageData()
 
-  console.log(`${API.baseUrl}/news?fields=slug`)
-
   if (!data.data.length) return <div />
 
   return (

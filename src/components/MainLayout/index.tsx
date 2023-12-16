@@ -1,4 +1,3 @@
-// 'use client'
 import { FC } from 'react'
 import { Header } from './components/Header'
 import { IComponentWithChildren } from '@/types'
