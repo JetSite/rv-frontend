@@ -3,7 +3,6 @@
 import { getInterviewData } from '@/utils/getInterviewsData'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
-import { FilterVideo } from '../Filters/FilterVideo'
 import { MainLink } from '../Ui/MainLink'
 import { InterviewsLine } from '../Lines/InterviewsLine'
 
@@ -29,7 +28,7 @@ export const Interviews: FC<Props> = ({ data }) => {
           Кроме того, интервью позволяет задать вопросы, которые могут быть
           интересны широкой аудитории.
         </p>
-        <FilterVideo />
+        {/* <FilterVideo /> */}
         <InterviewsLine interviews={data} />
         <p className="ml-[54px] mt-4">
           <MainLink item={{ title: 'Больше интервью', slug: '#' }} />
