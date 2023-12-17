@@ -5,12 +5,13 @@ import { IStandartItem } from '@/types/item'
 
 interface ActivityCardProps {
   item: IStandartItem
+  slug: string
 }
 
-export const ActivityCard: FC<ActivityCardProps> = ({ item }) => {
+export const ActivityCard: FC<ActivityCardProps> = ({ item, slug }) => {
   return (
     <Link
-      href={'/activity/' + item.slug || '#'}
+      href={slug}
       className="p-1.5 pt-0 block transition-all mobile:px-7 mobile:py-1"
     >
       {!!item.img && (

@@ -154,7 +154,11 @@ export default async function Home() {
               className="w-[25%] px-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0"
               key={item.title}
             >
-              <PriorityCard locale="ru" item={item} />
+              <PriorityCard
+                slug={'/priorities/' + item.slug || '#'}
+                locale="ru"
+                item={item}
+              />
             </li>
           ))}
         </ul>
@@ -175,7 +179,10 @@ export default async function Home() {
               className="w-[25%] px-1 py-2 first:pl-0 last:pr-0 transition-all hover:bg-h hovet:bg-opacity-60 mb-16 mobile:w-full mobile:p-0 mobile:mb-8 tablet:w-1/2"
               key={item.title}
             >
-              <ActivityCard item={item} />
+              <ActivityCard
+                slug={'/activity/' + item.slug || '#'}
+                item={item}
+              />
             </li>
           ))}
         </ul>
