@@ -7,9 +7,17 @@ export async function generateStaticParams() {
   const slugs = await fetch(`${API.baseUrl}/activities?fields=slug`).then(res =>
     res.json(),
   )
-  return slugs.data.map((slug: { attributes: { slug: string } }) => ({
-    slug: slug.attributes.slug,
-  }))
+
+  const slugsUnIncludeMedia: { slug: string }[] = []
+
+  slugs.data.forEach((slug: { attributes: { slug: string } }) => {
+    if (slug.attributes.slug !== 'media') {
+      slugsUnIncludeMedia.push({
+        slug: slug.attributes.slug,
+      })
+    }
+  })
+  return slugsUnIncludeMedia
 }
 
 interface Props {

@@ -1,5 +1,3 @@
-'use client'
-
 import classNames from '@/utils/classNames'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { EventCard } from '../Cards/EventCard'
@@ -7,7 +5,6 @@ import { IStandartItem } from '@/types/item'
 import { FC } from 'react'
 import { ILocale } from '@/types'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
-import { API } from '@/api'
 
 interface Props {
   data: IStandartItem
@@ -22,7 +19,6 @@ export const SingleItem: FC<Props> = ({
   events,
   locale = 'ru',
 }) => {
-  //`${API.baseUrl}/main-slider?populate=*`
   return (
     <div>
       <Wrapper

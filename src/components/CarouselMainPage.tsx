@@ -10,6 +10,7 @@ import 'swiper/css/navigation'
 import SwiperCore from 'swiper/core'
 import { IDataMainSlider } from '@/utils/getDataMainSlider'
 import classNames from '@/utils/classNames'
+import Link from 'next/link'
 
 export interface CarouselProps {
   arr: IDataMainSlider[]
@@ -33,47 +34,49 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
     >
       {arr.map(item => (
         <SwiperSlide key={item.title}>
-          {!!item.img && (
-            <img className="w-full object-cover object-top" src={item.img} />
-          )}
-          <div className="absolute bottom-12 w-full flex items-center justify-center mobile:bottom-6">
-            {defineHtml(item.title) ? (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: item.title,
-                }}
-              />
-            ) : (
-              <h2 className="text-6xl w-3/4 z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
-                <span
-                  style={{
-                    color: item.titleFirstLineTextColor
-                      ? item.titleFirstLineTextColor
-                      : 'white',
-                    backgroundColor: item.titleFirstLineBackgroundColor
-                      ? item.titleFirstLineBackgroundColor
-                      : '',
-                  }}
-                  className={classNames('block')}
-                >
-                  {item.titleFirstLine}
-                </span>
-                <span
-                  style={{
-                    color: item.titleSecondLineTextColor
-                      ? item.titleSecondLineTextColor
-                      : 'white',
-                    backgroundColor: item.titleSecondLineBackgroundColor
-                      ? item.titleSecondLineBackgroundColor
-                      : '',
-                  }}
-                  className={classNames('block')}
-                >
-                  {item.titleSecondLine}
-                </span>
-              </h2>
+          <Link href={item.link}>
+            {!!item.img && (
+              <img className="w-full object-cover object-top" src={item.img} />
             )}
-          </div>
+            <div className="absolute bottom-12 w-full flex items-center justify-center mobile:bottom-6">
+              {defineHtml(item.title) ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: item.title,
+                  }}
+                />
+              ) : (
+                <h2 className="text-6xl w-3/4 z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
+                  <span
+                    style={{
+                      color: item.titleFirstLineTextColor
+                        ? item.titleFirstLineTextColor
+                        : 'white',
+                      backgroundColor: item.titleFirstLineBackgroundColor
+                        ? item.titleFirstLineBackgroundColor
+                        : '',
+                    }}
+                    className={classNames('block')}
+                  >
+                    {item.titleFirstLine}
+                  </span>
+                  <span
+                    style={{
+                      color: item.titleSecondLineTextColor
+                        ? item.titleSecondLineTextColor
+                        : 'white',
+                      backgroundColor: item.titleSecondLineBackgroundColor
+                        ? item.titleSecondLineBackgroundColor
+                        : '',
+                    }}
+                    className={classNames('block')}
+                  >
+                    {item.titleSecondLine}
+                  </span>
+                </h2>
+              )}
+            </div>
+          </Link>
         </SwiperSlide>
       ))}
       <div

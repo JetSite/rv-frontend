@@ -20,7 +20,7 @@ export const getLayoutData: IGetLayoutData = data => {
         isActive: item.menu_item.data.attributes.isActive,
         slug: item.menu_item.data.attributes.itemLink || '#',
         children:
-          item.submenu_items.data.map((e: any) => ({
+          item.submenu_items.data.map((e: IData) => ({
             id: e.id,
             title: e.attributes.itemName,
             isActive: e.attributes.isActive,

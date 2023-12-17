@@ -54,6 +54,9 @@ const config: Config = {
       notMobile: { min: '834px' },
       notDesktop: { max: '1579px' },
     },
+    fontFamily: {
+      main: ['Charter', 'sans-serif'],
+    },
   },
   safelist: [
     'col-start-1',

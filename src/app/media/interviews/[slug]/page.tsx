@@ -28,9 +28,6 @@ const SingleInterviewPage: FC<Props> = async ({ params }) => {
     return data
   }
 
-  console.log(
-    `${API.baseUrl}/interviews?filters[slug][$eq]=${params.slug}&populate=*`,
-  )
   const data = await fetchSingleInterviewData()
 
   return <SingleInterview data={getInterviewData(data.data)[0]} />

@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Charter';
+  src: url('/fonts/Cera-Pro-Black.otf') format('TrueType');
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Charter';
+  src: url('/fonts/Cera-Pro-Bold.otf') format('TrueType');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Charter';
+  src: url('/fonts/Cera-Pro-Light.otf') format('TrueType');
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Charter';
+  src: url('/fonts/Cera-Pro-Medium.otf') format('TrueType');
+  font-style: normal;
+  font-display: swap;
+}
+
 .archive {
   height: calc(100vh - 240px - 240px) !important;
 }

@@ -1,4 +1,3 @@
-'use client'
 import { API } from '@/api'
 import { ActivityCard } from '@/components/Cards/ActivityCard'
 import { EventCard } from '@/components/Cards/EventCard'
@@ -53,6 +52,7 @@ export default async function Home() {
         },
       )
       const dataMainSlider = await resMainSlider.json()
+
       return {
         eventData: getDataArray(eventData),
         newsData: getDataArray(newsData),

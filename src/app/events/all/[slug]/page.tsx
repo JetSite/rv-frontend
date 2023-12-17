@@ -7,6 +7,7 @@ export async function generateStaticParams() {
   const slugs = await fetch(`${API.baseUrl}/events?fields=slug`).then(res =>
     res.json(),
   )
+
   return slugs.data.map((slug: { attributes: { slug: string } }) => ({
     slug: slug.attributes.slug,
   }))
