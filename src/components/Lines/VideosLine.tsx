@@ -18,6 +18,7 @@ export const VideosLine: FC<Props> = ({ videos }) => {
               source={video.source}
               title={video.title}
               link={video.link}
+              slug={video.slug}
             />
           </li>
         )

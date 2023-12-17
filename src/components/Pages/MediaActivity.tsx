@@ -77,7 +77,7 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
                     width="100%"
                   />
                   <Link
-                    href={video.slug}
+                    href={video.slug || '#'}
                     className="text-h block text-[18px] font-bold mt-3 hover:text-second"
                   >
                     {video.title}

@@ -14,7 +14,8 @@ export interface IAudioAndVideosData {
   description?: string
   link: string
   source: string
-  slug: string
+  slug?: string
+
   persons: IPersone[]
 }
 
@@ -27,8 +28,8 @@ export const getAudioAndVideosData: IGetAudioAndVideosData = data => {
     date: e.attributes.date,
     description: e.attributes.description,
     link: e.attributes.link,
-    source: e.attributes.source,
     slug: e.attributes.slug || '#',
+    source: e.attributes.source,
     persons: e.attributes.persons?.data.map((persone: IData) => ({
       title: persone.attributes.name,
       id: persone.id,
