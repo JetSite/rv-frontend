@@ -20,7 +20,7 @@ export const getBooksData: IGetBookData = data => {
   return data.map(category => ({
     title: category.attributes.title,
     id: category.id,
-    slug: category.attributes.slug,
+    slug: category.attributes.slug || '#',
     books: category.attributes.book.data.map((book: IData) => ({
       id: book.id,
       author: book.attributes.bookAuthor,

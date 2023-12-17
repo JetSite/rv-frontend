@@ -24,7 +24,7 @@ export type IGetDataArray = ({
 export const getDataArray: IGetDataArray = ({ data }) => {
   const arr: Array<IStandartItem> = data.map(item => ({
     title: item.attributes.title || item.attributes.shortTitle,
-    slug: item.attributes.slug,
+    slug: item.attributes.slug || '#',
     id: item.id,
     date: item.attributes.date,
     img: API.imgUrl + item.attributes.cover.data.attributes.url,

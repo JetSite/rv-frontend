@@ -24,7 +24,7 @@ export const getInterviewData: IGetInterviewData = data => {
     description: e.attributes.shortDescription,
     content: e.attributes.description,
     videoLink: e.attributes.videoLink,
-    slug: e.attributes.slug,
+    slug: e.attributes.slug || '#',
     source: e.attributes.source,
     persons: e.attributes.persons?.data.map((persone: IData) => ({
       title: persone.attributes.name,

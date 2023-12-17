@@ -1,18 +1,14 @@
-'use client'
-
-import { getInterviewData } from '@/utils/getInterviewsData'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { MainLink } from '../Ui/MainLink'
 import { InterviewsLine } from '../Lines/InterviewsLine'
+import { IInterviewsData } from '@/utils/getInterviewsData'
 
 interface Props {
-  data: any
+  data: IInterviewsData[]
 }
 
 export const Interviews: FC<Props> = ({ data }) => {
-  console.log('first')
-
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "

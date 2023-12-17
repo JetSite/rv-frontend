@@ -54,20 +54,22 @@ export const getActivityData: IGetActivityData = data => {
                           .groupTitleShort
                       : null,
                     groupId: key,
-                    slug: e.attributes.subcategory_groups.data?.attributes.slug,
+                    slug:
+                      e.attributes.subcategory_groups.data?.attributes.slug ||
+                      '#',
                     categories: [],
                   }
                 : {
                     groupId: e.id,
                     groupTitle: e.attributes.subcategoryTitleShort,
-                    slug: e.attributes.slug,
+                    slug: e.attributes.slug || '#',
                     categories: [],
                   }
             }
             acc[key].categories.push({
               id: e.id,
               title: e.attributes.subcategoryTitleShort,
-              slug: e.attributes.slug,
+              slug: e.attributes.slug || '#',
               elements: e.attributes.objectOfActivity.data.map(
                 (element: IData) => ({
                   id: e.id,
@@ -95,7 +97,7 @@ export const getActivityData: IGetActivityData = data => {
       categories.push({
         id: category.id,
         title: category.attributes.subcategoryTitleShort,
-        slug: category.attributes.slug,
+        slug: category.attributes.slug || '#',
         elements: category.attributes.objectOfActivity.data.map((e: IData) => ({
           id: e.id,
           untilNow: e.attributes.untilNow,
@@ -118,7 +120,7 @@ export const getActivityData: IGetActivityData = data => {
     id: data.id,
     title: data.attributes.fullTitle,
     text: data.attributes.description,
-    slug: data.attributes.slug,
+    slug: data.attributes.slug || '#',
     groupedCategory,
     categories,
   }

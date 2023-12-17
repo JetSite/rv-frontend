@@ -1,5 +1,3 @@
-'use client'
-
 import { IInterviewsData } from '@/utils/getInterviewsData'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
