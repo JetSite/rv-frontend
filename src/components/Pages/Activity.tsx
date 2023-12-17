@@ -17,7 +17,6 @@ interface Props {
 export const Activity: FC<Props> = ({ data, locale }) => {
   const [showGroup, setShowGroup] = useState<number[]>([1])
   const [showCategory, setShowCategory] = useState<number[]>([])
-  console.log(data)
 
   const selectGroup = (id: number) => {
     if (showGroup) {

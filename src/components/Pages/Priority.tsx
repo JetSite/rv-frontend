@@ -32,7 +32,6 @@ export const Priority: FC<Props> = ({ data }) => {
           padding={0}
           photos={data.gallery as IGalleryItem[]}
         />
-        ;
       </div>
     </div>
   )

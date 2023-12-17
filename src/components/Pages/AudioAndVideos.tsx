@@ -9,8 +9,6 @@ interface Props {
 }
 
 export const AudioAndVideos: FC<Props> = ({ data }) => {
-  // console.log(data.data)
-
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "

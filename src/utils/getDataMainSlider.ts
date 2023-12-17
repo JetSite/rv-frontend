@@ -16,6 +16,7 @@ export interface IDataMainSlider {
   titleSecondLineBackgroundColor: string | null
   titleSecondLineTextColor: string
   img: string
+  link: string
 }
 
 type IGetDataMainSlider = (
@@ -25,6 +26,7 @@ type IGetDataMainSlider = (
 export const getDataMainSlider: IGetDataMainSlider = array => {
   return array.map(item => ({
     title: item.attributes.title,
+    link: item.attributes.link,
     titleFirstLine: item.attributes.titleFirstLine,
     titleSecondLine: item.attributes.titleSecondLine,
     titleFirstLineBackgroundColor:
