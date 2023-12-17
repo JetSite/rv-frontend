@@ -23,11 +23,13 @@ import 'dayjs/locale/en'
 import 'dayjs/locale/am'
 import { langUIConfig } from '@/config'
 import { ILocale } from '@/types'
+import { IStandartItem } from '@/types/item'
 
-interface Props extends CarouselProps {
+interface Props {
   selectEvent: string
   setSelectEvent: Dispatch<SetStateAction<string>>
   locale: ILocale
+  arr: IStandartItem[]
 }
 
 export const CalendarCarousel: FC<Props> = ({
