@@ -11,6 +11,8 @@ interface Props {
 }
 
 export const Interviews: FC<Props> = ({ data }) => {
+  console.log('first')
+
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
