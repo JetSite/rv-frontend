@@ -47,15 +47,15 @@ export const Magazines: FC<Props> = ({ data }) => {
                 {category.magazines.map(magazine => (
                   <li
                     key={magazine.id}
-                    className="w-[22%] mb-8 last:mr-auto hover:bg-gray-300 p-2"
+                    className="w-[300px] mb-8 last:mr-auto hover:bg-gray-100 hover:shadow-xl hover:bg-opacity-60 p-2"
                   >
                     <img
                       width={250}
                       height={334}
-                      className="mx-auto mb-8"
+                      className="mx-auto block h-[334px] mb-8"
                       src={magazine.img}
                     />
-                    <p className="text-h text-[14px] font-medium mb-4">
+                    <p className="text-h text-[14px] font-medium mb-4 whitespace-nowrap truncate overflow-hidden">
                       {magazine.title}
                     </p>
                     {magazine.ruLink || magazine.enLink ? (

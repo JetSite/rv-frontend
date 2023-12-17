@@ -38,22 +38,24 @@ export const Books: FC<Props> = ({ data }) => {
               <p className="text-h text-[24px] font-medium mb-8">
                 {category.title}
               </p>
-              <ul className="flex flex-wrap justify-between gap-8 mb-8 ">
+              <ul className="flex flex-wrap justify-between gap-14 tablet:gap-4 mobile:flex-col mobile:items-center mb-8 ">
                 {category.books.map(book => (
                   <li
                     key={book.id}
-                    className="w-[22%] mb-8 last:mr-auto hover:bg-gray-300 p-2"
+                    className="w-[300px] mb-8 last:mr-auto hover:bg-gray-100 hover:shadow-xl hover:bg-opacity-60 p-2"
                   >
                     <img
                       width={250}
                       height={334}
-                      className="mx-auto mb-8"
+                      className="mx-auto mb-8 block h-[334px]"
                       src={book.img}
                     />
-                    <p className="text-h text-[14px] font-medium">
+                    <p className="text-h text-[14px] font-medium whitespace-nowrap truncate overflow-hidden">
                       {book.title}
                     </p>
-                    <p className="text-[14px]">{book.author}</p>
+                    <p className="text-[14px] max-h-4 truncate overflow-hidden">
+                      {book.author}
+                    </p>
                   </li>
                 ))}
               </ul>
