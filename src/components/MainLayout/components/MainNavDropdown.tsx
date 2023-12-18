@@ -17,8 +17,6 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
   const showLine: boolean = pathname === item.slug
   const { slug } = item
 
-  console.log(data)
-
   return (
     <Dropdown
       setShow={setShow}
@@ -28,7 +26,7 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
           {item.isActive ? (
             <Link
               href={item.slug || '#'}
-              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 ${
+              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2  ${
                 show || showLine ? 'before:w-full' : 'hover:before:w-full'
               }
       `}

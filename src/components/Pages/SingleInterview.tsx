@@ -26,6 +26,7 @@ export const SingleInterview: FC<Props> = ({ data }) => {
         {data.videoLink ? (
           <div className="mb-8">
             <VideoLineItem
+              variant="inner"
               date={data.date}
               persons={data.persons}
               source={data.source}

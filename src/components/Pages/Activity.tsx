@@ -59,8 +59,13 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                   onClick={() => selectGroup(group.groupId)}
                   className="text-h text-[24px] mb-8 font-medium flex items-center gap-4 "
                 >
-                  <BoldCHevronIcon />
-                  {group.groupTitle}
+                  <BoldCHevronIcon
+                    bold={showGroup.includes(group.groupId)}
+                    className="fill-white"
+                  />
+                  <span className="whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                    {group.groupTitle}
+                  </span>
                 </button>
                 {showGroup.includes(group.groupId) && (
                   <ul className="pl-16">
@@ -69,13 +74,15 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                         !!category.elements.length && (
                           <li
                             key={category.id}
-                            className="relative mb-8 before:w-1.5 before:h-1.5 before:absolute before:bg-first before:rounded-full before:-left-4 before:top-2"
+                            className="relative mb-8 before:w-1.5 before:h-1.5 before:absolute before:bg-first before:rounded-full before:-left-4 before:top-2.5"
                           >
                             <button
                               onClick={() => selectCategory(category.id)}
-                              className="text-first text-[18px] font-medium w-full flex justify-between"
+                              className="text-first text-[18px] font-medium w-full flex justify-between  mb-4"
                             >
-                              <span>{category.title}</span>
+                              <span className="whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                                {category.title}
+                              </span>
                               <PixelArrowIcon
                                 className={classNames(
                                   'w-2.5 fill-first',
@@ -114,7 +121,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
             ),
         )}
       </ul>
-      <ul className=" w-2/3">
+      <ul className="ml-5 w-2/3">
         {data.categories.map(
           category =>
             !!category.elements.length && (
@@ -126,7 +133,9 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                   onClick={() => selectCategory(category.id)}
                   className="text-first text-[18px] font-medium w-full flex justify-between"
                 >
-                  <span>{category.title}</span>
+                  <span className="whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                    {category.title}
+                  </span>
                   <PixelArrowIcon
                     className={classNames(
                       'w-2.5 fill-first',

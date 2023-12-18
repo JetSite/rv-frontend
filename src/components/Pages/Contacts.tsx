@@ -23,7 +23,10 @@ export const Contacts: FC<Props> = ({ data, locale }) => {
         <ul className="flex flex-col gap-4 mb-14">
           {pageData.importantContacts.map(contact => (
             <li key={contact.id}>
-              <Link href={contact.link} className="flex gap-4 items-center">
+              <Link
+                href={contact.link}
+                className="flex gap-4 items-center relative w-fit before:absolute before:h-0.5 before:content-[ ] before:bg-h before:left-0 before:-bottom-2 hover:before:w-full before:block"
+              >
                 <img src={contact.img} />
                 <span className="text-[24px] font-medium text-first">
                   {contact.title}
@@ -35,7 +38,10 @@ export const Contacts: FC<Props> = ({ data, locale }) => {
         <ul className="flex flex-col gap-4">
           {pageData.contacts.map(contact => (
             <li key={contact.id}>
-              <Link href={contact.link} className="flex gap-4 items-center">
+              <Link
+                href={contact.link}
+                className="flex gap-4 items-center relative w-fit before:absolute before:h-0.5 before:content-[ ] before:bg-h before:left-0 before:-bottom-2 hover:before:w-full before:block"
+              >
                 <img src={contact.img} />
                 <span className="text-[24px] font-medium text-first">
                   {contact.title}

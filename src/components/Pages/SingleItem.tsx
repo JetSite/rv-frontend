@@ -45,10 +45,12 @@ export const SingleItem: FC<Props> = ({
           {data.text ? (
             <Content sx="text-text mb-5" content={data.text} />
           ) : null}
-          <p className="text-grey-400">
-            <span>Источник: </span>
-            <span>{data?.source}</span>
-          </p>
+          {data.source ? (
+            <p className="text-grey-400">
+              <span>Источник: </span>
+              <span>{data?.source}</span>
+            </p>
+          ) : null}
         </div>
       </Wrapper>
       <Wrapper

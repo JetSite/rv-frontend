@@ -24,8 +24,8 @@ export const getMagazinesData: IGetMagazinesData = data => {
     slug: category.attributes.slug || '#',
     magazines: category.attributes.magazines.data.map((magazine: IData) => ({
       id: magazine.id,
-      ruLink: magazine.attributes.ruLink,
-      enLink: magazine.attributes.enLink,
+      ruLink: API.pdfUrl + magazine.attributes.ruLink,
+      enLink: API.pdfUrl + magazine.attributes.enLink,
       title: magazine.attributes.magazineTitle,
       img: API.imgUrl + magazine.attributes.magazineCover.data.attributes.url,
     })),

@@ -23,7 +23,10 @@ export const Priority: FC<Props> = ({ data }) => {
       <div className="relative w-full notDesktop:flex notDesktop:flex-col ">
         <Wrapper>
           {!!data.content ? (
-            <Content content={data.content} sx="w-[40%]" />
+            <Content
+              content={data.content}
+              sx="w-[45%] prose desktop:prose-xl"
+            />
           ) : null}
         </Wrapper>
         <div className="max-h-[100%] desktop:absolute right-0 top-0 overflow-hidden">
