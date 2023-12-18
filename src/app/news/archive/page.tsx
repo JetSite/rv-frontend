@@ -15,6 +15,7 @@ const ArchiveNews = async () => {
   return (
     <div>
       <Archive
+        link="/news/all/"
         locale="ru"
         itemsArchive={normalizeData}
         title={title}

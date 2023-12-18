@@ -43,7 +43,10 @@ export const SingleItem: FC<Props> = ({
             </div>
           )}
           {data.text ? (
-            <Content sx="text-text mb-5" content={data.text} />
+            <Content
+              sx="text-text mb-5  prose desktop:prose-xl"
+              content={data.text}
+            />
           ) : null}
           {data.source ? (
             <p className="text-grey-400">

@@ -23,7 +23,9 @@ export const Mentors: FC<Props> = ({ data }) => {
         {data.description}
       </p>
       <div className="flex ">
-        {data.content ? <Content sx="w-1/2" content={data.content} /> : null}
+        {data.content ? (
+          <Content sx="w-1/2  prose desktop:prose-xl" content={data.content} />
+        ) : null}
         {data.gallery ? (
           <PhotoAlbum
             layout="rows"

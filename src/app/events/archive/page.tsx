@@ -23,6 +23,7 @@ const ArchiveEvents = async () => {
   return (
     <div>
       <Archive
+        link="/events/all/"
         itemsArchive={normalizeData}
         yearsList={yearsList}
         title={title}
