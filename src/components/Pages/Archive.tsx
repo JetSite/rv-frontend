@@ -16,6 +16,7 @@ interface ArchiveProps {
   itemsArchive: IStandartItem[]
   yearsList?: ISelectItem[]
   locale: ILocale
+  link: string
 }
 
 export const Archive: FC<ArchiveProps> = ({
@@ -23,6 +24,7 @@ export const Archive: FC<ArchiveProps> = ({
   subTitle,
   itemsArchive,
   locale,
+  link,
 }) => {
   const data = useStoreDate(getStoreData)
   const [scroll, setScroll] = useState<number | undefined>(0)
@@ -96,7 +98,7 @@ export const Archive: FC<ArchiveProps> = ({
               >
                 <EventCard
                   locale={locale}
-                  link={'/event/all/' + event.slug}
+                  link={link + event.slug}
                   item={event}
                 />
               </li>

@@ -24,7 +24,7 @@ export const SingleInterview: FC<Props> = ({ data }) => {
           {data.description}
         </p>
         {data.videoLink ? (
-          <div className="mb-8">
+          <div className="mb-8 flex w-full gap-10">
             <VideoLineItem
               variant="inner"
               date={data.date}
@@ -35,7 +35,9 @@ export const SingleInterview: FC<Props> = ({ data }) => {
             />
           </div>
         ) : null}
-        {data.content ? <Content content={data.content} /> : null}
+        {data.content ? (
+          <Content sx=" prose desktop:prose-xl" content={data.content} />
+        ) : null}
       </div>
     </Wrapper>
   )
