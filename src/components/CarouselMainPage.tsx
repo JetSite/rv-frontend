@@ -38,7 +38,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
             {!!item.img && (
               <img className="w-full object-cover object-top" src={item.img} />
             )}
-            <div className="absolute bottom-12 w-full flex items-center justify-center mobile:bottom-6">
+            <div className="absolute bottom-10 w-full flex items-center justify-center mobile:bottom-6">
               {defineHtml(item.title) ? (
                 <div
                   dangerouslySetInnerHTML={{
@@ -46,7 +46,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                   }}
                 />
               ) : (
-                <h2 className="text-6xl w-3/4 z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
+                <h2 className="text-[48px] font-bold w-3/4 z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
                   <span
                     style={{
                       color: item.titleFirstLineTextColor

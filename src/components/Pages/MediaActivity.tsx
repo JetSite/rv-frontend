@@ -17,8 +17,6 @@ interface Props {
 }
 
 export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
-  console.log(data.pageMenu[0].slug)
-
   return (
     <Wrapper
       sx=" notDesktop:px-8 desktop:mb-8"
