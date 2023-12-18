@@ -24,7 +24,7 @@ export const getInterviewData: IGetInterviewData = data => {
     description: e.attributes.shortDescription,
     content: e.attributes.description,
     videoLink: e.attributes.videoLink,
-    slug: e.attributes.slug,
+    slug: e.attributes.slug || '#',
     source: e.attributes.source,
     persons: e.attributes.persons?.data.map((persone: IData) => ({
       title: persone.attributes.name,
@@ -32,11 +32,11 @@ export const getInterviewData: IGetInterviewData = data => {
       avatar: API.imgUrl + persone.attributes.photo.data.attributes.url,
     })) || [
       {
-        title: e.attributes.person.data.name,
-        id: e.attributes.person.data.id,
+        title: e.attributes.person.data?.name,
+        id: e.attributes.person.data?.id,
         avatar:
           API.imgUrl +
-          e.attributes.person.data.attributes.photo.data.attributes.url,
+          e.attributes.person.data?.attributes.photo.data.attributes.url,
       },
     ],
   }))

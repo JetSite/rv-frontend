@@ -1,9 +1,9 @@
-'use client'
-
 import { IInterviewsData } from '@/utils/getInterviewsData'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { VideoLineItem } from '../Lines/VideoLineItem'
+import Markdown from 'react-markdown'
+import { Content } from '../Ui/Content'
 
 interface Props {
   data: IInterviewsData
@@ -34,7 +34,7 @@ export const SingleInterview: FC<Props> = ({ data }) => {
             />
           </div>
         ) : null}
-        <div>{data.content}</div>
+        {data.content ? <Content content={data.content} /> : null}
       </div>
     </Wrapper>
   )

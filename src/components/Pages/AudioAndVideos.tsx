@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
-import { FilterVideo } from '../Filters/FilterVideo'
 import { VideosLine } from '../Lines/VideosLine'
 import { MainLink } from '../Ui/MainLink'
 
@@ -28,7 +27,7 @@ export const AudioAndVideos: FC<Props> = ({ data }) => {
           могут быть записаны на видеокамеру или смартфон и включают в себя не
           только звук, но и визуальную информацию.
         </p>
-        <FilterVideo />
+        {/* <FilterVideo /> */}
         <VideosLine videos={data} />
         <p className="ml-[54px] mt-4">
           <MainLink item={{ title: 'Больше интервью', slug: '#' }} />

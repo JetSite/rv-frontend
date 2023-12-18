@@ -3,6 +3,7 @@ import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { IMentorsData } from '@/utils/getMentorsData'
 import { PhotoAlbum } from 'react-photo-album'
 import { IGalleryItem } from '@/types/item'
+import { Content } from '../Ui/Content'
 
 interface Props {
   data: IMentorsData
@@ -22,7 +23,7 @@ export const Mentors: FC<Props> = ({ data }) => {
         {data.description}
       </p>
       <div className="flex ">
-        <div className="w-1/2">{data.content}</div>
+        {data.content ? <Content sx="w-1/2" content={data.content} /> : null}
         {data.gallery ? (
           <PhotoAlbum
             layout="rows"

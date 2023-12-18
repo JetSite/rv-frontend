@@ -1,5 +1,3 @@
-'use client'
-
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { IBooksData } from '@/utils/getBooksData'

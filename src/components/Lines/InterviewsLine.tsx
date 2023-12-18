@@ -42,10 +42,10 @@ export const InterviewsLine: FC<Props> = ({ interviews }) => {
                 {interview.title}
               </h3>
               <p className="text-14 flex gap-1 font-medium mb-2.5">
-                <Link href={interview.source}>
+                <span>
                   {interview.source}
                   {','}
-                </Link>
+                </span>
                 <span>{interview.date}</span>
               </p>
               <p className="text-gray-500">{interview.description}</p>

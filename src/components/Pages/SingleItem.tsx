@@ -5,6 +5,7 @@ import { IStandartItem } from '@/types/item'
 import { FC } from 'react'
 import { ILocale } from '@/types'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
+import { Content } from '../Ui/Content'
 
 interface Props {
   data: IStandartItem
@@ -29,7 +30,7 @@ export const SingleItem: FC<Props> = ({
               {data?.title}
             </h1>
             <p className="mb-6 text-[14px] font-medium text-first">
-              {getNormalizeDate(data?.date as string, locale)}
+              {!!data.date && getNormalizeDate(data.date, locale)}
             </p>
           </>
         }
@@ -41,10 +42,9 @@ export const SingleItem: FC<Props> = ({
               <p className="self-end mt-2 text-grey-350">{data.coverCaption}</p>
             </div>
           )}
-          <div
-            dangerouslySetInnerHTML={{ __html: data.text as string }}
-            className="text-text mb-5"
-          />
+          {data.text ? (
+            <Content sx="text-text mb-5" content={data.text} />
+          ) : null}
           <p className="text-grey-400">
             <span>Источник: </span>
             <span>{data?.source}</span>

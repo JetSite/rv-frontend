@@ -1,5 +1,4 @@
 import { API } from '@/api'
-import { AudioAndVideos } from '@/components/Pages/AudioAndVideos'
 import { Interviews } from '@/components/Pages/Interviews'
 import { getInterviewData } from '@/utils/getInterviewsData'
 

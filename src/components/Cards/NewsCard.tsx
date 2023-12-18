@@ -47,7 +47,7 @@ export const NewsCard: FC<NewsCardProps> = ({
         </p>
       )}
       <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
-        {getNormalizeDate(item.date as string, locale)}
+        {!!item.date && getNormalizeDate(item.date, locale)}
       </p>
     </Link>
   )

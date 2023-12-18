@@ -42,7 +42,7 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
             className="w-[25%] px-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0"
             key={item.title}
           >
-            <PriorityCard locale="ru" item={item} />
+            <PriorityCard slug={item.slug} locale="ru" item={item} />
           </li>
         ))}
       </ul>

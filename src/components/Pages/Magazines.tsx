@@ -1,12 +1,6 @@
-'use client'
-
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
-import { FilterVideo } from '../Filters/FilterVideo'
-import { MainLink } from '../Ui/MainLink'
-import { IData } from '@/types'
-import { API } from '@/api'
-import { IMagazinesData, getMagazinesData } from '@/utils/getMagazinesData'
+import { IMagazinesData } from '@/utils/getMagazinesData'
 import Link from 'next/link'
 
 interface Props {

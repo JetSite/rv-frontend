@@ -6,9 +6,10 @@ import React, { FC } from 'react'
 interface PriorityCardProps {
   item: IStandartItem | IPageNemu
   locale: string
+  slug: string
 }
 
-export const PriorityCard: FC<PriorityCardProps> = ({ item, locale }) => {
+export const PriorityCard: FC<PriorityCardProps> = ({ item, locale, slug }) => {
   return (
     <div className="p-1.5 pt-0 block transition-all mobile:px-7 mobile:py-1">
       {!!item.img && (
@@ -19,7 +20,7 @@ export const PriorityCard: FC<PriorityCardProps> = ({ item, locale }) => {
       )}
       <Link
         className="pl-5 w-3/4 bg-first hover:bg-second flex relative -top-8 justify-between pr-2 items-center tablet:static tablet:w-full"
-        href={'/priorities/' + item.slug}
+        href={slug}
       >
         <h3 className="text-white font-bold text-[28px] notDesktop:text-mobile">
           {item.title}
