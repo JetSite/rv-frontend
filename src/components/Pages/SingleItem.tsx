@@ -30,7 +30,7 @@ export const SingleItem: FC<Props> = ({
               {data?.title}
             </h1>
             <p className="mb-6 text-[14px] font-medium text-first">
-              {getNormalizeDate(data?.date as string, locale)}
+              {!!data.date && getNormalizeDate(data.date, locale)}
             </p>
           </>
         }
