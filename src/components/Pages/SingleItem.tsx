@@ -42,7 +42,9 @@ export const SingleItem: FC<Props> = ({
               <p className="self-end mt-2 text-grey-350">{data.coverCaption}</p>
             </div>
           )}
-          <Content sx="text-text mb-5" content={data.text as string} />
+          {data.text ? (
+            <Content sx="text-text mb-5" content={data.text} />
+          ) : null}
           <p className="text-grey-400">
             <span>Источник: </span>
             <span>{data?.source}</span>

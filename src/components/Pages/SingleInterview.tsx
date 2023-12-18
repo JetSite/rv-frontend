@@ -34,7 +34,7 @@ export const SingleInterview: FC<Props> = ({ data }) => {
             />
           </div>
         ) : null}
-        <Content content={data.content as string} />
+        {data.content ? <Content content={data.content} /> : null}
       </div>
     </Wrapper>
   )

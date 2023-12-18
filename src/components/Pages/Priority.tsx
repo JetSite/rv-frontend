@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { IGalleryItem, IStandartItem } from '@/types/item'
-import defineHtml from '@/utils/defineHtml'
 import PhotoAlbum from 'react-photo-album'
 import { Content } from '../Ui/Content'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
@@ -23,7 +22,9 @@ export const Priority: FC<Props> = ({ data }) => {
       </Wrapper>
       <div className="relative w-full notDesktop:flex notDesktop:flex-col ">
         <Wrapper>
-          <Content content={data.content as string} sx="w-[40%]" />
+          {!!data.content ? (
+            <Content content={data.content} sx="w-[40%]" />
+          ) : null}
         </Wrapper>
         <div className="max-h-[100%] desktop:absolute right-0 top-0 overflow-hidden">
           <PhotoAlbum
