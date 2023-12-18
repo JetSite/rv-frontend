@@ -146,10 +146,10 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                 {showCategory.includes(category.id) && (
                   <ul className="flex flex-col gap-5">
                     {category.elements.map(e => (
-                      <li key={e.id}>
+                      <li key={e.id} className="first:mt-4">
                         <p className="flex gap-1 text-[14px] font-medium text-first mb-2">
                           <span>{e.startDate.split('-')[0]}</span>
-                          <span>-</span>
+                          {!e.endDate && !e.untilNow ? null : <span>-</span>}
                           {e.untilNow ? (
                             <span>{langUIConfig.now[locale]}</span>
                           ) : (
