@@ -2,28 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Charter';
+/* @font-face {
+  font-family: 'Cera';
   src: url('/fonts/Cera-Pro-Black.otf') format('TrueType');
   font-style: normal;
   font-display: swap;
-}
+} */
 @font-face {
-  font-family: 'Charter';
+  font-family: 'Cera';
   src: url('/fonts/Cera-Pro-Bold.otf') format('TrueType');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cera';
+  src: url('/fonts/CeraPro-Light.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cera';
+  src: url('/fonts/Cera-Pro-Medium.otf') format('TrueType');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Charter';
-  src: url('/fonts/Cera-Pro-Light.otf') format('TrueType');
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Charter';
-  src: url('/fonts/Cera-Pro-Medium.otf') format('TrueType');
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Bold.ttf') format('TrueType');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }

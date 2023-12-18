@@ -12,7 +12,7 @@ export const ActivityCard: FC<ActivityCardProps> = ({ item, slug }) => {
   return (
     <Link
       href={slug}
-      className="p-1.5 pt-0 block transition-all mobile:px-7 mobile:py-1"
+      className="p-1.5 pt-0 block transition-all mobile:px-7 mobile:py-1 text-grey-300 "
     >
       {!!item.img && (
         <img
@@ -21,14 +21,14 @@ export const ActivityCard: FC<ActivityCardProps> = ({ item, slug }) => {
         />
       )}
       <div className=" flex justify-between items-center">
-        <h3 className="text-white mb-2.5 font-bold text-[28px] notDesktop:text-[24px] mobile:mb-5">
+        <h3 className="mb-2.5 font-bold text-[28px] notDesktop:text-[24px] mobile:mb-5">
           {item.title}
         </h3>
         <span className="font-bold text-[28px] text-white">
-          <PixelArrowIcon className="notDesktop:w-5 notDesktop:h-6" />
+          <PixelArrowIcon className="notDesktop:w-5 notDesktop:h-6 fill-white opacity-50" />
         </span>
       </div>
-      <p className="text-white text-mobile leading-normal max-h-[142px] notDesktop:text-[12px] mobile:max-h-none overflow-hidden">
+      <p className=" text-mobile leading-normal max-h-[142px] notDesktop:text-[12px] mobile:max-h-none overflow-hidden">
         {item.text}
       </p>
     </Link>

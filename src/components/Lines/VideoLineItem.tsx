@@ -5,7 +5,9 @@ import { VideoPlayer } from '../VideoPlayer'
 import Link from 'next/link'
 import VideoIcon from '../Ui/Icons/VideoIcon'
 
-interface Props extends IAudioAndVideosData {}
+interface Props extends IAudioAndVideosData {
+  variant?: 'inner' | 'main'
+}
 
 export const VideoLineItem: FC<Props> = ({
   persons,
@@ -13,6 +15,7 @@ export const VideoLineItem: FC<Props> = ({
   source,
   date,
   link,
+  variant,
 }) => {
   return (
     <>
@@ -33,7 +36,7 @@ export const VideoLineItem: FC<Props> = ({
         ))}
       </ul>
       <div className="bg-first bg-opacity-20 w-px relative">
-        <VideoIcon className="absolute -left-[14px]" />
+        <VideoIcon variant={variant} className="absolute -left-[14px]" />
       </div>
       <div className="w-full pb-14">
         <h3 className="text-[18px] text-first mb-1.5">{title}</h3>

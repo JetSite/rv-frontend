@@ -50,7 +50,7 @@ const EventsPage = async () => {
               i < 8 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] desktop:max-h-[212px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] desktop:max-h-[210px] desktop:overflow-hidden',
                   )}
                   key={item.title}
                 >

@@ -13,6 +13,7 @@ export const VideosLine: FC<Props> = ({ videos }) => {
         return (
           <li key={video.id} className="flex w-full gap-10">
             <VideoLineItem
+              variant="main"
               date={video.date}
               persons={video.persons}
               source={video.source}

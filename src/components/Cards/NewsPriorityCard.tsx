@@ -24,7 +24,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
         <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5">
           {item.title}
         </h3>
-        <p className="mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden max-h-4">
+        <p className="mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden max-h-4 text-ellipsis">
           {item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
@@ -49,7 +49,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
         <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 before:absolute before:w-1.5 before:h-1.5 before:bg-red-500 before:rounded-full before:-left-3 before:top-1.5">
           {item.title}
         </h3>
-        <p className="mb-2.5 h-full text-mobile leading-normal notDesktop:text-[12px] overflow-hidden">
+        <p className="mb-2.5 h-full text-mobile leading-normal notDesktop:text-[12px] overflow-hidden text-ellipsis">
           {item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">

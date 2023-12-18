@@ -65,7 +65,7 @@ export const CalendarCarousel: FC<Props> = ({
         nextEl: nextButtonRef.current,
       }}
       modules={[Pagination, Navigation]}
-      className="mySwiper w-full h-[288px] mobile:h-[220px] relative flex mb-10"
+      className="mySwiper w-full h-[280px] mobile:h-[220px] relative flex mb-10"
     >
       {arr.map(item => {
         return (
@@ -101,17 +101,17 @@ export const CalendarCarousel: FC<Props> = ({
                   </span>
                   <span>{item.time}</span>
                 </p>
-                <p>{item.text}</p>
+                <p className="text-ellipsis">{item.text}</p>
               </div>
             </div>
           </SwiperSlide>
         )
       })}
-      <div ref={prevButtonRef} className=".prev absolute top-1/2 z-10 left-10">
+      <div ref={nextButtonRef} className=".prev absolute top-1/2 z-10 left-10">
         <ArrowCircleIcon variant="inner" />
       </div>
       <div
-        ref={nextButtonRef}
+        ref={prevButtonRef}
         className=".next rotate-180 absolute top-1/2 z-10 right-10"
       >
         <ArrowCircleIcon variant="inner" />

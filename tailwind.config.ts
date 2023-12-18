@@ -55,7 +55,8 @@ const config: Config = {
       notDesktop: { max: '1579px' },
     },
     fontFamily: {
-      main: ['Charter', 'sans-serif'],
+      main: ['Cera', 'sans-serif'],
+      second: ['Manrope', 'sans-serif'],
     },
   },
   safelist: [
@@ -69,6 +70,6 @@ const config: Config = {
     'text-[',
     'bg-[',
   ],
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
 export default config

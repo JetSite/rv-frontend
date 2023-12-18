@@ -7,21 +7,22 @@ import React, { FC } from 'react'
 interface MainLinkProps {
   item: ILink
   slug?: string
+  sx?: string
 }
 
-export const MainLink: FC<MainLinkProps> = ({ item, slug }) => {
+export const MainLink: FC<MainLinkProps> = ({ item, slug, sx }) => {
   const pathname = usePathname()
   const show: boolean = pathname === item.slug
 
   return (
     <Link
-      className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 ${
+      className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 text-inherit ${
         show ? 'before:w-full' : 'hover:before:w-full'
       }
       `}
       href={slug ? slug + '/' + item.slug : item.slug}
     >
-      {item.title}
+      <span className={sx}>{item.title}</span>
     </Link>
   )
 }
