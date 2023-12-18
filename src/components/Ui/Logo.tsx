@@ -22,7 +22,7 @@ const Logo: FC<Props> = ({
       <h3
         dangerouslySetInnerHTML={{ __html: data?.title }}
         className={classNames(
-          'text-h leading-[1.4] text-[38px] font-medium mobile:text-[18px]',
+          'text-h leading-[1.1] text-[38px] font-medium mobile:text-[18px]',
           titleSx || '',
         )}
       />
