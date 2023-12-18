@@ -56,7 +56,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                         ? item.titleFirstLineBackgroundColor
                         : '',
                     }}
-                    className={classNames('block')}
+                    className={classNames('block pl-4')}
                   >
                     {item.titleFirstLine}
                   </span>
@@ -69,7 +69,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                         ? item.titleSecondLineBackgroundColor
                         : '',
                     }}
-                    className={classNames('block')}
+                    className={classNames('block pl-4')}
                   >
                     {item.titleSecondLine}
                   </span>
