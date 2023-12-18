@@ -17,6 +17,8 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
   const showLine: boolean = pathname === item.slug
   const { slug } = item
 
+  console.log(data)
+
   return (
     <Dropdown
       setShow={setShow}
