@@ -1,3 +1,5 @@
+'use client'
+import { API } from '@/api'
 import defineHtml from '@/utils/defineHtml'
 import { FC } from 'react'
 import Markdown from 'react-markdown'
@@ -13,7 +15,13 @@ export const Content: FC<Props> = ({ content, sx }) => {
   } else {
     return (
       <div className={sx}>
-        <Markdown>{content}</Markdown>
+        <Markdown
+          urlTransform={(uri: string) =>
+            uri.startsWith('http') ? uri : `${API.imgUrl}${uri}`
+          }
+        >
+          {content}
+        </Markdown>
       </div>
     )
   }

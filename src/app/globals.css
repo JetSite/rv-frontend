@@ -50,6 +50,7 @@
 
 .ScrollbarsCustom-Track {
   width: 8px !important;
+  margin-top: -10px;
   background-color: white !important;
 }
 
@@ -69,4 +70,19 @@
 
 .react-photo-album {
   width: 800px;
+}
+
+.content {
+  all: initial;
+  font-family: 'Cera';
+  color: #061018;
+  font-size: 14px;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  color: #194c81;
+  font-size: 14px;
+  font-weight: 500;
 }

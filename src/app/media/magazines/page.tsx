@@ -5,7 +5,7 @@ import { getMagazinesData } from '@/utils/getMagazinesData'
 const InterviewsPage = async () => {
   const fetchMediaItems = async () => {
     const res = await fetch(
-      `${API.baseUrl}/magazine-categories?populate[magazines][populate][magazineCover][fields][0]=url`,
+      `${API.baseUrl}/magazine-categories?populate[magazines][populate][magazineCover][fields][0]=url&populate[magazines][populate][ruFile][fields][1]=url&populate[magazines][populate][enFile][fields][2]=url`,
       {
         cache: 'no-cache',
       },

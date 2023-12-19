@@ -32,14 +32,14 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
         cache: 'default',
       },
     )
-    const news = await resEvents.json()
+    const events = await resEvents.json()
     const resNews = await fetch(
       `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
       {
         cache: 'default',
       },
     )
-    const events = await resNews.json()
+    const news = await resNews.json()
     return { data, news, events }
   }
 

@@ -85,9 +85,9 @@ export const Archive: FC<ArchiveProps> = ({
           scrollTop={scroll}
           setScroll={setScroll}
           isShowTrack
-          className="h-full w-[60%] mr-18"
+          className="h-full w-[60%] mr-18 border-t border-t-gray-150"
         >
-          <ul>
+          <ul className="">
             {itemsArchive.map((event, i) => (
               <li
                 key={event.title}
@@ -97,6 +97,7 @@ export const Archive: FC<ArchiveProps> = ({
                 value={4}
               >
                 <EventCard
+                  sx="p-1.5 px-4 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden"
                   locale={locale}
                   link={link + event.slug}
                   item={event}

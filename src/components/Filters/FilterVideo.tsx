@@ -1,6 +1,4 @@
 'use client'
-
-import { langPlaceholders } from '@/config'
 import { FC } from 'react'
 import { RadioButton } from '../Ui/Inputs/RadioButton'
 
