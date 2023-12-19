@@ -76,7 +76,7 @@
   all: initial;
   font-family: 'Cera';
   color: #061018;
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .content h1,
