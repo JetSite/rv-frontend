@@ -36,7 +36,7 @@ export const SingleInterview: FC<Props> = ({ data }) => {
           </div>
         ) : null}
         {data.content ? (
-          <Content sx=" prose desktop:prose-xl" content={data.content} />
+          <Content sx="content prose desktop:prose-xl" content={data.content} />
         ) : null}
       </div>
     </Wrapper>
