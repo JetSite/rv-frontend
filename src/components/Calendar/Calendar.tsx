@@ -7,7 +7,6 @@ import classNames from '@/utils/classNames'
 import { langUIConfig } from '@/config'
 import { ILocale } from '@/types'
 import Select from '../Ui/Dropdowns/Select'
-import { getDate } from '@/api/fetch/getDate'
 import { useStoreDate } from '@/store'
 import { getStoreData } from '@/utils/getStore'
 

@@ -8,7 +8,9 @@ import classNames from '@/utils/classNames'
 import { getDataArray } from '@/utils/getDataArray'
 
 const EventsPage = async () => {
-  const res = await fetch(`${API.baseUrl}/events?populate=*&sort[0]=date:desc`)
+  const res = await fetch(`${API.baseUrl}/events?populate=*&sort[0]=date:asc`, {
+    cache: 'no-cache',
+  })
   const data = await res.json()
   const normalizeData = getDataArray(data)
 

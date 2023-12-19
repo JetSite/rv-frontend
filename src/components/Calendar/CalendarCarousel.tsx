@@ -51,6 +51,7 @@ export const CalendarCarousel: FC<Props> = ({
 
   return (
     <Swiper
+      initialSlide={arr.length}
       onSwiper={e => {
         setSwiper(e)
       }}
@@ -107,11 +108,11 @@ export const CalendarCarousel: FC<Props> = ({
           </SwiperSlide>
         )
       })}
-      <div ref={nextButtonRef} className=".prev absolute top-1/2 z-10 left-10">
+      <div ref={prevButtonRef} className=".prev absolute top-1/2 z-10 left-10">
         <ArrowCircleIcon variant="inner" />
       </div>
       <div
-        ref={prevButtonRef}
+        ref={nextButtonRef}
         className=".next rotate-180 absolute top-1/2 z-10 right-10"
       >
         <ArrowCircleIcon variant="inner" />

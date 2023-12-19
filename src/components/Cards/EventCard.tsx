@@ -8,14 +8,17 @@ interface EventCardProps {
   item: IStandartItem
   link: string
   locale: ILocale
+  sx?: string
 }
 
-export const EventCard: FC<EventCardProps> = ({ item, link = '#', locale }) => {
+export const EventCard: FC<EventCardProps> = ({
+  item,
+  link = '#',
+  locale,
+  sx = 'p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden',
+}) => {
   return (
-    <Link
-      href={link}
-      className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden"
-    >
+    <Link href={link} className={sx}>
       <p className="text-first font-bold text-[18px] flex flex-row gap-16 mb-4 notDesktop:text-mobile notDesktop:mb-0.5 notDesktop:justify-between">
         {!!item.date && <span>{getNormalizeDate(item.date, locale)}</span>}
 

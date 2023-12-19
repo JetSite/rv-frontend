@@ -54,11 +54,16 @@ export const Magazines: FC<Props> = ({ data }) => {
                       <p className="text-[14px] ml-auto w-fit">
                         <span>Скачать </span>
                         {magazine.ruLink ? (
-                          <Link href={magazine.ruLink}>RU версия </Link>
+                          <Link target="_blank" href={magazine.ruLink}>
+                            RU версия{' '}
+                          </Link>
                         ) : null}
                         {magazine.ruLink && magazine.enLink ? '/' : ''}
                         {magazine.enLink ? (
-                          <Link href={magazine.enLink}> EN version</Link>
+                          <Link target="_blank" href={magazine.enLink}>
+                            {' '}
+                            EN version
+                          </Link>
                         ) : null}
                       </p>
                     ) : null}
