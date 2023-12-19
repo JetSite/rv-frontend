@@ -25,7 +25,7 @@ export const Priority: FC<Props> = ({ data }) => {
           {!!data.content ? (
             <Content
               content={data.content}
-              sx="w-[45%] prose desktop:prose-xl"
+              sx="content w-[45%] prose desktop:prose-xl"
             />
           ) : null}
         </Wrapper>

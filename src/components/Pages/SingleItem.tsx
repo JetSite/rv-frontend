@@ -44,7 +44,7 @@ export const SingleItem: FC<Props> = ({
           )}
           {data.text ? (
             <Content
-              sx="text-text mb-5  prose desktop:prose-xl"
+              sx="content text-text mb-5  prose desktop:prose-xl"
               content={data.text}
             />
           ) : null}

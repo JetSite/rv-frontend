@@ -1,3 +1,5 @@
+import { number } from 'prop-types'
+
 export interface ILangConfig {
   value: string
   alt?: string
@@ -43,25 +45,30 @@ export interface ILangUIConfig {
   }
 }
 
+export interface ITheme {
+  value: number
+  title: string
+}
+
 export interface ILangPlaceholders {
   contact: {
     ru: {
       name: string
       tel: string
       msg: string
-      theme: string[]
+      theme: ITheme[]
     }
     en: {
       name: string
       tel: string
       msg: string
-      theme: string[]
+      theme: ITheme[]
     }
     am: {
       name: string
       tel: string
       msg: string
-      theme: string[]
+      theme: ITheme[]
     }
   }
 }
@@ -79,25 +86,29 @@ export const langPlaceholders: ILangPlaceholders = {
       tel: 'Контактный номер телефона',
       msg: 'Сообщение',
       theme: [
-        'предложить интервью',
-        'сообщить о проблеме',
-        'пригласить на мероприятие',
+        { title: 'предложить интервью', value: 1 },
+        { title: 'сообщить о проблеме', value: 2 },
+        { title: 'пригласить на мероприятие', value: 3 },
       ],
     },
     en: {
       name: 'Your name',
       tel: 'Сontact phone number',
       msg: 'Message',
-      theme: ['offer an interview', 'report a problem', 'invite to an event'],
+      theme: [
+        { title: 'offer an interview', value: 1 },
+        { title: 'report a problem', value: 2 },
+        { title: 'пригласить на мероприятие', value: 3 },
+      ],
     },
     am: {
       name: 'քո անունը',
       tel: 'կոնտակտային հեռախոսահամար',
       msg: 'Հաղորդագրություն',
       theme: [
-        'հարցազրույց առաջարկել',
-        'զեկուցել խնդրի մասին',
-        'հրավիրել միջոցառմանը',
+        { title: 'հարցազրույց առաջարկել', value: 1 },
+        { title: 'զեկուցել խնդրի մասին', value: 2 },
+        { title: 'հրավիրել միջոցառմանը', value: 3 },
       ],
     },
   },
