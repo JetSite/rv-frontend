@@ -15,10 +15,7 @@ interface Props {
 
 export const MobileMav: FC<Props> = ({ data, socials, dateArrs }) => {
   const [open, setOpen] = useState<boolean>(false)
-  const setData = useStoreDate(state => state.setData)
   const pathname = usePathname()
-
-  if (dateArrs) setData(dateArrs)
 
   useEffect(() => {
     setOpen(false)

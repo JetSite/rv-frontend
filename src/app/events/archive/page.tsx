@@ -1,11 +1,16 @@
 import { API } from '@/api'
-import { Archive } from '@/components/Pages/Archive'
+import { getDate } from '@/api/fetch/getDate'
+import { Archive } from '@/components/Pages/Archives/Archive'
+import { MobileArchive } from '@/components/Pages/Archives/MobileArchive'
 import { getCalendarData } from '@/utils/getCalendarData'
 import { getDataArray } from '@/utils/getDataArray'
 import React from 'react'
 
 const ArchiveEvents = async () => {
-  const res = await fetch(`${API.baseUrl}/events?populate=*&sort[0]=date:desc`)
+  const res = await fetch(
+    `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
+    { cache: 'no-cache' },
+  )
   const data = await res.json()
   const normalizeData = getDataArray(data)
 
@@ -13,24 +18,36 @@ const ArchiveEvents = async () => {
   const subTitle =
     'На странице архива событий и интервью нашего сайта мы рады представить вам самые яркие и интересные моменты из жизни нашей организации. Здесь вы найдете не только подробное описание проведенных мероприятий, но и сможете посмотреть или даже скачать интервью с ключевыми персонами. Каждое событие представлено в виде сжатой, легко читаемой карточки, что позволит вам быстро найти нужную информацию. Мы постоянно работаем над пополнением архива, чтобы вы всегда были в курсе самых свежих новостей и актуальных событий.'
 
-  const { yearsList } = getCalendarData(
-    new Date().getFullYear(),
-    new Date().getMonth(),
-    'yyyy-mm-dd',
-    'ru',
-  )
+  const dateArr = await getDate()
+  if (!dateArr) {
+    return <></>
+  }
 
   return (
-    <div>
-      <Archive
-        link="/events/all/"
-        itemsArchive={normalizeData}
-        yearsList={yearsList}
-        title={title}
-        subTitle={subTitle}
-        locale="ru"
-      />
-    </div>
+    <>
+      <div className="notDesktop:hidden">
+        <Archive
+          data={dateArr}
+          link="/events/all/"
+          itemsArchive={normalizeData}
+          title={title}
+          subTitle={subTitle}
+          locale="ru"
+          page="eventsDate"
+        />
+      </div>
+      <div className="desktop:hidden">
+        <MobileArchive
+          data={dateArr}
+          link="/events/all/"
+          itemsArchive={normalizeData}
+          title={title}
+          subTitle={subTitle}
+          locale="ru"
+          page="eventsDate"
+        />
+      </div>
+    </>
   )
 }
 

@@ -1,5 +1,5 @@
 'use client'
-import { Dropdown } from '@/components/Ui/Dropdowns/DropdownOnHover'
+import { DropdownOnHover } from '@/components/Ui/Dropdowns/DropdownOnHover'
 import { MainLink } from '@/components/Ui/MainLink'
 import { INavItem } from '@/types/layout'
 import Link from 'next/link'
@@ -18,7 +18,7 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
   const { slug } = item
 
   return (
-    <Dropdown
+    <DropdownOnHover
       setShow={setShow}
       show={show}
       button={
@@ -55,6 +55,6 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
           )
         })}
       </ul>
-    </Dropdown>
+    </DropdownOnHover>
   )
 }

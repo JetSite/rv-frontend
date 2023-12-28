@@ -18,11 +18,7 @@ export const Header: FC<Props> = async ({ data }) => {
       <Logo data={logo} />
       <MainNav data={navHeader} />
       <SoсialsWithLang data={socials} />
-      <MobileMav
-        dateArrs={await getDate()}
-        data={navHeader}
-        socials={socials}
-      />
+      <MobileMav data={navHeader} socials={socials} />
     </header>
   )
 }

@@ -4,19 +4,22 @@ import { Scrollbar } from '@/components/Ui/Scrollbar'
 import { monthsConfig } from '@/config/calendar'
 import { IStandartItem } from '@/types/item'
 import { FC, MouseEvent, useEffect, useRef, useState } from 'react'
-import { ISelectItem } from '../Ui/Dropdowns/Select'
-import { useStoreDate } from '@/store'
+import { ISelectItem } from '../../Ui/Dropdowns/Select'
+import { IStoreData, useStoreDate } from '@/store'
 import { getStoreData } from '@/utils/getStore'
 import classNames from '@/utils/classNames'
 import { ILocale } from '@/types'
+import { NewsCard } from '@/components/Cards/NewsCard'
 
-interface ArchiveProps {
+export interface ArchiveProps {
   title: string
   subTitle: string
   itemsArchive: IStandartItem[]
   yearsList?: ISelectItem[]
   locale: ILocale
   link: string
+  page: 'newsDate' | 'eventsDate'
+  data: IStoreData
 }
 
 export const Archive: FC<ArchiveProps> = ({
@@ -25,11 +28,12 @@ export const Archive: FC<ArchiveProps> = ({
   itemsArchive,
   locale,
   link,
+  page,
+  data,
 }) => {
-  const data = useStoreDate(getStoreData)
   const [scroll, setScroll] = useState<number | undefined>(0)
   const [selectDate, setSelectDate] = useState<string | undefined | null>(
-    itemsArchive[0].date,
+    data.newsDate[0].months[0].value,
   )
   const scrollRef = useRef<HTMLDivElement>(null)
   const elementsRefs = useRef<Array<HTMLLIElement | null>>([])
@@ -50,7 +54,7 @@ export const Archive: FC<ArchiveProps> = ({
     const sum =
       acc.length > 0
         ? {
-            coordinate: acc[acc.length - 1].coordinate + e.coordinate / 2,
+            coordinate: acc[acc.length - 1].coordinate + e.coordinate,
             value: e.value,
           }
         : { coordinate: 0, value: e.value }
@@ -68,11 +72,12 @@ export const Archive: FC<ArchiveProps> = ({
   useEffect(() => {
     if (coordinatesArray && scroll !== undefined) {
       setSelectDate(
-        coordinatesArray.find(el => el.coordinate - scroll >= 0)?.value,
+        coordinatesArray.find((el, i) =>
+          i === 0 ? el.coordinate - scroll >= 0 : el.coordinate - scroll >= 100,
+        )?.value,
       )
     }
-    console.log('scrol: ', scroll)
-  }, [scroll])
+  }, [scroll, selectDate])
 
   return (
     <div className="max-w-content w-full mx-auto mt-7">
@@ -96,12 +101,20 @@ export const Archive: FC<ArchiveProps> = ({
                 className="w-2/3"
                 value={4}
               >
-                <EventCard
-                  sx="p-1.5 px-4 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden"
-                  locale={locale}
-                  link={link + event.slug}
-                  item={event}
-                />
+                {page === 'eventsDate' ? (
+                  <EventCard
+                    sx="p-1.5 px-4 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden"
+                    locale={locale}
+                    link={link + event.slug}
+                    item={event}
+                  />
+                ) : (
+                  <NewsCard
+                    locale={locale}
+                    link={link + event.slug}
+                    item={event}
+                  />
+                )}
               </li>
             ))}
           </ul>
@@ -111,7 +124,7 @@ export const Archive: FC<ArchiveProps> = ({
           className="!w-[40%] h-full overflow-scroll text-first font-bold"
         >
           <ul>
-            {data.newsDate.map((item, i) => (
+            {data[page].map(item => (
               <li key={item.year}>
                 <button
                   onClick={handleSelectDate}
