@@ -10,10 +10,9 @@ import { IStoreData, useStoreDate } from '@/store'
 interface Props {
   data: INavItem[]
   socials: ISocialsItem[]
-  dateArrs: IStoreData | null
 }
 
-export const MobileMav: FC<Props> = ({ data, socials, dateArrs }) => {
+export const MobileMav: FC<Props> = ({ data, socials }) => {
   const [open, setOpen] = useState<boolean>(false)
   const pathname = usePathname()
 
