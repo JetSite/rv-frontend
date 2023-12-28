@@ -40,7 +40,7 @@ export const NewsCard: FC<NewsCardProps> = ({
         <p
           className={classNames(
             'mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden',
-            !mainPage ? 'max-h-220' : 'max-h-[88px]',
+            !mainPage ? 'max-h-[80px]' : 'max-h-[88px]',
           )}
         >
           {item.text}
