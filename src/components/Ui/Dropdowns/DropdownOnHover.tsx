@@ -10,7 +10,7 @@ export interface DropdownProps {
   setShow: Dispatch<SetStateAction<boolean>>
 }
 
-export const Dropdown: FC<DropdownProps> = ({
+export const DropdownOnHover: FC<DropdownProps> = ({
   button,
   children,
   show,

@@ -6,18 +6,18 @@ export interface ICalendarConfigItem {
 }
 
 export const monthsConfig: ICalendarConfigItem[] = [
-  { ru: 'Январь', am: 'հունվար', en: 'January', value: '01' },
-  { ru: 'Февраль', am: 'փետրվար', en: 'February', value: '02' },
-  { ru: 'Март', am: 'մարտ', en: 'March', value: '03' },
-  { ru: 'Апрель', am: 'ապրիլ', en: 'April', value: '04' },
-  { ru: 'Май', am: 'մայիս', en: 'May', value: '05' },
-  { ru: 'Июнь', am: 'հունիս', en: 'June', value: '06' },
-  { ru: 'Июль', am: 'հուլիս', en: 'July', value: '07' },
-  { ru: 'Август', am: 'հուլիս', en: 'August', value: '08' },
-  { ru: 'Сентябрь', am: 'սեպտեմբեր', en: 'September', value: '09' },
-  { ru: 'Октябрь', am: 'հոկտեմբեր', en: 'October', value: '10' },
-  { ru: 'Ноябрь', am: 'նոյեմբեր', en: 'November', value: '11' },
-  { ru: 'Декабрь', am: 'դեկտեմբեր', en: 'December', value: '12' },
+  { ru: 'январь', am: 'հունվար', en: 'january', value: '01' },
+  { ru: 'февраль', am: 'փետրվար', en: 'february', value: '02' },
+  { ru: 'март', am: 'մարտ', en: 'march', value: '03' },
+  { ru: 'апрель', am: 'ապրիլ', en: 'april', value: '04' },
+  { ru: 'май', am: 'մայիս', en: 'may', value: '05' },
+  { ru: 'июнь', am: 'հունիս', en: 'june', value: '06' },
+  { ru: 'июль', am: 'հուլիս', en: 'july', value: '07' },
+  { ru: 'август', am: 'հուլիս', en: 'august', value: '08' },
+  { ru: 'сентябрь', am: 'սեպտեմբեր', en: 'september', value: '09' },
+  { ru: 'октябрь', am: 'հոկտեմբեր', en: 'october', value: '10' },
+  { ru: 'ноябрь', am: 'նոյեմբեր', en: 'november', value: '11' },
+  { ru: 'декабрь', am: 'դեկտեմբեր', en: 'december', value: '12' },
 ]
 
 export const daysOfWeek: ICalendarConfigItem[] = [

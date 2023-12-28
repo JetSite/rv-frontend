@@ -20,9 +20,13 @@ export const EventCard: FC<EventCardProps> = ({
   return (
     <Link href={link} className={sx}>
       <p className="text-first font-bold text-[18px] flex flex-row gap-16 mb-4 notDesktop:text-mobile notDesktop:mb-0.5 notDesktop:justify-between">
-        {!!item.date && <span>{getNormalizeDate(item.date, locale)}</span>}
+        {!!item.date && (
+          <span className="min-w-max">
+            {getNormalizeDate(item.date, locale)}
+          </span>
+        )}
 
-        <time>{item.time}</time>
+        <time className="min-w-max">{item.time?.replace(':00', '')}</time>
       </p>
       <h3 className="text-first font-medium mb-2 notDesktop:text-mobile notDesktop:mb-0.5">
         {item.title}
