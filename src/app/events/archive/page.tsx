@@ -2,7 +2,6 @@ import { API } from '@/api'
 import { getDate } from '@/api/fetch/getDate'
 import { Archive } from '@/components/Pages/Archives/Archive'
 import { MobileArchive } from '@/components/Pages/Archives/MobileArchive'
-import { getCalendarData } from '@/utils/getCalendarData'
 import { getDataArray } from '@/utils/getDataArray'
 import React from 'react'
 

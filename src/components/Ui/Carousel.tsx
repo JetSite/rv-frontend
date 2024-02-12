@@ -2,7 +2,7 @@
 import { IChildren } from '@/types'
 import { FC, useRef, useState } from 'react'
 import SwiperCore from 'swiper/core'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper } from 'swiper/react'
 import ArrowCircleIcon from './Icons/ArrowCircleIcon'
 import { Navigation, Pagination } from 'swiper/modules'
 
@@ -23,28 +23,27 @@ export const Carousel: FC<Props> = ({
 
   return (
     <Swiper
-      initialSlide={0}
       onSwiper={e => {
         setSwiper(e)
       }}
-      onNavigationNext={onNavigationNext}
-      onNavigationPrev={onNavigationPrev}
-      navigation={{
-        prevEl: prevButtonRef.current,
-        nextEl: nextButtonRef.current,
+      pagination={{
+        clickable: true,
       }}
       modules={[Pagination, Navigation]}
-      className="mySwiper w-full h-[280px] mobile:h-[220px] relative flex mb-10"
+      className="mySwiper mx-auto h-carousel tablet:[330px] mobile:h-[220px] relative flex mb-10"
     >
       {children}
-      <div ref={prevButtonRef} className=".prev absolute top-1/2 z-10 left-10">
-        <ArrowCircleIcon variant="inner" />
+      <div
+        onClick={() => swiper?.slidePrev()}
+        className="prev absolute top-1/2 z-10 left-10"
+      >
+        <ArrowCircleIcon />
       </div>
       <div
-        ref={nextButtonRef}
-        className=".next rotate-180 absolute top-1/2 z-10 right-10"
+        onClick={() => swiper?.slideNext()}
+        className="next rotate-180 absolute top-1/2 z-10 right-10"
       >
-        <ArrowCircleIcon variant="inner" />
+        <ArrowCircleIcon />
       </div>
     </Swiper>
   )
