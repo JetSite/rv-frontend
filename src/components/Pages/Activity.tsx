@@ -15,8 +15,12 @@ interface Props {
 }
 
 export const Activity: FC<Props> = ({ data, locale }) => {
-  const [showGroup, setShowGroup] = useState<number[]>([1])
-  const [showCategory, setShowCategory] = useState<number[]>([])
+  const [showGroup, setShowGroup] = useState<number[]>(
+    data.groupedCategory ? [data.groupedCategory[0].groupId] : [],
+  )
+  const [showCategory, setShowCategory] = useState<number[]>(
+    data.groupedCategory ? [data.groupedCategory[0].categories[0].id] : [],
+  )
 
   const selectGroup = (id: number) => {
     if (showGroup) {
