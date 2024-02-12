@@ -10,6 +10,7 @@ import { getStoreData } from '@/utils/getStore'
 import classNames from '@/utils/classNames'
 import { ILocale } from '@/types'
 import { NewsCard } from '@/components/Cards/NewsCard'
+import { Scrollbar as ScrollbarType } from 'react-scrollbars-custom'
 
 export interface ArchiveProps {
   title: string
@@ -35,18 +36,20 @@ export const Archive: FC<ArchiveProps> = ({
   const [selectDate, setSelectDate] = useState<string | undefined | null>(
     data.newsDate[0].months[0].value,
   )
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<ScrollbarType>(null)
   const elementsRefs = useRef<Array<HTMLLIElement | null>>([])
 
   const elementsWithHeight: { coordinate: number; value: string }[] =
-    elementsRefs.current.map((e, i) =>
-      e
-        ? {
-            coordinate: e?.getBoundingClientRect().height,
-            value: e.id,
-          }
-        : { value: '0', coordinate: 0 },
-    )
+    elementsRefs.current
+      ? elementsRefs.current?.map((e, i) =>
+          e
+            ? {
+                coordinate: e?.getBoundingClientRect().height,
+                value: e.id,
+              }
+            : { value: '0', coordinate: 0 },
+        )
+      : [{ value: '0', coordinate: 0 }]
 
   const coordinatesArray = elementsWithHeight.reduce<
     { coordinate: number; value: string }[]
@@ -85,7 +88,7 @@ export const Archive: FC<ArchiveProps> = ({
       <p className="text-gray-700 mb-14 text-[14px] w-3/4">{subTitle}</p>
       <div className="flex archive w-full">
         <Scrollbar
-          ref={scrollRef}
+          innerRef={scrollRef}
           id="scroll"
           scrollTop={scroll}
           setScroll={setScroll}

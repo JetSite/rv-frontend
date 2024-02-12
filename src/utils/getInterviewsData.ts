@@ -32,7 +32,7 @@ export const getInterviewData: IGetInterviewData = data => {
       avatar: API.imgUrl + persone.attributes.photo.data.attributes.url,
     })) || [
       {
-        title: e.attributes.person.data?.name,
+        title: e.attributes.person.data?.attributes.name,
         id: e.attributes.person.data?.id,
         avatar:
           API.imgUrl +

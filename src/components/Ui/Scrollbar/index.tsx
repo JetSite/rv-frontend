@@ -1,14 +1,19 @@
 'use client'
-import React, { Dispatch, SetStateAction, useState } from 'react'
-import ReactScrollbarsCustom, { ScrollbarProps } from 'react-scrollbars-custom'
+import React, { Dispatch, RefObject, SetStateAction, useState } from 'react'
+import ReactScrollbarsCustom, {
+  Scrollbar as ScrollbarType,
+  ScrollbarProps,
+} from 'react-scrollbars-custom'
 import {
   ElementPropsWithElementRef,
+  ElementRef,
   ScrollState,
 } from 'react-scrollbars-custom/dist/types/types'
 
 interface ScrollbarsProps extends ScrollbarProps {
   setScroll?: Dispatch<SetStateAction<number | undefined>>
   isShowTrack?: boolean
+  innerRef?: any
 }
 
 /**
@@ -16,7 +21,12 @@ interface ScrollbarsProps extends ScrollbarProps {
  *
  * @see https://github.com/xobotyi/react-scrollbars-custom/issues/46#issuecomment-554425245
  */
-export function Scrollbar({ isShowTrack, ...props }: ScrollbarsProps) {
+export function Scrollbar({
+  isShowTrack,
+  innerRef,
+  setScroll,
+  ...props
+}: ScrollbarsProps) {
   const [isScrolling, setIsScrolling] = useState(false)
   const [isMouseOver, setIsMouseOver] = useState(false)
   const isShow = isScrolling || isMouseOver
@@ -26,7 +36,7 @@ export function Scrollbar({ isShowTrack, ...props }: ScrollbarsProps) {
       scrollValues: ScrollState,
       prevScrollState: ScrollState,
     ) => void) = event => {
-    !!props.setScroll && props.setScroll((event as ScrollState).scrollTop)
+    !!setScroll && setScroll((event as ScrollState).scrollTop)
   }
 
   const onScrollStart = ({ scrollTop }: { scrollTop: number }) => {
@@ -44,30 +54,38 @@ export function Scrollbar({ isShowTrack, ...props }: ScrollbarsProps) {
       elementRef,
       style,
       ...restProps
-    }: ElementPropsWithElementRef) => (
-      <span
-        {...restProps}
-        ref={elementRef}
-        style={{
-          ...style,
-          opacity: isShowTrack || isScrolling || isMouseOver ? 1 : 0,
-          transition: 'opacity 0.1s ease-in-out',
-          width: '8px',
-          backgroundColor: 'inherit',
-        }}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      />
-    ),
+    }: ElementPropsWithElementRef) => {
+      return (
+        <span
+          {...restProps}
+          ref={elementRef}
+          style={{
+            ...style,
+            opacity: isShowTrack || isScrolling || isMouseOver ? 1 : 0,
+            transition: 'opacity 0.1s ease-in-out',
+            width: '8px',
+            backgroundColor: 'inherit',
+          }}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        />
+      )
+    },
   }
 
   const wrapperProps = {
     renderer: ({
       elementRef,
       style,
+      key,
       ...restProps
     }: ElementPropsWithElementRef) => (
-      <div {...restProps} ref={elementRef} style={{ ...style, right: 0 }} />
+      <div
+        key={key}
+        {...restProps}
+        ref={elementRef}
+        style={{ ...style, right: 0 }}
+      />
     ),
   }
 
@@ -75,6 +93,7 @@ export function Scrollbar({ isShowTrack, ...props }: ScrollbarsProps) {
     // @see https://github.com/xobotyi/react-scrollbars-custom/issues/187
     // @ts-ignore
     <ReactScrollbarsCustom
+      ref={innerRef}
       onScroll={onScroll}
       wrapperProps={wrapperProps}
       trackXProps={trackProps}

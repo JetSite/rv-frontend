@@ -47,8 +47,8 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
         ))}
       </ul>
       <hr className="my-4 border-first" />
-      <div className="flex glex-col mt-10 gap-8">
-        <ul className="w-1/2">
+      <div className="flex notDesktop:flex-col mt-10 gap-8">
+        <ul className="desktop:w-1/2">
           {interviews.map(interview => (
             <li
               key={interview.id}
@@ -66,7 +66,7 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
             </li>
           ))}
         </ul>
-        <ul className="w-1/2">
+        <ul className="desktop:w-1/2">
           {videos.map(
             (video, i) =>
               i !== 0 && (

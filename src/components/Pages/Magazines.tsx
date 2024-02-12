@@ -35,7 +35,7 @@ export const Magazines: FC<Props> = ({ data }) => {
               <p className="text-h text-[24px] font-medium mb-8">
                 {category.title}
               </p>
-              <ul className="flex flex-wrap justify-between gap-8 mb-8 ">
+              <ul className="flex flex-wrap justify-between gap-8 mb-8 mobile:justify-center">
                 {category.magazines.map(magazine => (
                   <li
                     key={magazine.id}

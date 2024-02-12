@@ -14,7 +14,7 @@ export const PriorityCard: FC<PriorityCardProps> = ({ item, locale, slug }) => {
     <div className="p-1.5 pt-0 block transition-all mobile:px-7 mobile:py-1">
       {!!item.img && (
         <img
-          className=" block mb-2.5 h-[475px] object-cover mobile:w-full mobile:h-[400px]  mobile:object-top tablet:h-[400px] tablet:mb-0 tablet:w-full"
+          className=" block mb-2.5 h-[475px] object-cover mobile:w-full mobile:h-[400px]  mobile:object-top tablet:h-[237px] tablet:mb-0 tablet:w-full"
           src={item.img}
         />
       )}

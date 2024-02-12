@@ -11,7 +11,7 @@ export const ArchiveDropdown: FC<DropdownProps> = ({
 }) => {
   return (
     <>
-      <button className="relative z-20">
+      <div className="relative z-20">
         <div
           onClick={() => {
             setShow(!show)
@@ -24,7 +24,7 @@ export const ArchiveDropdown: FC<DropdownProps> = ({
             {children}
           </div>
         )}
-      </button>
+      </div>
       {show && (
         <div
           onClick={() => setShow(false)}

@@ -18,10 +18,10 @@ export const VideoLineItem: FC<Props> = ({
   variant,
 }) => {
   return (
-    <>
-      <ul className="">
+    <div className="flex mobile:flex-col notMobile:gap-10 w-full">
+      <ul className="mobile:flex gap-4 mobile:w-full justify-center">
         {persons.map(persone => (
-          <li key={persone.id} className="pb-14 -mt-4">
+          <li key={persone.id} className="pb-14 notMobile:-mt-4 mobile:pb-2">
             <div className="">
               <img
                 className="rounded-full object-cover object-center mb-4"
@@ -35,12 +35,17 @@ export const VideoLineItem: FC<Props> = ({
           </li>
         ))}
       </ul>
-      <div className="bg-first bg-opacity-20 w-px relative">
-        <VideoIcon variant={variant} className="absolute -left-[14px]" />
+      <div className="bg-first bg-opacity-20 w-px mobile:w-full mobile:h-px mobile:my-2 relative mobile:order-first mobile:hidden">
+        <VideoIcon
+          variant={variant}
+          className="absolute -left-[14px] mobile:-top-[14px]"
+        />
       </div>
-      <div className="w-full pb-14">
-        <h3 className="text-[18px] text-first mb-1.5">{title}</h3>
-        <p className="text-14 flex gap-1 font-medium mb-2.5">
+      <div className="w-full pb-14 flex flex-col">
+        <h3 className="text-[18px] text-first mb-1.5 mobile:order-1">
+          {title}
+        </h3>
+        <p className="text-14 flex gap-1 font-medium mb-2.5 mobile:order-2">
           <Link href={source}>
             {source}
             {','}
@@ -49,6 +54,6 @@ export const VideoLineItem: FC<Props> = ({
         </p>
         <VideoPlayer videoId={getVideoId(link)} height="514px" width="100%" />
       </div>
-    </>
+    </div>
   )
 }

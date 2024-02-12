@@ -18,7 +18,7 @@ export const Interviews: FC<Props> = ({ data }) => {
         </h2>
       }
     >
-      <div className="w-[80%]">
+      <div className="notMobile:w-[80%]">
         <p className="text-[14px] text-gray-500 pb-6 mb-4">
           Интервью с Рубеном Варданяном - это возможность узнать о нем больше,
           его взглядах, мнениях и опыте. В ходе такого интервью можно узнать

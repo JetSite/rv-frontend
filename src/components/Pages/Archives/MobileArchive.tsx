@@ -1,7 +1,7 @@
 'use client'
 import { EventCard } from '@/components/Cards/EventCard'
 import { ICalendarConfigItem, monthsConfig } from '@/config/calendar'
-import { FC, MouseEvent, useEffect, useRef, useState } from 'react'
+import { FC, useState } from 'react'
 import classNames from '@/utils/classNames'
 import { ArchiveProps } from './Archive'
 import { Wrapper } from '@/components/Ui/Wrappers/Wrapper'
@@ -37,21 +37,17 @@ export const MobileArchive: FC<ArchiveProps> = ({
           setShow={setShow}
           show={show}
           button={
-            <>
-              {
-                <button className="text-first text-[28px] font-bold flex gap-2 items-center">
-                  <span>{selectDate?.split('-')[0]}</span>
-                  <span>
-                    {(
-                      monthsConfig.find(
-                        e => e.value.toString() === selectDate?.split('-')[1],
-                      ) as ICalendarConfigItem
-                    )['ru'] || ''}
-                  </span>
-                  <PixelArrowIcon className="fill-first rotate-90 w-2.5 ml-7" />
-                </button>
-              }
-            </>
+            <button className="text-first text-[28px] font-bold flex gap-2 items-center">
+              <span>{selectDate?.split('-')[0]}</span>
+              <span>
+                {(
+                  monthsConfig.find(
+                    e => e.value.toString() === selectDate?.split('-')[1],
+                  ) as ICalendarConfigItem
+                )['ru'] || ''}
+              </span>
+              <PixelArrowIcon className="fill-first rotate-90 w-2.5 ml-7" />
+            </button>
           }
         >
           <ul className="bg-white px-4 py-2 rounded-lg text-first cursor-default">

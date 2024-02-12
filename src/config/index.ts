@@ -7,6 +7,8 @@ export interface ILangConfig {
     [K: string]: string
   }
 }
+export type Lang = (typeof langConfig)[number]['value']
+
 export const langConfig: ILangConfig[] = [
   {
     value: 'ru',

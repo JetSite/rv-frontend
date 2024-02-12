@@ -17,7 +17,7 @@ export const AudioAndVideos: FC<Props> = ({ data }) => {
         </h2>
       }
     >
-      <div className="w-[80%]">
+      <div className="desktop:w-[80%]">
         <p className="text-[14px] text-gray-500 pb-6 mb-4">
           Аудио- и видеоинтервью стали популярными методами сбора информации и
           общения с людьми в различных сферах, от бизнеса и маркетинга до
