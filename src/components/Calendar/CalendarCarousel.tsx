@@ -16,7 +16,6 @@ import { Pagination, Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import { CarouselProps } from '../CarouselMainPage'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
@@ -24,6 +23,7 @@ import 'dayjs/locale/am'
 import { langUIConfig } from '@/config'
 import { ILocale } from '@/types'
 import { IStandartItem } from '@/types/item'
+import { getNormalizeDate } from '@/utils/getNormalizeDate'
 
 interface Props {
   selectEvent: string
@@ -92,9 +92,9 @@ export const CalendarCarousel: FC<Props> = ({
                 )}
                 <p className="flex flex-row justify-between text-first text-[18px] font-bold my-4">
                   <span className="flex flex-row gap-4">
-                    <span>{dayjs(item.date).locale(locale).format('LL')}</span>
-                    {dayjs(new Date()).locale(locale).format('LL') ===
-                    dayjs(item.date).locale(locale).format('LL') ? (
+                    <span>{getNormalizeDate(item.date as string, locale)}</span>
+                    {getNormalizeDate(new Date(), locale) ===
+                    getNormalizeDate(item.date as string, locale) ? (
                       <span className="text-warning">
                         {langUIConfig.today[locale]}
                       </span>

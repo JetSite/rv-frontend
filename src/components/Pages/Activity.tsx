@@ -49,8 +49,10 @@ export const Activity: FC<Props> = ({ data, locale }) => {
         </h2>
       }
     >
-      <p className="text-[14px] text-gray-500 pb-6 w-2/3 mb-4">{data.text}</p>
-      <ul className="w-2/3">
+      <p className="text-[14px] text-gray-500 pb-6 notMobile:w-2/3 mb-4">
+        {data.text}
+      </p>
+      <ul className="notMobile:w-2/3">
         {data.groupedCategory?.map(
           group =>
             !!group.categories.length && (
@@ -63,12 +65,12 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                     bold={showGroup.includes(group.groupId)}
                     className="fill-white"
                   />
-                  <span className="whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                  <span className="notMobile:whitespace-nowrap relative notMobile:w-max mobile:text-start before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
                     {group.groupTitle}
                   </span>
                 </button>
                 {showGroup.includes(group.groupId) && (
-                  <ul className="pl-16">
+                  <ul className="pl-16 mobile:pl-8">
                     {group.categories.map(
                       category =>
                         !!category.elements.length && (
@@ -80,12 +82,12 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                               onClick={() => selectCategory(category.id)}
                               className="text-first text-[18px] font-medium w-full flex justify-between  mb-4"
                             >
-                              <span className="whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                              <span className="notMobile:whitespace-nowrap text-start  relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
                                 {category.title}
                               </span>
                               <PixelArrowIcon
                                 className={classNames(
-                                  'w-2.5 fill-first',
+                                  'max-w-[10px] w-full block h-2.5  fill-first',
                                   showCategory.includes(category.id)
                                     ? 'rotate-90'
                                     : '',
@@ -121,7 +123,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
             ),
         )}
       </ul>
-      <ul className="ml-5 w-2/3">
+      <ul className="ml-5 notMobile:w-2/3">
         {data.categories.map(
           category =>
             !!category.elements.length && (
@@ -131,14 +133,14 @@ export const Activity: FC<Props> = ({ data, locale }) => {
               >
                 <button
                   onClick={() => selectCategory(category.id)}
-                  className="text-first text-[18px] font-medium w-full flex justify-between"
+                  className="text-first text-[18px] font-medium w-full flex justify-between items-center gap-1 "
                 >
-                  <span className="whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                  <span className="notMobile:whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full text-start">
                     {category.title}
                   </span>
                   <PixelArrowIcon
                     className={classNames(
-                      'w-2.5 fill-first',
+                      'max-w-[10px] w-full block h-2.5  fill-first',
                       showCategory.includes(category.id) ? 'rotate-90' : '',
                     )}
                   />

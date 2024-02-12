@@ -1,3 +1,4 @@
+'use client'
 import { FC } from 'react'
 import Link from 'next/link'
 import VideoIcon from '../Ui/Icons/VideoIcon'
@@ -12,7 +13,7 @@ export const InterviewsLine: FC<Props> = ({ interviews }) => {
     <ul className="flex flex-col">
       {interviews.map(interview => {
         return (
-          <li key={interview.id} className="flex w-full gap-10">
+          <li key={interview.id} className="flex w-full gap-10 mobile:gap-4">
             <ul className="">
               {interview.persons.map(persone => (
                 <li key={persone.id} className="pb-14 -mt-4">
@@ -31,7 +32,7 @@ export const InterviewsLine: FC<Props> = ({ interviews }) => {
                 </li>
               ))}
             </ul>
-            <div className="bg-first bg-opacity-20 w-px relative">
+            <div className="bg-first bg-opacity-20 w-px relative mobile:hidden">
               <VideoIcon className="absolute -left-[14px]" />
             </div>
             <Link

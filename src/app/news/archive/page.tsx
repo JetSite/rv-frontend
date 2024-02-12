@@ -20,7 +20,7 @@ const ArchiveNews = async () => {
   }
   return (
     <>
-      <div className="notDesktop:hidden">
+      {/* <div className="notDesktop:hidden">
         <Archive
           data={dateArr}
           link="/events/all/"
@@ -30,7 +30,7 @@ const ArchiveNews = async () => {
           locale="ru"
           page="newsDate"
         />
-      </div>
+      </div> */}
       <div className="desktop:hidden">
         <MobileArchive
           data={dateArr}

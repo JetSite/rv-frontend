@@ -6,6 +6,7 @@ import XIcon from '@/components/Ui/Icons/XIcon'
 import { usePathname } from 'next/navigation'
 import { INavItem, ISocialsItem } from '@/types/layout'
 import { IStoreData, useStoreDate } from '@/store'
+import classNames from '@/utils/classNames'
 
 interface Props {
   data: INavItem[]
@@ -14,6 +15,7 @@ interface Props {
 
 export const MobileMav: FC<Props> = ({ data, socials }) => {
   const [open, setOpen] = useState<boolean>(false)
+  const [showSubMenu, setShowSubMenu] = useState<string | null>(null)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -35,16 +37,82 @@ export const MobileMav: FC<Props> = ({ data, socials }) => {
             <button onClick={() => setOpen(false)} className="self-end">
               <XIcon />
             </button>
-            <ul className="flex w-full flex-1 justify-between justify:center items-center gap-7 mt-10 flex-row flex-wrap tablet:justify-center">
-              {data.map(item => (
-                <li
-                  key={item.title}
-                  className="px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:w-1/3 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
-                >
-                  <MainLink item={item} />
-                </li>
-              ))}
-            </ul>
+            <div className="flex w-full mobile:flex-col">
+              <ul className="flex w-full flex-1 gap-7 mt-10 flex-wrap flex-col">
+                {data.map(
+                  (item, i) =>
+                    data.length / 2 > i && (
+                      <li
+                        key={item.title}
+                        className="px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
+                        onMouseEnter={() => setShowSubMenu(item.id)}
+                        onMouseLeave={() => setShowSubMenu(null)}
+                      >
+                        {item.isActive ? (
+                          <MainLink item={item} />
+                        ) : (
+                          <span
+                            className={classNames(
+                              'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 text-inherit',
+                              showSubMenu === item.id
+                                ? 'before:w-full'
+                                : 'hover:before:w-full',
+                            )}
+                          >
+                            {item.title}
+                          </span>
+                        )}
+                        {showSubMenu === item.id && (
+                          <ul className="flex w-full justify-between items-center mt-4 flex-col origin-top transition-all gap-2">
+                            {item.children.map(subItem => (
+                              <li key={subItem.id}>
+                                <MainLink sx="font-normal" item={subItem} />
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ),
+                )}
+              </ul>
+              <ul className="flex w-full flex-1 gap-7 notMobile:mt-10 mobile:mt-7 flex-col flex-wrap ">
+                {data.map(
+                  (item, i) =>
+                    data.length / 2 < i && (
+                      <li
+                        key={item.title}
+                        className="px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
+                        onMouseEnter={() => setShowSubMenu(item.id)}
+                        onMouseLeave={() => setShowSubMenu(null)}
+                      >
+                        {item.isActive ? (
+                          <MainLink item={item} />
+                        ) : (
+                          <span
+                            className={classNames(
+                              'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 text-inherit',
+                              showSubMenu === item.id
+                                ? 'before:w-full'
+                                : 'hover:before:w-full',
+                            )}
+                          >
+                            {item.title}
+                          </span>
+                        )}
+                        {showSubMenu === item.id && !!item.children.length && (
+                          <ul className="flex w-full flex-1 justify-between items-center mt-4 flex-col origin-top transition-all gap-2">
+                            {item.children.map(subItem => (
+                              <li key={subItem.id}>
+                                <MainLink sx="font-normal" item={subItem} />
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ),
+                )}
+              </ul>
+            </div>
             <SoсialsWithLang
               data={socials}
               variant="footer"

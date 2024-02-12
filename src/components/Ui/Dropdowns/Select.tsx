@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, useRef } from 'react'
+import { FC, Fragment, useRef } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { IComponentWithChildren, IID } from '@/types'
 

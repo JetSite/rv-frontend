@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       maxWidth: {
-        content: '1480px',
+        content: '1280px',
       },
       width: {
-        content: '1480px',
+        content: '1280px',
       },
       maxHeight: {
         carousel: '560px',
@@ -48,11 +48,13 @@ const config: Config = {
       },
     },
     screens: {
-      desktop: { min: '1580px' },
-      tablet: { min: '834px', max: '1579px' },
+      desktopLarge: { min: '1480px' },
+      desktop: { min: '1280px' },
+      tablet: { min: '834px', max: '1279px' },
       mobile: { max: '833px' },
       notMobile: { min: '834px' },
-      notDesktop: { max: '1579px' },
+      notDesktop: { max: '1279px' },
+      desktopOnly: { min: '1280px', max: '1479px' },
     },
     fontFamily: {
       main: ['Cera', 'sans-serif'],
