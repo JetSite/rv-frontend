@@ -1,10 +1,12 @@
 'use client'
+import { ITheme } from '@/config'
 import React, { FC } from 'react'
 
 interface Props {
   name: string
   label: string
   values?: { [name: string]: string }
+  selectItem?: ITheme
   hendelClick: (e: any) => void
 }
 
@@ -13,6 +15,7 @@ export const RadioButton: FC<Props> = ({
   values,
   label,
   hendelClick,
+  selectItem,
 }) => {
   return (
     <div className="inline-flex items-center text-firstInner text-[14px]">
@@ -22,7 +25,9 @@ export const RadioButton: FC<Props> = ({
       >
         <input
           name={name}
-          defaultChecked={label === values?.theme}
+          defaultChecked={
+            selectItem ? selectItem.title === label : label === values?.theme
+          }
           id={label}
           value={label}
           onClick={hendelClick}
