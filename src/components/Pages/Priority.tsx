@@ -4,7 +4,6 @@ import { IGalleryItem, IStandartItem } from '@/types/item'
 import PhotoAlbum from 'react-photo-album'
 import { Content } from '../Ui/Content'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
-import { CalendarCarousel } from '../Calendar/CalendarCarousel'
 import { Carousel } from '../Ui/Carousel'
 import { SwiperSlide } from 'swiper/react'
 
@@ -35,29 +34,33 @@ export const Priority: FC<Props> = ({ data }) => {
       </Wrapper>
       <div className="relative w-full notDesktop:flex notDesktop:flex-col ">
         <Wrapper sx="mobile:px-7 tablet:px-8 ">
-          <Carousel
-            onNavigationNext={e => {
-              setSelectEvent(
-                data.gallery?.find((item, i) => i === e.realIndex)
-                  ?.key as string,
-              )
-            }}
-            onNavigationPrev={e => {
-              setSelectEvent(
-                data.gallery?.find((item, i) => i === e.realIndex)
-                  ?.key as string,
-              )
-            }}
-          >
-            {data.gallery?.map(image => (
-              <SwiperSlide>
-                <img className="w-full" src={image.src} />
-              </SwiperSlide>
-            ))}
-          </Carousel>
-
+          <div className="desktopLarge:hidden">
+            <Carousel
+              onNavigationNext={e => {
+                setSelectEvent(
+                  data.gallery?.find((item, i) => i === e.realIndex)
+                    ?.key as string,
+                )
+              }}
+              onNavigationPrev={e => {
+                setSelectEvent(
+                  data.gallery?.find((item, i) => i === e.realIndex)
+                    ?.key as string,
+                )
+              }}
+            >
+              {data.gallery?.map(image => (
+                <SwiperSlide key={image.key}>
+                  <img
+                    className="w-full object-cover object-center"
+                    src={image.src}
+                  />
+                </SwiperSlide>
+              ))}
+            </Carousel>
+          </div>
           {!!data.content ? (
-            <div className="desktop:w-[50%]">
+            <div className="desktopLarge:w-[45%]">
               <Content
                 content={data.content}
                 sx="content prose desktop:prose-xl"
@@ -65,7 +68,7 @@ export const Priority: FC<Props> = ({ data }) => {
             </div>
           ) : null}
         </Wrapper>
-        <div className="max-h-[100%] desktop:absolute right-0 top-0 overflow-hidden notDesktop:hidden">
+        <div className="max-h-[100%] desktopLarge:absolute right-0 top-0 overflow-hidden hidden desktopLarge:flex">
           <PhotoAlbum
             layout="rows"
             targetRowHeight={350}

@@ -14,7 +14,7 @@ export const Contacts: FC<Props> = ({ data, locale }) => {
   const { pageData, formData } = data
 
   return (
-    <div className="max-w-content mx-auto flex desktop:flex-row flex-col gap-8 mobile:px-7 tablet:px-8 tablet:w-2/3">
+    <div className="max-w-content mx-auto flex desktop:flex-row flex-col gap-8 mobile:px-7 tablet:px-8 tablet:w-2/3 desktopOnly:mx-4">
       <div className="desktop:w-1/2 ">
         <h1 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[24px] mobile:mt-5">
           {pageData.title}

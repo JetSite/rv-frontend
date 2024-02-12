@@ -15,13 +15,13 @@ export const WrapperMainPage: FC<WrapperMainPageProps> = ({
   endLink,
 }) => {
   return (
-    <section className="flex gap-2.5 mx-auto relative mb-12 pr-12 notDesktop:flex-col notDesktop:p-0 desktop:max-w-[1580px]">
+    <section className="flex gap-2.5 mx-auto relative mb-12 pr-12 notDesktop:flex-col notDesktop:p-0 desktopLarge:max-w-[1580px] ">
       <div className={`desktop:w-10  relative ${titleStyles}`}>
         <div className="rotate-[270deg] py-1 px-3 flex justify-end notDesktop:static notDesktop:rotate-0 notDesktop:justify-start notDesktop:px-7 notDesktop:text-mobile notDesktop:py-0 desktop:mt-2">
           {typeof title === 'string' ? <h2>{title}</h2> : title}
         </div>
       </div>
-      <div className="w-full ">
+      <div className="w-full">
         {children}
         {endLink ? (
           <div className="flex gap-2.5 mt-2 items-center text-first notDesktop:mr-7">

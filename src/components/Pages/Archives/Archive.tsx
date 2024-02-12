@@ -86,46 +86,45 @@ export const Archive: FC<ArchiveProps> = ({
     <div className="max-w-content w-full mx-auto mt-7">
       <h1 className="text-first text-[48px] mb-7 font-bold">{title}</h1>
       <p className="text-gray-700 mb-14 text-[14px] w-3/4">{subTitle}</p>
-      <div className="flex archive w-full">
-        <Scrollbar
-          innerRef={scrollRef}
-          id="scroll"
-          scrollTop={scroll}
-          setScroll={setScroll}
-          isShowTrack
-          className="h-full w-[60%] mr-18 border-t border-t-gray-150"
-        >
-          <ul className="">
-            {itemsArchive.map((event, i) => (
-              <li
-                key={event.title}
-                id={event.date as string}
-                ref={el => (elementsRefs.current[i] = el)}
-                className="w-2/3"
-                value={4}
-              >
-                {page === 'eventsDate' ? (
-                  <EventCard
-                    sx="p-1.5 px-4 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden"
-                    locale={locale}
-                    link={link + event.slug}
-                    item={event}
-                  />
-                ) : (
-                  <NewsCard
-                    locale={locale}
-                    link={link + event.slug}
-                    item={event}
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-        </Scrollbar>
-        <Scrollbar
-          isShowTrack={false}
-          className="!w-[40%] h-full overflow-scroll text-first font-bold"
-        >
+      <div className="flex">
+        <div className="flex w-full">
+          <Scrollbar
+            innerRef={scrollRef}
+            id="scroll"
+            scrollTop={scroll}
+            setScroll={setScroll}
+            isShowTrack
+            className="h-full w-[60%] mr-18 border-t border-t-gray-150"
+          >
+            <ul className="">
+              {itemsArchive.map((event, i) => (
+                <li
+                  key={event.title}
+                  id={event.date as string}
+                  ref={el => (elementsRefs.current[i] = el)}
+                  className="w-2/3"
+                  value={4}
+                >
+                  {page === 'eventsDate' ? (
+                    <EventCard
+                      sx="p-1.5 px-4 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden"
+                      locale={locale}
+                      link={link + event.slug}
+                      item={event}
+                    />
+                  ) : (
+                    <NewsCard
+                      locale={locale}
+                      link={link + event.slug}
+                      item={event}
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </Scrollbar>
+        </div>
+        <div className="!w-[40%] h-full overflow-scroll text-first font-bold">
           <ul>
             {data[page].map(item => (
               <li key={item.year}>
@@ -165,7 +164,7 @@ export const Archive: FC<ArchiveProps> = ({
               </li>
             ))}
           </ul>
-        </Scrollbar>
+        </div>
       </div>
     </div>
   )

@@ -17,7 +17,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
       >
         {!!item.img && (
           <img
-            className="block mb-2.5 notDesktop:max-h-[200px] object-cover notDesktop:w-full tablet:h-[163px]"
+            className="block mb-2.5 desktop:max-h-[200px] object-cover desktop:w-full tablet:h-[163px]"
             src={item.img}
           />
         )}

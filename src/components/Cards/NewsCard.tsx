@@ -33,13 +33,13 @@ export const NewsCard: FC<NewsCardProps> = ({
       className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:max-h-1/2"
       href={link}
     >
-      <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 min-w-max truncate">
+      <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5">
         {item.title}
       </h3>
       {(showText || tablet) && (
         <p
           className={classNames(
-            'mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden',
+            'mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden text-ellipsis ',
             !mainPage ? 'max-h-[80px]' : 'max-h-[88px]',
           )}
         >
