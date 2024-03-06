@@ -16,19 +16,22 @@ export const ActivityCard: FC<ActivityCardProps> = ({ item, slug }) => {
     >
       {!!item.img && (
         <img
-          className="block mb-7 h-[200px] object-cover w-full mobile:min-h-[170px] mobile:h-auto mobile:object-top tablet:h-auto "
+          className="block mb-7 h-[200px] object-cover w-full mobile:min-h-[170px] mobile:h-auto mobile:object-top tablet:h-auto desktopOnly:h-[134px]"
           src={item.img}
         />
       )}
       <div className=" flex justify-between items-center">
-        <h3 className="mb-2.5 font-bold text-[28px] notDesktop:text-[24px] mobile:mb-5">
+        <h3 className="mb-2.5 font-bold text-[28px] notDesktop:text-[24px] mobile:mb-5 desktopOnly:text-[20px]">
           {item.title}
         </h3>
-        <span className="font-bold text-[28px] text-white">
-          <PixelArrowIcon className="notDesktop:w-5 notDesktop:h-6 fill-white opacity-50" />
+        <span className="font-bold text-[28px] text-white desktopOnly:text-[20px]">
+          <PixelArrowIcon
+            className="notDesktop:w-5 notDesktop:h-6 fill-white opacity-50 desktopOnly:w-4 desktopOnly:h-5 desktopLarge:w-6
+      desktopLarge:h-8"
+          />
         </span>
       </div>
-      <p className=" text-mobile leading-normal max-h-[142px] notDesktop:text-[12px] mobile:max-h-none overflow-hidden">
+      <p className=" text-mobile leading-normal max-h-[142px] notDesktop:text-[12px] mobile:max-h-none overflow-hidden desktopOnly:text-[10px]">
         {item.text}
       </p>
     </Link>

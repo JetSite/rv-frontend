@@ -5,23 +5,24 @@ import VideoIcon from '../Ui/Icons/VideoIcon'
 import { IInterviewsData } from '@/utils/getInterviewsData'
 
 interface Props {
-  interviews: IInterviewsData[]
+  data?: IInterviewsData[]
 }
 
-export const InterviewsLine: FC<Props> = ({ interviews }) => {
+export const InterviewsLine: FC<Props> = ({ data }) => {
   return (
     <ul className="flex flex-col">
-      {interviews.map(interview => {
+      {data?.map(interview => {
         return (
-          <li key={interview.id} className="flex w-full gap-10 mobile:gap-4">
+          <li
+            key={interview.id}
+            className="flex w-full gap-10 desktopOnly:gap-8 mobile:gap-4"
+          >
             <ul className="">
               {interview.persons.map(persone => (
-                <li key={persone.id} className="pb-14 -mt-4">
+                <li key={persone.id} className="pb-14 desktopOnly:pb-12 -mt-4">
                   <div className="">
                     <img
-                      className="rounded-full object-cover object-center mb-4"
-                      width={75}
-                      height={75}
+                      className="rounded-full object-cover object-center mb-4 desktopOnly:mb-3 desktopOnly:w-[60px] w-[75px]"
                       src={persone.avatar}
                       alt={persone.title}
                     />
@@ -37,14 +38,14 @@ export const InterviewsLine: FC<Props> = ({ interviews }) => {
             </div>
             <Link
               href={'/media/interviews/' + interview.slug}
-              className="w-full pb-14"
+              className="w-full pb-14 desktopOnly:pb-12"
             >
-              <h3 className="text-[18px] text-first mb-1.5">
+              <h3 className="text-[18px] desktopOnly:text-base text-first mb-1.5">
                 {interview.title}
               </h3>
-              <p className="text-14 flex gap-1 font-medium mb-2.5">
+              <p className="text-14 desktopOnly:text-[12px] flex gap-1 font-medium mb-2.5">
                 <span>
-                  {interview.source}
+                  {interview.source.title}
                   {','}
                 </span>
                 <span>{interview.date}</span>

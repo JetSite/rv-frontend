@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useRouter } from 'next/router'
 import Input from '../Ui/Inputs/Input'
 import TextArea from '../Ui/Inputs/TextArea'
 import { ITheme, langButtons } from '@/config'
@@ -81,9 +80,12 @@ export const ContactForm = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="text-first flex flex-col gap-6">
+      <form
+        onSubmit={handleSubmit}
+        className="text-first flex flex-col gap-6 desktopOnly:gap-4"
+      >
         <Input
-          sx="w-full bg-first bg-opacity-5 text-[14px] placeholder:opacity-60 px-7 py-4"
+          sx="w-full bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
           name="name"
           id="name"
           placeholder={placeholders.name as string}
@@ -95,7 +97,7 @@ export const ContactForm = ({
           type="text"
         />
         <Input
-          sx="w-full bg-first bg-opacity-5 text-[14px] placeholder:opacity-60 px-7 py-4"
+          sx="w-full bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
           name="tel"
           id="tel"
           placeholder={placeholders.tel as string}
@@ -120,7 +122,7 @@ export const ContactForm = ({
           ))}
         </ul>
         <TextArea
-          sx="w-full bg-first bg-opacity-5 text-[14px] placeholder:opacity-60 px-7 py-4 min-h-[173px]"
+          sx="w-full bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px]  placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4 min-h-[173px] desktopOnly:min-h-[120px]"
           name="msg"
           id="msg"
           placeholder={placeholders.msg as string}
@@ -134,7 +136,7 @@ export const ContactForm = ({
           <button
             type="submit"
             disabled={!isValid || loading}
-            className="w-full max-w-[475px] text-[24px] font-medium text-white bg-first py-2 disabled:bg-opacity-60"
+            className="w-full max-w-[475px] text-[24px] desktopOnly:text-[18px] font-medium text-white bg-first py-2 disabled:bg-opacity-60"
           >
             {loading ? (
               <Loader className="mx-auto" />
@@ -148,11 +150,11 @@ export const ContactForm = ({
           </p>
         </div>
       </form>
-      {!showModal && (
+      {showModal && (
         <div className="absolute inset-0 bg-gray-900 bg-opacity-30 flex items-center justify-center">
           <div className="bg-white shadow-md p-4 w-[385px] text-center flex flex-col">
             <button
-              onClick={() => setShowModal(false)}
+              onClick={() => setShowModal(!showModal)}
               className="self-end relative"
             >
               <XIcon />

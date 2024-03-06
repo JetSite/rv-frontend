@@ -30,11 +30,11 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
         clickable: true,
       }}
       modules={[Pagination, Navigation]}
-      className="mySwiper max-w-[1580px] mx-auto h-carousel mobile:h-[220px] relative flex mb-10"
+      className="mySwiper max-w-[1580px] desktopOnly:max-w-[1052px] mx-auto h-carousel mobile:h-[220px] desktopOnly:h-[372px] relative flex mb-6"
     >
       {arr.map(item => (
         <SwiperSlide key={item.title}>
-          <Link href={item.link}>
+          <Link href={item.link} className="flex h-full">
             {!!item.img && (
               <img className="w-full object-cover object-top" src={item.img} />
             )}
@@ -46,7 +46,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                   }}
                 />
               ) : (
-                <h2 className="text-[48px] font-bold w-3/4 z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
+                <h2 className="text-[14px] tablet:text-[30px] desktopOnly:text-[39px] desktopLarge:text-[48px] font-bold w-3/4 z-30 mobile:w-full mobile:mx-4">
                   <span
                     style={{
                       color: item.titleFirstLineTextColor
@@ -81,13 +81,13 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
       ))}
       <div
         onClick={() => swiper?.slidePrev()}
-        className="prev absolute top-1/2 z-10 left-10"
+        className="prev absolute top-1/2 z-10 left-[30px]"
       >
         <ArrowCircleIcon />
       </div>
       <div
         onClick={() => swiper?.slideNext()}
-        className="next rotate-180 absolute top-1/2 z-10 right-10"
+        className="next rotate-180 absolute top-1/2 z-10 right-[30px]"
       >
         <ArrowCircleIcon />
       </div>

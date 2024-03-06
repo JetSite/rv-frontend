@@ -22,7 +22,7 @@ export const News: FC<Props> = ({ data, eventsData }) => {
         sx="tablet:px-8"
         endLink={{ title: 'Архив новостей >', slug: 'news/archive' }}
         title={
-          <h2 className="text-first text-[48px] font-bold pt-10 mb-6 block mobile:text-[24px] mobile:px-7 mobile:pt-4">
+          <h2 className="text-first text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block mobile:text-[24px] mobile:px-7 mobile:pt-4">
             Новости
           </h2>
         }
@@ -67,7 +67,7 @@ export const News: FC<Props> = ({ data, eventsData }) => {
       <Wrapper
         sx="mobile:px-7 tablet:px-8"
         title={
-          <h2 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[18px] mobile:mt-5">
+          <h2 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[22px] font-bold notDesktop:text-[18px] mobile:mt-5">
             Календарь событий
           </h2>
         }

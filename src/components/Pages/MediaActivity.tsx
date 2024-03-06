@@ -21,14 +21,16 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
     <Wrapper
       sx=" notDesktop:px-8 desktop:mb-8"
       title={
-        <h1 className="block mt-10 mb-2.5 text-first text-[48px] font-medium notDesktop:text-[24px] mobile:mt-5">
+        <h1 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-medium notDesktop:text-[24px] mobile:mt-5">
           {data.title}
         </h1>
       }
     >
       <p className="w-2/3 text-[14px] text-gray-500 mb-14">{data.subTitle}</p>
       <div className="mb-14 ">
-        <h3 className="text-h text-[32px] font-bold mb-6">{videos[0].title}</h3>
+        <h3 className="text-h text-[32px] desktopOnly:text-[22px] font-bold mb-6">
+          {videos[0].title}
+        </h3>
         <VideoPlayer
           videoId={getVideoId(videos[0].link)}
           height="525px"
@@ -49,27 +51,34 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
       <hr className="my-4 border-first" />
       <div className="flex notDesktop:flex-col mt-10 gap-8">
         <ul className="desktop:w-1/2">
-          {interviews.map(interview => (
-            <li
-              key={interview.id}
-              className="hover:shadow-xl hover:bg-gray-100 hover:bg-opacity-60"
-            >
-              <Link href={'/media/interviews/' + interview.slug}>
-                <h4 className="text-h text-[18px] font-bold mt-3">
-                  {interview.title}
-                </h4>
-                <p>{interview.description}</p>
-                <p className="text-end text-first mt-2 font-medium">
-                  {getNormalizeDate(interview.date, 'ru')}
-                </p>
-              </Link>
-            </li>
-          ))}
+          {interviews.map(
+            (interview, i) =>
+              i !== 0 &&
+              i < 10 && (
+                <li
+                  key={interview.id}
+                  className="hover:shadow-xl hover:bg-gray-100 hover:bg-opacity-60"
+                >
+                  <Link href={'/media/interviews/' + interview.slug}>
+                    <h4 className="text-h text-[18px] desktopOnly:text-base font-bold mt-3">
+                      {interview.title}
+                    </h4>
+                    <p className="desktopOnly:text-[13px]">
+                      {interview.description}
+                    </p>
+                    <p className="text-end text-first mt-2 font-medium desktopOnly:text-[13px]">
+                      {getNormalizeDate(interview.date, 'ru')}
+                    </p>
+                  </Link>
+                </li>
+              ),
+          )}
         </ul>
         <ul className="desktop:w-1/2">
           {videos.map(
             (video, i) =>
-              i !== 0 && (
+              i !== 0 &&
+              i < 5 && (
                 <li key={video.id} className="mb-14 ">
                   <VideoPlayer
                     videoId={getVideoId(video.link)}
@@ -78,11 +87,13 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
                   />
                   <Link
                     href={video.slug || '#'}
-                    className="text-h block text-[18px] font-bold mt-3 hover:text-second"
+                    className="text-h block text-[18px] desktopOnly:text-base font-bold mt-3 hover:text-second"
                   >
                     {video.title}
                   </Link>
-                  <p className="text-[14px] mt-3">{video.description}</p>
+                  <p className="text-[14px] desktopOnly:text-[13px] mt-3">
+                    {video.description}
+                  </p>
                 </li>
               ),
           )}

@@ -1,6 +1,6 @@
 'use client'
 
-import { IActivityData, getActivityData } from '@/utils/getActivityData'
+import { IActivityData } from '@/utils/getActivityData'
 import { FC, useState } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import BoldCHevronIcon from '../Ui/Icons/BoldCHevronIcon'
@@ -16,10 +16,10 @@ interface Props {
 
 export const Activity: FC<Props> = ({ data, locale }) => {
   const [showGroup, setShowGroup] = useState<number[]>(
-    data.groupedCategory ? [data.groupedCategory[0].groupId] : [],
+    data.groupedCategory ? [data.groupedCategory[0]?.groupId] : [],
   )
   const [showCategory, setShowCategory] = useState<number[]>(
-    data.groupedCategory ? [data.groupedCategory[0].categories[0].id] : [],
+    data.groupedCategory ? [data.groupedCategory[0]?.categories[0].id] : [],
   )
 
   const selectGroup = (id: number) => {
@@ -48,7 +48,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
     <Wrapper
       sx="mobile:px-7 tablet:px-8"
       title={
-        <h2 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[24px] mobile:mt-5">
+        <h2 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-bold notDesktop:text-[24px] mobile:mt-5">
           {data.title}
         </h2>
       }
@@ -63,7 +63,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
               <li key={group.groupId} className="mb-8">
                 <button
                   onClick={() => selectGroup(group.groupId)}
-                  className="text-h text-[24px] mb-8 font-medium flex items-center gap-4 "
+                  className="text-h text-[24px] desktopOnly:text-[18px] mb-8 font-medium flex items-center gap-4 "
                 >
                   <BoldCHevronIcon
                     bold={showGroup.includes(group.groupId)}
@@ -84,9 +84,9 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                           >
                             <button
                               onClick={() => selectCategory(category.id)}
-                              className="text-first text-[18px] font-medium w-full flex justify-between  mb-4"
+                              className="text-first text-[18px] desktopOnly:text-base font-medium w-full flex justify-between  mb-4"
                             >
-                              <span className="desktop:whitespace-nowrap text-start  relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                              <span className="desktop:whitespace-nowrap text-start relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
                                 {category.title}
                               </span>
                               <PixelArrowIcon
@@ -111,7 +111,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                                         <span>{e.endDate?.split('-')[0]}</span>
                                       )}
                                     </p>
-                                    <p className="text-[14px]">
+                                    <p className="text-[14px] ">
                                       {e.description}
                                     </p>
                                   </li>

@@ -23,7 +23,7 @@ export const Priority: FC<Props> = ({ data }) => {
       <Wrapper
         sx="mobile:px-7 tablet:px-8 "
         title={
-          <h1 className="o text-first text-[48px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
+          <h1 className="o text-first text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
             {data.title}
           </h1>
         }

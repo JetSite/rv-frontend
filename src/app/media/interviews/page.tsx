@@ -1,11 +1,12 @@
 import { API } from '@/api'
+import { getFilterData } from '@/api/fetch/getFilterData'
 import { Interviews } from '@/components/Pages/Interviews'
 import { getInterviewData } from '@/utils/getInterviewsData'
 
 const InterviewsPage = async () => {
   const fetchInterviews = async () => {
     const res = await fetch(
-      `${API.baseUrl}/interviews?sort[0]=date:desc&populate[person][populate][photo][fields][0]=url`,
+      `${API.baseUrl}/interviews?sort[0]=date:desc&populate[person][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link`,
       { cache: 'no-cache' },
     )
     const data = await res.json()
@@ -14,7 +15,12 @@ const InterviewsPage = async () => {
   }
   const data = await fetchInterviews()
 
-  return <Interviews data={getInterviewData(data.data)} />
+  return (
+    <Interviews
+      filterData={await getFilterData(data.meta.pagination, 'interviews')}
+      data={getInterviewData(data.data)}
+    />
+  )
 }
 
 export default InterviewsPage
