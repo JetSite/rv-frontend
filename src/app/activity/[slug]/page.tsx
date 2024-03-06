@@ -36,9 +36,12 @@ const ActivityPage: FC<Props> = async ({ params }) => {
 
     return data
   }
+
   const data = await fetchActivityPageData()
 
-  return <Activity data={getActivityData(data.data[0])} locale="ru" />
+  return (
+    <Activity data={getActivityData(data.data[0])} locale="ru" />
+  )
 }
 
 export default ActivityPage

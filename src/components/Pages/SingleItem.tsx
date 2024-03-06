@@ -26,7 +26,7 @@ export const SingleItem: FC<Props> = ({
         sx=" notDesktop:px-8 desktop:mb-8"
         title={
           <>
-            <h1 className="text-first text-[48px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
+            <h1 className="text-first text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
               {data?.title}
             </h1>
             <p className="mb-6 text-[14px] font-medium text-first">
@@ -38,7 +38,10 @@ export const SingleItem: FC<Props> = ({
         <div className="notDesktop:flex flex-col gap-9 min-h-[552px]">
           {!!data.img && (
             <div className="desktop:float-left flex flex-col  desktop:mr-9  desktop:mb-4">
-              <img className="h-[552px] object-cover " src={data.img} />
+              <img
+                className="h-[552px] desktopOnly:h-[460px] object-cover "
+                src={data.img}
+              />
               <p className="self-end mt-2 text-grey-350">{data.coverCaption}</p>
             </div>
           )}

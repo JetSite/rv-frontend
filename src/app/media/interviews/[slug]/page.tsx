@@ -30,7 +30,9 @@ const SingleInterviewPage: FC<Props> = async ({ params }) => {
 
   const data = await fetchSingleInterviewData()
 
-  return <SingleInterview data={getInterviewData(data.data)[0]} />
+  return (
+    <SingleInterview data={getInterviewData(data.data).data[0]} />
+  )
 }
 
 export default SingleInterviewPage

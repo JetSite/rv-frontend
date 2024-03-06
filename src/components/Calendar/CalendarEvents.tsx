@@ -20,7 +20,7 @@ export const CalendarEvents: FC<Props> = ({ data }) => {
   const lang: ILocale = 'ru'
 
   return (
-    <div className="flex w-content relative mobile:flex-col notDesktop:w-full tablet:flex-col">
+    <div className="flex max-w-content relative mobile:flex-col notDesktop:w-full tablet:flex-col">
       <div className="w-1/4 mobile:w-full tablet:w-full tablet:mb-6">
         <Calendar
           setSelectMonth={setSelectMonth}

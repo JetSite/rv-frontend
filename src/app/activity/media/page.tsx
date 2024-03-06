@@ -34,8 +34,8 @@ const MediaActivityPage = async () => {
 
   return (
     <MediaActivity
-      interviews={getInterviewData(data.InterviewsData.data)}
-      videos={getAudioAndVideosData(data.videoData.data)}
+      interviews={getInterviewData(data.InterviewsData.data).data}
+      videos={getAudioAndVideosData(data.videoData.data).data}
       data={getMediaActivityData(data.data.data)}
     />
   )

@@ -21,8 +21,8 @@ export const Wrapper: FC<WrapperProps> = ({
       <div
         className={
           mainPage
-            ? 'desktopLarge:max-w-[1580px] mx-auto desktop:pr-[50px] desktop:px-4'
-            : 'max-w-content mx-auto desktopOnly:px-4'
+            ? 'desktopLarge:max-w-[1580px] desktopOnly:max-w-[1052px] mx-auto desktop:pr-[50px] desktop:px-4'
+            : 'max-w-content desktopOnly:max-w-[988px] mx-auto'
         }
       >
         {!title ? null : typeof title === 'string' ? <h2>{title}</h2> : title}

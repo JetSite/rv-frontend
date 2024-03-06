@@ -1,14 +1,18 @@
+'use client'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { MainLink } from '../Ui/MainLink'
 import { InterviewsLine } from '../Lines/InterviewsLine'
-import { IInterviewsData } from '@/utils/getInterviewsData'
+import { IInterviewsData, getInterviewData } from '@/utils/getInterviewsData'
+import { FilterVideo } from '../Filters/FilterVideo'
+import { IFilterData } from '@/api/fetch/getFilterData'
 
 interface Props {
-  data: IInterviewsData[]
+  data: { data: IInterviewsData[]; source: string }
+  filterData: IFilterData
 }
 
-export const Interviews: FC<Props> = ({ data }) => {
+export const Interviews: FC<Props> = ({ data, filterData }) => {
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
@@ -26,8 +30,13 @@ export const Interviews: FC<Props> = ({ data }) => {
           Кроме того, интервью позволяет задать вопросы, которые могут быть
           интересны широкой аудитории.
         </p>
-        {/* <FilterVideo /> */}
-        <InterviewsLine interviews={data} />
+        <FilterVideo
+          filterData={filterData}
+          data={data}
+          formartDataCallback={getInterviewData}
+        >
+          <InterviewsLine />
+        </FilterVideo>
         <p className="ml-[54px] mt-4">
           <MainLink item={{ title: 'Больше интервью', slug: '#' }} />
         </p>

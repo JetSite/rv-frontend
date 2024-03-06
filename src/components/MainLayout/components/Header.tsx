@@ -4,7 +4,6 @@ import { SoсialsWithLang } from './SoсialsWithLang'
 import { MobileMav } from './MobileMav'
 import { FC } from 'react'
 import { ILayoutData } from '@/utils/getLayoutData'
-import { getDate } from '@/api/fetch/getDate'
 
 interface Props {
   data: ILayoutData
@@ -14,11 +13,11 @@ export const Header: FC<Props> = async ({ data }) => {
   const { navHeader, logo, socials } = data
 
   return (
-    <header className="max-w-[1480px] w-full mx-12 pt-14 pb-9 flex justify-between text-h items-center gap-6 border-b-2 border-opacity-30 mobile:pt-5 notDesktop:px-[30px] mobile:gap-2.5 mobile:pb-4 tablet:pt-7 tablet:pb-7 desktopOnly:px-4">
+    <header className="desktopOnly:max-w-[988px] max-w-[1480px] w-full desktopOnly:mx-auto desktopLarge:mx-auto flex px-[30px] items-center justify-between py-5 tablet:px-[33px] tablet:py-7 desktopOnly:px-0 desktopOnly:pt-[43px] desktopOnly:pb-[35px] desktopOnly:gap-3 desktopLarge:gap-4 desktopLarge:px-0">
       <Logo data={logo} />
       <MainNav data={navHeader} />
       <SoсialsWithLang data={socials} />
-      <MobileMav data={navHeader} socials={socials} />
+      <MobileMav data={navHeader} socials={socials} />{' '}
     </header>
   )
 }

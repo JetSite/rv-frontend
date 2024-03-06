@@ -19,19 +19,21 @@ export const EventCard: FC<EventCardProps> = ({
 }) => {
   return (
     <Link href={link} className={sx}>
-      <p className="text-first font-bold text-[18px] flex flex-row gap-16 mb-4 notDesktop:text-mobile notDesktop:mb-0.5 notDesktop:justify-between">
+      <p className="text-first font-bold text-[18px] flex flex-row mb-4 notDesktop:text-mobile notDesktop:mb-0.5 notDesktop:justify-between desktopOnly:text-[13px]">
         {!!item.date && (
           <span className="min-w-max">
             {getNormalizeDate(item.date, locale)}
           </span>
         )}
 
-        <time className="min-w-max">{item.time?.replace(':00', '')}</time>
+        <time className="min-w-max self-end ml-auto">
+          {item.time?.replace(':00', '')}
+        </time>
       </p>
-      <h3 className="text-first font-medium mb-2 notDesktop:text-mobile notDesktop:mb-0.5">
+      <h3 className="text-first font-medium mb-2 notDesktop:text-mobile notDesktop:mb-0.5 desktopOnly:text-[11px]">
         {item.title}
       </h3>
-      <p className="text-mobile notDesktop:text-[12px] overflow-hidden text-ellipsis">
+      <p className="text-mobile notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[10px]">
         {item.text}
       </p>
     </Link>

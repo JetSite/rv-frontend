@@ -9,14 +9,14 @@ interface Props {
 
 export const MainNav: FC<Props> = ({ data }) => {
   return (
-    <ul className="flex w-full flex-1 justify-between notDesktop:hidden font-medium">
+    <ul className="flex w-full flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-[13px] text-h gap-3 desktopLarge:text-[19px] desktopLarge:gap-4">
       {data.map(item =>
         item.children.length ? (
-          <li key={item.id} className="px-2 last:pr-0 first:pl-0">
+          <li key={item.id} className="">
             <MainNavDropdown item={item} data={item.children} />
           </li>
         ) : (
-          <li key={item.id} className="px-2 last:pr-0 first:pl-0">
+          <li key={item.id} className="">
             <MainLink item={item} />
           </li>
         ),

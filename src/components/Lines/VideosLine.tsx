@@ -3,15 +3,15 @@ import { IAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { VideoLineItem } from './VideoLineItem'
 
 interface Props {
-  videos: IAudioAndVideosData[]
+  data?: IAudioAndVideosData[]
 }
 
-export const VideosLine: FC<Props> = ({ videos }) => {
+export const VideosLine: FC<Props> = ({ data }) => {
   return (
     <ul className="flex flex-col">
-      {videos.map(video => {
+      {data?.map(video => {
         return (
-          <li key={video.id} className="flex w-full gap-10">
+          <li key={video.id} className="flex w-full gap-10 desktopOnly:gap-7">
             <VideoLineItem
               variant="main"
               date={video.date}

@@ -22,7 +22,7 @@ export const NewsCard: FC<NewsCardProps> = ({
   link = '#',
   locale,
 }) => {
-  const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1579 })
+  const isTablet = useMediaQuery({ minWidth: 834, maxWidth: 1279 })
   const [tablet, setTablet] = useState<boolean>(false)
   useEffect(() => {
     setTablet(isTablet)
@@ -33,20 +33,22 @@ export const NewsCard: FC<NewsCardProps> = ({
       className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:max-h-1/2"
       href={link}
     >
-      <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5">
+      <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 desktopOnly:text-[13px]">
         {item.title}
       </h3>
       {(showText || tablet) && (
         <p
           className={classNames(
-            'mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden text-ellipsis ',
-            !mainPage ? 'max-h-[80px]' : 'max-h-[88px]',
+            'mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[10px]',
+            !mainPage
+              ? 'max-h-[80px]  desktopOnly:max-h-[76px]'
+              : 'max-h-[88px]',
           )}
         >
           {item.text}
         </p>
       )}
-      <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first ">
+      <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first desktopOnly:text-[10px]">
         {!!item.date && getNormalizeDate(item.date, locale)}
       </p>
     </Link>

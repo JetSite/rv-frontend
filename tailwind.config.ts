@@ -48,13 +48,13 @@ const config: Config = {
       },
     },
     screens: {
-      desktopLarge: { min: '1480px' },
+      desktopLarge: { min: '1580px' },
       desktop: { min: '1280px' },
       tablet: { min: '834px', max: '1279px' },
       mobile: { max: '833px' },
       notMobile: { min: '834px' },
       notDesktop: { max: '1279px' },
-      desktopOnly: { min: '1280px', max: '1479px' },
+      desktopOnly: { min: '1280px', max: '1579px' },
     },
     fontFamily: {
       main: ['Cera', 'sans-serif'],

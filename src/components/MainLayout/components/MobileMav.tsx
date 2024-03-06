@@ -18,6 +18,10 @@ export const MobileMav: FC<Props> = ({ data, socials }) => {
   const [showSubMenu, setShowSubMenu] = useState<string | null>(null)
   const pathname = usePathname()
 
+  // useEffect(() => {
+  //   document.body.style.zoom = '80%'
+  // }, [])
+
   useEffect(() => {
     setOpen(false)
   }, [pathname])
@@ -38,7 +42,7 @@ export const MobileMav: FC<Props> = ({ data, socials }) => {
               <XIcon />
             </button>
             <div className="flex w-full mobile:flex-col">
-              <ul className="flex w-full flex-1 gap-7 mt-10 flex-wrap flex-col">
+              <ul className="flex w-full flex-1 gap-7 mt-10 flex-wrap flex-col text-h">
                 {data.map(
                   (item, i) =>
                     data.length / 2 > i && (
@@ -75,7 +79,7 @@ export const MobileMav: FC<Props> = ({ data, socials }) => {
                     ),
                 )}
               </ul>
-              <ul className="flex w-full flex-1 gap-7 notMobile:mt-10 mobile:mt-7 flex-col flex-wrap ">
+              <ul className="flex w-full flex-1 gap-7 notMobile:mt-10 mobile:mt-7 flex-col flex-wrap text-h">
                 {data.map(
                   (item, i) =>
                     data.length / 2 < i && (
@@ -116,7 +120,7 @@ export const MobileMav: FC<Props> = ({ data, socials }) => {
             <SoсialsWithLang
               data={socials}
               variant="footer"
-              className="flex gap-5 items-center flex-col mt-16"
+              className="flex gap-5 items-center flex-col mt-16 text-h"
             />
           </div>
         </>

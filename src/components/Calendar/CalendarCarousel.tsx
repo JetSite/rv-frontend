@@ -24,6 +24,7 @@ import { langUIConfig } from '@/config'
 import { ILocale } from '@/types'
 import { IStandartItem } from '@/types/item'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
+import Link from 'next/link'
 
 interface Props {
   selectEvent: string
@@ -66,7 +67,7 @@ export const CalendarCarousel: FC<Props> = ({
         nextEl: nextButtonRef.current,
       }}
       modules={[Pagination, Navigation]}
-      className="mySwiper w-full h-[280px] mobile:h-[220px] relative flex mb-10"
+      className="mySwiper w-full h-[280px] mobile:h-[220px] desktopOnly:h-[242px] relative flex mb-10"
     >
       {arr.map(item => {
         return (
@@ -74,11 +75,11 @@ export const CalendarCarousel: FC<Props> = ({
             <div className="flex gap-7 w-full">
               {!!item.img && (
                 <img
-                  className="w-[461px] h-[288px] object-cover object-top tablet:w-[40%] tablet:h-[370px]"
+                  className=" w-[461px] h-[288px] object-cover object-top tablet:w-[40%] tablet:h-[370px]"
                   src={item.img}
                 />
               )}
-              <div className="flex flex-col">
+              <Link className="flex flex-col" href={'/events/all/' + item.slug}>
                 {defineHtml(item.title) ? (
                   <div
                     dangerouslySetInnerHTML={{
@@ -86,11 +87,11 @@ export const CalendarCarousel: FC<Props> = ({
                     }}
                   />
                 ) : (
-                  <h2 className="text-[18px] w-3/4 text-first z-30 mobile:text-[14px] mobile:w-full mobile:mx-4">
+                  <h2 className="text-[18px] w-3/4 text-first z-30 mobile:text-[14px] mobile:w-full mobile:mx-4 desktopOnly:text-[13px]">
                     {item.title}
                   </h2>
                 )}
-                <p className="flex flex-row justify-between text-first text-[18px] font-bold my-4">
+                <p className="flex flex-row justify-between text-first text-[18px] font-bold my-4 desktopOnly:text-base">
                   <span className="flex flex-row gap-4">
                     <span>{getNormalizeDate(item.date as string, locale)}</span>
                     {getNormalizeDate(new Date(), locale) ===
@@ -102,8 +103,10 @@ export const CalendarCarousel: FC<Props> = ({
                   </span>
                   <span>{item.time}</span>
                 </p>
-                <p className="text-ellipsis">{item.text}</p>
-              </div>
+                <p className="text-ellipsis desktopOnly:text-[11px]">
+                  {item.text}
+                </p>
+              </Link>
             </div>
           </SwiperSlide>
         )

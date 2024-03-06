@@ -89,10 +89,10 @@ export default async function Home() {
         endLink={{ title: 'Календарь событий >', slug: 'events' }}
         title={<h2 className="text-first">СОБЫТИЯ</h2>}
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[130px] flex-wrap justify-around overflow-hidden tablet:px-8 desktop:max-h-[204px]">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[130px] flex-wrap justify-between overflow-hidden tablet:px-8 desktop:max-h-[204px]">
           {eventData.map(item => (
             <li
-              className="tablet:w-[260px] desktop:mb-4 desktop:w-[354px]"
+              className="tablet:w-[260px] desktop:mb-4 desktopLarge:w-[354px] desktopOnly:w-[202px]"
               key={item.title}
             >
               <EventCard
@@ -168,7 +168,7 @@ export default async function Home() {
         mainPage
         sx="bg-first"
         title={
-          <h2 className="text-white text-[48px] font-bold pt-10 mb-6 block mobile:text-[24px] notDesktop:px-7 notDesktop:pt-4 ">
+          <h2 className="text-white text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block mobile:text-[24px] notDesktop:px-7 notDesktop:pt-4 ">
             Деятельность
           </h2>
         }

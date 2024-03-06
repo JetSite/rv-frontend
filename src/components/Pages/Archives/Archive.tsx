@@ -83,9 +83,13 @@ export const Archive: FC<ArchiveProps> = ({
   }, [scroll, selectDate])
 
   return (
-    <div className="max-w-content w-full mx-auto mt-7">
-      <h1 className="text-first text-[48px] mb-7 font-bold">{title}</h1>
-      <p className="text-gray-700 mb-14 text-[14px] w-3/4">{subTitle}</p>
+    <div className="max-w-content desktopOnly:max-w-[988px] w-full mx-auto mt-7">
+      <h1 className="text-first text-[48px] desktopOnly:text-[32px] mb-7 font-bold">
+        {title}
+      </h1>
+      <p className="text-gray-700 mb-14 text-[14px] desktopOnly:text-base w-3/4">
+        {subTitle}
+      </p>
       <div className="flex">
         <div className="flex w-full">
           <Scrollbar
@@ -132,7 +136,7 @@ export const Archive: FC<ArchiveProps> = ({
                   onClick={handleSelectDate}
                   name={item.year}
                   className={classNames(
-                    'text-[48px]',
+                    'text-[48px]  desktopOnly:text-[30px]',
                     !selectDate?.includes(item.year) ? 'opacity-60' : '',
                   )}
                 >
@@ -147,7 +151,7 @@ export const Archive: FC<ArchiveProps> = ({
                       <li key={month.value}>
                         <button
                           className={classNames(
-                            'text-[30px]',
+                            'text-[30px] desktopOnly:text-[22px]',
                             !selectDate?.includes(month.value)
                               ? 'opacity-60'
                               : '',

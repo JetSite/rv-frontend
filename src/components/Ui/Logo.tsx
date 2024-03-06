@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import classNames from '@/utils/classNames'
 import { ILogo } from '@/types'
 
 interface Props {
@@ -10,21 +9,21 @@ interface Props {
 }
 
 const Logo: FC<Props> = ({
-  logoSx = 'mobile:w-12 mobile:h-12',
-  titleSx,
+  logoSx = 'w-[46px] tablet:w-[64px] desktopOnly:w-[66px] desktopLarge:w-[100px]',
+  titleSx = 'text-h leading-[1.1] desktopLarge:text-[38px] tablet:text-[25px] desktopOnly:text-[25px] font-medium text-[18px]',
   data,
 }) => {
   return (
-    <Link href={'/'} className="flex items-center gap-5">
-      <div className="w-[100px]">
+    <Link
+      href={'/'}
+      className="flex items-center gap-2 tablet:gap-3 desktopOnly:gap-3 desktopLarge:gap-5 w-max"
+    >
+      <div className="">
         <img src={data?.img} alt={data?.title} className={logoSx} />
       </div>
       <h3
         dangerouslySetInnerHTML={{ __html: data?.title }}
-        className={classNames(
-          'text-h leading-[1.1] text-[38px] font-medium mobile:text-[18px]',
-          titleSx || '',
-        )}
+        className={titleSx}
       />
     </Link>
   )

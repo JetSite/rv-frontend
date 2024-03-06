@@ -26,7 +26,7 @@ const EventsPage = async () => {
       <Wrapper
         sx="mobile:px-7 tablet:px-8"
         title={
-          <h2 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[24px] mobile:mt-5">
+          <h2 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[24px] desktopOnly:text-[32px] mobile:mt-5">
             Календарь событий
           </h2>
         }
@@ -52,7 +52,7 @@ const EventsPage = async () => {
               i < 8 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] desktop:max-h-[210px] desktop:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] desktop:max-h-[210px] desktopOnly:w-[300px] desktopOnly:max-h-[180px] desktop:overflow-hidden',
                   )}
                   key={item.title}
                 >
@@ -71,7 +71,7 @@ const EventsPage = async () => {
         sx="tablet:px-8"
         endLink={{ title: 'Архив новостей >', slug: 'events/archive' }}
         title={
-          <h2 className="text-first text-[48px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
+          <h2 className="text-first text-[48px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4  desktopOnly:text-[22px]">
             Новости
           </h2>
         }
@@ -83,7 +83,7 @@ const EventsPage = async () => {
                 <li
                   className={classNames(
                     ' p-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0',
-                    i < 2 ? 'w-1/2 tablet:w-full' : 'w-1/4',
+                    i < 2 ? 'w-1/2 tablet:w-full ' : 'w-1/4',
                   )}
                   key={item.title + i}
                 >
