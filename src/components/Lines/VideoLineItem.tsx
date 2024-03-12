@@ -32,7 +32,7 @@ export const VideoLineItem: FC<Props> = ({
             key={persone.id}
             className="pb-14 desktopOnly:pb-10 notMobile:-mt-4 mobile:pb-2"
           >
-            <div className="">
+            <div className="w-max">
               <img
                 className="rounded-full object-cover object-center mb-4 desktopOnly:mb-3 desktopOnly:w-[60px] w-[75px]"
                 src={persone.avatar}

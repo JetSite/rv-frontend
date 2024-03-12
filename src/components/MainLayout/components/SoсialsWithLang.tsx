@@ -13,7 +13,7 @@ interface ISoсialsWithLang {
 }
 
 export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
-  className = 'flex gap-4 desktopOnly:gap-3 desktopLarge:gap-5 items-center notDesktop:hidden',
+  className = 'flex gap-4 desktopOnly:gap-3 desktopLarge:gap-5 items-center notDesktop:hidden text-h',
   subKey = 'header',
   variant = 'standart',
   data,
@@ -35,7 +35,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           <li key={item?.id}>
             <Link
               href={item?.slug}
-              className="relative block before:absolute before:h-0.5 before:content-[ ] before:bg-h before:left-0 before:-bottom-2 hover:before:w-full before:block"
+              className="relative block before:absolute before:h-0.5 before:content-[ ] before:bg-h before:left-0 hover:before:w-full before:block before:-bottom-[0.2rem] before:opacity-20"
             >
               <img
                 alt={item?.title}
@@ -74,7 +74,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
         </div>
         <ul
           className={
-            { footer: 'flex -order-1', standart: 'flex', tablet: 'flex ' }[
+            { footer: 'flex -order-1 ', standart: 'flex', tablet: 'flex ' }[
               variant
             ]
           }
