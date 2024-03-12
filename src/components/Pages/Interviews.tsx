@@ -37,7 +37,7 @@ export const Interviews: FC<Props> = ({ data, filterData }) => {
         >
           <InterviewsLine />
         </FilterVideo>
-        <p className="ml-[54px] mt-4">
+        <p className="ml-[54px] mt-4 text-h text-[16px] font-medium">
           <MainLink item={{ title: 'Больше интервью', slug: '#' }} />
         </p>
       </div>

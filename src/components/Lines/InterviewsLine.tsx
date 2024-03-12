@@ -20,9 +20,9 @@ export const InterviewsLine: FC<Props> = ({ data }) => {
             <ul className="">
               {interview.persons.map(persone => (
                 <li key={persone.id} className="pb-14 desktopOnly:pb-12 -mt-4">
-                  <div className="">
+                  <div className="w-max">
                     <img
-                      className="rounded-full object-cover object-center mb-4 desktopOnly:mb-3 desktopOnly:w-[60px] w-[75px]"
+                      className="rounded-full object-cover object-center mb-4 desktopOnly:mb-3 desktopOnly:w-[60px] w-[75px] border-grey-300 border-4"
                       src={persone.avatar}
                       alt={persone.title}
                     />

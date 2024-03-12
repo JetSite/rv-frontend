@@ -67,8 +67,8 @@ export const Archive: FC<ArchiveProps> = ({
   const handleSelectDate = (e: MouseEvent<HTMLButtonElement>) => {
     setSelectDate(e.currentTarget.name)
     setScroll(
-      coordinatesArray.find(el => el.value.includes(e.currentTarget.name))
-        ?.coordinate,
+      (coordinatesArray.find(el => el.value.includes(e.currentTarget.name))
+        ?.coordinate as number) - 100,
     )
   }
 

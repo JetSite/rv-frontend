@@ -57,7 +57,7 @@ export const MobileMav: FC<Props> = ({ data, socials }) => {
                         ) : (
                           <span
                             className={classNames(
-                              'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 text-inherit',
+                              'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit',
                               showSubMenu === item.id
                                 ? 'before:w-full'
                                 : 'hover:before:w-full',
@@ -94,7 +94,7 @@ export const MobileMav: FC<Props> = ({ data, socials }) => {
                         ) : (
                           <span
                             className={classNames(
-                              'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 text-inherit',
+                              'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit',
                               showSubMenu === item.id
                                 ? 'before:w-full'
                                 : 'hover:before:w-full',

@@ -26,7 +26,7 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
           {item.isActive ? (
             <Link
               href={item.slug || '#'}
-              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2  ${
+              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  ${
                 show || showLine ? 'before:w-full' : 'hover:before:w-full'
               }
       `}
@@ -34,14 +34,12 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
               {item.title}
             </Link>
           ) : (
-            <p
-              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-2 ${
-                show || showLine ? 'before:w-full' : 'hover:before:w-full'
-              }
+            <span
+              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20
         `}
             >
               {item.title}
-            </p>
+            </span>
           )}
         </>
       }
