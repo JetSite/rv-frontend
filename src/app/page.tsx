@@ -16,7 +16,7 @@ export default async function Home() {
       const eventRes = await fetch(
         `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
         {
-          cache: 'default',
+          cache: 'no-cache',
         },
       )
       const eventData = await eventRes.json()
@@ -24,7 +24,7 @@ export default async function Home() {
       const newsRes = await fetch(
         `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
         {
-          cache: 'default',
+          cache: 'no-cache',
         },
       )
       const newsData = await newsRes.json()
@@ -32,7 +32,7 @@ export default async function Home() {
       const activitiesRes = await fetch(
         `${API.baseUrl}/activities?populate=*`,
         {
-          cache: 'default',
+          cache: 'no-cache',
         },
       )
       const activitiesData = await activitiesRes.json()
@@ -40,7 +40,7 @@ export default async function Home() {
       const prioritiesRes = await fetch(
         `${API.baseUrl}/priorities?populate=*`,
         {
-          cache: 'default',
+          cache: 'no-cache',
         },
       )
       const prioritiesData = await prioritiesRes.json()

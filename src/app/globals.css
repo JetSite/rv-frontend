@@ -87,3 +87,9 @@
   font-size: 14px;
   font-weight: 500;
 }
+
+.content iframe,
+.content video,
+.content audio {
+  margin: 16px auto;
+}
