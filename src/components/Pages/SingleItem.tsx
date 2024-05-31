@@ -1,3 +1,4 @@
+'use client'
 import classNames from '@/utils/classNames'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { EventCard } from '../Cards/EventCard'
@@ -46,10 +47,7 @@ export const SingleItem: FC<Props> = ({
             </div>
           )}
           {data.text ? (
-            <Content
-              sx="content text-text mb-5  prose desktop:prose-xl"
-              content={data.text}
-            />
+            <Content sx="content mb-5 prose " content={data.text} />
           ) : null}
           {data.source ? (
             <p className="text-grey-400">

@@ -22,7 +22,7 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
     const resData = await fetch(
       `${API.baseUrl}/events?filters[slug][$eq]=${params.slug}&populate=*`,
       {
-        cache: 'default',
+        cache: 'no-cache',
       },
     )
     const data = await resData.json()
