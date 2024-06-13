@@ -1,5 +1,9 @@
 export type IDefineHtml = (string: string) => boolean
 
+const markdownPattern = /(^|\s)([*_~`]|#{1,6}\s|\d+\.\s|\[.*\]:)/
+
+const htmlPattern = /<[^>]+>/
+
 const findWords: string[] = [
   '</p>',
   '</h1>',
@@ -12,13 +16,7 @@ const findWords: string[] = [
 ]
 
 const defineHtml: IDefineHtml = string => {
-  let value = true
-  findWords.forEach(findWord => {
-    if (string.includes(findWord)) {
-      return (value = true)
-    }
-  })
-  return value
+  return !markdownPattern.test(string)
 }
 
 export default defineHtml
