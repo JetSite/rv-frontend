@@ -16,7 +16,7 @@ const findWords: string[] = [
 ]
 
 const defineHtml: IDefineHtml = string => {
-  return !markdownPattern.test(string)
+  return !markdownPattern.test(string) && htmlPattern.test(string)
 }
 
 export default defineHtml

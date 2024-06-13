@@ -34,7 +34,7 @@ export const EventCard: FC<EventCardProps> = ({
         {item.title}
       </h3>
       <p className="text-mobile notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[10px]">
-        {item.text}
+        {item.description || item.text}
       </p>
     </Link>
   )

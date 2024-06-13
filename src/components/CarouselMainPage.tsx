@@ -20,6 +20,8 @@ export interface CarouselProps {
 export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
   const [swiper, setSwiper] = useState<SwiperCore | null>(null)
 
+  console.log(arr)
+
   return (
     <Swiper
       onSwiper={e => {

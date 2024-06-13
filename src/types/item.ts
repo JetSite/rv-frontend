@@ -3,6 +3,7 @@ import { ILink } from '.'
 export interface IItem extends ILink {
   text: string | null
   id: string | number
+  description?: string
 }
 
 export interface EventItem extends IItem {
