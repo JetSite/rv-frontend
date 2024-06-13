@@ -32,6 +32,8 @@ export const getDataArray: IGetDataArray = ({ data }) => {
       item.attributes.fullDescription ||
       item.attributes.description ||
       item.attributes.shortDescription,
+    description:
+      item.attributes.description || item.attributes.shortDescription,
     important: item.attributes.important,
     time: item.attributes.time || null,
     coverCaption: item.attributes.coverCaption,

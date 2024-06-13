@@ -25,7 +25,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
           {item.title}
         </h3>
         <p className="mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden max-h-4 text-ellipsis desktopOnly:text-[11px]">
-          {item.text}
+          {item.description || item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first desktopOnly:text-[10px]">
           {!!item.date && getNormalizeDate(item.date, locale)}

@@ -45,7 +45,7 @@ export const NewsCard: FC<NewsCardProps> = ({
               : 'max-h-[88px]',
           )}
         >
-          {item.text}
+          {item.description || item.text}
         </p>
       )}
       <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first desktopOnly:text-[10px]">

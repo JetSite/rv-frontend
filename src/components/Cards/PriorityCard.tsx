@@ -1,10 +1,10 @@
 import { IStandartItem } from '@/types/item'
-import { IPageNemu } from '@/utils/getMediaActivityData'
+import { IPageMenu } from '@/utils/getMediaActivityData'
 import Link from 'next/link'
 import React, { FC } from 'react'
 
 interface PriorityCardProps {
-  item: IStandartItem | IPageNemu
+  item: IStandartItem | IPageMenu
   locale: string
   slug: string
 }

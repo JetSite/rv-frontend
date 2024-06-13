@@ -2,7 +2,7 @@ import { API } from '@/api'
 import { IData } from '@/types'
 import { INavItem } from '@/types/layout'
 
-export interface IPageNemu extends INavItem {
+export interface IPageMenu extends INavItem {
   text: string
   img: string
 }
@@ -11,7 +11,7 @@ export interface IMediaActivityData {
   id: number
   title: string
   subTitle: string
-  pageMenu: IPageNemu[]
+  pageMenu: IPageMenu[]
 }
 
 type IGetMediaActivityData = (data: IData) => IMediaActivityData

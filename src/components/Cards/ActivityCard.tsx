@@ -32,7 +32,7 @@ export const ActivityCard: FC<ActivityCardProps> = ({ item, slug }) => {
         </span>
       </div>
       <p className=" text-mobile leading-normal max-h-[142px] notDesktop:text-[12px] mobile:max-h-none overflow-hidden desktopOnly:text-[10px]">
-        {item.text}
+        {item.description || item.text}
       </p>
     </Link>
   )
