@@ -43,9 +43,6 @@ export const AudioAndVideos: FC<Props> = ({ data, filterData }) => {
         >
           <VideosLine />
         </FilterVideo>
-        <p className="ml-[54px] mt-4 text-h">
-          <MainLink item={{ title: 'Больше интервью', slug: '#' }} />
-        </p>
       </div>
     </Wrapper>
   )

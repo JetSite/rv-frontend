@@ -16,10 +16,14 @@ interface Props {
 
 export const Activity: FC<Props> = ({ data, locale }) => {
   const [showGroup, setShowGroup] = useState<number[]>(
-    data.groupedCategory ? [data.groupedCategory[0]?.groupId] : [],
+    data.groupedCategory?.length ? [data.groupedCategory[0]?.groupId] : [],
   )
   const [showCategory, setShowCategory] = useState<number[]>(
-    data.groupedCategory ? [data.groupedCategory[0]?.categories[0].id] : [],
+    data.groupedCategory?.length
+      ? [data.groupedCategory[0]?.categories[0].id]
+      : data.categories.length
+      ? [data.categories[0].id]
+      : [],
   )
 
   const selectGroup = (id: number) => {

@@ -40,6 +40,7 @@ export const FilterVideo: FC<Props> = ({
 }) => {
   const initialFilter = { title: null, source: null, year: null }
   const [filters, setFilters] = useState<IFilters>(initialFilter)
+  const [loading, setLoading] = useState<boolean>(false)
   const [newData, setNewData] = useState<
     IAudioAndVideosData[] | IInterviewsData[]
   >(data.data)
@@ -51,7 +52,6 @@ export const FilterVideo: FC<Props> = ({
   const [selectRadioItem, setSelectRadioItem] = useState<ITheme>(
     partners.find(e => e.value === 1) || partners[0],
   )
-
 
   const fetchNewData = async (
     filters: IFilters,
@@ -88,6 +88,7 @@ export const FilterVideo: FC<Props> = ({
     const dataRes = await res.json()
 
     setNewData(formartDataCallback(dataRes.data).data)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -95,6 +96,7 @@ export const FilterVideo: FC<Props> = ({
   }, [selectRadioItem])
 
   const handleSubmit = async () => {
+    setLoading(true)
     fetchNewData(filters, data.source, selectRadioItem)
   }
 
@@ -139,10 +141,18 @@ export const FilterVideo: FC<Props> = ({
             <button
               onClick={handleSubmit}
               type="submit"
-              disabled={!true}
-              className="w-full h-full max-w-[475px] desktopOnly:max-w-[380px] text-[14px] desktopOnly:text-[12px] leading-none text-white bg-first py-2 disabled:bg-opacity-60"
+              disabled={
+                loading ||
+                !Object.keys(filters).find(
+                  key => filters[key as keyof IFilters],
+                )
+              }
+              // disabled={Object.keys(filters).some(
+              //   key => !filters[key as keyof IFilters],
+              // )}
+              className="w-full h-full max-w-[475px] desktopOnly:max-w-[380px] text-[14px] desktopOnly:text-[12px] leading-none text-white bg-first py-2 disabled:bg-opacity-60 hover:bg-opacity-80"
             >
-              ПОИСК
+              {loading ? 'ЗАГРУЗКА...' : 'ПОИСК'}
             </button>
           </div>
         </div>

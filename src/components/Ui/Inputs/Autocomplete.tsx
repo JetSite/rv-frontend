@@ -45,7 +45,7 @@ const Autocomplete: FC<IAutocomtleteProps> = ({
               setFilters(prev => ({ ...prev, [name as string]: null }))
               setValue('')
             }}
-            className={classNames('absolute right-2 top-5 z-30')}
+            className={classNames('absolute right-1.5 top-3 z-30')}
           >
             <XIcon className="block w-4 h-4" />
           </button>

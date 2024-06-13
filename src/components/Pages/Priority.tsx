@@ -49,22 +49,19 @@ export const Priority: FC<Props> = ({ data }) => {
                 )
               }}
             >
-              {data.gallery?.map(image => (
+              {/* {data.gallery?.map(image => (
                 <SwiperSlide key={image.key}>
                   <img
                     className="w-full object-cover object-center"
                     src={image.src}
                   />
                 </SwiperSlide>
-              ))}
+              ))} */}
             </Carousel>
           </div>
           {!!data.content ? (
             <div className="desktopLarge:w-[45%]">
-              <Content
-                content={data.content}
-                sx="content prose desktop:prose-xl"
-              />
+              <Content content={data.content} sx="content" />
             </div>
           ) : null}
         </Wrapper>

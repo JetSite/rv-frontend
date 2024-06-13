@@ -34,6 +34,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
         {data?.map(item => (
           <li key={item?.id}>
             <Link
+              target="_blank"
               href={item?.slug}
               className="relative block before:absolute before:h-0.5 before:content-[ ] before:bg-h before:left-0 hover:before:w-full before:block before:-bottom-[0.2rem] before:opacity-20"
             >
