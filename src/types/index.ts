@@ -5,6 +5,18 @@ export interface IData {
   id: number
 }
 
+export interface IPagination {
+  page: number
+  pageCount: number
+  pageSize: number
+  total: number
+}
+
+export interface IMeta {
+  pagination: IPagination
+  [K: string]: unknown
+}
+
 export interface ILink {
   slug: string
   title: string

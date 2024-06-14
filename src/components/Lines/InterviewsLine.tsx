@@ -1,16 +1,34 @@
 'use client'
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 import Link from 'next/link'
 import VideoIcon from '../Ui/Icons/VideoIcon'
 import { IInterviewsData } from '@/utils/getInterviewsData'
 import { AvatarInLine } from '../Ui/AvatarInLine'
 import { MainLink } from '../Ui/MainLink'
+import { MoreDataLink } from '../Ui/MoreDataLink'
+import { IData, IPagination } from '@/types'
+import { API } from '@/api'
 
 interface Props {
   data?: IInterviewsData[]
+  setNewData?: Dispatch<SetStateAction<IInterviewsData[]>>
+  setPaginationState?: Dispatch<SetStateAction<IPagination>>
+  paginationState?: IPagination
+  formartDataCallback?: (data: IData[]) => {
+    data: IInterviewsData[]
+    source: string
+  }
+  fetchLink?: string
 }
 
-export const InterviewsLine: FC<Props> = ({ data }) => {
+export const InterviewsLine: FC<Props> = ({
+  data,
+  setNewData,
+  setPaginationState,
+  paginationState,
+  formartDataCallback,
+  fetchLink,
+}) => {
   return data?.length ? (
     <>
       <ul className="flex flex-col">
@@ -22,7 +40,7 @@ export const InterviewsLine: FC<Props> = ({ data }) => {
             >
               <ul className="">
                 {interview.persons.map(persone => (
-                  <AvatarInLine persone={persone} />
+                  <AvatarInLine persone={persone} key={persone.id} />
                 ))}
               </ul>
               <div className="bg-first bg-opacity-20 w-px relative mobile:hidden">
@@ -48,9 +66,14 @@ export const InterviewsLine: FC<Props> = ({ data }) => {
           )
         })}
       </ul>
-      <p className="ml-[54px] mt-4 text-h text-[16px] font-medium">
-        <MainLink disabled item={{ title: 'Больше интервью', slug: '#' }} />
-      </p>
+      <MoreDataLink
+        link={fetchLink}
+        formartDataCallback={formartDataCallback}
+        setNewData={setNewData}
+        setPaginationState={setPaginationState}
+        paginationState={paginationState}
+        title={'Больше интервью'}
+      />
     </>
   ) : (
     <div className="w-full flex-col my-10 flex items-center">

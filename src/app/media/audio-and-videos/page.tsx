@@ -6,7 +6,7 @@ import { getAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 const AudioAndVideosPage = async () => {
   const getMediaItems = async () => {
     const res = await fetch(
-      `${API.baseUrl}/audio-and-videos?sort[0]=date:desc&populate[persons][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=4&pagination[page]=2`,
+      `${API.baseUrl}/audio-and-videos?sort[0]=date:desc&populate[persons][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2`,
       { cache: 'no-cache' },
     )
     const data: IResponseData = await res.json()
@@ -19,6 +19,7 @@ const AudioAndVideosPage = async () => {
     <AudioAndVideos
       filterData={await getFilterData(data.meta.pagination, 'audio-and-videos')}
       data={getAudioAndVideosData(data.data)}
+      meta={data.meta}
     />
   )
 }

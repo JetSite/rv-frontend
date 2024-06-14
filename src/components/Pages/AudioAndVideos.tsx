@@ -9,14 +9,15 @@ import {
   IAudioAndVideosData,
   getAudioAndVideosData,
 } from '@/utils/getAudioAndVideosData'
+import { IMeta } from '@/types'
 
 interface Props {
   data: { data: IAudioAndVideosData[]; source: string }
-
+  meta: IMeta
   filterData: IFilterData
 }
 
-export const AudioAndVideos: FC<Props> = ({ data, filterData }) => {
+export const AudioAndVideos: FC<Props> = ({ data, filterData, meta }) => {
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
@@ -40,6 +41,7 @@ export const AudioAndVideos: FC<Props> = ({ data, filterData }) => {
           data={data}
           filterData={filterData}
           formartDataCallback={getAudioAndVideosData}
+          pagination={meta.pagination}
         >
           <VideosLine />
         </FilterVideo>

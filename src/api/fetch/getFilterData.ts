@@ -1,4 +1,4 @@
-import { IID } from '@/types'
+import { IData, IID, IMeta, IPagination } from '@/types'
 import { API } from '..'
 
 type IGetFilterData = (
@@ -12,16 +12,9 @@ export interface IFilterData {
   sources: string[]
 }
 
-export interface IPagination {
-  page: number
-  pageCount: number
-  pageSize: number
-  total: number
-}
-
 export interface IResponseData {
-  data: any[]
-  meta: { pagination: IPagination }
+  data: IData[]
+  meta: IMeta
 }
 
 export const getFilterData: IGetFilterData = async ({ total }, src) => {
