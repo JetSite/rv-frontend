@@ -21,6 +21,8 @@ export const SingleItem: FC<Props> = ({
   events,
   locale = 'ru',
 }) => {
+  console.log(data)
+
   return (
     <div>
       <Wrapper
@@ -47,7 +49,7 @@ export const SingleItem: FC<Props> = ({
             </div>
           )}
           {data.text ? (
-            <Content sx="content mb-5 prose " content={data.text} />
+            <Content sx="content mb-5  " content={data.text} />
           ) : null}
           {data.source ? (
             <p className="text-grey-400">

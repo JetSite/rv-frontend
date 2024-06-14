@@ -87,7 +87,7 @@ export const Archive: FC<ArchiveProps> = ({
       <h1 className="text-first text-[48px] desktopOnly:text-[32px] mb-7 font-bold">
         {title}
       </h1>
-      <p className="text-gray-700 mb-14 text-[14px] desktopOnly:text-base w-3/4">
+      <p className="text-gray-700 mb-10 text-[14px] desktopOnly:text-base w-3/4">
         {subTitle}
       </p>
       <div className="flex">

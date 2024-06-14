@@ -1,7 +1,9 @@
 import { FC } from 'react'
-import { Wrapper } from '../Ui/Wrappers/Wrapper'
+import { Wrapper } from '../../Ui/Wrappers/Wrapper'
 import { IMagazinesData } from '@/utils/getMagazinesData'
 import Link from 'next/link'
+import downloadPDF from '@/utils/downloadPDF'
+import { DownloadBlock } from './blocks/DownloadBlock'
 
 interface Props {
   data: IMagazinesData[]
@@ -50,23 +52,7 @@ export const Magazines: FC<Props> = ({ data }) => {
                     <p className="text-h text-[14px] desktopOnly:text-[12px] font-medium mb-4 whitespace-nowrap truncate overflow-hidden">
                       {magazine.title}
                     </p>
-                    {magazine.ruLink || magazine.enLink ? (
-                      <p className="text-[14px] desktopOnly:text-[12px] ml-auto w-fit">
-                        <span>Скачать </span>
-                        {magazine.ruLink ? (
-                          <Link target="_blank" href={magazine.ruLink}>
-                            RU версия{' '}
-                          </Link>
-                        ) : null}
-                        {magazine.ruLink && magazine.enLink ? '/' : ''}
-                        {magazine.enLink ? (
-                          <Link target="_blank" href={magazine.enLink}>
-                            {' '}
-                            EN version
-                          </Link>
-                        ) : null}
-                      </p>
-                    ) : null}
+                    <DownloadBlock magazine={magazine} />
                   </li>
                 ))}
               </ul>
