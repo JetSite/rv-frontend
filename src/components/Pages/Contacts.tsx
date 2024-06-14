@@ -27,7 +27,7 @@ export const Contacts: FC<Props> = ({ data, locale }) => {
             <li key={contact.id}>
               <Link
                 href={contact.link}
-                className="flex gap-4 desktopOnly:gap-3 items-center relative w-fit before:absolute before:h-0.5 before:content-[ ] before:bg-h before:opacity-20 before:left-0 before:-bottom-2 hover:before:w-full before:block"
+                className="flex gap-4 desktopOnly:gap-3 items-center relative w-fit hover:opacity-100 opacity-90"
               >
                 <img className="desktopOnly:w-8" src={contact.img} />
                 <span className="text-[24px] desktopOnly:text-[18px] font-medium text-first">
@@ -42,7 +42,7 @@ export const Contacts: FC<Props> = ({ data, locale }) => {
             <li key={contact.id}>
               <Link
                 href={contact.link}
-                className="flex gap-4 desktopOnly:gap-3 items-center relative w-fit before:absolute before:h-0.5 before:content-[ ] before:bg-h before:opacity-20 before:left-0 before:-bottom-2 hover:before:w-full before:block"
+                className="flex gap-4 desktopOnly:gap-3 items-center relative w-fit hover:opacity-100 opacity-90"
               >
                 <img className="desktopOnly:w-8" src={contact.img} />
                 <span className="text-[24px] desktopOnly:text-[18px] font-medium text-first">

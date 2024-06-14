@@ -11,11 +11,17 @@ import { API } from '@/api'
 import Loader from '../Ui/Loader'
 import XIcon from '../Ui/Icons/XIcon'
 import Link from 'next/link'
-
 const FormSchema = Yup.object().shape({
-  name: Yup.string().min(3).required('Required'),
-  tel: Yup.number().typeError('Only number').min(7).required('Required'),
-  msg: Yup.string().min(8).required('Required'),
+  name: Yup.string()
+    .min(3, 'Имя должно быть не менее 3 символов')
+    .required('Это поле обязательно'),
+  tel: Yup.number()
+    .typeError('Только цифры')
+    .min(1000000, 'Телефонный номер должен содержать не менее 7 цифр')
+    .required('Это поле обязательно'),
+  msg: Yup.string()
+    .min(8, 'Сообщение должно быть не менее 8 символов')
+    .required('Это поле обязательно'),
 })
 
 export const ContactForm = ({

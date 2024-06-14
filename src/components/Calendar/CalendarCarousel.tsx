@@ -111,14 +111,20 @@ export const CalendarCarousel: FC<Props> = ({
           </SwiperSlide>
         )
       })}
-      <div ref={prevButtonRef} className=".prev absolute top-1/2 z-10 left-10">
-        <ArrowCircleIcon variant="inner" />
+      <div
+        ref={prevButtonRef}
+        className=".prev absolute top-1/2 z-10 left-10 cursor-pointer hover:shadow-lg rounded-full "
+      >
+        <ArrowCircleIcon variant="inner" className=" hover:fill-[#D9D9D9]/80" />
       </div>
       <div
         ref={nextButtonRef}
-        className=".next rotate-180 absolute top-1/2 z-10 right-10"
+        className=".next absolute top-1/2 z-10 right-10 cursor-pointer hover:shadow-lg rounded-full "
       >
-        <ArrowCircleIcon variant="inner" />
+        <ArrowCircleIcon
+          className="rotate-180 hover:fill-[#D9D9D9]/80"
+          variant="inner"
+        />
       </div>
     </Swiper>
   )

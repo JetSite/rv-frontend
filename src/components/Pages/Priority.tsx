@@ -15,6 +15,8 @@ export const Priority: FC<Props> = ({ data }) => {
   const [selectEvent, setSelectEvent] = useState<string>(
     data.gallery ? data.gallery[0].key : '',
   )
+  console.log(data)
+
   return (
     <>
       <Wrapper
@@ -25,7 +27,7 @@ export const Priority: FC<Props> = ({ data }) => {
           </h1>
         }
       >
-        <p className="text-[14px] text-gray-500 pb-6 desktop:max-w-2/3">
+        <p className="text-[14px] text-gray-500 pb-6 desktop:w-2/3">
           {data.text}
         </p>
       </Wrapper>
@@ -46,14 +48,14 @@ export const Priority: FC<Props> = ({ data }) => {
                 )
               }}
             >
-              {/* {data.gallery?.map(image => (
+              {data.gallery?.map(image => (
                 <SwiperSlide key={image.key}>
                   <img
                     className="w-full object-cover object-center"
                     src={image.src}
                   />
                 </SwiperSlide>
-              ))} */}
+              ))}
             </Carousel>
           </div>
           {!!data.content ? (

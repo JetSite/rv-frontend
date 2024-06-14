@@ -128,7 +128,7 @@ export const Archive: FC<ArchiveProps> = ({
             </ul>
           </Scrollbar>
         </div>
-        <div className="!w-[40%] h-full overflow-scroll text-first font-bold">
+        <div className="!w-[40%] h-full overflow-hidden text-first font-bold">
           <ul>
             {data[page].map(item => (
               <li key={item.year}>
