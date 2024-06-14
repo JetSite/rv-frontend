@@ -1,7 +1,6 @@
 'use client'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
-import { MainLink } from '../Ui/MainLink'
 import { InterviewsLine } from '../Lines/InterviewsLine'
 import { IInterviewsData, getInterviewData } from '@/utils/getInterviewsData'
 import { FilterVideo } from '../Filters/FilterVideo'

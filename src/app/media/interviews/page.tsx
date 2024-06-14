@@ -6,7 +6,7 @@ import { getInterviewData } from '@/utils/getInterviewsData'
 const InterviewsPage = async () => {
   const fetchInterviews = async () => {
     const res = await fetch(
-      `${API.baseUrl}/interviews?sort[0]=date:desc&populate[person][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2&pagination[pageSize]=2`,
+      `${API.baseUrl}/interviews?sort[0]=date:desc&populate[person][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2`,
       { cache: 'no-cache' },
     )
     const data = await res.json()
