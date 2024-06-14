@@ -39,6 +39,7 @@ export interface IIcon {
   className?: string
   fill?: string
   variant?: 'inner' | 'main'
+  fillOpacity?: string
 }
 
 export type IChildren =

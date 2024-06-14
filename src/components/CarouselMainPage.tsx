@@ -19,6 +19,7 @@ export interface CarouselProps {
 
 export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
   const [swiper, setSwiper] = useState<SwiperCore | null>(null)
+
   return (
     <Swiper
       onSwiper={e => {
@@ -80,15 +81,15 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
       ))}
       <div
         onClick={() => swiper?.slidePrev()}
-        className="prev absolute top-1/2 z-10 left-[30px]"
+        className="prev absolute top-1/2 z-10 left-[30px]  hover:shadow-lg rounded-full cursor-pointer "
       >
-        <ArrowCircleIcon />
+        <ArrowCircleIcon className="hover:fill-white fill-white/70" />
       </div>
       <div
         onClick={() => swiper?.slideNext()}
-        className="next rotate-180 absolute top-1/2 z-10 right-[30px]"
+        className="next rotate-180 absolute top-1/2 z-10 right-[30px]  hover:shadow-lg rounded-full cursor-pointer"
       >
-        <ArrowCircleIcon />
+        <ArrowCircleIcon className="hover:fill-white fill-white/70" />
       </div>
     </Swiper>
   )

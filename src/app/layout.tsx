@@ -6,6 +6,7 @@ import { FC } from 'react'
 import { MainLayout } from '@/components/MainLayout'
 import { API } from '@/api'
 import { getLayoutData } from '@/utils/getLayoutData'
+import NextTopLoader from 'nextjs-toploader'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +33,7 @@ const RootLayout: FC<IComponentWithChildren> = async ({ children }) => {
   return (
     <html lang="en">
       <body className="font-main">
+        <NextTopLoader />
         <MainLayout data={getLayoutData(data)}>{children}</MainLayout>
       </body>
     </html>

@@ -5,6 +5,9 @@ import SwiperCore from 'swiper/core'
 import { Swiper } from 'swiper/react'
 import ArrowCircleIcon from './Icons/ArrowCircleIcon'
 import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 interface Props {
   children: IChildren
@@ -35,13 +38,13 @@ export const Carousel: FC<Props> = ({
       {children}
       <div
         onClick={() => swiper?.slidePrev()}
-        className="prev absolute top-1/2 z-10 left-10"
+        className="prev absolute top-1/2 z-10 left-10 cursor-pointer"
       >
         <ArrowCircleIcon />
       </div>
       <div
         onClick={() => swiper?.slideNext()}
-        className="next rotate-180 absolute top-1/2 z-10 right-10"
+        className="next rotate-180 absolute top-1/2 z-10 right-10 cursor-pointer"
       >
         <ArrowCircleIcon />
       </div>

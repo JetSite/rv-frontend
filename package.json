@@ -17,6 +17,7 @@
     "formik": "^2.4.2",
     "framer-motion": "^10.16.4",
     "next": "14.0.1",
+    "nextjs-toploader": "^1.6.12",
     "prettier": "^3",
     "prop-types": "^15.8.1",
     "react": "^18",
