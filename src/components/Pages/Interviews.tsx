@@ -1,20 +1,19 @@
 'use client'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
-import { MainLink } from '../Ui/MainLink'
 import { InterviewsLine } from '../Lines/InterviewsLine'
 import { IInterviewsData, getInterviewData } from '@/utils/getInterviewsData'
 import { FilterVideo } from '../Filters/FilterVideo'
 import { IFilterData } from '@/api/fetch/getFilterData'
+import { IMeta } from '@/types'
 
 interface Props {
   data: { data: IInterviewsData[]; source: string }
   filterData: IFilterData
+  meta: IMeta
 }
 
-export const Interviews: FC<Props> = ({ data, filterData }) => {
-  console.log(data)
-
+export const Interviews: FC<Props> = ({ data, filterData, meta }) => {
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
@@ -36,6 +35,7 @@ export const Interviews: FC<Props> = ({ data, filterData }) => {
           filterData={filterData}
           data={data}
           formartDataCallback={getInterviewData}
+          pagination={meta.pagination}
         >
           <InterviewsLine />
         </FilterVideo>

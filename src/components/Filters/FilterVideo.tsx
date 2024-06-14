@@ -5,6 +5,7 @@ import {
   ReactElement,
   cloneElement,
   useEffect,
+  useRef,
   useState,
 } from 'react'
 import { RadioButton } from '../Ui/Inputs/RadioButton'
@@ -14,7 +15,7 @@ import Autocomplete from '../Ui/Inputs/Autocomplete'
 import { IAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { API } from '@/api'
 import { IInterviewsData } from '@/utils/getInterviewsData'
-import { IData } from '@/types'
+import { IData, IPagination } from '@/types'
 
 interface Props {
   filterData: IFilterData
@@ -24,6 +25,7 @@ interface Props {
     data: IInterviewsData[] | IAudioAndVideosData[]
     source: string
   }
+  pagination: IPagination
 }
 
 export interface IFilters {
@@ -37,13 +39,23 @@ export const FilterVideo: FC<Props> = ({
   children,
   data,
   formartDataCallback,
+  pagination,
 }) => {
   const initialFilter = { title: null, source: null, year: null }
   const [filters, setFilters] = useState<IFilters>(initialFilter)
   const [loading, setLoading] = useState<boolean>(false)
+  const [disabled, setDisabled] = useState<boolean>(true)
+  const [paginationState, setPaginationState] =
+    useState<IPagination>(pagination)
+  const [fetchLink, setFetchLink] = useState<string>(
+    `${API.baseUrl}/${data.source}?sort[0]=date:desc&populate[${
+      data.source === 'interviews' ? 'person' : 'persons'
+    }][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2`,
+  )
   const [newData, setNewData] = useState<
     IAudioAndVideosData[] | IInterviewsData[]
   >(data.data)
+
   const partners: ITheme[] = [
     { title: 'Рубен Варданян', value: 3 },
     { title: 'Партнёры', value: 2 },
@@ -52,6 +64,8 @@ export const FilterVideo: FC<Props> = ({
   const [selectRadioItem, setSelectRadioItem] = useState<ITheme>(
     partners.find(e => e.value === 1) || partners[0],
   )
+
+  const isMounted = useRef(false)
 
   const fetchNewData = async (
     filters: IFilters,
@@ -79,25 +93,32 @@ export const FilterVideo: FC<Props> = ({
         source === 'interviews' ? 'person' : 'persons'
       }][id][$notIn]=1`
     }
-    const res = await fetch(
-      `${API.baseUrl}/${source}?sort[0]=date:desc&populate[${
-        source === 'interviews' ? 'person' : 'persons'
-      }][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link${filtersString}`,
-    )
+    const resultLink = `${API.baseUrl}/${source}?sort[0]=date:desc&populate[${
+      source === 'interviews' ? 'person' : 'persons'
+    }][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2${filtersString}`
+    const res = await fetch(resultLink)
+
+    setFetchLink(resultLink)
 
     const dataRes = await res.json()
 
     setNewData(formartDataCallback(dataRes.data).data)
+    setPaginationState(dataRes.meta.pagination)
     setLoading(false)
   }
 
   useEffect(() => {
-    fetchNewData(filters, data.source, selectRadioItem)
+    if (isMounted.current) {
+      fetchNewData(filters, data.source, selectRadioItem)
+    } else {
+      isMounted.current = true
+    }
   }, [selectRadioItem])
 
   const handleSubmit = async () => {
     setLoading(true)
     fetchNewData(filters, data.source, selectRadioItem)
+    setDisabled(true)
   }
 
   return (
@@ -106,9 +127,13 @@ export const FilterVideo: FC<Props> = ({
         <div className="text-first flex gap-6">
           <Autocomplete
             setFilters={setFilters}
-            handleSelect={value =>
+            handleSelect={value => {
+              setDisabled(false)
               setFilters(prev => ({ ...prev, title: value }))
-            }
+            }}
+            handleClear={() => {
+              setDisabled(false)
+            }}
             className="w-[240px] desktopOnly:w-[180px] bg-gray-100 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 py-4 desktopOnly:py-3 relative"
             placeholder="Проект"
             name="title"
@@ -119,9 +144,13 @@ export const FilterVideo: FC<Props> = ({
             className="w-[100px] desktopOnly:w-[70px] bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
             name="year"
             placeholder="Год"
-            handleSelect={value =>
+            handleSelect={value => {
+              setDisabled(false)
               setFilters(prev => ({ ...prev, year: value }))
-            }
+            }}
+            handleClear={() => {
+              setDisabled(false)
+            }}
             items={filterData.dates}
           />
 
@@ -131,9 +160,13 @@ export const FilterVideo: FC<Props> = ({
             name="source"
             placeholder="Источник"
             type="text"
-            handleSelect={value =>
+            handleSelect={value => {
               setFilters(prev => ({ ...prev, source: value }))
-            }
+              setDisabled(false)
+            }}
+            handleClear={() => {
+              setDisabled(false)
+            }}
             items={filterData.sources}
           />
 
@@ -141,15 +174,7 @@ export const FilterVideo: FC<Props> = ({
             <button
               onClick={handleSubmit}
               type="submit"
-              disabled={
-                loading ||
-                !Object.keys(filters).find(
-                  key => filters[key as keyof IFilters],
-                )
-              }
-              // disabled={Object.keys(filters).some(
-              //   key => !filters[key as keyof IFilters],
-              // )}
+              disabled={loading || disabled}
               className="w-full h-full max-w-[475px] desktopOnly:max-w-[380px] text-[14px] desktopOnly:text-[12px] leading-none text-white bg-first py-2 disabled:bg-opacity-60 hover:bg-opacity-80"
             >
               {loading ? 'ЗАГРУЗКА...' : 'ПОИСК'}
@@ -174,7 +199,16 @@ export const FilterVideo: FC<Props> = ({
           </ul>
         </div>
       </div>
-      {Children.map(children, child => cloneElement(child, { data: newData }))}
+      {Children.map(children, child =>
+        cloneElement(child, {
+          data: newData,
+          setNewData,
+          formartDataCallback,
+          fetchLink,
+          setPaginationState,
+          paginationState,
+        }),
+      )}
     </>
   )
 }

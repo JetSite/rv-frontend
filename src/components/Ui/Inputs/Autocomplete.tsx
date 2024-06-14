@@ -15,6 +15,7 @@ import { IFilters } from '@/components/Filters/FilterVideo'
 interface IAutocomtleteProps {
   items: string[]
   handleSelect: (value: string) => void
+  handleClear?: () => void
   placeholder?: string
   name?: string
   className?: string
@@ -25,6 +26,7 @@ interface IAutocomtleteProps {
 const Autocomplete: FC<IAutocomtleteProps> = ({
   items,
   handleSelect,
+  handleClear,
   name,
   placeholder,
   className,
@@ -44,6 +46,7 @@ const Autocomplete: FC<IAutocomtleteProps> = ({
               setSearchItems(items)
               setFilters(prev => ({ ...prev, [name as string]: null }))
               setValue('')
+              handleClear && handleClear()
             }}
             className={classNames('absolute right-1.5 top-3 z-30')}
           >

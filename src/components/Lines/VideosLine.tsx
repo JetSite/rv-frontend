@@ -1,13 +1,31 @@
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 import { IAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { VideoLineItem } from './VideoLineItem'
 import { MainLink } from '../Ui/MainLink'
+import { MoreDataLink } from '../Ui/MoreDataLink'
+import { API } from '@/api'
+import { IData, IPagination } from '@/types'
 
 interface Props {
   data?: IAudioAndVideosData[]
+  setNewData?: Dispatch<SetStateAction<IAudioAndVideosData[]>>
+  setPaginationState?: Dispatch<SetStateAction<IPagination>>
+  paginationState?: IPagination
+  formartDataCallback?: (data: IData[]) => {
+    data: IAudioAndVideosData[]
+    source: string
+  }
+  fetchLink?: string
 }
 
-export const VideosLine: FC<Props> = ({ data }) => {
+export const VideosLine: FC<Props> = ({
+  data,
+  paginationState,
+  formartDataCallback,
+  setPaginationState,
+  setNewData,
+  fetchLink,
+}) => {
   return data?.length ? (
     <>
       <ul className="flex flex-col">
@@ -27,9 +45,14 @@ export const VideosLine: FC<Props> = ({ data }) => {
           )
         })}
       </ul>
-      <p className="ml-[54px] mt-4 text-h">
-        <MainLink item={{ title: 'Больше интервью', slug: '#' }} />
-      </p>
+      <MoreDataLink
+        link={fetchLink || ''}
+        formartDataCallback={formartDataCallback}
+        setNewData={setNewData}
+        setPaginationState={setPaginationState}
+        paginationState={paginationState}
+        title={'Больше видео'}
+      />
     </>
   ) : (
     <div className="w-full flex-col my-10 flex items-center">
