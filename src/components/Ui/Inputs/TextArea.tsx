@@ -1,7 +1,14 @@
-import { FC } from 'react'
+import { ChangeEvent, FC } from 'react'
 import { InputProps } from './Input'
+import { FormikHandlers } from 'formik'
 
-const TextArea: FC<InputProps> = ({
+interface TextAreaProps extends Omit<InputProps, 'onChangeHandler'> {
+  onChangeHandler:
+    | FormikHandlers['handleChange']
+    | ((e: ChangeEvent<HTMLTextAreaElement>) => Promise<void>)
+}
+
+const TextArea: FC<TextAreaProps> = ({
   id,
   name,
   sx,
@@ -33,7 +40,7 @@ const TextArea: FC<InputProps> = ({
         value={values[name]}
       />
       <span className="block absolute -bottom-3 left-0 text-sm text-red-500">
-        {touched[name] && errors[name]}
+        {touched && touched[name] && errors && errors[name]}
       </span>
     </div>
   )

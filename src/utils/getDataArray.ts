@@ -27,7 +27,7 @@ export const getDataArray: IGetDataArray = ({ data }) => {
     slug: item.attributes.slug || '#',
     id: item.id,
     date: item.attributes.date,
-    img: API.imgUrl + item.attributes.cover.data.attributes.url,
+    img: API.imgUrl + item.attributes.cover?.data?.attributes?.url,
     text:
       item.attributes.fullDescription ||
       item.attributes.description ||

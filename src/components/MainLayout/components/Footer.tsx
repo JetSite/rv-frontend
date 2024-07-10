@@ -3,6 +3,7 @@ import { SoсialsWithLang } from './SoсialsWithLang'
 import { FooterNav } from './FooterNav'
 import Logo from '@/components/Ui/Logo'
 import { ILayoutData } from '@/utils/getLayoutData'
+import Input from '@/components/Ui/Inputs/Input'
 
 interface Props {
   data: ILayoutData

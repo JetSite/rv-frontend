@@ -17,7 +17,7 @@ export const WrapperMainPage: FC<WrapperMainPageProps> = ({
   return (
     <section
       className="flex gap-2.5 mx-auto relative mb-12 pr-12 notDesktop:flex-col notDesktop:p-0 desktopOnly:max-w-[1052px]
-    desktopLarge:max-w-[1580px] "
+    desktopLarge:max-w-[1580px] min-h-[100px]"
     >
       <div
         className={`desktopLarge:w-10 desktopOnly:w-7 relative ${titleStyles}`}

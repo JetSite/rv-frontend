@@ -21,6 +21,8 @@ export const SingleItem: FC<Props> = ({
   events,
   locale = 'ru',
 }) => {
+  console.log(data)
+
   return (
     <div>
       <Wrapper
