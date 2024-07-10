@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import { CalendarEvents } from '@/components/Calendar/CalendarEvents'
 import { NewsCard } from '@/components/Cards/NewsCard'
 import { NewsPriorityCard } from '@/components/Cards/NewsPriorityCard'
@@ -11,10 +11,12 @@ import { FC } from 'react'
 interface Props {
   data: IStandartItem[]
   eventsData: IStandartItem[]
+  detention?: boolean
 }
 
-export const News: FC<Props> = ({ data, eventsData }) => {
+export const News: FC<Props> = ({ data, eventsData, detention }) => {
   const arr = changeElementPosition(data, [0, 1, 6, 13])
+  const itemsCount = arr.length
   const locale = 'ru'
   return (
     <>
@@ -27,8 +29,21 @@ export const News: FC<Props> = ({ data, eventsData }) => {
           </h2>
         }
       >
-        <ul className="grid grid-cols-4 grid-rows-7 gap-5 mb-10 notDesktop:flex notDesktop:flex-wrap tablet:gap-0 tablet:justify-between ">
-          {arr.map((item, i) => {
+        <ul
+          className={classNames(
+            'grid grid-cols-4 grid-rows-7 gap-5 mb-10 notDesktop:flex notDesktop:flex-wrap tablet:gap-0 tablet:justify-between',
+            itemsCount < 3
+              ? 'grid-rows-2'
+              : itemsCount < 6
+              ? 'grid-rows-3'
+              : itemsCount < 10
+              ? 'grid-rows-5'
+              : 'grid-rows-7',
+          )}
+        >
+          {arr.concat(arr).map((item, i) => {
+            console.log(i)
+
             return (
               i < 20 && (
                 <li
@@ -36,7 +51,9 @@ export const News: FC<Props> = ({ data, eventsData }) => {
                   className={classNames(
                     ' p-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0 mb-5 ',
                     item.important
-                      ? 'desktop:row-span-2 desktop:col-span-2 tablet:w-full'
+                      ? `${
+                          detention ? '' : 'desktop:row-span-2'
+                        } tablet:w-full  desktop:col-span-2`
                       : 'tablet:w-[25%] tablet:min-w-[254px]',
                     i === 13
                       ? 'desktop:row-start-6 desktop:col-end-5 desktop:col-start-3'

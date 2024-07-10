@@ -1,5 +1,6 @@
 'use client'
 import { ILink } from '@/types'
+import classNames from '@/utils/classNames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { FC } from 'react'
@@ -22,19 +23,19 @@ export const MainLink: FC<MainLinkProps> = ({
 
   return disabled ? (
     <p
-      className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit ${
-        show ? 'before:w-full' : 'hover:before:w-full'
-      }
-    `}
+      className={classNames(
+        'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit opacity-[0.85]',
+        show ? 'before:w-full' : 'hover:before:w-full',
+      )}
     >
       <span className={sx}>{item.title}</span>
     </p>
   ) : (
     <Link
-      className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit ${
-        show ? 'before:w-full' : 'hover:before:w-full'
-      }
-      `}
+      className={classNames(
+        'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit opacity-[0.85]',
+        show ? 'before:w-full' : 'hover:before:w-full',
+      )}
       href={slug ? slug + '/' + item.slug : item.slug}
     >
       <span className={sx}>{item.title}</span>

@@ -1,5 +1,7 @@
 'use client'
 import { socialsMock } from '@/api/mock'
+import { SearchComponent } from '@/components/SearchComponent'
+import Input from '@/components/Ui/Inputs/Input'
 import { langConfig } from '@/config'
 import { ISocialsItem } from '@/types/layout'
 import Link from 'next/link'
@@ -22,6 +24,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
 
   return (
     <div className={className}>
+      {variant === 'footer' ? <SearchComponent /> : null}
       <ul
         className={
           {

@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   const slugsUnIncludeMedia: { slug: string }[] = []
 
   slugs.data.forEach((slug: { attributes: { slug: string } }) => {
-    if (slug.attributes.slug !== 'media') {
+    if (slug.attributes.slug !== 'media' || slug.attributes.slug !== 'media') {
       slugsUnIncludeMedia.push({
         slug: slug.attributes.slug,
       })
@@ -39,9 +39,7 @@ const ActivityPage: FC<Props> = async ({ params }) => {
 
   const data = await fetchActivityPageData()
 
-  return (
-    <Activity data={getActivityData(data.data[0])} locale="ru" />
-  )
+  return <Activity data={getActivityData(data.data[0])} locale="ru" />
 }
 
 export default ActivityPage

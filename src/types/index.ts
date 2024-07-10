@@ -1,4 +1,5 @@
-import { ReactElement } from 'react'
+import { NextPage } from 'next'
+import { FC, ReactElement } from 'react'
 
 export interface IData {
   attributes: { [K: string]: any }
@@ -28,6 +29,11 @@ export interface ILogo {
 }
 
 export type IID = string | number
+
+export interface INextPage {
+  params: { [K: string]: string | undefined }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
 export type ILocale = 'ru' | 'en' | 'am'
 

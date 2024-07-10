@@ -2,6 +2,7 @@
 import { DropdownOnHover } from '@/components/Ui/Dropdowns/DropdownOnHover'
 import { MainLink } from '@/components/Ui/MainLink'
 import { INavItem } from '@/types/layout'
+import classNames from '@/utils/classNames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC, useState } from 'react'
@@ -16,6 +17,9 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
   const pathname = usePathname()
   const showLine: boolean = pathname === item.slug
   const { slug } = item
+  const showParentCurrentRout = pathname.includes(item.slug)
+
+  show && console.log(pathname.includes(item.slug))
 
   return (
     <DropdownOnHover
@@ -26,17 +30,20 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
           {item.isActive ? (
             <Link
               href={item.slug || '#'}
-              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  ${
-                show || showLine ? 'before:w-full' : 'hover:before:w-full'
-              }
-      `}
+              className={classNames(
+                'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
+                show || showLine ? 'before:w-ful' : 'hover:before:w-full',
+                showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]',
+              )}
             >
               {item.title}
             </Link>
           ) : (
             <span
-              className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20
-        `}
+              className={classNames(
+                'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
+                showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]',
+              )}
             >
               {item.title}
             </span>

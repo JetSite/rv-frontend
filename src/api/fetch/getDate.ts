@@ -6,7 +6,7 @@ interface IArr {
   attributes: { date: string }
 }
 
-export const getDate = async () => {
+export const getDate = async (detention?: boolean) => {
   try {
     let allDate: { newsDate: string[]; eventsDate: string[] } = {
       newsDate: [],
@@ -19,7 +19,9 @@ export const getDate = async () => {
 
     while (currentNewsPage <= totalNewsPages) {
       const resNews = await fetch(
-        `${API.baseUrl}/news/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`,
+        detention
+          ? `${API.baseUrl}/news/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`
+          : `${API.baseUrl}/news/?filters[categories][id]=5&pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`,
         { cache: 'no-cache' },
       )
       if (!resNews.ok) {
