@@ -38,11 +38,11 @@ export const SingleItem: FC<Props> = ({
           </>
         }
       >
-        <div className="notDesktop:flex flex-col gap-9 min-h-[552px]">
+        <div className="notDesktop:flex flex-col gap-9 min-h-[552px] ">
           {!!data.img && (
-            <div className="desktop:float-left flex flex-col  desktop:mr-9  desktop:mb-4">
+            <div className="desktop:float-left flex flex-col  desktop:mr-9  desktop:mb-4  desktopOnly:w-2/3">
               <img
-                className="h-[552px] desktopOnly:h-[460px] object-cover "
+                className="desktopOnly:h-full object-cover "
                 src={data.img}
               />
               <p className="self-end mt-2 text-grey-350">{data.coverCaption}</p>

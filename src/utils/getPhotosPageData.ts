@@ -31,14 +31,17 @@ export const getPhotosPageData: IGetPhotosPageData = data => {
       title: item.attributes.title || null,
       text: item.attributes.content || null,
       opder: item.attributes.order || null,
-      photos: item.attributes.photos.data.map((photo: IData) => ({
-        // id: photo.id,
-        // slug: photo.attributes.slug || '#',
-        src: API.imgUrl + photo.attributes.photo.data.attributes.url,
-        key: photo.attributes.photo.data.id.toString(),
-        width: photo.attributes.photo.data.attributes.width,
-        height: photo.attributes.photo.data.attributes.height,
-      })),
+      photos: item.attributes.photos.data.map((photo: IData) => {
+        return {
+          id: photo.id,
+          alt: photo.attributes.caption,
+          title: photo.attributes.alternativeText || null,
+          src: API.imgUrl + photo.attributes.url,
+          key: photo.id.toString(),
+          width: photo.attributes.width,
+          height: photo.attributes.height,
+        }
+      }),
     })),
   }
 }

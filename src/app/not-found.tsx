@@ -9,7 +9,7 @@ const NotFound: FC<Props> = async ({}) => {
     <Wrapper
       title={
         <h3 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-bold notDesktop:text-[24px] mobile:mt-5">
-          Что то погщло не так...
+          Что то пошло не так...
         </h3>
       }
     >

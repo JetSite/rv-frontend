@@ -26,9 +26,8 @@ const Detention: FC<Props> = async ({}) => {
   const normalizeData = getDataArray(data)
   const normalizeDataEvents = getDataArray(dataEvents)
 
-  const title = 'Архив новостей'
-  const subTitle =
-    'На странице “Архив новостей” нашего сайта мы собираем все актуальные и интересные события, которые произошли в последнее время. Вы можете ознакомиться с последними репортажами о главных новостях мира, политики, экономики и культуры. Наша команда постоянно работает над обновлением базы данных, чтобы предоставлять вам наиболее полную и свежую информацию.'
+  const title = 'Арест'
+  const subTitle = ''
 
   const dateArr = await getDate()
   if (!dateArr) {

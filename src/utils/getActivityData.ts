@@ -1,6 +1,6 @@
 import { IData } from '@/types'
 
-interface IActivityElement {
+export interface IActivityElement {
   id: number
   untilNow: boolean
   endDate: string | null
