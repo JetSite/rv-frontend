@@ -79,6 +79,9 @@
   font-size: 14px !important;
   line-height: 1.4;
 }
+.gallery .react-photo-album {
+  width: 100%;
+}
 
 .content p {
   margin-bottom: 40px;

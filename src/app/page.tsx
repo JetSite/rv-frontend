@@ -81,8 +81,6 @@ export default async function Home() {
   } = await getHomePageData()
   const locale = 'ru'
 
-  console.log(newsData)
-
   return (
     <>
       <CarouselMainPage arr={mainSliderData}></CarouselMainPage>

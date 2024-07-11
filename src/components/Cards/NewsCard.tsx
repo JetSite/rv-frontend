@@ -41,7 +41,7 @@ export const NewsCard: FC<NewsCardProps> = ({
           className={classNames(
             'mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[10px]',
             !mainPage
-              ? 'max-h-[80px]  desktopOnly:max-h-[76px]'
+              ? 'max-h-[88px]  desktopOnly:max-h-[76px]'
               : 'max-h-[88px]',
           )}
         >

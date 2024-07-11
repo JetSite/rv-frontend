@@ -41,9 +41,7 @@ export const News: FC<Props> = ({ data, eventsData, detention }) => {
               : 'grid-rows-7',
           )}
         >
-          {arr.concat(arr).map((item, i) => {
-            console.log(i)
-
+          {arr.map((item, i) => {
             return (
               i < 20 && (
                 <li

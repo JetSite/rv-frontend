@@ -111,7 +111,7 @@ export const Archive: FC<ArchiveProps> = ({
                 >
                   {page === 'eventsDate' ? (
                     <EventCard
-                      sx="p-1.5 px-4 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden"
+                      sx="p-1.5 px-4 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden  mb-4"
                       locale={locale}
                       link={link + event.slug}
                       item={event}

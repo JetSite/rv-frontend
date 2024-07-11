@@ -16,6 +16,8 @@ export interface IGalleryItem {
   src: string
   width: number
   height: number
+  title?: string
+  alt?: string
 }
 
 export interface IStandartItem extends IItem {
