@@ -30,7 +30,7 @@ export const MainNavDropdown: FC<Props> = ({ data, item, colorShema }) => {
   return (
     <DropdownOnHover
       setShow={setShow}
-      show={true}
+      show={show}
       button={
         <>
           {item.isActive && colorShema ? (
