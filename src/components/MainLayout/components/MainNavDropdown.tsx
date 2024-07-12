@@ -7,42 +7,65 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC, useState } from 'react'
 
+export interface IColorShema {
+  hover: string
+  default: string
+  active: string
+}
+
 interface Props {
   data: INavItem[]
   item: INavItem
+  colorShema: IColorShema | null
 }
 
-export const MainNavDropdown: FC<Props> = ({ data, item }) => {
+export const MainNavDropdown: FC<Props> = ({ data, item, colorShema }) => {
   const [show, setShow] = useState<boolean>(false)
+  const [hover, setHover] = useState(false)
   const pathname = usePathname()
   const showLine: boolean = pathname === item.slug
   const { slug } = item
   const showParentCurrentRout = pathname.includes(item.slug)
 
-  show && console.log(pathname.includes(item.slug))
-
   return (
     <DropdownOnHover
       setShow={setShow}
-      show={show}
+      show={true}
       button={
         <>
-          {item.isActive ? (
+          {item.isActive && colorShema ? (
             <Link
               href={item.slug || '#'}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              style={{
+                color: hover
+                  ? colorShema?.hover
+                  : colorShema?.active || colorShema?.default,
+              }}
               className={classNames(
-                'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
-                show || showLine ? 'before:w-ful' : 'hover:before:w-full',
-                showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]',
+                'whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
+                !colorShema?.hover &&
+                  (show || showLine ? 'before:w-ful' : 'hover:before:w-full'),
+                !colorShema?.hover &&
+                  (showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]'),
               )}
             >
               {item.title}
             </Link>
           ) : (
             <span
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              style={{
+                color: hover
+                  ? colorShema?.hover
+                  : colorShema?.active || colorShema?.default,
+              }}
               className={classNames(
-                'whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
-                showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]',
+                'whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
+                !colorShema?.hover &&
+                  (showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]'),
               )}
             >
               {item.title}
@@ -55,7 +78,7 @@ export const MainNavDropdown: FC<Props> = ({ data, item }) => {
         {data.map(item => {
           return (
             <li key={slug + '/' + item.id} className="p-2 text-start">
-              <MainLink item={item} />
+              <MainLink colorShema={colorShema} item={item} />
             </li>
           )
         })}

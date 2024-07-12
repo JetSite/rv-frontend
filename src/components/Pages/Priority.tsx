@@ -15,7 +15,6 @@ export const Priority: FC<Props> = ({ data }) => {
   const [selectEvent, setSelectEvent] = useState<string>(
     data.gallery ? data.gallery[0].key : '',
   )
-  console.log(data)
 
   return (
     <>

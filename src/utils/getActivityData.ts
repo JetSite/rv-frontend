@@ -4,7 +4,7 @@ export interface IActivityElement {
   id: number
   untilNow: boolean
   endDate: string | null
-  content: string
+  content: string | null
   description: string
   name: string
   startDate: string

@@ -1,33 +1,40 @@
 import { API } from '@/api'
 import { IData, ILogo } from '@/types'
-import { INavItem, ISocialsItem } from '@/types/layout'
+import { IHeaderNavSettings, INavItem, ISocialsItem } from '@/types/layout'
 
 export interface ILayoutData {
   navHeader: INavItem[]
   navFooter: INavItem[]
   logo: ILogo
   socials: ISocialsItem[]
+  settings?: { headerNav: IHeaderNavSettings }
 }
 
 type IGetLayoutData = (data: { data: IData }) => ILayoutData
 
 export const getLayoutData: IGetLayoutData = data => {
+  const headerMenu = data.data.attributes?.header_menu.data.attributes
   const res: ILayoutData = {
-    navHeader: data.data.attributes?.header_menu.data.attributes.menu.map(
-      (item: any) => ({
-        id: item.id,
-        title: item.itemName,
-        isActive: item.menu_item.data.attributes.isActive,
-        slug: item.menu_item.data.attributes.itemLink || '#',
-        children:
-          item.submenu_items.data.map((e: IData) => ({
-            id: e.id,
-            title: e.attributes.itemName,
-            isActive: e.attributes.isActive,
-            slug: e.attributes.itemLink || '#',
-          })) || [],
-      }),
-    ),
+    settings: {
+      headerNav: {
+        linkColor: headerMenu.linkColor,
+        linkColorActive: headerMenu.linkColorActive,
+        linkColorHover: headerMenu.linkColorActive,
+      },
+    },
+    navHeader: headerMenu.menu.map((item: any) => ({
+      id: item.id,
+      title: item.itemName,
+      isActive: item.menu_item.data.attributes.isActive,
+      slug: item.menu_item.data.attributes.itemLink || '#',
+      children:
+        item.submenu_items.data.map((e: IData) => ({
+          id: e.id,
+          title: e.attributes.itemName,
+          isActive: e.attributes.isActive,
+          slug: e.attributes.itemLink || '#',
+        })) || [],
+    })),
     logo: {
       img: API.imgUrl + data.data.attributes?.siteLogo.data.attributes.url,
       title: data.data.attributes?.logoText,

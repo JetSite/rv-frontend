@@ -6,7 +6,7 @@ export interface IGallery {
   id: IID
   title: string | null
   text: string | null
-  order: string | null
+  // order: string | null
   photos: IGalleryItem[]
 }
 
@@ -30,7 +30,7 @@ export const getPhotosPageData: IGetPhotosPageData = data => {
       id: item.id,
       title: item.attributes.title || null,
       text: item.attributes.content || null,
-      opder: item.attributes.order || null,
+      // opder: item.attributes.order || null,
       photos: item.attributes.photos.data.map((photo: IData) => {
         return {
           id: photo.id,

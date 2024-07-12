@@ -7,6 +7,7 @@ interface Props {}
 const NotFound: FC<Props> = async ({}) => {
   return (
     <Wrapper
+      sx="mobile:px-7 tablet:px-8"
       title={
         <h3 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-bold notDesktop:text-[24px] mobile:mt-5">
           Что то пошло не так...

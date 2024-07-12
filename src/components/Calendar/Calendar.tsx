@@ -111,10 +111,10 @@ export const Calendar: FC<CalendarProps> = ({
                   className={classNames(
                     'relative text-first font-bold ',
                     evens.find(date => date === day.value)
-                      ? ' before:content-[ ] before:absolute hover:before:w-full before:h-1 before:bg-h before:left-0 before:-bottom-1 '
+                      ? '  before:absolute hover:before:w-full before:h-1 before:bg-h before:left-0 before:-bottom-1 '
                       : 'relative text-first font-bold',
                     selectEvent === day.value
-                      ? 'before:content-[ ] before:absolute before:w-full before:h-1 before:bg-h before:left-0 before:-bottom-1 '
+                      ? ' before:absolute before:w-full before:h-1 before:bg-h before:left-0 before:-bottom-1 '
                       : '',
                   )}
                 >

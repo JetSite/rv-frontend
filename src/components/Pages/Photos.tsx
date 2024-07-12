@@ -9,8 +9,6 @@ interface Props {
 }
 
 export const Photos: FC<Props> = ({ data }) => {
-  console.log(data)
-
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8"
