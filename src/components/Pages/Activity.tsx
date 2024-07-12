@@ -73,7 +73,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                     bold={showGroup.includes(group.groupId)}
                     className="fill-white"
                   />
-                  <span className="notMobile:whitespace-nowrap relative notMobile:w-max mobile:text-start before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
+                  <span className="notMobile:whitespace-nowrap relative notMobile:w-max mobile:text-start  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-1 hover:before:w-full">
                     {group.groupTitle}
                   </span>
                 </button>
@@ -90,7 +90,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                               onClick={() => selectCategory(category.id)}
                               className="text-first text-[18px] desktopOnly:text-base font-medium w-full flex justify-between  mb-4"
                             >
-                              <span className="desktop:whitespace-nowrap text-start relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 hover:before:w-full">
+                              <span className="desktop:whitespace-nowrap text-start relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 hover:before:w-full">
                                 {category.title}
                               </span>
                               <PixelArrowIcon
@@ -143,7 +143,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                   onClick={() => selectCategory(category.id)}
                   className="text-first text-[18px] font-medium w-full flex justify-between items-center gap-1 "
                 >
-                  <span className="notMobile:whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 hover:before:w-full text-start">
+                  <span className="notMobile:whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 hover:before:w-full text-start">
                     {category.title}
                   </span>
                   <PixelArrowIcon

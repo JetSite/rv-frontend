@@ -3,12 +3,6 @@ import { Header } from './components/Header'
 import { IComponentWithChildren } from '@/types'
 import { Footer } from './components/Footer'
 import { ILayoutData } from '@/utils/getLayoutData'
-import Logo from '../Ui/Logo'
-import { MainNav } from './components/MainNav'
-import { SoсialsWithLang } from './components/SoсialsWithLang'
-import { MobileMav } from './components/MobileMav'
-import { FooterNav } from './components/FooterNav'
-import { WrapperMainPage } from '../Ui/Wrappers/WrapperMainPage'
 
 interface MainLayoutProps extends IComponentWithChildren {
   data: ILayoutData

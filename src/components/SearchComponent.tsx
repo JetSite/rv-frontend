@@ -17,7 +17,7 @@ export const SearchComponent: FC<Props> = () => {
         <Link
           href={{
             pathname: '/search',
-            query: { search: encodeURIComponent(searchValue) },
+            query: { search: searchValue },
           }}
           type="button"
           className="bg-h text-white py-1 px-2 text-sm font-medium block"
@@ -32,7 +32,7 @@ export const SearchComponent: FC<Props> = () => {
       )}
       <Input
         onPressEnter={e => {
-          router.push(`/search?search=${encodeURIComponent(searchValue)}`)
+          router.push(`/search?search=${searchValue}`)
           setSearchValue('')
         }}
         sx={classNames(

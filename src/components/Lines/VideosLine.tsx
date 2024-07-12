@@ -1,9 +1,7 @@
 import { Dispatch, FC, SetStateAction } from 'react'
 import { IAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { VideoLineItem } from './VideoLineItem'
-import { MainLink } from '../Ui/MainLink'
 import { MoreDataLink } from '../Ui/MoreDataLink'
-import { API } from '@/api'
 import { IData, IPagination } from '@/types'
 
 interface Props {

@@ -56,6 +56,20 @@ const config: Config = {
       notDesktop: { max: '1279px' },
       desktopOnly: { min: '1280px', max: '1579px' },
     },
+    animation: {
+      'fade-in': 'fadeIn 0.1s ease-in-out',
+      'fade-in-opacity': 'fadeIn30 0.1s ease-in-out',
+    },
+    keyframes: {
+      fadeIn: {
+        '0%': { opacity: '0' },
+        '100%': { opacity: '1' },
+      },
+      fadeIn30: {
+        '0%': { opacity: '0' },
+        '100%': { opacity: '0.3' },
+      },
+    },
     fontFamily: {
       main: ['Cera', 'sans-serif'],
       second: ['Manrope', 'sans-serif'],
@@ -69,8 +83,9 @@ const config: Config = {
     'col-start-5',
     'col-start-6',
     'col-start-7',
-    'text-[',
-    'bg-[',
+    'text-',
+    'bg-',
+    'before:bg-',
   ],
   plugins: [require('@tailwindcss/typography')],
 }

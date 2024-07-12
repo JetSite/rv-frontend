@@ -6,6 +6,12 @@ export interface INavItem extends ILink {
   isActive: boolean
 }
 
+export interface IHeaderNavSettings {
+  linkColor: string
+  linkColorActive: string
+  linkColorHover: string
+}
+
 export interface ISocialsItem extends ILink {
   id: string
   img: string

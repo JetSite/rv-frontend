@@ -69,7 +69,7 @@ export const MoreDataLink: FC<Props> = ({
           handleClick()
           setLoading(true)
         }}
-        className={`whitespace-nowrap relative w-max before:content-[ ] before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit hover:before:w-full
+        className={`whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit hover:before:w-full
     `}
       >
         <span className={sx}>{loading ? loadingTitle : title}</span>

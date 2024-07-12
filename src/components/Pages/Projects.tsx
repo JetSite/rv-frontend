@@ -1,8 +1,8 @@
-'use client'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { IProjectPageData } from '@/utils/getProjectsData'
 import Link from 'next/link'
+import { getValidUrl } from '@/utils/checkUrls'
 
 interface Props {
   data: IProjectPageData
@@ -38,9 +38,9 @@ export const Projects: FC<Props> = ({ data }) => {
               {category.projects.map(project => (
                 <li
                   key={project.id}
-                  className="w-[300px] desktopOnly:w-[220px] mb-8 desktopOnly:mb-6 last:mr-auto hover:bg-gray-100 hover:shadow-xl hover:bg-opacity-60 p-2"
+                  className="w-[300px] desktopOnly:w-[220px] mb-8 desktopOnly:mb-6 last:mr-auto shadow-lg hover:bg-gray-100 hover:shadow-xl hover:bg-opacity-60 p-2"
                 >
-                  <Link href={project.link}>
+                  <Link target="_blank" href={getValidUrl(project.link)}>
                     <img
                       width={250}
                       height={334}

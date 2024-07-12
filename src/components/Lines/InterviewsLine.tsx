@@ -4,10 +4,8 @@ import Link from 'next/link'
 import VideoIcon from '../Ui/Icons/VideoIcon'
 import { IInterviewsData } from '@/utils/getInterviewsData'
 import { AvatarInLine } from '../Ui/AvatarInLine'
-import { MainLink } from '../Ui/MainLink'
 import { MoreDataLink } from '../Ui/MoreDataLink'
 import { IData, IPagination } from '@/types'
-import { API } from '@/api'
 
 interface Props {
   data?: IInterviewsData[]
