@@ -75,18 +75,20 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
           )}
         </ul>
         <ul className="desktop:w-1/2">
-          {videos.map(
-            (video, i) =>
+          {videos.map((video, i) => {
+            console.log(getVideoId(video.link))
+
+            return (
               i !== 0 &&
               i < 5 && (
-                <li key={video.id} className="mb-14 ">
+                <li key={video.id} className="mb-14">
                   <VideoPlayer
                     videoId={getVideoId(video.link)}
-                    height="400px"
                     width="100%"
+                    height="auto"
                   />
                   <Link
-                    href={video.slug || '#'}
+                    href={video.link || '#'}
                     className="text-h block text-[18px] desktopOnly:text-base font-bold mt-3 hover:text-second"
                   >
                     {video.title}
@@ -95,8 +97,9 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
                     {video.description}
                   </p>
                 </li>
-              ),
-          )}
+              )
+            )
+          })}
         </ul>
       </div>
     </Wrapper>

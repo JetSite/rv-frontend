@@ -33,11 +33,14 @@ export const MainLink: FC<MainLinkProps> = ({
       style={{
         color: hover
           ? colorShema?.hover
-          : colorShema?.active || colorShema?.default,
+          : show
+          ? colorShema?.active
+          : colorShema?.default,
       }}
       className={classNames(
         'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85]',
-        !colorShema?.hover && (show ? 'before:w-full ' : 'hover:before:w-full'),
+        !colorShema?.active &&
+          (show ? 'before:w-full ' : 'hover:before:w-full'),
       )}
     >
       <span className={sx}>{item.title}</span>
@@ -49,11 +52,14 @@ export const MainLink: FC<MainLinkProps> = ({
       style={{
         color: hover
           ? colorShema?.hover
-          : colorShema?.active || colorShema?.default,
+          : show
+          ? colorShema?.active
+          : colorShema?.default,
       }}
       className={classNames(
         'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85]',
-        !colorShema?.hover && (show ? 'before:w-full ' : 'hover:before:w-full'),
+        !colorShema?.active &&
+          (show ? 'before:w-full ' : 'hover:before:w-full'),
       )}
       href={slug ? slug + '/' + item.slug : item.slug}
     >
