@@ -17,7 +17,7 @@ const Detention: FC<Props> = async ({}) => {
     },
   )
   const resEvents = await fetch(
-    `${API.baseUrl}/events?populate=*&sort[0]=date:desc`,
+    `${API.baseUrl}/events?populate=*&sort[0]=date:desc&filters[categories][id]=3`,
   )
 
   const dataEvents = await resEvents.json()
@@ -29,7 +29,16 @@ const Detention: FC<Props> = async ({}) => {
   const title = 'Арест'
   const subTitle = ''
 
-  const dateArr = await getDate()
+  const fullData = normalizeData.concat(normalizeDataEvents).sort((a, b) => {
+    const dateA = new Date(a.date ?? '').getTime()
+    const dateB = new Date(b.date ?? '').getTime()
+    if (dateB && dateA) {
+      return dateB - dateA
+    }
+    return -1
+  })
+
+  const dateArr = await getDate(true)
   if (!dateArr) {
     return <></>
   }
@@ -40,22 +49,22 @@ const Detention: FC<Props> = async ({}) => {
         <Archive
           data={dateArr}
           link="/news/all/"
-          itemsArchive={normalizeData}
+          itemsArchive={fullData}
           title={title}
           subTitle={subTitle}
           locale="ru"
-          page="newsDate"
+          page="detentionData"
         />
       </div>
       <div className="desktop:hidden">
         <MobileArchive
           data={dateArr}
           link="/news/all/"
-          itemsArchive={normalizeData}
+          itemsArchive={fullData}
           title={title}
           subTitle={subTitle}
           locale="ru"
-          page="newsDate"
+          page="detentionData"
         />
       </div>
     </>

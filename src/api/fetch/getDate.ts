@@ -1,6 +1,6 @@
 import { YearsWithMonths } from '@/types/item'
 import { API } from '..'
-import { IStoreData } from '@/store'
+import { IStoreDataItem } from '@/store'
 
 interface IArr {
   attributes: { date: string }
@@ -20,8 +20,8 @@ export const getDate = async (detention?: boolean) => {
     while (currentNewsPage <= totalNewsPages) {
       const resNews = await fetch(
         detention
-          ? `${API.baseUrl}/news/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`
-          : `${API.baseUrl}/news/?filters[categories][id]=5&pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`,
+          ? `${API.baseUrl}/news/?filters[categories][id]=5&pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`
+          : `${API.baseUrl}/news/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`,
         { cache: 'no-cache' },
       )
       if (!resNews.ok) {
@@ -38,7 +38,9 @@ export const getDate = async (detention?: boolean) => {
     }
     while (currentEventsPage <= totalEventsPages) {
       const resEvent = await fetch(
-        `${API.baseUrl}/events/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentEventsPage}&[fields][0]=date`,
+        detention
+          ? `${API.baseUrl}/events/?filters[categories][id]=3&pagination[pageSize]=100&sort[0]=date:desc&[fields][0]=date`
+          : `${API.baseUrl}/events/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentEventsPage}&[fields][0]=date`,
       )
       if (!resEvent.ok) {
         throw new Error(`Ошибка при запросе: ${resEvent.statusText}`)
@@ -54,8 +56,29 @@ export const getDate = async (detention?: boolean) => {
       currentEventsPage++
     }
 
-    const yearsWithMonths: IStoreData = {
-      newsDate: allDate.newsDate.reduce((acc: YearsWithMonths[], date) => {
+    const newsDate = allDate.newsDate.reduce((acc: YearsWithMonths[], date) => {
+      const [year, month] = date.split('-')
+
+      const existingYear = acc.find(entry => entry.year === year)
+
+      if (existingYear) {
+        if (!existingYear.months.find(e => e.month === month)) {
+          existingYear.months.push({
+            month: month,
+            value: year + '-' + month,
+          })
+        }
+      } else {
+        acc.push({
+          year,
+          months: [{ month: month, value: year + '-' + month }],
+        })
+      }
+
+      return acc
+    }, [])
+    const eventsDate = allDate.eventsDate.reduce(
+      (acc: YearsWithMonths[], date) => {
         const [year, month] = date.split('-')
 
         const existingYear = acc.find(entry => entry.year === year)
@@ -75,31 +98,36 @@ export const getDate = async (detention?: boolean) => {
         }
 
         return acc
-      }, []),
-      eventsDate: allDate.eventsDate.reduce((acc: YearsWithMonths[], date) => {
-        const [year, month] = date.split('-')
+      },
 
-        const existingYear = acc.find(entry => entry.year === year)
-
+      [],
+    )
+    const detentionData = [...eventsDate, ...newsDate].reduce<IStoreDataItem[]>(
+      (acc, current) => {
+        const existingYear = acc.find(item => item.year === current.year)
         if (existingYear) {
-          if (!existingYear.months.find(e => e.month === month)) {
-            existingYear.months.push({
-              month: month,
-              value: year + '-' + month,
-            })
-          }
-        } else {
-          acc.push({
-            year,
-            months: [{ month: month, value: year + '-' + month }],
+          current.months.forEach(month => {
+            if (
+              !existingYear.months.some(
+                existingMonth => existingMonth.month === month.month,
+              )
+            ) {
+              existingYear.months.push(month)
+            }
           })
+        } else {
+          acc.push(current)
         }
-
         return acc
-      }, []),
+      },
+      [],
+    )
+
+    return {
+      newsDate,
+      eventsDate,
+      detentionData,
     }
-
-    return yearsWithMonths
   } catch {
     console.log('error in get date')
     return null

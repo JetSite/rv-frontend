@@ -1,8 +1,14 @@
 import { create } from 'zustand'
 
+export interface IStoreDataItem {
+  year: string
+  months: { month: string; value: string }[]
+}
+
 export interface IStoreData {
-  newsDate: { year: string; months: { month: string; value: string }[] }[]
-  eventsDate: { year: string; months: { month: string; value: string }[] }[]
+  newsDate: IStoreDataItem[]
+  eventsDate: IStoreDataItem[]
+  detentionData: IStoreDataItem[]
 }
 
 export interface IUseStoreState {
@@ -14,6 +20,7 @@ export interface IUseStoreState {
 const initialState: IStoreData = {
   newsDate: [],
   eventsDate: [],
+  detentionData: [],
 }
 
 export const useStoreDate = create<IUseStoreState>((set, get) => ({

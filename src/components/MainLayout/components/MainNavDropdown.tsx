@@ -25,7 +25,7 @@ export const MainNavDropdown: FC<Props> = ({ data, item, colorShema }) => {
   const pathname = usePathname()
   const showLine: boolean = pathname === item.slug
   const { slug } = item
-  const showParentCurrentRout = pathname.includes(item.slug)
+  const showParentCurrentRout = item.children.find(e => e.slug === pathname)
 
   return (
     <DropdownOnHover
@@ -41,13 +41,15 @@ export const MainNavDropdown: FC<Props> = ({ data, item, colorShema }) => {
               style={{
                 color: hover
                   ? colorShema?.hover
-                  : colorShema?.active || colorShema?.default,
+                  : showParentCurrentRout
+                  ? colorShema?.active
+                  : colorShema?.default,
               }}
               className={classNames(
                 'whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
                 !colorShema?.hover &&
                   (show || showLine ? 'before:w-ful' : 'hover:before:w-full'),
-                !colorShema?.hover &&
+                !colorShema?.active &&
                   (showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]'),
               )}
             >
@@ -60,11 +62,13 @@ export const MainNavDropdown: FC<Props> = ({ data, item, colorShema }) => {
               style={{
                 color: hover
                   ? colorShema?.hover
-                  : colorShema?.active || colorShema?.default,
+                  : showParentCurrentRout
+                  ? colorShema?.active
+                  : colorShema?.default,
               }}
               className={classNames(
                 'whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20',
-                !colorShema?.hover &&
+                !colorShema?.active &&
                   (showParentCurrentRout ? 'opacity-100' : 'opacity-[0.85]'),
               )}
             >

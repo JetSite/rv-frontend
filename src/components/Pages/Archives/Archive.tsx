@@ -5,7 +5,7 @@ import { monthsConfig } from '@/config/calendar'
 import { IStandartItem } from '@/types/item'
 import { FC, MouseEvent, useEffect, useRef, useState } from 'react'
 import { ISelectItem } from '../../Ui/Dropdowns/Select'
-import { IStoreData, useStoreDate } from '@/store'
+import { IStoreData, IStoreDataItem, useStoreDate } from '@/store'
 import { getStoreData } from '@/utils/getStore'
 import classNames from '@/utils/classNames'
 import { ILocale } from '@/types'
@@ -19,8 +19,9 @@ export interface ArchiveProps {
   yearsList?: ISelectItem[]
   locale: ILocale
   link: string
-  page: 'newsDate' | 'eventsDate'
+  page: 'newsDate' | 'eventsDate' | 'detentionData'
   data: IStoreData
+  detention?: boolean
 }
 
 export const Archive: FC<ArchiveProps> = ({

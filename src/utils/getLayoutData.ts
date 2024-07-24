@@ -19,7 +19,7 @@ export const getLayoutData: IGetLayoutData = data => {
       headerNav: {
         linkColor: headerMenu.linkColor,
         linkColorActive: headerMenu.linkColorActive,
-        linkColorHover: headerMenu.linkColorActive,
+        linkColorHover: headerMenu.linkColorHover,
       },
     },
     navHeader: headerMenu.menu.map((item: any) => ({
