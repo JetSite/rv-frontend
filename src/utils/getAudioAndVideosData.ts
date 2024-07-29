@@ -19,7 +19,7 @@ export interface IAudioAndVideosData {
   date: string
   description?: string
   link: string
-  source: ISource
+  source: ISource | null
   slug?: string
   persons: IPersone[]
 }
@@ -38,10 +38,12 @@ export const getAudioAndVideosData: IGetAudioAndVideosData = data => {
       description: e.attributes.description,
       link: e.attributes.link,
       slug: e.attributes.slug || '#',
-      source: {
-        ...e.attributes.source?.data.attributes,
-        id: e.attributes.source?.data.id,
-      },
+      source: e.attributes.source?.data
+        ? {
+            ...e.attributes.source?.data.attributes,
+            id: e.attributes.source?.data.id,
+          }
+        : null,
       persons: e.attributes.persons?.data.map((persone: IData) => ({
         title: persone.attributes.name,
         id: persone.id,

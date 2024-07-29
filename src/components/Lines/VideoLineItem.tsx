@@ -57,14 +57,16 @@ export const VideoLineItem: FC<Props> = ({
           {title}
         </h3>
         <p className="text-14 desktopOnly:text-[12px] flex gap-1 font-medium mb-2.5 mobile:order-2">
-          {source.link ? (
-            <Link target="_blank" href={source.link}>
-              {source.title}
-              {','}
-            </Link>
-          ) : (
-            <span> {source.title}</span>
-          )}
+          {source ? (
+            source?.link ? (
+              <Link target="_blank" href={source.link}>
+                {source.title}
+                {','}
+              </Link>
+            ) : (
+              <span> {source.title}</span>
+            )
+          ) : null}
           <span>{date}</span>
         </p>
         <VideoPlayer

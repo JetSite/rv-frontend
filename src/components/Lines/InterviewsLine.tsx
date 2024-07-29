@@ -52,10 +52,12 @@ export const InterviewsLine: FC<Props> = ({
                   {interview.title}
                 </h3>
                 <p className="text-14 desktopOnly:text-[12px] flex gap-1 font-medium mb-2.5">
-                  <span>
-                    {interview.source.title}
-                    {','}
-                  </span>
+                  {!!interview.source && (
+                    <span>
+                      {interview.source.title}
+                      {','}
+                    </span>
+                  )}
                   <span>{interview.date}</span>
                 </p>
                 <p className="text-gray-500">{interview.description}</p>
