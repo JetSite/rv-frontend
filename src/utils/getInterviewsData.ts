@@ -9,7 +9,7 @@ export interface IInterviewsData {
   description: string
   slug: string
   content: string | null
-  source: ISource
+  source: ISource | null
   videoLink: string | null
   persons: IPersone[]
 }
@@ -29,13 +29,14 @@ export const getInterviewData: IGetInterviewData = data => {
       content: e.attributes.description,
       videoLink: e.attributes.videoLink,
       slug: e.attributes.slug || '#',
-      source:
-        typeof e.attributes.source === 'string'
+      source: e.attributes.source?.data
+        ? typeof e.attributes.source === 'string'
           ? { link: '#', title: e.attributes.source, id: 1 }
           : {
               ...e.attributes?.source?.data.attributes,
               id: e.attributes?.source?.data.id,
-            },
+            }
+        : null,
       persons: e.attributes.persons?.data.map((persone: IData) => ({
         title: persone.attributes.name,
         id: persone.id,
