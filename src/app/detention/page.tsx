@@ -10,6 +10,8 @@ import { FC } from 'react'
 interface Props extends INextPage {}
 
 const Detention: FC<Props> = async ({}) => {
+  const pageDataRes = await fetch(`${API.baseUrl}/detention-page`)
+  const pageData = await pageDataRes.json()
   const dataRes = await fetch(
     `${API.baseUrl}/news?populate=*&sort[0]=date:desc&filters[categories][id]=5`,
     {
@@ -26,8 +28,8 @@ const Detention: FC<Props> = async ({}) => {
   const normalizeData = getDataArray(data)
   const normalizeDataEvents = getDataArray(dataEvents)
 
-  const title = 'Арест'
-  const subTitle = ''
+  const title = pageData.data?.attributes.title
+  const subTitle = pageData.data?.attributes.content
 
   const fullData = normalizeData.concat(normalizeDataEvents).sort((a, b) => {
     const dateA = new Date(a.date ?? '').getTime()
