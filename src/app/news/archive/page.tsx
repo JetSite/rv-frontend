@@ -8,10 +8,12 @@ import React from 'react'
 
 const ArchiveNews = async () => {
   const res = await fetch(`${API.baseUrl}/news?populate=*&sort[0]=date:desc`, {
-    cache: 'default',
+    cache: 'no-cache',
   })
   const data = await res.json()
   const normalizeData = getDataArray(data)
+
+  console.log(`${API.baseUrl}/news?populate=*&sort[0]=date:desc`)
 
   const title = 'Архив новостей'
   const subTitle =

@@ -40,6 +40,8 @@ export const Archive: FC<ArchiveProps> = ({
   const scrollRef = useRef<ScrollbarType>(null)
   const elementsRefs = useRef<Array<HTMLLIElement | null>>([])
 
+  console.log(data)
+
   console.log(itemsArchive)
 
   const elementsWithHeight: { coordinate: number; value: string }[] =
