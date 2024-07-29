@@ -28,6 +28,8 @@ export const NewsCard: FC<NewsCardProps> = ({
     setTablet(isTablet)
   }, [isTablet])
 
+  console.log(item)
+
   return (
     <Link
       className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:max-h-1/2"
