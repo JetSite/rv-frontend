@@ -33,7 +33,7 @@ export const VideoLineItem: FC<Props> = ({
         <ul className="mobile:flex gap-4 mobile:w-full justify-center">
           {persons.map(
             (persone, i) =>
-              (i < 2 || showAll) && <AvatarInLine persone={persone} />,
+              (i < 2 || showAll) && <AvatarInLine key={i} persone={persone} />,
           )}
         </ul>
         {persons.length > 2 && (

@@ -2,6 +2,7 @@
 import { SearchComponent } from '@/components/SearchComponent'
 import { langConfig } from '@/config'
 import { ISocialsItem } from '@/types/layout'
+import classNames from '@/utils/classNames'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 
@@ -21,7 +22,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   const [select, setSelect] = useState('ru')
 
   return (
-    <div className={className}>
+    <div className={classNames(className, 'text-h')}>
       {variant === 'footer' ? <SearchComponent /> : null}
       <ul
         className={
@@ -67,7 +68,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           }
         >
           <img
-            className="block desktopOnly:w-[30px]"
+            className="block desktopOnly:w-[30px] opacity-40"
             height={45}
             width={45}
             alt="glasses"
@@ -84,7 +85,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           {langConfig.map((item, i) => (
             <li
               key={subKey + ' ' + item.value}
-              className="px-2 border-r-2 border-h last:border-none first:pl-0 last:pr-0 text-[18px] desktopOnly:text-[12px]"
+              className="px-2 border-r-2 border-h last:border-none first:pl-0 last:pr-0 text-[18px] desktopOnly:text-[12px] opacity-40"
             >
               <div
                 className={select === item.value ? 'font-bold' : 'font-normal'}

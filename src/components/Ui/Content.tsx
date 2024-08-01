@@ -17,8 +17,6 @@ export const Content: FC<Props> = ({ content, sx }) => {
       <div className={sx}>
         <Markdown
           urlTransform={(uri: string) => {
-            console.log(uri)
-
             return uri.startsWith('http') ? uri : `${API.imgUrl}${uri}`
           }}
         >

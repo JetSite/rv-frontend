@@ -1,5 +1,5 @@
 'use client'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { IGalleryItem, IStandartItem } from '@/types/item'
 import PhotoAlbum from 'react-photo-album'
 import { Content } from '../Ui/Content'
@@ -12,10 +12,6 @@ interface Props {
 }
 
 export const Priority: FC<Props> = ({ data }) => {
-  const [selectEvent, setSelectEvent] = useState<string>(
-    data.gallery ? data.gallery[0].key : '',
-  )
-
   return (
     <>
       <Wrapper
@@ -30,27 +26,14 @@ export const Priority: FC<Props> = ({ data }) => {
           {data.text}
         </p>
       </Wrapper>
-      <div className="relative w-full notDesktop:flex notDesktop:flex-col ">
-        <Wrapper sx="mobile:px-7 tablet:px-8 ">
-          <div className="desktopLarge:hidden">
-            <Carousel
-              onNavigationNext={e => {
-                setSelectEvent(
-                  data.gallery?.find((item, i) => i === e.realIndex)
-                    ?.key as string,
-                )
-              }}
-              onNavigationPrev={e => {
-                setSelectEvent(
-                  data.gallery?.find((item, i) => i === e.realIndex)
-                    ?.key as string,
-                )
-              }}
-            >
+      <div className="mobile:px-7 tablet:px-8 relative w-full notDesktop:flex notDesktop:flex-col desktopLarge:flex desktopLarge:max-w-[1480px] desktopOnly:max-w-[988px] mx-auto">
+        <div className="desktopLarge:flex gap-4 justify-center">
+          <div className="desktopLarge:hidden bg-gray-200">
+            <Carousel>
               {data.gallery?.map(image => (
                 <SwiperSlide key={image.key}>
                   <img
-                    className="w-full object-cover object-center"
+                    className="mx-auto h-full object-contain  object-center"
                     src={image.src}
                   />
                 </SwiperSlide>
@@ -62,16 +45,16 @@ export const Priority: FC<Props> = ({ data }) => {
               <Content content={data.content} sx="content" />
             </div>
           ) : null}
-        </Wrapper>
-        <div className="max-h-[100%] desktopLarge:absolute right-0 top-0 overflow-hidden hidden desktopLarge:flex">
-          <PhotoAlbum
-            layout="rows"
-            targetRowHeight={350}
-            columns={3}
-            spacing={0}
-            padding={0}
-            photos={data.gallery as IGalleryItem[]}
-          />
+          <div className="h-[100%] right-0 top-0 overflow-hidden hidden desktopLarge:flex">
+            <PhotoAlbum
+              layout="rows"
+              targetRowHeight={350}
+              columns={3}
+              spacing={0}
+              padding={0}
+              photos={data.gallery as IGalleryItem[]}
+            />
+          </div>
         </div>
       </div>
     </>
