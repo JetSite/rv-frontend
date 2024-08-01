@@ -83,7 +83,7 @@ export const Archive: FC<ArchiveProps> = ({
   }, [scroll, selectDate])
 
   return (
-    <div className="max-w-content desktopOnly:max-w-[988px] w-full mx-auto mt-7">
+    <div className="max-w-content desktopOnly:max-w-[988px] w-full mx-auto mt-7 desktopLarge:max-w-[1480px]">
       <h1 className="text-first text-[48px] desktopOnly:text-[32px] mb-7 font-bold">
         {title}
       </h1>

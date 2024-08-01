@@ -21,11 +21,15 @@ export const VideoLineItem: FC<Props> = ({
   variant,
 }) => {
   const isDesktopOnly = useMediaQuery({ minWidth: 1279, maxWidth: 1579 })
+  const isMobile = useMediaQuery({ maxWidth: 833 })
+
+  const [mobile, setMobile] = useState<boolean>(false)
   const [desktopOnly, setDesktopOnly] = useState<boolean>(false)
   const [showAll, setShowAll] = useState<boolean>(false)
   useEffect(() => {
     setDesktopOnly(isDesktopOnly)
-  }, [isDesktopOnly])
+    setMobile(isMobile)
+  }, [isDesktopOnly, isMobile])
 
   return (
     <div className="flex mobile:flex-col notMobile:gap-10 w-full desktopOnly:gap-7">
@@ -71,7 +75,7 @@ export const VideoLineItem: FC<Props> = ({
         </p>
         <VideoPlayer
           videoId={getVideoId(link)}
-          height={desktopOnly ? '420px' : '514px'}
+          height={desktopOnly ? '420px' : mobile ? '320px' : '514px'}
           width="100%"
         />
       </div>
