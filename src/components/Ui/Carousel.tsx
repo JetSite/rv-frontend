@@ -11,17 +11,9 @@ import 'swiper/css/navigation'
 
 interface Props {
   children: IChildren
-  onNavigationNext: (swiper: SwiperCore) => void
-  onNavigationPrev: (swiper: SwiperCore) => void
 }
 
-export const Carousel: FC<Props> = ({
-  children,
-  onNavigationNext,
-  onNavigationPrev,
-}) => {
-  const prevButtonRef = useRef<HTMLDivElement | null>(null)
-  const nextButtonRef = useRef<HTMLDivElement | null>(null)
+export const Carousel: FC<Props> = ({ children }) => {
   const [swiper, setSwiper] = useState<SwiperCore | null>(null)
 
   return (
@@ -38,15 +30,15 @@ export const Carousel: FC<Props> = ({
       {children}
       <div
         onClick={() => swiper?.slidePrev()}
-        className="prev absolute top-1/2 z-10 left-10 cursor-pointer"
+        className="prev absolute top-1/2 z-10 left-10 cursor-pointer rounded-full  bg-gray-100/20"
       >
-        <ArrowCircleIcon />
+        <ArrowCircleIcon className="hover:fill-gray-500 fill-gray-800" />
       </div>
       <div
         onClick={() => swiper?.slideNext()}
-        className="next rotate-180 absolute top-1/2 z-10 right-10 cursor-pointer"
+        className="next rotate-180 absolute top-1/2 z-10 right-10 cursor-pointer shadow-lg rounded-full bg-gray-100/20"
       >
-        <ArrowCircleIcon />
+        <ArrowCircleIcon className="hover:fill-gray-500 fill-gray-800" />
       </div>
     </Swiper>
   )

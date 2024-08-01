@@ -84,12 +84,12 @@
 }
 
 .content p {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   /* margin-left: 10px; */
 
   @media (max-width: 1279px) {
     margin-left: 0;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 }
 
@@ -110,4 +110,30 @@
     width: 100%;
     max-width: 600px;
   }
+}
+
+.content blockquote {
+  padding-left: 12px;
+  position: relative;
+  ::before {
+    content: '';
+    background-color: gray;
+    opacity: 0.6;
+    width: 2px;
+    /* height: 100%; */
+    display: block;
+    position: absolute;
+    border-radius: 2px;
+    top: -4px;
+    bottom: -4px;
+    left: 0px;
+  }
+}
+
+.content a {
+  color: #194c81;
+  text-decoration: underline;
+}
+.content a:hover {
+  opacity: 0.8;
 }

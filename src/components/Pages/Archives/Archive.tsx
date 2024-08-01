@@ -39,9 +39,6 @@ export const Archive: FC<ArchiveProps> = ({
   )
   const scrollRef = useRef<ScrollbarType>(null)
   const elementsRefs = useRef<Array<HTMLLIElement | null>>([])
-
-  console.log(itemsArchive)
-
   const elementsWithHeight: { coordinate: number; value: string }[] =
     elementsRefs.current
       ? elementsRefs.current?.map((e, i) =>

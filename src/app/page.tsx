@@ -88,7 +88,7 @@ export default async function Home() {
         <WrapperMainPage
           titleStyles="bg-gray-400"
           endLink={{ title: 'Календарь событий >', slug: 'events' }}
-          title={<h2 className="text-first">ВАЖНОЕ</h2>}
+          title={<h2 className="text-first font-semibold">ВАЖНОЕ</h2>}
         >
           <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[130px] flex-wrap justify-between overflow-hidden tablet:px-8 desktop:max-h-[204px]">
             {eventData.map(item => (
@@ -111,9 +111,9 @@ export default async function Home() {
         <WrapperMainPage
           titleStyles="bg-first"
           endLink={{ title: 'Все новости >', slug: 'news' }}
-          title={<h2 className="text-white">НОВОСТИ</h2>}
+          title={<h2 className="text-white font-semibold">НОВОСТИ</h2>}
         >
-          <ul className="flex flex-wrap flex-col max-h-[400px] h-full  mobile:max-h-none notDesktop:gap-5 overflow-hidden tablet:px-8 tablet:h-[334px]">
+          <ul className="flex gap-1 flex-wrap flex-col max-h-[400px] h-full  mobile:max-h-none notDesktop:gap-5 overflow-hidden tablet:px-8 tablet:h-[334px]">
             {newsData.map(
               (item, i) =>
                 i < 14 && (

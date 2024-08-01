@@ -122,19 +122,16 @@ export const CalendarCarousel: FC<Props> = ({
           activeIndex !== 0 ? '' : 'hidden',
         )}
       >
-        <ArrowCircleIcon variant="inner" className=" hover:fill-[#D9D9D9]/80" />
+        <ArrowCircleIcon className="hover:fill-gray-500 fill-gray-800" />
       </button>
       <button
         ref={nextButtonRef}
         className={classNames(
-          'next absolute top-1/2 z-10 right-10 cursor-pointer hover:shadow-lg rounded-full',
+          'next absolute rotate-180 top-1/2 z-10 right-10 cursor-pointer hover:shadow-lg rounded-full',
           activeIndex === arr.length - 1 ? 'hidden' : '',
         )}
       >
-        <ArrowCircleIcon
-          className="rotate-180 hover:fill-[#D9D9D9]/80"
-          variant="inner"
-        />
+        <ArrowCircleIcon className="hover:fill-gray-500 fill-gray-800" />
       </button>
     </Swiper>
   )
