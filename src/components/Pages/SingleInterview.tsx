@@ -10,8 +10,6 @@ interface Props {
 }
 
 export const SingleInterview: FC<Props> = ({ data }) => {
-  console.log(data.content)
-
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "

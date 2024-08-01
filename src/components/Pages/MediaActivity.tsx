@@ -76,8 +76,6 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
         </ul>
         <ul className="desktop:w-1/2">
           {videos.map((video, i) => {
-            console.log(getVideoId(video.link))
-
             return (
               i !== 0 &&
               i < 5 && (
