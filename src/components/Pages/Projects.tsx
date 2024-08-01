@@ -1,3 +1,4 @@
+'use client'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { IProjectPageData } from '@/utils/getProjectsData'
