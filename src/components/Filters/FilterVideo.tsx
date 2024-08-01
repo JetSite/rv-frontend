@@ -124,7 +124,7 @@ export const FilterVideo: FC<Props> = ({
   return (
     <>
       <div className="mb-16 flex flex-col gap-6">
-        <div className="text-first flex gap-6">
+        <div className="text-first flex gap-6 flex-wrap">
           <Autocomplete
             setFilters={setFilters}
             handleSelect={value => {
@@ -181,9 +181,9 @@ export const FilterVideo: FC<Props> = ({
             </button>
           </div>
         </div>
-        <div className="flex gap-6 text-[14px] desktopOnly:text-[12px]">
+        <div className="flex gap-6 text-[14px] desktopOnly:text-[12px] mobile:flex-col mobile:gap-2">
           <p className="text-first opacity-60">Спикер:</p>
-          <ul className=" flex flex-row justify-between gap-14 desktopOnly:gap-8">
+          <ul className=" flex flex-row justify-between gap-14 desktopOnly:gap-8 mobile:flex-wrap mobile:gap-2">
             {partners.map((item, i) => (
               <li key={i}>
                 <RadioButton

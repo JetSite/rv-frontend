@@ -19,7 +19,7 @@ export const SingleInterview: FC<Props> = ({ data }) => {
         </h2>
       }
     >
-      <div className="w-[80%]">
+      <div className="">
         <p className="text-[14px] text-gray-500 pb-6 mb-4">
           {data.description}
         </p>
