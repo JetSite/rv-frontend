@@ -1,6 +1,7 @@
 import { API } from '@/api'
 import { SingleItem } from '@/components/Pages/SingleItem'
 import { getDataArray } from '@/utils/getDataArray'
+import { getInterviewData } from '@/utils/getInterviewsData'
 import React, { FC } from 'react'
 
 export async function generateStaticParams() {
@@ -39,15 +40,23 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
       },
     )
     const events = await resEvents.json()
-    return { data, news, events }
+
+    const resInterviews = await fetch(
+      `${API.baseUrl}/interviews?sort[0]=date:desc&populate[person][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=4`,
+      { cache: 'no-cache' },
+    )
+    const interviews = await resInterviews.json()
+
+    return { data, news, events, interviews }
   }
 
-  const { data, news, events } = await fetchNewPageData()
+  const { data, news, events, interviews } = await fetchNewPageData()
 
   if (!data.data.length) return <div />
 
   return (
     <SingleItem
+      interviews={getInterviewData(interviews.data).data}
       locale="ru"
       events={getDataArray(events)}
       news={getDataArray(news)}
