@@ -4,7 +4,6 @@ import {
   Dispatch,
   FC,
   HTMLInputTypeAttribute,
-  MouseEventHandler,
   SetStateAction,
   useState,
 } from 'react'
@@ -49,7 +48,7 @@ const Autocomplete: FC<IAutocomtleteProps> = ({
               handleClear && handleClear()
             }}
             className={classNames(
-              'absolute right-1.5 desktop:top-3 z-30 top-4 desktopLarge:!top-4',
+              'absolute right-1.5 inset-y-0 z-10 flex items-center',
             )}
           >
             <XIcon className="block w-4 h-4" />
@@ -57,7 +56,7 @@ const Autocomplete: FC<IAutocomtleteProps> = ({
         )}
         <input
           autoComplete="off"
-          className={className}
+          className={classNames(className ?? '')}
           name={name}
           placeholder={placeholder}
           id={name}

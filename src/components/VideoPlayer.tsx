@@ -1,29 +1,28 @@
-'use client'
 import { FC } from 'react'
 import { YOUTUBE_KEY } from '../../vatiables'
 import YouTube from 'react-youtube'
+import classNames from '@/utils/classNames'
 
 interface Props {
   videoId: string
-  height: string
-  width: string
   className?: string
 }
 
-export const VideoPlayer: FC<Props> = ({
-  videoId,
-  height,
-  width,
-  className = 'w-full',
-}) => {
+export const VideoPlayer: FC<Props> = ({ videoId, className = 'w-full' }) => {
   const opts = {
-    height: height,
-    width: width,
+    height: '100%',
+    width: '100%',
     playerVars: {
       apiKey: YOUTUBE_KEY,
     },
   }
   return (
-    <YouTube className={className} videoId={videoId as string} opts={opts} />
+    <div className={classNames('pb-[54.25%] relative')}>
+      <YouTube
+        className={classNames(className, 'absolute inset-0')}
+        videoId={videoId as string}
+        opts={opts}
+      />
+    </div>
   )
 }

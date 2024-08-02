@@ -21,7 +21,7 @@ export const Wrapper: FC<WrapperProps> = ({
       <div
         className={
           mainPage
-            ? 'desktopLarge:max-w-[1580px] desktopOnly:max-w-[1052px] mx-auto desktop:px-[52px]'
+            ? 'desktopLarge:max-w-[1580px] desktopOnly:max-w-[1052px] mx-auto desktopOnly:pr-[35px] desktopOnly:pl-[30px] desktopLarge:px-[52px]'
             : 'desktopLarge:max-w-[1480px] desktopOnly:max-w-[988px] mx-auto'
         }
       >

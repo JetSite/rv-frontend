@@ -30,10 +30,10 @@ export const EventCard: FC<EventCardProps> = ({
           {item.time?.replace(':00', '')}
         </time>
       </p>
-      <h3 className="text-first font-medium mb-1 notDesktop:text-mobile notDesktop:mb-0.5 desktopOnly:text-[11px]">
+      <h3 className="text-first font-medium mb-1 notDesktop:text-mobile notDesktop:mb-0.5 desktopOnly:text-[11px] max-h-11 notDesktop:max-h-10 desktopOnly:max-h-8 overflow-hidden">
         {item.title}
       </h3>
-      <p className="text-mobile notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[10px]">
+      <p className="text-mobile notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[10px] max-h-[105px] desktopOnly:max-h-[102px]">
         {item.description || item.text}
       </p>
     </Link>

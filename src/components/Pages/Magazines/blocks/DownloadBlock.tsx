@@ -13,13 +13,19 @@ export const DownloadBlock: FC<{ magazine: IMagazine }> = ({ magazine }) => {
     <p className="text-[14px] desktopOnly:text-[12px] ml-auto w-fit">
       <span>Скачать </span>
       {magazine.ruLink ? (
-        <button onClick={handleDownload} className="hover:text-gray-700">
+        <button
+          onClick={handleDownload}
+          className="hover:text-gray-500 cursor-pointer"
+        >
           RU версия{' '}
         </button>
       ) : null}
       {magazine.ruLink && magazine.enLink ? '/' : ''}
       {magazine.enLink ? (
-        <button onClick={handleDownload} className="hover:text-gray-700">
+        <button
+          onClick={handleDownload}
+          className="hover:text-gray-500 cursor-pointer"
+        >
           {' '}
           EN version
         </button>

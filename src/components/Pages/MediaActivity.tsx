@@ -17,6 +17,7 @@ interface Props {
 }
 
 export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
+  const firstValidVideo = videos.find(video => typeof video.link === 'string')
   return (
     <Wrapper
       sx=" notDesktop:px-8 desktop:mb-8"
@@ -27,17 +28,15 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
       }
     >
       <p className="w-2/3 text-[14px] text-gray-500 mb-14">{data.subTitle}</p>
-      <div className="mb-14 ">
-        <h3 className="text-h text-[32px] desktopOnly:text-[22px] font-bold mb-6">
-          {videos[0].title}
-        </h3>
-        <VideoPlayer
-          videoId={getVideoId(videos[0].link)}
-          height="525px"
-          width="100%"
-        />
-        <p className="text-[14px] mt-6">{videos[0].description}</p>
-      </div>
+      {firstValidVideo ? (
+        <div className="mb-14 ">
+          <h3 className="text-h text-[32px] desktopOnly:text-[22px] font-bold mb-6">
+            {firstValidVideo.title}
+          </h3>
+          <VideoPlayer videoId={getVideoId(firstValidVideo.link)} />
+          <p className="text-[14px] mt-6">{firstValidVideo.description}</p>
+        </div>
+      ) : null}
       <ul className="flex mobile:flex-col  mobile:gap-5 tablet:px-8">
         {data.pageMenu.map(item => (
           <li
@@ -76,27 +75,22 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
         </ul>
         <ul className="desktop:w-1/2">
           {videos.map((video, i) => {
-            return (
-              i !== 0 &&
-              i < 5 && (
-                <li key={video.id} className="mb-14">
-                  <VideoPlayer
-                    videoId={getVideoId(video.link)}
-                    width="100%"
-                    height="auto"
-                  />
-                  <Link
-                    href={video.link || '#'}
-                    className="text-h block text-[18px] desktopOnly:text-base font-bold mt-3 hover:text-second"
-                  >
-                    {video.title}
-                  </Link>
-                  <p className="text-[14px] desktopOnly:text-[13px] mt-3">
-                    {video.description}
-                  </p>
-                </li>
-              )
-            )
+            return typeof video.link === 'string'
+              ? i !== 0 && i < 5 && (
+                  <li key={video.id} className="mb-14">
+                    <VideoPlayer videoId={getVideoId(video.link)} />
+                    <Link
+                      href={video.link || '#'}
+                      className="text-h block text-[18px] desktopOnly:text-base font-bold mt-3 hover:text-second"
+                    >
+                      {video.title}
+                    </Link>
+                    <p className="text-[14px] desktopOnly:text-[13px] mt-3">
+                      {video.description}
+                    </p>
+                  </li>
+                )
+              : null
           })}
         </ul>
       </div>

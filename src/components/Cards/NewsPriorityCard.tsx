@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { NewsCardProps } from './NewsCard'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
+import Image from 'next/image'
 
 export const NewsPriorityCard: FC<NewsCardProps> = ({
   item,
@@ -16,16 +17,19 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
         href={link}
       >
         {!!item.img && (
-          <img
-            className="block mb-2.5 desktop:max-h-[200px] object-cover desktop:w-full tablet:h-[163px]"
+          <Image
+            width={item.image?.width}
+            height={item.image?.height}
+            alt={item.title}
+            className="block mb-2.5 desktop:max-h-[200px] object-cover w-full tablet:h-[163px]"
             src={item.img}
           />
         )}
-        <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 desktopOnly:text-[13px]">
+        <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 desktopOnly:text-[13px] max-h-9 notDesktop:max-h-7 desktopOnly:max-h-[26px] overflow-hidden">
           {item.title}
         </h3>
-        <p className="mb-2.5 text-mobile leading-normal notDesktop:text-[12px] overflow-hidden max-h-4 text-ellipsis desktopOnly:text-[11px]">
-          {item.description || item.text}
+        <p className="mb-2.5 text-mobile leading-normal notDesktop:text-[12px] text-ellipsis desktopOnly:text-[11px] max-h-[105px]  desktopOnly:max-h-[100px] overflow-hidden">
+          {item.description || item.text} {item.text}
         </p>
         <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first desktopOnly:text-[10px]">
           {!!item.date && getNormalizeDate(item.date, locale)}

@@ -1,12 +1,12 @@
 'use client'
 import { IAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { getVideoId } from '@/utils/getVideoId'
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { VideoPlayer } from '../VideoPlayer'
 import Link from 'next/link'
 import VideoIcon from '../Ui/Icons/VideoIcon'
-import { useMediaQuery } from 'react-responsive'
 import { AvatarInLine } from '../Ui/AvatarInLine'
+import { useScreenSize } from '@/utils/useMediaQuery'
 
 interface Props extends IAudioAndVideosData {
   variant?: 'inner' | 'main'
@@ -20,17 +20,8 @@ export const VideoLineItem: FC<Props> = ({
   link,
   variant,
 }) => {
-  const isDesktopOnly = useMediaQuery({ minWidth: 1279, maxWidth: 1579 })
-  const isMobile = useMediaQuery({ maxWidth: 833 })
-
-  const [mobile, setMobile] = useState<boolean>(false)
-  const [desktopOnly, setDesktopOnly] = useState<boolean>(false)
+  const { mobile, desktopOnly } = useScreenSize()
   const [showAll, setShowAll] = useState<boolean>(false)
-  useEffect(() => {
-    setDesktopOnly(isDesktopOnly)
-    setMobile(isMobile)
-  }, [isDesktopOnly, isMobile])
-
   return (
     <div className="flex mobile:flex-col notMobile:gap-10 w-full desktopOnly:gap-7">
       <div className="flex flex-col">
@@ -73,11 +64,7 @@ export const VideoLineItem: FC<Props> = ({
           ) : null}
           <span>{date}</span>
         </p>
-        <VideoPlayer
-          videoId={getVideoId(link)}
-          height={desktopOnly ? '420px' : mobile ? '320px' : '514px'}
-          width="100%"
-        />
+        <VideoPlayer videoId={getVideoId(link)} />
       </div>
     </div>
   )

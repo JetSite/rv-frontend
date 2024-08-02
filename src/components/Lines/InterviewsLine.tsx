@@ -1,4 +1,3 @@
-'use client'
 import { Dispatch, FC, SetStateAction } from 'react'
 import Link from 'next/link'
 import VideoIcon from '../Ui/Icons/VideoIcon'
@@ -36,7 +35,7 @@ export const InterviewsLine: FC<Props> = ({
               key={interview.id}
               className="flex w-full gap-10 desktopOnly:gap-8 mobile:gap-4"
             >
-              <ul className="">
+              <ul className="mb-10">
                 {interview.persons.map(persone => (
                   <AvatarInLine persone={persone} key={persone.id} />
                 ))}
