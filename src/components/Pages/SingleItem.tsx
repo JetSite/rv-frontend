@@ -7,12 +7,14 @@ import { FC } from 'react'
 import { ILocale } from '@/types'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
 import { Content } from '../Ui/Content'
+import { IInterviewsData } from '@/utils/getInterviewsData'
 
 interface Props {
   data: IStandartItem
   news: IStandartItem[]
   events: IStandartItem[]
   locale: ILocale
+  interviews: IInterviewsData[]
 }
 
 export const SingleItem: FC<Props> = ({
@@ -20,7 +22,10 @@ export const SingleItem: FC<Props> = ({
   news,
   events,
   locale = 'ru',
+  interviews,
 }) => {
+  console.log(interviews)
+
   return (
     <div>
       <Wrapper
@@ -68,20 +73,20 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
-          {events.map(
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[192px] flex-wrap overflow-hidden justify-around tablet:px-8">
+          {interviews.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden ',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden tablet:mb-10',
                   )}
                   key={item.title}
                 >
                   <EventCard
                     locale={locale}
-                    link={'/events/all/' + item.slug}
-                    item={item}
+                    link={'/media/interviews/' + item.slug}
+                    item={item as unknown as IStandartItem}
                   />
                 </li>
               ),
@@ -99,13 +104,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[192px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {events.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden tablet:mb-10',
                   )}
                   key={item.title}
                 >
@@ -130,13 +135,13 @@ export const SingleItem: FC<Props> = ({
           </div>
         }
       >
-        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:max-h-[220px] flex-wrap overflow-hidden justify-around tablet:px-8">
+        <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[192px] flex-wrap overflow-hidden justify-around tablet:px-8">
           {news.map(
             (item, i) =>
               i < 4 && (
                 <li
                   className={classNames(
-                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden',
+                    'tablet:w-[260px] desktop:mb-4 desktop:w-[354px] notMobile:max-h-[212px] notMobile:overflow-hidden tablet:mb-10',
                   )}
                   key={item.title}
                 >
