@@ -3,6 +3,7 @@ import { SingleItem } from '@/components/Pages/SingleItem'
 import { getDataArray } from '@/utils/getDataArray'
 import React, { FC } from 'react'
 import { redirect } from 'next/navigation'
+import { getInterviewData } from '@/utils/getInterviewsData'
 
 export async function generateStaticParams() {
   const slugs = await fetch(`${API.baseUrl}/events?fields=slug`).then(res =>
@@ -28,29 +29,35 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
     )
     const data = await resData.json()
     const resEvents = await fetch(
-      `${API.baseUrl}/events?filters[$not][0][slug][$eq]=${params.slug}&populate=*&sort[0]=date:desc`,
+      `${API.baseUrl}/events?filters[$not][0][slug][$eq]=${params.slug}&populate=*&sort[0]=date:desc&pagination[pageSize]=4`,
       {
         cache: 'default',
       },
     )
     const events = await resEvents.json()
     const resNews = await fetch(
-      `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
+      `${API.baseUrl}/news?populate=*&sort[0]=date:desc&pagination[pageSize]=4`,
       {
         cache: 'default',
       },
     )
     const news = await resNews.json()
-    return { data, news, events }
+    const resInterviews = await fetch(
+      `${API.baseUrl}/interviews?sort[0]=date:desc&populate[person][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=4`,
+      { cache: 'no-cache' },
+    )
+    const interviews = await resInterviews.json()
+    return { data, news, events, interviews }
   }
 
-  const { data, news, events } = await fetchNewPageData()
+  const { data, news, events, interviews } = await fetchNewPageData()
 
   if (!data.data.length) return redirect('/not-found')
 
   return (
     <SingleItem
       locale="ru"
+      interviews={getInterviewData(interviews.data).data}
       events={getDataArray(events)}
       news={getDataArray(news)}
       data={getDataArray(data)[0]}
