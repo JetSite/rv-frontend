@@ -10,8 +10,6 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
   link = '#',
   locale,
 }) => {
-  console.log(item)
-
   if (mainPage) {
     return (
       <Link
@@ -20,8 +18,8 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
       >
         {!!item.img && (
           <Image
-            width={item.image.width}
-            height={item.image.height}
+            width={item.image?.width}
+            height={item.image?.height}
             alt={item.title}
             className="block mb-2.5 desktop:max-h-[200px] object-cover w-full tablet:h-[163px]"
             src={item.img}

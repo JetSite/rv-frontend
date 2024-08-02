@@ -22,7 +22,7 @@ export interface IGalleryItem {
 
 export interface IStandartItem extends IItem {
   date: string | null
-  image: IImage
+  image?: IImage
   img: string | null
   important: boolean
   time: string | null
