@@ -115,19 +115,20 @@
 .content blockquote {
   padding-left: 12px;
   position: relative;
-  ::before {
-    content: '';
-    background-color: gray;
-    opacity: 0.6;
-    width: 2px;
-    /* height: 100%; */
-    display: block;
-    position: absolute;
-    border-radius: 2px;
-    top: -4px;
-    bottom: -4px;
-    left: 0px;
-  }
+}
+
+.content blockquote:before {
+  content: '';
+  background-color: gray;
+  opacity: 0.6;
+  width: 2px;
+  /* height: 100%; */
+  display: block;
+  position: absolute;
+  border-radius: 2px;
+  top: -4px;
+  bottom: -4px;
+  left: 0px;
 }
 
 .content a {

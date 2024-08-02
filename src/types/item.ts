@@ -1,4 +1,4 @@
-import { ILink } from '.'
+import { IImage, ILink } from '.'
 
 export interface IItem extends ILink {
   text: string | null
@@ -22,6 +22,7 @@ export interface IGalleryItem {
 
 export interface IStandartItem extends IItem {
   date: string | null
+  image: IImage
   img: string | null
   important: boolean
   time: string | null

@@ -2,6 +2,7 @@ import { API } from '@/api'
 import { SingleItem } from '@/components/Pages/SingleItem'
 import { getDataArray } from '@/utils/getDataArray'
 import React, { FC } from 'react'
+import { redirect } from 'next/navigation'
 
 export async function generateStaticParams() {
   const slugs = await fetch(`${API.baseUrl}/events?fields=slug`).then(res =>
@@ -45,7 +46,7 @@ const SingleNewsPage: FC<Props> = async ({ params }) => {
 
   const { data, news, events } = await fetchNewPageData()
 
-  if (!data.data.length) return <div />
+  if (!data.data.length) return redirect('/not-found')
 
   return (
     <SingleItem

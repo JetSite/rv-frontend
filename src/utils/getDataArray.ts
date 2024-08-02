@@ -28,6 +28,12 @@ export const getDataArray: IGetDataArray = ({ data }) => {
     id: item.id,
     date: item.attributes.date,
     img: API.imgUrl + item.attributes.cover?.data?.attributes?.url,
+    image: {
+      url: API.imgUrl + item.attributes.cover?.data?.attributes?.url,
+      alt: item.attributes.cover?.data?.attributes?.alternativeText || '',
+      width: item.attributes.cover?.data?.attributes?.width,
+      height: item.attributes.cover?.data?.attributes?.height,
+    },
     text:
       item.attributes.fullDescription ||
       item.attributes.description ||

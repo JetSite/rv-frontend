@@ -13,6 +13,13 @@ export interface IPagination {
   total: number
 }
 
+export interface IImage {
+  url: string
+  alt: string
+  width: number
+  height: number
+}
+
 export interface IMeta {
   pagination: IPagination
   [K: string]: unknown

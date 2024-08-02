@@ -134,14 +134,14 @@ export const FilterVideo: FC<Props> = ({
             handleClear={() => {
               setDisabled(false)
             }}
-            className="w-[240px] desktopOnly:w-[180px] bg-gray-100 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 py-4 desktopOnly:py-3 relative"
+            className="w-[240px] desktopOnly:w-[180px] bg-gray-100 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 py-4 desktopOnly:py-3 relative"
             placeholder="Проект"
             name="title"
             items={filterData.titles}
           />
           <Autocomplete
             setFilters={setFilters}
-            className="w-[100px] desktopOnly:w-[70px] bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
+            className="w-[100px] desktopOnly:w-[70px] bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
             name="year"
             placeholder="Год"
             handleSelect={value => {
@@ -156,7 +156,7 @@ export const FilterVideo: FC<Props> = ({
 
           <Autocomplete
             setFilters={setFilters}
-            className="w-[152px] desktopOnly:w-[112px] bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
+            className="w-[152px] desktopOnly:w-[112px] bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
             name="source"
             placeholder="Источник"
             type="text"
