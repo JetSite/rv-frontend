@@ -25,10 +25,10 @@ export const getLayoutData: IGetLayoutData = data => {
     navHeader: headerMenu.menu.map((item: any) => ({
       id: item.id,
       title: item.itemName,
-      isActive: item.menu_item.data.attributes.isActive,
-      slug: item.menu_item.data.attributes.itemLink || '#',
+      isActive: item.menu_item.data?.attributes.isActive,
+      slug: item.menu_item.data?.attributes.itemLink || '#',
       children:
-        item.submenu_items.data.map((e: IData) => ({
+        item.submenu_items.data?.map((e: IData) => ({
           id: e.id,
           title: e.attributes.itemName,
           isActive: e.attributes.isActive,
@@ -53,8 +53,8 @@ export const getLayoutData: IGetLayoutData = data => {
       children: item.attributes.menu.map((children: any) => ({
         id: children.id,
         title: children.itemName,
-        isActive: children.menu_item.data.attributes.isActive,
-        slug: children.menu_item.data.attributes.itemLink || '#',
+        isActive: children.menu_item.data?.attributes.isActive,
+        slug: children.menu_item.data?.attributes.itemLink || '#',
       })),
     })),
   }
