@@ -81,7 +81,7 @@ export const MainNavDropdown: FC<Props> = ({ data, item, colorShema }) => {
       <ul className="bg-white shadow-xl px-2 py-1 rounded-b-lg min-w-[98px]">
         {data.map(item => {
           return (
-            <li key={slug + '/' + item.id} className="p-2 text-start">
+            <li key={slug + '/' + item.id} className="main-nav p-2 text-start">
               <MainLink colorShema={colorShema} item={item} />
             </li>
           )
