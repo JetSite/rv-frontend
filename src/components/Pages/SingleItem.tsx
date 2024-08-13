@@ -24,8 +24,6 @@ export const SingleItem: FC<Props> = ({
   locale = 'ru',
   interviews,
 }) => {
-  console.log(interviews)
-
   return (
     <div>
       <Wrapper

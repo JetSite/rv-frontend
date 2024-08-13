@@ -21,18 +21,18 @@ const config: Config = {
         carousel: '560px',
       },
       colors: {
-        h: '#144574',
-        first: '#194C81',
-        firstInner: '#2A5781',
-        second: '#EE882B',
-        warning: '#D2051B',
-        text: '#061018',
-        grey: {
-          '200': '#C9E2F9',
-          '300': '#D9D9D9',
-          '350': '#B4B4B4',
-          '400': '#C8C8C8',
-          '700': '#666666',
+        h: 'rgb(var(--color-h), <alpha-value>)',
+        first: 'rgb(var(--color-first), <alpha-value>)',
+        'first-inner': 'rgb(var(--color-first-inner), <alpha-value>)',
+        second: 'rgb(var(--color-second), <alpha-value>)',
+        warning: 'rgb(var(--color-warning), <alpha-value>)',
+        text: 'rgb(var(--color-text), <alpha-value>)',
+        gray: {
+          '200': 'rgb(var(--color-grey-200), <alpha-value>)',
+          '300': 'rgb(var(--color-grey-300), <alpha-value>)',
+          '350': 'rgb(var(--color-grey-350), <alpha-value>)',
+          '400': 'rgb(var(--color-grey-400), <alpha-value>)',
+          '700': 'rgb(var(--color-grey-700), <alpha-value>)',
         },
       },
       gap: { '15': '60px' },
@@ -89,4 +89,5 @@ const config: Config = {
   ],
   plugins: [require('@tailwindcss/typography')],
 }
+
 export default config

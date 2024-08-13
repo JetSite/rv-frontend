@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html[data-theme='default'] {
+    --filter-saturation: saturate(1);
+    --color-h: 20, 69, 116;
+    --color-first: 25, 76, 129;
+    --color-first-inner: 42, 87, 129;
+    --color-second: 238, 136, 43;
+    --color-warning: 210, 5, 27;
+    --color-text: 6, 16, 24;
+    --color-grey-200: 201, 226, 249;
+    --color-grey-300: 217, 217, 217;
+    --color-grey-350: 180, 180, 180;
+    --color-grey-400: 200, 200, 200;
+    --color-grey-700: 102, 102, 102;
+  }
+
+  html[data-theme='readable'] {
+    --filter-saturation: saturate(0);
+    --courusel-title-bg: 255, 255, 255;
+    --courusel-title-text: 0, 0, 0;
+    --color-h: 0, 0, 0;
+    --color-first: 0, 0, 0;
+    --color-first-inner: 255, 255, 255;
+    --color-second: 0, 0, 0;
+    --color-warning: 255, 0, 0;
+    --color-text: 0, 0, 0;
+    --color-grey-200: 201, 226, 249;
+    --color-grey-300: 201, 201, 201;
+    --color-grey-350: 180, 180, 180;
+    --color-grey-400: 239, 239, 239;
+    --color-grey-700: 102, 102, 102;
+  }
+}
+
+img {
+  filter: var(--filter-saturation);
+}
+
 /* @font-face {
   font-family: 'Cera';
   src: url('/fonts/Cera-Pro-Black.otf') format('TrueType');
@@ -38,6 +76,11 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+html[data-theme='readable'] .courusel-title {
+  background-color: rgb(var(--courusel-title-bg), 1) !important;
+  color: rgb(var(--courusel-title-title), 1) !important;
 }
 
 .archive {
@@ -96,7 +139,7 @@
 .content h1,
 .content h2,
 .content h3 {
-  color: #194c81;
+  color: rgb(var(--color-first), 1);
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 8px;
@@ -132,7 +175,7 @@
 }
 
 .content a {
-  color: #194c81;
+  color: rgb(var(--color-first), 1);
   text-decoration: underline;
 }
 .content a:hover {
