@@ -27,8 +27,10 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
         ? 'readable'
         : 'default'
     }
-    return document.documentElement.getAttribute('data-theme') !== 'default'
-      ? 'readable'
+    return typeof document !== 'undefined'
+      ? document.documentElement.getAttribute('data-theme') !== 'default'
+        ? 'readable'
+        : 'default'
       : 'default'
   })
 
