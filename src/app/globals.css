@@ -83,6 +83,12 @@ html[data-theme='readable'] .courusel-title {
   color: rgb(var(--courusel-title-title), 1) !important;
 }
 
+html[data-theme='readable'] .main-nav a,
+.main-nav span,
+.main-nav button {
+  color: rgb(var(--courusel-title-title), 1) !important;
+}
+
 .archive {
   height: calc(100vh - 240px - 240px) !important;
 }

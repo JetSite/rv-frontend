@@ -22,7 +22,7 @@ export const MainNav: FC<Props> = ({ data, settings }) => {
     <ul className="flex w-full flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-[13px] text-h gap-3 desktopLarge:text-[19px] desktopLarge:gap-4">
       {data.map(item =>
         item.children.length ? (
-          <li key={item.id} className="">
+          <li key={item.id} className="main-nav">
             <MainNavDropdown
               colorShema={colorShema}
               item={item}
@@ -30,7 +30,7 @@ export const MainNav: FC<Props> = ({ data, settings }) => {
             />
           </li>
         ) : (
-          <li key={item.id} className="">
+          <li key={item.id} className="main-nav">
             <MainLink item={item} colorShema={colorShema} />
           </li>
         ),

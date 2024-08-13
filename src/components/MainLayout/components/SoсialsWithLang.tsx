@@ -21,10 +21,20 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   data,
 }) => {
   const [select, setSelect] = useState('ru')
-  const [theme, setTheme] = useState('default')
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') !== 'default'
+        ? 'readable'
+        : 'default'
+    }
+    return document.documentElement.getAttribute('data-theme') !== 'default'
+      ? 'readable'
+      : 'default'
+  })
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
   }, [theme])
 
   const toggleTheme = () => {

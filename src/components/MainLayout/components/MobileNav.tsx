@@ -59,7 +59,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                     data.length / 2 > i && (
                       <li
                         key={item.title}
-                        className="px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
+                        className="main-nav px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
                         onMouseEnter={() => setShowSubMenu(item.id)}
                         onMouseLeave={() => setShowSubMenu(null)}
                       >
@@ -95,7 +95,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                     data.length / 2 < i && (
                       <li
                         key={item.title}
-                        className="px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
+                        className="main-nav px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
                         onMouseEnter={() => setShowSubMenu(item.id)}
                         onMouseLeave={() => setShowSubMenu(null)}
                       >
@@ -111,7 +111,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                         {showSubMenu === item.id && !!item.children.length && (
                           <ul className="flex w-full flex-1 justify-between items-center mt-4 flex-col origin-top transition-all gap-2">
                             {item.children.map(subItem => (
-                              <li key={subItem.id}>
+                              <li key={subItem.id} className="main-nav">
                                 <MainLink sx="font-normal" item={subItem} />
                               </li>
                             ))}
