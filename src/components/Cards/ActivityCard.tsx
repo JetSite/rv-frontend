@@ -26,8 +26,8 @@ export const ActivityCard: FC<ActivityCardProps> = ({ item, slug }) => {
         </h3>
         <span className="font-bold text-[28px] text-white desktopOnly:text-[20px]">
           <PixelArrowIcon
-            className="notDesktop:w-5 notDesktop:h-6 fill-white opacity-50 desktopOnly:w-4 desktopOnly:h-5 desktopLarge:w-6
-      desktopLarge:h-8"
+            className="notDesktop:w-7  fill-white opacity-50 desktopOnly:w-7  desktopLarge:w-10
+      "
           />
         </span>
       </div>

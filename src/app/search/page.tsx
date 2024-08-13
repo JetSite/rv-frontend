@@ -5,6 +5,7 @@ import { getSearchData } from '@/utils/parsedData/getSearchData'
 import { FC } from 'react'
 
 interface Props extends INextPage {}
+
 const SearchPage: FC<Props> = async ({ searchParams }) => {
   const searchWord: string = encodeURIComponent(searchParams.search as string)
   const fetchPageData = async () => {

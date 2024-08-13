@@ -1,5 +1,5 @@
 'use client'
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import ArrowCircleIcon from './Ui/Icons/ArrowCircleIcon'
 import defineHtml from '@/utils/defineHtml'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -56,7 +56,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                         ? item.titleFirstLineBackgroundColor
                         : '',
                     }}
-                    className={classNames('block pl-4')}
+                    className={classNames('block pl-4 courusel-title')}
                   >
                     {item.titleFirstLine}
                   </span>
@@ -69,7 +69,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                         ? item.titleSecondLineBackgroundColor
                         : '',
                     }}
-                    className={classNames('block pl-4')}
+                    className={classNames('block pl-4 courusel-title')}
                   >
                     {item.titleSecondLine}
                   </span>

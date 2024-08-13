@@ -73,6 +73,7 @@ export const HomePage: FC<Props> = ({
             {prepareNewsData.map((item, i) => {
               return (
                 <li
+                  key={item.id}
                   className={classNames(
                     i < 2 ? 'row-span-3' : 'row-span-2',
                     i < 4 ? 'tablet:row-span-3' : 'tablet:hidden',
@@ -126,7 +127,7 @@ export const HomePage: FC<Props> = ({
             </h2>
           }
         >
-          <ul className="flex mobile:flex-col mobile:gap-5 tablet:px-8 tablet:flex-wrap -ml-1.5">
+          <ul className="flex mobile:flex-col mobile:gap-5 tablet:px-8 tablet:flex-wrap -ml-1.5 text-white">
             {activitiesData.splice(0, 4).map(item => (
               <li
                 className="w-[25%] px-1 py-2 first:pl-0 last:pr-0 transition-all hover:bg-h hovet:bg-opacity-60 mb-16 mobile:w-full mobile:p-0 mobile:mb-8 tablet:w-1/2"

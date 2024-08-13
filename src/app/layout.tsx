@@ -32,7 +32,7 @@ const RootLayout: FC<IComponentWithChildren> = async ({ children }) => {
 
   return (
     <html lang="en">
-      <body className="font-main">
+      <body className="font-main text-h">
         <NextTopLoader />
         <MainLayout data={getLayoutData(data)}>{children}</MainLayout>
       </body>

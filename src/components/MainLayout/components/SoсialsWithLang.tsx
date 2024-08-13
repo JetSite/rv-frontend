@@ -1,10 +1,11 @@
 'use client'
 import { SearchComponent } from '@/components/SearchComponent'
+import GlassesIcon from '@/components/Ui/Icons/GlassesIcon'
 import { langConfig } from '@/config'
 import { ISocialsItem } from '@/types/layout'
 import classNames from '@/utils/classNames'
 import Link from 'next/link'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 interface ISoсialsWithLang {
   subKey?: string
@@ -20,6 +21,15 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   data,
 }) => {
   const [select, setSelect] = useState('ru')
+  const [theme, setTheme] = useState('default')
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'default' ? 'readable' : 'default'))
+  }
 
   return (
     <div className={classNames(className, 'text-h')}>
@@ -58,7 +68,8 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           }[variant]
         }
       >
-        <div
+        <button
+          onClick={() => toggleTheme()}
           className={
             {
               footer: 'flex items-center justify-center',
@@ -67,14 +78,10 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
             }[variant]
           }
         >
-          <img
-            className="block desktopOnly:w-[30px] opacity-40"
-            height={45}
-            width={45}
-            alt="glasses"
-            src="/images/glasses.svg"
+          <GlassesIcon
+            className={classNames('block desktopOnly:w-[30px]', 'fill-h')}
           />
-        </div>
+        </button>
         <ul
           className={
             { footer: 'flex -order-1 ', standart: 'flex', tablet: 'flex ' }[
