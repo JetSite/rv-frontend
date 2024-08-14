@@ -19,7 +19,7 @@ export const AvatarInLine: FC<Props> = ({ persone }) => {
         src={persone.avatar}
         alt={persone.title}
       />
-      <span className="block mx-auto w-min text-center desktopOnly:text-[14px] text-[#666]">
+      <span className="block mx-auto w-min text-center desktopOnly:text-sm text-[#666]">
         {persone.title}
       </span>
     </li>

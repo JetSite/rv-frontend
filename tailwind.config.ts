@@ -40,7 +40,20 @@ const config: Config = {
         '18': '4.5rem',
       },
       fontSize: {
-        mobile: '14px',
+        base: ['var(--font-size-base)', '1.5'],
+        xxs: ['var(--font-size-xxs)', '1.5'],
+        '1.5xl': ['var(--font-size-1-5xl)', '1.875'],
+        '2.5xl': ['var(--font-size-2-5xl)', '2.25'],
+        '3.5xl': ['var(--font-size-3-5xl)', '1.1'],
+        xs: ['var(--font-size-xs)', '1'],
+        sm: ['var(--font-size-sm)', '1.25'],
+        md: ['var(--font-size-md)', '1.5'],
+        lg: ['var(--font-size-lg)', '1.75'],
+        xl: ['var(--font-size-xl)', '1.75'],
+        '2xl': ['var(--font-size-2xl)', '2'],
+        '3xl': ['var(--font-size-3xl)', '2.25'],
+        '4xl': ['var(--font-size-4xl)', '2.5'],
+        '5xl': ['var(--font-size-5xl)', '1'],
       },
       gridTemplateRows: {
         '7': 'repeat(7, minmax(0, 0.5fr))',
@@ -87,7 +100,10 @@ const config: Config = {
     'bg-',
     'before:bg-',
   ],
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+  ],
 }
 
 export default config

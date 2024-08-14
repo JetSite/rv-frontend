@@ -25,13 +25,13 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
             src={item.img}
           />
         )}
-        <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 desktopOnly:text-[13px] max-h-9 notDesktop:max-h-7 desktopOnly:max-h-[26px] overflow-hidden">
+        <h3 className="text-first font-bold text-lg notDesktop:text-sm leading-none mb-5 desktopOnly:text-sm line-clamp-2 overflow-hidden">
           {item.title}
         </h3>
-        <p className="mb-2.5 text-mobile leading-normal notDesktop:text-[12px] text-ellipsis desktopOnly:text-[11px] max-h-[105px]  desktopOnly:max-h-[100px] overflow-hidden">
+        <p className="mb-2.5 text-sm leading-normal notDesktop:text-xs text-ellipsis desktopOnly:text-xxs line-clamp-5">
           {item.description || item.text} {item.text}
         </p>
-        <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first desktopOnly:text-[10px]">
+        <p className="text-end font-medium leading-none text-sm notDesktop:text-xs text-first desktopOnly:text-xxs">
           {!!item.date && getNormalizeDate(item.date, locale)}
         </p>
       </Link>
@@ -40,7 +40,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
 
   return (
     <Link
-      className="p-1.5 flex gap-5 transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:w-full mobile:flex-col"
+      className="p-1.5 flex gap-5 transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:w-full mobile:flex-col h-full"
       href={link}
     >
       {!!item.img && (
@@ -49,14 +49,14 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
           src={item.img}
         />
       )}
-      <div className="flex flex-col relative max-h-[400px] w-full  desktopOnly:h-[280px]">
-        <h3 className="text-first font-bold text-[18px] notDesktop:text-mobile leading-none mb-5 before:absolute before:w-1.5 before:h-1.5 before:bg-red-500 before:rounded-full before:-left-3 before:top-1.5 desktopOnly:text-[13px]">
+      <div className="flex flex-col relative w-full ">
+        <h3 className="text-first font-bold text-lg notDesktop:text-sm leading-none mb-4 before:absolute before:w-1.5 before:h-1.5 before:bg-red-500 before:rounded-full before:-left-3 before:top-1.5 desktopOnly:text-sm line-clamp-3 pb-2">
           {item.title}
         </h3>
-        <p className="mb-2.5 h-full text-mobile leading-normal notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[11px]">
+        <p className="mb-2.5 text-sm leading-normal notDesktop:text-xs text-ellipsis desktopOnly:text-xxs line-clamp-[18] desktopOnly:line-clamp-[12] ">
           {item.text || item.description}
         </p>
-        <p className="text-end font-medium leading-none text-mobile notDesktop:text-[12px] text-first desktopOnly:text-[10px] ">
+        <p className="text-end font-medium leading-none text-sm notDesktop:text-xs text-first desktopOnly:text-xxs mt-auto">
           {!!item.date && getNormalizeDate(item.date, locale)}
         </p>
       </div>

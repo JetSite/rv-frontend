@@ -59,7 +59,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                     data.length / 2 > i && (
                       <li
                         key={item.title}
-                        className="main-nav px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
+                        className="main-nav px-2 last:pr-0 mx-auto first:pl-0 block text-xl font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
                         onMouseEnter={() => setShowSubMenu(item.id)}
                         onMouseLeave={() => setShowSubMenu(null)}
                       >
@@ -95,7 +95,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                     data.length / 2 < i && (
                       <li
                         key={item.title}
-                        className="main-nav px-2 last:pr-0 mx-auto first:pl-0 block text-[20px] font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
+                        className="main-nav px-2 last:pr-0 mx-auto first:pl-0 block text-xl font-bold p-0 tablet:p-0 tablet:text-center mobile:px-0 mobile:w-[268px] text-center"
                         onMouseEnter={() => setShowSubMenu(item.id)}
                         onMouseLeave={() => setShowSubMenu(null)}
                       >

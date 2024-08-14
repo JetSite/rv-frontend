@@ -28,7 +28,7 @@ export const MobileArchive: FC<ArchiveProps> = ({
       <Wrapper
         sx="mobile:px-7 tablet:px-8 "
         title={
-          <h2 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[24px] mobile:mt-5">
+          <h2 className="block mt-10 mb-2.5 text-first text-5xl font-bold notDesktop:text-2xl mobile:mt-5">
             {title}
           </h2>
         }
@@ -37,7 +37,7 @@ export const MobileArchive: FC<ArchiveProps> = ({
           setShow={setShow}
           show={show}
           button={
-            <button className="text-first text-[28px] font-bold flex gap-2 items-center">
+            <button className="text-first text-2.5xl font-bold flex gap-2 items-center">
               <span>{selectDate?.split('-')[0]}</span>
               <span>
                 {(
@@ -54,7 +54,7 @@ export const MobileArchive: FC<ArchiveProps> = ({
             {data[page].map(year => (
               <li
                 key={year.year}
-                className="text-left text-[18px] font-medium flex gap-4 mb-4"
+                className="text-left text-lg font-medium flex gap-4 mb-4"
               >
                 <span className="">{year.year}</span>
                 <ul>

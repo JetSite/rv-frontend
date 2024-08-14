@@ -26,7 +26,7 @@ const EventsPage = async () => {
       <Wrapper
         sx="mobile:px-7 tablet:px-8"
         title={
-          <h2 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[24px] desktopOnly:text-[32px] mobile:mt-5">
+          <h2 className="block mt-10 mb-2.5 text-first text-5xl font-bold notDesktop:text-2xl desktopOnly:text-3.5xl mobile:mt-5">
             Календарь событий
           </h2>
         }
@@ -36,10 +36,10 @@ const EventsPage = async () => {
 
       <Wrapper
         sx=" tablet:px-8"
-        endLink={{ title: 'Архив событий >', slug: 'events/archive' }}
+        endLink={{ title: 'Архив событий >', slug: '/events/archive' }}
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
-            <h2 className="text-[22px] text-first font-bold  mobile:text-[18px] whitespace-nowrap">
+            <h2 className="text-1.5xl text-first font-bold  mobile:text-lg whitespace-nowrap">
               Прошедшие события
             </h2>
             <hr className="w-full border-gray-300 notDesktop:hidden" />
@@ -69,9 +69,9 @@ const EventsPage = async () => {
 
       <Wrapper
         sx="tablet:px-8"
-        endLink={{ title: 'Архив новостей >', slug: 'events/archive' }}
+        endLink={{ title: 'Архив новостей >', slug: '/news/archive' }}
         title={
-          <h2 className="text-first text-[48px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4  desktopOnly:text-[22px]">
+          <h2 className="text-first text-5xl font-bold pt-10 mb-6 block notDesktop:text-2xl mobile:px-7 mobile:pt-4  desktopOnly:text-1.5xl">
             Новости
           </h2>
         }

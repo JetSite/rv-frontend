@@ -84,10 +84,10 @@ export const Archive: FC<ArchiveProps> = ({
 
   return (
     <div className="max-w-content desktopOnly:max-w-[988px] w-full mx-auto mt-7 desktopLarge:max-w-[1480px]">
-      <h1 className="text-first text-[48px] desktopOnly:text-[32px] mb-7 font-bold">
+      <h1 className="text-first text-5xl desktopOnly:text-3.5xl mb-7 font-bold">
         {title}
       </h1>
-      <p className="text-gray-700 mb-10 text-[14px] desktopOnly:text-base w-3/4">
+      <p className="text-gray-700 mb-10 text-sm desktopOnly:text-base w-3/4">
         {subTitle}
       </p>
       <div className="flex">
@@ -137,7 +137,7 @@ export const Archive: FC<ArchiveProps> = ({
                   onClick={handleSelectDate}
                   name={item.year}
                   className={classNames(
-                    'text-[48px]  desktopOnly:text-[30px]',
+                    'text-5xl  desktopOnly:text-3xl',
                     !selectDate?.includes(item.year) ? 'opacity-60' : '',
                   )}
                 >
@@ -152,7 +152,7 @@ export const Archive: FC<ArchiveProps> = ({
                       <li key={month.value}>
                         <button
                           className={classNames(
-                            'text-[30px] desktopOnly:text-[22px]',
+                            'text-3xl desktopOnly:text-1.5xl',
                             !selectDate?.includes(month.value)
                               ? 'opacity-60'
                               : '',

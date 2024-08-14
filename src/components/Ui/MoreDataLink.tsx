@@ -63,7 +63,7 @@ export const MoreDataLink: FC<Props> = ({
   }
 
   return haveNewPage ? (
-    <div className="ml-[54px] mt-4 text-h text-[16px] font-medium">
+    <div className="ml-[54px] mt-4 text-h font-medium">
       <button
         onClick={() => {
           handleClick()

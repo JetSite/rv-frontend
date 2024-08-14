@@ -71,7 +71,7 @@ export const CalendarCarousel: FC<Props> = ({
         nextEl: nextButtonRef.current,
       }}
       modules={[Pagination, Navigation]}
-      className="mySwiper w-full h-[280px] mobile:h-[220px] desktopOnly:h-[242px] relative flex mb-10"
+      className="mySwiper w-full  relative flex mb-10"
     >
       {arr.map(item => {
         return (
@@ -79,7 +79,7 @@ export const CalendarCarousel: FC<Props> = ({
             <div className="flex gap-7 w-full">
               {!!item.img && (
                 <img
-                  className=" max-w-[50%] h-[288px] object-contain object-top tablet:w-[40%] tablet:h-[370px]"
+                  className=" max-w-[50%] h-[288px] object-contain object-top tablet:w-[40%]"
                   src={item.img}
                 />
               )}
@@ -91,11 +91,11 @@ export const CalendarCarousel: FC<Props> = ({
                     }}
                   />
                 ) : (
-                  <h2 className="text-[18px] w-3/4 text-first z-30 mobile:text-[14px] mobile:w-full mobile:mx-4 desktopOnly:text-[13px]">
+                  <h2 className="text-lg w-3/4 text-first z-30 mobile:text-sm mobile:w-full mobile:mx-4 desktopOnly:text-sm line-clamp-1">
                     {item.title}
                   </h2>
                 )}
-                <p className="flex flex-row justify-between text-first text-[18px] font-bold my-4 desktopOnly:text-base">
+                <p className="flex flex-row justify-between text-first text-lg font-bold my-4 desktopOnly:text-base">
                   <span className="flex flex-row gap-4">
                     <span>{getNormalizeDate(item.date as string, locale)}</span>
                     {getNormalizeDate(new Date(), locale) ===
@@ -107,7 +107,7 @@ export const CalendarCarousel: FC<Props> = ({
                   </span>
                   <span>{item.time}</span>
                 </p>
-                <p className="text-ellipsis desktopOnly:text-[11px]">
+                <p className="text-ellipsis desktopOnly:text-xxs line-clamp-[8]">
                   {item.text}
                 </p>
               </Link>

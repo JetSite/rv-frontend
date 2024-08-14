@@ -19,7 +19,7 @@ export const EventCard: FC<EventCardProps> = ({
 }) => {
   return (
     <Link href={link} className={sx}>
-      <p className="text-first font-bold text-[18px] flex flex-row notDesktop:text-mobile notDesktop:mb-0.5 notDesktop:justify-between desktopOnly:text-[13px]">
+      <p className="text-first font-bold text-lg flex flex-row notDesktop:text-sm notDesktop:mb-0.5 notDesktop:justify-between desktopOnly:text-sm">
         {!!item.date && (
           <span className="min-w-max">
             {getNormalizeDate(item.date, locale)}
@@ -30,10 +30,10 @@ export const EventCard: FC<EventCardProps> = ({
           {item.time?.replace(':00', '')}
         </time>
       </p>
-      <h3 className="text-first font-medium mb-1 notDesktop:text-mobile notDesktop:mb-0.5 desktopOnly:text-[11px] max-h-11 notDesktop:max-h-10 desktopOnly:max-h-8 overflow-hidden">
+      <h3 className="text-first font-medium mb-1 notDesktop:text-sm notDesktop:mb-0.5 desktopOnly:text-xxs line-clamp-2">
         {item.title}
       </h3>
-      <p className="text-mobile notDesktop:text-[12px] overflow-hidden text-ellipsis desktopOnly:text-[10px] max-h-[105px] desktopOnly:max-h-[102px]">
+      <p className="text-sm notDesktop:text-xs overflow-hidden text-ellipsis desktopOnly:text-xxs line-clamp-5">
         {item.description || item.text}
       </p>
     </Link>

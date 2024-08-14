@@ -18,13 +18,13 @@ export const Interviews: FC<Props> = ({ data, filterData, meta }) => {
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
       title={
-        <h2 className="block mt-10 mb-2.5 text-first text-[48px] font-bold notDesktop:text-[24px] mobile:mt-5">
+        <h2 className="block mt-10 mb-2.5 text-first text-5xl font-bold notDesktop:text-2xl mobile:mt-5">
           Интервью
         </h2>
       }
     >
       <div className="notMobile:w-[80%]">
-        <p className="text-[14px] text-gray-500 pb-6 mb-4">
+        <p className="text-sm text-gray-500 pb-6 mb-4">
           Интервью с Рубеном Варданяном - это возможность узнать о нем больше,
           его взглядах, мнениях и опыте. В ходе такого интервью можно узнать
           много нового и интересного о жизни и деятельности известной персоны.

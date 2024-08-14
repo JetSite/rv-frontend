@@ -9,12 +9,12 @@ const NotFound: FC<Props> = async ({}) => {
     <Wrapper
       sx="mobile:px-7 tablet:px-8"
       title={
-        <h3 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-bold notDesktop:text-[24px] mobile:mt-5">
+        <h3 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-3.5xl font-bold notDesktop:text-2xl mobile:mt-5">
           Что то пошло не так...
         </h3>
       }
     >
-      <p className="text-h text-[24px] desktopOnly:text-[18px] font-medium mb-8 desktopOnly:mb-6">
+      <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-8 desktopOnly:mb-6">
         Ссылка не действительна.
       </p>
     </Wrapper>

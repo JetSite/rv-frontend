@@ -22,13 +22,13 @@ export const AudioAndVideos: FC<Props> = ({ data, filterData, meta }) => {
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
       title={
-        <h2 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-bold notDesktop:text-[24px] mobile:mt-5">
+        <h2 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-3.5xl font-bold notDesktop:text-2xl mobile:mt-5">
           Аудио и видео
         </h2>
       }
     >
       <div className="desktop:w-[80%]">
-        <p className="text-[14px] desktopOnly:text-[12px] text-gray-500 pb-6 mb-4">
+        <p className="text-sm desktopOnly:text-xs text-gray-500 pb-6 mb-4">
           Аудио- и видеоинтервью стали популярными методами сбора информации и
           общения с людьми в различных сферах, от бизнеса и маркетинга до
           образования и социального обслуживания. Аудиоинтервью обычно

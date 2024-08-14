@@ -47,10 +47,10 @@ export const InterviewsLine: FC<Props> = ({
                 href={'/media/interviews/' + interview.slug}
                 className="w-full pb-14 desktopOnly:pb-12"
               >
-                <h3 className="text-[18px] desktopOnly:text-base text-first mb-1.5">
+                <h3 className="text-lg desktopOnly:text-base text-first mb-1.5">
                   {interview.title}
                 </h3>
-                <p className="text-14 desktopOnly:text-[12px] flex gap-1 font-medium mb-2.5">
+                <p className="text-14 desktopOnly:text-xs flex gap-1 font-medium mb-2.5">
                   {!!interview.source && (
                     <span>
                       {interview.source.title}
@@ -76,7 +76,7 @@ export const InterviewsLine: FC<Props> = ({
     </>
   ) : (
     <div className="w-full flex-col my-10 flex items-center">
-      <p className="text-h flex font-bold text-[18px]">Ничего не найдено</p>
+      <p className="text-h flex font-bold text-lg">Ничего не найдено</p>
     </div>
   )
 }

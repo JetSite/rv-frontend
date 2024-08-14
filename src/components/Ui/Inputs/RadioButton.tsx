@@ -18,7 +18,7 @@ export const RadioButton: FC<Props> = ({
   selectItem,
 }) => {
   return (
-    <div className="inline-flex items-center text-firstInner text-[14px] desktopOnly:text-[12px]">
+    <div className="inline-flex items-center text-firstInner text-sm desktopOnly:text-xs">
       <label
         className="relative flex items-center rounded-full cursor-pointer"
         htmlFor={label}

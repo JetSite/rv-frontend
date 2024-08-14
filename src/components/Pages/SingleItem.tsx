@@ -30,10 +30,10 @@ export const SingleItem: FC<Props> = ({
         sx=" notDesktop:px-8 desktop:mb-8"
         title={
           <>
-            <h1 className="text-first text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
+            <h1 className="text-first text-5xl desktopOnly:text-3.5xl font-bold pt-10 mb-6 block notDesktop:text-2xl mobile:px-7 mobile:pt-4">
               {data?.title}
             </h1>
-            <p className="mb-6 text-[14px] font-medium text-first">
+            <p className="mb-6 text-sm font-medium text-first">
               {!!data.date && getNormalizeDate(data.date, locale)}
             </p>
           </>
@@ -64,7 +64,7 @@ export const SingleItem: FC<Props> = ({
         sx=" tablet:px-8"
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
-            <h2 className="text-[22px] text-first font-bold  mobile:text-[18px] whitespace-nowrap">
+            <h2 className="text-1.5xl text-first font-bold  mobile:text-lg whitespace-nowrap">
               Медиа-активность
             </h2>
             <hr className="w-full border-gray-300 notDesktop:hidden" />
@@ -95,7 +95,7 @@ export const SingleItem: FC<Props> = ({
         sx=" tablet:px-8"
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
-            <h2 className="text-[22px] text-first font-bold  mobile:text-[18px] whitespace-nowrap">
+            <h2 className="text-1.5xl text-first font-bold  mobile:text-lg whitespace-nowrap">
               События
             </h2>
             <hr className="w-full border-gray-300 notDesktop:hidden" />
@@ -126,7 +126,7 @@ export const SingleItem: FC<Props> = ({
         sx=" tablet:px-8"
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
-            <h2 className="text-[22px] text-first font-bold  mobile:text-[18px] whitespace-nowrap">
+            <h2 className="text-1.5xl text-first font-bold  mobile:text-lg whitespace-nowrap">
               Новости
             </h2>
             <hr className="w-full border-gray-300 notDesktop:hidden" />

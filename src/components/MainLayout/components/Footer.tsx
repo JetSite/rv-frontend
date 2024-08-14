@@ -17,7 +17,7 @@ export const Footer: FC<Props> = ({ data }) => {
         <Logo
           data={data.logo}
           logoSx="w-[68px]"
-          titleSx="text-h text-[26px] font-medium "
+          titleSx="text-h text-2xl font-medium "
         />
       </div>
       <SoсialsWithLang

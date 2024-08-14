@@ -52,12 +52,12 @@ export const Activity: FC<Props> = ({ data, locale }) => {
     <Wrapper
       sx="mobile:px-7 tablet:px-8"
       title={
-        <h2 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-bold notDesktop:text-[24px] mobile:mt-5">
+        <h2 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-3.5xl font-bold notDesktop:text-2xl mobile:mt-5">
           {data.title}
         </h2>
       }
     >
-      <p className="text-[14px] text-gray-500 pb-6 notMobile:w-2/3 mb-4">
+      <p className="text-sm text-gray-500 pb-6 notMobile:w-2/3 mb-4">
         {data.text}
       </p>
       <ul className="notMobile:w-2/3">
@@ -67,7 +67,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
               <li key={group.groupId} className="mb-8">
                 <button
                   onClick={() => selectGroup(group.groupId)}
-                  className="text-h text-[24px] desktopOnly:text-[18px] mb-8 font-medium flex items-center gap-4 "
+                  className="text-h text-2xl desktopOnly:text-lg mb-8 font-medium flex items-center gap-4 "
                 >
                   <BoldCHevronIcon
                     bold={showGroup.includes(group.groupId)}
@@ -88,7 +88,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                           >
                             <button
                               onClick={() => selectCategory(category.id)}
-                              className="text-first text-[18px] desktopOnly:text-base font-medium w-full flex justify-between  mb-4"
+                              className="text-first text-lg desktopOnly:text-base font-medium w-full flex justify-between  mb-4"
                             >
                               <span className="desktop:whitespace-nowrap text-start relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 hover:before:w-full">
                                 {category.title}
@@ -106,7 +106,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                               <ul className="flex flex-col gap-5">
                                 {category.elements.map(e => (
                                   <li key={e.id}>
-                                    <p className="flex gap-1 text-[14px] font-medium text-first mb-2">
+                                    <p className="flex gap-1 text-sm font-medium text-first mb-2">
                                       <span>{e.startDate.split('-')[0]}</span>
                                       <span>-</span>
                                       {e.untilNow ? (
@@ -115,9 +115,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                                         <span>{e.endDate?.split('-')[0]}</span>
                                       )}
                                     </p>
-                                    <p className="text-[14px] ">
-                                      {e.description}
-                                    </p>
+                                    <p className="text-sm ">{e.description}</p>
                                   </li>
                                 ))}
                               </ul>
@@ -141,7 +139,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
               >
                 <button
                   onClick={() => selectCategory(category.id)}
-                  className="text-first text-[18px] font-medium w-full flex justify-between items-center gap-1 "
+                  className="text-first text-lg font-medium w-full flex justify-between items-center gap-1 "
                 >
                   <span className="notMobile:whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 hover:before:w-full text-start">
                     {category.title}
@@ -157,7 +155,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                   <ul className="flex flex-col gap-5">
                     {category.elements.map(e => (
                       <li key={e.id} className="first:mt-4">
-                        <p className="flex gap-1 text-[14px] font-medium text-first mb-2">
+                        <p className="flex gap-1 text-sm font-medium text-first mb-2">
                           <span>{e.startDate.split('-')[0]}</span>
                           {!e.endDate && !e.untilNow ? null : <span>-</span>}
                           {e.untilNow ? (
@@ -166,7 +164,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
                             <span>{e.endDate?.split('-')[0]}</span>
                           )}
                         </p>
-                        <p className="text-[14px]">{e.description}</p>
+                        <p className="text-sm">{e.description}</p>
                       </li>
                     ))}
                   </ul>

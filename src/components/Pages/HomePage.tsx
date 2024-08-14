@@ -122,7 +122,7 @@ export const HomePage: FC<Props> = ({
           mainPage
           sx="bg-first"
           title={
-            <h2 className="text-white text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block mobile:text-[24px] notDesktop:px-7 notDesktop:pt-4 ">
+            <h2 className="text-white text-5xl desktopOnly:text-3.5xl font-bold pt-10 mb-6 block mobile:text-2xl notDesktop:px-7 notDesktop:pt-4 ">
               Деятельность
             </h2>
           }

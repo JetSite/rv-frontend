@@ -91,7 +91,7 @@ export const ContactForm = ({
         className="text-first flex flex-col gap-6 desktopOnly:gap-4"
       >
         <Input
-          sx="w-full bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
+          sx="w-full bg-first bg-opacity-5 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
           name="name"
           id="name"
           placeholder={placeholders.name as string}
@@ -103,7 +103,7 @@ export const ContactForm = ({
           type="text"
         />
         <Input
-          sx="w-full bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
+          sx="w-full bg-first bg-opacity-5 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4"
           name="tel"
           id="tel"
           placeholder={placeholders.tel as string}
@@ -128,7 +128,7 @@ export const ContactForm = ({
           ))}
         </ul>
         <TextArea
-          sx="w-full bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px]  placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4 min-h-[173px] desktopOnly:min-h-[120px]"
+          sx="w-full bg-first bg-opacity-5 text-sm desktopOnly:text-xs  placeholder:opacity-60 px-7 desktopOnly:px-5 desktopOnly:py-3 py-4 min-h-[173px] desktopOnly:min-h-[120px]"
           name="msg"
           id="msg"
           placeholder={placeholders.msg as string}
@@ -142,7 +142,7 @@ export const ContactForm = ({
           <button
             type="submit"
             disabled={!isValid || loading}
-            className="w-full max-w-[475px] text-[24px] desktopOnly:text-[18px] font-medium text-white bg-first py-2 disabled:bg-opacity-60"
+            className="w-full max-w-[475px] text-2xl desktopOnly:text-lg font-medium text-white bg-first py-2 disabled:bg-opacity-60"
           >
             {loading ? (
               <Loader className="mx-auto" />
@@ -150,7 +150,7 @@ export const ContactForm = ({
               langButtons.sendButton[locale]
             )}
           </button>
-          <p className="text-[10px] text-first mt-3 text-center">
+          <p className="text-xxs text-first mt-3 text-center">
             Отправляя запрос, вы автоматически соглашаетесь на обработку ваших
             персональных данных.
           </p>
@@ -165,7 +165,7 @@ export const ContactForm = ({
             >
               <XIcon />
             </button>
-            <h3 className="block mb-2.5 text-first text-[38px] leading-1 font-bold notDesktop:text-[24px] mobile:mt-5">
+            <h3 className="block mb-2.5 text-first text-3.5xl font-bold notDesktop:text-2xl mobile:mt-5">
               Спасибо за Ваше обращение!
             </h3>
             <p className="mb-2.5">
@@ -174,7 +174,7 @@ export const ContactForm = ({
             </p>
             <Link
               href={'/'}
-              className="w-full max-w-[475px] text-[24px] font-medium text-white bg-first py-2 disabled:bg-opacity-60"
+              className="w-full max-w-[475px] text-2xl font-medium text-white bg-first py-2 disabled:bg-opacity-60"
             >
               Вернуться на главую
             </Link>

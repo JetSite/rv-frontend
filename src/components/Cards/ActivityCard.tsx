@@ -21,17 +21,17 @@ export const ActivityCard: FC<ActivityCardProps> = ({ item, slug }) => {
         />
       )}
       <div className=" flex justify-between items-center">
-        <h3 className="mb-2.5 font-bold text-[28px] notDesktop:text-[24px] mobile:mb-5 desktopOnly:text-[20px]">
+        <h3 className="mb-2.5 font-bold text-2.5xl notDesktop:text-2xl mobile:mb-5 desktopOnly:text-xl line-clamp-2">
           {item.title}
         </h3>
-        <span className="font-bold text-[28px] text-white desktopOnly:text-[20px]">
+        <span className="font-bold text-2.5xl text-white desktopOnly:text-xl">
           <PixelArrowIcon
             className="notDesktop:w-7  fill-white opacity-50 desktopOnly:w-7  desktopLarge:w-10
       "
           />
         </span>
       </div>
-      <p className=" text-mobile leading-normal max-h-[142px] notDesktop:text-[12px] mobile:max-h-none overflow-hidden desktopOnly:text-[10px]">
+      <p className=" text-sm leading-normal line-clamp-[10] notDesktop:text-xs mobile:max-h-none overflow-hidden desktopOnly:text-xxs">
         {item.description || item.text}
       </p>
     </Link>
