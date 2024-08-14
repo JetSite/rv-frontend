@@ -14,14 +14,12 @@ export const Mentors: FC<Props> = ({ data }) => {
     <Wrapper
       sx=" notDesktop:px-8 desktop:mb-8"
       title={
-        <h2 className="block mt-10 mb-2.5 text-first text-[24px] font-medium notDesktop:text-[24px] mobile:mt-5">
+        <h2 className="block mt-10 mb-2.5 text-first text-2xl font-medium notDesktop:text-2xl mobile:mt-5">
           {data.title}
         </h2>
       }
     >
-      <p className="w-2/3 text-[14px] text-gray-500 mb-14">
-        {data.description}
-      </p>
+      <p className="w-2/3 text-sm text-gray-500 mb-14">{data.description}</p>
       <div className="flex ">
         {data.content ? (
           <Content sx="content w-1/2  desktop:" content={data.content} />

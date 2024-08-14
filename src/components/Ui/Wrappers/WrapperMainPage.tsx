@@ -22,7 +22,7 @@ export const WrapperMainPage: FC<WrapperMainPageProps> = ({
       <div
         className={`desktopLarge:w-10 desktopOnly:w-7 relative ${titleStyles}`}
       >
-        <div className="rotate-[270deg] py-1 px-3 flex justify-end notDesktop:static notDesktop:rotate-0 notDesktop:justify-start notDesktop:px-7 notDesktop:text-mobile notDesktop:py-0 desktopLarge:mt-2 desktopOnly:text-[13px]">
+        <div className="rotate-[270deg] py-1 px-3 flex justify-end notDesktop:static notDesktop:rotate-0 notDesktop:justify-start notDesktop:px-7 notDesktop:text-sm notDesktop:py-0 desktopLarge:mt-2 desktopOnly:text-sm">
           {typeof title === 'string' ? <h2>{title}</h2> : title}
         </div>
       </div>

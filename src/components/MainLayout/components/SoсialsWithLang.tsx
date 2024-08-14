@@ -104,7 +104,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           {langConfig.map((item, i) => (
             <li
               key={subKey + ' ' + item.value}
-              className="px-2 border-r-2 border-h last:border-none first:pl-0 last:pr-0 text-[18px] desktopOnly:text-[12px] opacity-40"
+              className="px-2 border-r-2 border-h last:border-none first:pl-0 last:pr-0 text-lg desktopOnly:text-xs opacity-40"
             >
               <div
                 className={select === item.value ? 'font-bold' : 'font-normal'}

@@ -34,7 +34,7 @@ export const VideoLineItem: FC<Props> = ({
         {persons.length > 2 && (
           <button
             onClick={() => setShowAll(!showAll)}
-            className="mb-8 opacity-20 hover:opacity-60 text-[12px]"
+            className="mb-8 opacity-20 hover:opacity-60 text-xs"
           >
             {showAll ? 'скрыть' : 'ещё...'}
           </button>
@@ -48,10 +48,10 @@ export const VideoLineItem: FC<Props> = ({
         />
       </div>
       <div className="w-full pb-14 flex flex-col">
-        <h3 className="text-[18px] desktopOnly:text-base text-first mb-1.5 mobile:order-1">
+        <h3 className="text-lg desktopOnly:text-base text-first mb-1.5 mobile:order-1">
           {title}
         </h3>
-        <p className="text-14 desktopOnly:text-[12px] flex gap-1 font-medium mb-2.5 mobile:order-2">
+        <p className="text-14 desktopOnly:text-xs flex gap-1 font-medium mb-2.5 mobile:order-2">
           {source ? (
             source?.link ? (
               <Link target="_blank" href={source.link}>

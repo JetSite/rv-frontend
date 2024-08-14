@@ -17,14 +17,12 @@ export const Priority: FC<Props> = ({ data }) => {
       <Wrapper
         sx="mobile:px-7 tablet:px-8 "
         title={
-          <h1 className="o text-first text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block notDesktop:text-[24px] mobile:px-7 mobile:pt-4">
+          <h1 className="o text-first text-5xl desktopOnly:text-3.5xl font-bold pt-10 mb-6 block notDesktop:text-2xl mobile:px-7 mobile:pt-4">
             {data.title}
           </h1>
         }
       >
-        <p className="text-[14px] text-gray-500 pb-6 desktop:w-2/3">
-          {data.text}
-        </p>
+        <p className="text-sm text-gray-500 pb-6 desktop:w-2/3">{data.text}</p>
       </Wrapper>
       <div className="mobile:px-7 tablet:px-8 relative w-full notDesktop:flex notDesktop:flex-col desktopLarge:flex desktopLarge:max-w-[1480px] desktopOnly:max-w-[988px] mx-auto">
         <div className="desktopLarge:flex gap-4 justify-center">

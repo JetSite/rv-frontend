@@ -10,7 +10,7 @@ export const DownloadBlock: FC<{ magazine: IMagazine }> = ({ magazine }) => {
     downloadPDF(magazine.ruLink, magazine.title)
   }
   return magazine.ruLink || magazine.enLink ? (
-    <p className="text-[14px] desktopOnly:text-[12px] ml-auto w-fit">
+    <p className="text-sm desktopOnly:text-xs ml-auto w-fit">
       <span>Скачать </span>
       {magazine.ruLink ? (
         <button

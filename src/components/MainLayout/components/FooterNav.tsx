@@ -14,13 +14,13 @@ export const FooterNav: FC<Props> = ({ data }) => {
         return (
           <li
             key={item.title}
-            className="gap-4 block text-[14px] font-bold desktopLarge:text-[20px]"
+            className="gap-4 block text-sm font-bold desktopLarge:text-xl"
           >
             <MainLink item={item} />
             <ul className="flex flex-col mt-6 gap-2.5">
               {item.children.map(children => (
                 <li
-                  className="block text-[11px] desktopLarge:text-base font-normal"
+                  className="block text-xxs desktopLarge:text-base font-normal"
                   key={children.title}
                 >
                   <MainLink item={children} />

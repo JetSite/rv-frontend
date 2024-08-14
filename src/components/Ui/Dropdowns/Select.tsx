@@ -65,7 +65,7 @@ const Select: FC<Props> = ({
                     >
                       <button
                         disabled={selected?.id === item.id}
-                        className="relative select-none px-3 py-1 w-full text-left text-[22px] font-bold
+                        className="relative select-none px-3 py-1 w-full text-left text-1.5xl font-bold
                     bg-white text-h cursor-pointer hover:text-h hover:bg-second disabled:bg-second disabled:text-textH disabled:cursor-default"
                       >
                         {item.title}

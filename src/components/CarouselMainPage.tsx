@@ -46,7 +46,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
                   }}
                 />
               ) : (
-                <h2 className="text-[14px] tablet:text-[30px] desktopOnly:text-[39px] desktopLarge:text-[48px] font-bold w-3/4 z-30 mobile:w-full mobile:mx-4">
+                <h2 className="text-sm tablet:text-3xl desktopOnly:text-3.5xl desktopLarge:text-5xl font-bold w-3/4 z-30 mobile:w-full mobile:mx-4">
                   <span
                     style={{
                       color: item.titleFirstLineTextColor

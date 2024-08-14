@@ -15,12 +15,12 @@ export const Projects: FC<Props> = ({ data }) => {
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
       title={
-        <h2 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] font-bold notDesktop:text-[24px] mobile:mt-5">
+        <h2 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-3.5xl font-bold notDesktop:text-2xl mobile:mt-5">
           {data.title}
         </h2>
       }
     >
-      <p className="text-[14px] desktopOnly:text-[12px] text-gray-500 pb-6 mb-4 w-[80%]">
+      <p className="text-sm desktopOnly:text-xs text-gray-500 pb-6 mb-4 w-[80%]">
         {data.description}
       </p>
       <ul>
@@ -28,10 +28,10 @@ export const Projects: FC<Props> = ({ data }) => {
           <li key={category.id}>
             {data.showCategories ? (
               <>
-                <p className="text-h text-[24px] desktopOnly:text-[18px] font-medium mb-8 desktopOnly:mb-6">
+                <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-8 desktopOnly:mb-6">
                   {category.title}
                 </p>
-                <p className="text-[14px] desktopOnly:text-[12px] text-gray-500  mb-4 w-[80%]">
+                <p className="text-sm desktopOnly:text-xs text-gray-500  mb-4 w-[80%]">
                   {category.text}
                 </p>
               </>
@@ -60,13 +60,13 @@ export const Projects: FC<Props> = ({ data }) => {
                         className="mx-auto mb-8 object-contain desktopOnly:mb-6 block h-[334px] desktopOnly:h-[260px]"
                         src={project.img}
                       />
-                      <p className="text-h text-[14px] desktopOnly:text-[12px] font-medium whitespace-nowrap truncate overflow-hidden">
+                      <p className="text-h text-sm desktopOnly:text-xs font-medium whitespace-nowrap truncate overflow-hidden">
                         {project.title}
                       </p>
-                      <p className="text-[14px] desktopOnly:text-[12px] max-h-4 truncate overflow-hidden">
+                      <p className="text-sm desktopOnly:text-xs max-h-4 truncate overflow-hidden">
                         {project.description}
                       </p>
-                      <p className="text-[14px] desktopOnly:text-[12px] max-h-4 truncate overflow-hidden">
+                      <p className="text-sm desktopOnly:text-xs max-h-4 truncate overflow-hidden">
                         {project.text}
                       </p>
                     </Link>

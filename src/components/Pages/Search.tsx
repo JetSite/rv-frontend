@@ -27,7 +27,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
       <Wrapper
         sx="mobile:px-7 tablet:px-8 "
         title={
-          <h2 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[32px] notDesktop:text-[24px] mobile:mt-5 max-w-[80%]">
+          <h2 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-3.5xl notDesktop:text-2xl mobile:mt-5 max-w-[80%]">
             По запросу <span className="font-bold">{searchWord}</span> найдено{' '}
             <span>{countItems}</span> шт.
           </h2>
@@ -35,7 +35,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
       >
         {news.length ? (
           <section className="mb-6">
-            <p className="text-h text-[24px] desktopOnly:text-[18px] font-medium mb-4 desktopOnly:mb-6">
+            <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
               Новости:
             </p>
             <ul
@@ -81,7 +81,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
         ) : null}
         {events.length ? (
           <section className="mb-6">
-            <p className="text-h text-[24px] desktopOnly:text-[18px] font-medium mb-4 desktopOnly:mb-6">
+            <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
               События:
             </p>
             <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 flex-wrap overflow-hidden tablet:px-8">
@@ -104,7 +104,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
         ) : null}
         {interviews.length ? (
           <section className="mb-6">
-            <p className="text-h text-[24px] desktopOnly:text-[18px] font-medium mb-4 desktopOnly:mb-6">
+            <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
               Интервью:
             </p>
             <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 flex-wrap overflow-hidden tablet:px-8">
@@ -127,13 +127,13 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
         ) : null}
         {activities.length ? (
           <section className="mb-6">
-            <p className="text-h text-[24px] desktopOnly:text-[18px] font-medium mb-4 desktopOnly:mb-6">
+            <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
               Деятельность:
             </p>
             <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 flex-col overflow-hidden tablet:px-8">
               {activities.map((e, i) => (
                 <li key={e.id}>
-                  <p className="flex gap-1 text-[14px] font-medium text-first mb-1">
+                  <p className="flex gap-1 text-sm font-medium text-first mb-1">
                     <span>{e.startDate.split('-')[0]}</span>
                     {e.endDate || e.untilNow ? <span>-</span> : null}
                     {e.untilNow ? (
@@ -142,7 +142,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
                       <span>{e.endDate?.split('-')[0]}</span>
                     )}
                   </p>
-                  <p className="text-[14px] ">{e.name || e.description}</p>
+                  <p className="text-sm ">{e.name || e.description}</p>
                 </li>
               ))}
             </ul>

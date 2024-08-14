@@ -10,7 +10,7 @@ interface Props {
 
 const Logo: FC<Props> = ({
   logoSx = 'w-[46px] tablet:w-[64px] desktopOnly:w-[66px] desktopLarge:w-[100px]',
-  titleSx = 'text-h leading-[1.1] desktopLarge:text-[38px] tablet:text-[25px] desktopOnly:text-[25px] font-medium text-[18px]',
+  titleSx = 'text-h desktopLarge:text-3.5xl tablet:text-2xl desktopOnly:text-2xl font-medium text-lg !leading-[1.1]',
   data,
 }) => {
   return (

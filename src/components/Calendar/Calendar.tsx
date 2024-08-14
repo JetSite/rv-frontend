@@ -39,7 +39,7 @@ export const Calendar: FC<CalendarProps> = ({
   return (
     <div className="mr-12 mobile:mx-auto mobile:mb-9 tablet:w-full tablet:flex tablet:flex-wrap tablet:items-center tablet:justify-between">
       {!simple && (
-        <div className="mb-7 text-first text-[22px] notDesktop:text-[18px] font-bold flex gap-4 justify-center tablet:m-0 desktopOnly:text-base">
+        <div className="mb-7 text-first text-1.5xl notDesktop:text-lg font-bold flex gap-4 justify-center tablet:m-0 desktopOnly:text-base">
           <button
             onClick={() => {
               if (month === 1) {
@@ -83,8 +83,8 @@ export const Calendar: FC<CalendarProps> = ({
         className={classNames(
           ' gap-1 tablet:flex tablet:order-1 tablet:w-full tablet:justify-between tablet:mt-4',
           simple
-            ? 'flex order-1 w-full notDesktop:hidden justify-between text-[18px] desktopOnly:text-[13px]'
-            : 'grid grid-rows-5 grid-cols-7 grid-flow-row text-[22px] tablet:text-[14px] desktopOnly:text-base desktopOnly:text-[13px]',
+            ? 'flex order-1 w-full notDesktop:hidden justify-between text-lg desktopOnly:text-sm'
+            : 'grid grid-rows-5 grid-cols-7 grid-flow-row text-1.5xl tablet:text-sm desktopOnly:text-base desktopOnly:text-sm',
         )}
       >
         {calendarData.data.map((day, index) => {
@@ -126,7 +126,7 @@ export const Calendar: FC<CalendarProps> = ({
         })}
       </ul>
       {!simple && (
-        <p className="mt-8 text-first text-[18px] desktopOnly:text-base notDesktop:text-[14px] font-bold opacity-60 tablet:m-0 tablet:mb-2">
+        <p className="mt-8 text-first text-lg desktopOnly:text-base notDesktop:text-sm font-bold opacity-60 tablet:m-0 tablet:mb-2">
           <span className="my-auto ">{langUIConfig.today[locale]}</span>{' '}
           <span className="my-auto ">{calendarData.today}</span>
         </p>

@@ -58,7 +58,7 @@ export const VideosLine: FC<Props> = ({
     </>
   ) : (
     <div className="w-full flex-col my-10 flex items-center">
-      <p className="text-h flex font-bold text-[18px]">Ничего не найдено</p>
+      <p className="text-h flex font-bold text-lg">Ничего не найдено</p>
     </div>
   )
 }

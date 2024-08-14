@@ -134,14 +134,14 @@ export const FilterVideo: FC<Props> = ({
             handleClear={() => {
               setDisabled(false)
             }}
-            className="w-[240px] desktopOnly:w-[180px] bg-gray-100 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 py-4 desktopOnly:py-3 relative"
+            className="w-[240px] desktopOnly:w-[180px] bg-gray-100 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 py-4 desktopOnly:py-3 relative"
             placeholder="Проект"
             name="title"
             items={filterData.titles}
           />
           <Autocomplete
             setFilters={setFilters}
-            className="w-[100px] desktopOnly:w-[70px] bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
+            className="w-[100px] desktopOnly:w-[70px] bg-first bg-opacity-5 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
             name="year"
             placeholder="Год"
             handleSelect={value => {
@@ -156,7 +156,7 @@ export const FilterVideo: FC<Props> = ({
 
           <Autocomplete
             setFilters={setFilters}
-            className="w-[152px] desktopOnly:w-[112px] bg-first bg-opacity-5 text-[14px] desktopOnly:text-[12px] placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
+            className="w-[152px] desktopOnly:w-[112px] bg-first bg-opacity-5 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
             name="source"
             placeholder="Источник"
             type="text"
@@ -175,13 +175,13 @@ export const FilterVideo: FC<Props> = ({
               onClick={handleSubmit}
               type="submit"
               disabled={loading || disabled}
-              className="w-full h-full max-w-[475px] desktopOnly:max-w-[380px] text-[14px] desktopOnly:text-[12px] leading-none text-white bg-first py-2 disabled:bg-opacity-60 hover:bg-opacity-80"
+              className="w-full h-full max-w-[475px] desktopOnly:max-w-[380px] text-sm desktopOnly:text-xs leading-none text-white bg-first py-2 disabled:bg-opacity-60 hover:bg-opacity-80"
             >
               {loading ? 'ЗАГРУЗКА...' : 'ПОИСК'}
             </button>
           </div>
         </div>
-        <div className="flex gap-6 text-[14px] desktopOnly:text-[12px] mobile:flex-col mobile:gap-2">
+        <div className="flex gap-6 text-sm desktopOnly:text-xs mobile:flex-col mobile:gap-2">
           <p className="text-first opacity-60">Спикер:</p>
           <ul className=" flex flex-row justify-between gap-14 desktopOnly:gap-8 mobile:flex-wrap mobile:gap-2">
             {partners.map((item, i) => (

@@ -22,9 +22,9 @@ export const News: FC<Props> = ({ data, eventsData, detention }) => {
     <>
       <Wrapper
         sx="tablet:px-8"
-        endLink={{ title: 'Архив новостей >', slug: 'news/archive' }}
+        endLink={{ title: 'Архив новостей >', slug: '/news/archive' }}
         title={
-          <h2 className="text-first text-[48px] desktopOnly:text-[32px] font-bold pt-10 mb-6 block mobile:text-[24px] mobile:px-7 mobile:pt-4">
+          <h2 className="text-first text-5xl desktopOnly:text-3.5xl font-bold pt-10 mb-6 block mobile:text-2xl mobile:px-7 mobile:pt-4">
             Новости
           </h2>
         }
@@ -47,7 +47,7 @@ export const News: FC<Props> = ({ data, eventsData, detention }) => {
                 <li
                   value={i}
                   className={classNames(
-                    ' p-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0 mb-5 ',
+                    ' p-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0 desktopOnly:mb-0 mb-5 ',
                     item.important
                       ? `${
                           detention ? '' : 'desktop:row-span-2'
@@ -82,7 +82,7 @@ export const News: FC<Props> = ({ data, eventsData, detention }) => {
       <Wrapper
         sx="mobile:px-7 tablet:px-8"
         title={
-          <h2 className="block mt-10 mb-2.5 text-first text-[48px] desktopOnly:text-[22px] font-bold notDesktop:text-[18px] mobile:mt-5">
+          <h2 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-1.5xl font-bold notDesktop:text-lg mobile:mt-5">
             Календарь событий
           </h2>
         }
