@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import Input from '../Ui/Inputs/Input'
 import TextArea from '../Ui/Inputs/TextArea'
 import { ITheme, langButtons } from '@/config'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import { RadioButton } from '../Ui/Inputs/RadioButton'
 import { API } from '@/api'
 import Loader from '../Ui/Loader'
@@ -29,7 +29,7 @@ export const ContactForm = ({
   locale,
 }: {
   placeholders: { name: string; tel: string; msg: string; theme: ITheme[] }
-  locale: ILocale
+  locale: Locale
 }) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [selectTheme, setSelectTheme] = useState<ITheme>(placeholders.theme[0])

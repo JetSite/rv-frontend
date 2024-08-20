@@ -18,8 +18,8 @@ export const MobileArchive: FC<ArchiveProps> = ({
   page,
   data,
 }) => {
-  const [selectDate, setSelectDate] = useState<string>(
-    data[page][0].months[0].value,
+  const [selectDate, setSelectDate] = useState<string | null>(
+    data[page][0]?.months[0]?.value || null,
   )
   const [show, setShow] = useState<boolean>(false)
 
@@ -33,84 +33,89 @@ export const MobileArchive: FC<ArchiveProps> = ({
           </h2>
         }
       >
-        <ArchiveDropdown
-          setShow={setShow}
-          show={show}
-          button={
-            <button className="text-first text-2.5xl font-bold flex gap-2 items-center">
-              <span>{selectDate?.split('-')[0]}</span>
-              <span>
-                {(
-                  monthsConfig.find(
-                    e => e.value.toString() === selectDate?.split('-')[1],
-                  ) as ICalendarConfigItem
-                )['ru'] || ''}
-              </span>
-              <PixelArrowIcon className="fill-first rotate-90 w-2.5 ml-7" />
-            </button>
-          }
-        >
-          <ul className="bg-white px-4 py-2 rounded-lg text-first cursor-default">
-            {data[page].map(year => (
-              <li
-                key={year.year}
-                className="text-left text-lg font-medium flex gap-4 mb-4"
-              >
-                <span className="">{year.year}</span>
-                <ul>
-                  {year.months.map(month => {
-                    const titleMonth = monthsConfig.find(
-                      e => e.value.toString() === month.month,
-                    )
-                    return (
-                      <li key={month.value} className="hover:font-bold">
-                        <button
-                          onClick={() => {
-                            setSelectDate(month.value)
-                            setShow(false)
-                          }}
-                        >
-                          {titleMonth ? titleMonth['ru'] : ''}
-                        </button>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </ArchiveDropdown>
+        {selectDate && (
+          <ArchiveDropdown
+            setShow={setShow}
+            show={show}
+            button={
+              <button className="text-first text-2.5xl font-bold flex gap-2 items-center">
+                <span>{selectDate?.split('-')[0]}</span>(
+                <span>
+                  {(
+                    monthsConfig.find(
+                      e => e.value.toString() === selectDate?.split('-')[1],
+                    ) as ICalendarConfigItem
+                  )[locale] || ''}
+                </span>
+                )
+                <PixelArrowIcon className="fill-first rotate-90 w-2.5 ml-7" />
+              </button>
+            }
+          >
+            <ul className="bg-white px-4 py-2 rounded-lg text-first cursor-default">
+              {data[page].map(year => (
+                <li
+                  key={year.year}
+                  className="text-left text-lg font-medium flex gap-4 mb-4"
+                >
+                  <span className="">{year.year}</span>
+                  <ul>
+                    {year.months.map(month => {
+                      const titleMonth = monthsConfig.find(
+                        e => e.value.toString() === month.month,
+                      )
+                      return (
+                        <li key={month.value} className="hover:font-bold">
+                          <button
+                            onClick={() => {
+                              setSelectDate(month.value)
+                              setShow(false)
+                            }}
+                          >
+                            {titleMonth ? titleMonth[locale] : ''}
+                          </button>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </ArchiveDropdown>
+        )}
       </Wrapper>
       <Wrapper sx="tablet:px-8">
-        <ul className="flex mobile:flex-col w-full tablet:gap-7  flex-wrap overflow-hidden mt-8">
-          {itemsArchive
-            .filter(e => e.date?.includes(selectDate))
-            .map(
-              (item, i) =>
-                i < 8 && (
-                  <li
-                    className={classNames(
-                      'tablet:w-[260px]  max-h-[217px] overflow-hidden',
-                    )}
-                    key={item.title}
-                  >
-                    {page === 'eventsDate' ? (
-                      <EventCard
-                        locale={locale}
-                        link={link + item.slug}
-                        item={item}
-                      />
-                    ) : (
-                      <NewsCard
-                        locale={locale}
-                        link={link + item.slug}
-                        item={item}
-                      />
-                    )}
-                  </li>
-                ),
-            )}
-        </ul>
+        {selectDate && (
+          <ul className="flex mobile:flex-col w-full tablet:gap-7  flex-wrap overflow-hidden mt-8">
+            {itemsArchive
+              .filter(e => e.date?.includes(selectDate))
+              .map(
+                (item, i) =>
+                  i < 8 && (
+                    <li
+                      className={classNames(
+                        'tablet:w-[260px]  max-h-[217px] overflow-hidden',
+                      )}
+                      key={item.title}
+                    >
+                      {page === 'eventsDate' ? (
+                        <EventCard
+                          locale={locale}
+                          link={link + item.slug}
+                          item={item}
+                        />
+                      ) : (
+                        <NewsCard
+                          locale={locale}
+                          link={link + item.slug}
+                          item={item}
+                        />
+                      )}
+                    </li>
+                  ),
+              )}
+          </ul>
+        )}
       </Wrapper>
     </>
   )

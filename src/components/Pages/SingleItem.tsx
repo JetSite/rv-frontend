@@ -4,7 +4,7 @@ import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { EventCard } from '../Cards/EventCard'
 import { IStandartItem } from '@/types/item'
 import { FC } from 'react'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
 import { Content } from '../Ui/Content'
 import { IInterviewsData } from '@/utils/getInterviewsData'
@@ -13,7 +13,7 @@ interface Props {
   data: IStandartItem
   news: IStandartItem[]
   events: IStandartItem[]
-  locale: ILocale
+  locale: Locale
   interviews: IInterviewsData[]
 }
 

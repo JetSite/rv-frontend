@@ -17,7 +17,7 @@ export const langConfig: ILangConfig[] = [
     label: {
       ru: 'RU',
       en: 'EN',
-      am: 'AM',
+      'hy-AM': 'AM',
     },
   },
   {
@@ -26,16 +26,16 @@ export const langConfig: ILangConfig[] = [
     label: {
       ru: 'RU',
       en: 'EN',
-      am: 'AM',
+      '': 'AM',
     },
   },
   {
-    value: 'am',
+    value: 'hy-AM',
     alt: 'English',
     label: {
       ru: 'RU',
       en: 'EN',
-      am: 'AM',
+      'hy-AM': 'AM',
     },
   },
 ]
@@ -44,7 +44,7 @@ export interface ILangUIConfig {
   [T: string]: {
     ru: string
     en: string
-    am: string
+    'hy-AM': string
   }
 }
 
@@ -67,7 +67,7 @@ export interface ILangPlaceholders {
       msg: string
       theme: ITheme[]
     }
-    am: {
+    'hy-AM': {
       name: string
       tel: string
       msg: string
@@ -77,9 +77,9 @@ export interface ILangPlaceholders {
 }
 
 export const langUIConfig: ILangUIConfig = {
-  today: { ru: 'Сегодня', en: 'Today', am: 'Այսօր' },
-  tomorrow: { ru: 'Завтра', en: 'Tomorrow', am: 'Վաղը' },
-  now: { ru: 'по настоящее время', en: 'until now', am: 'մինչ այժմ' },
+  today: { ru: 'Сегодня', en: 'Today', 'hy-AM': 'Այսօր' },
+  tomorrow: { ru: 'Завтра', en: 'Tomorrow', 'hy-AM': 'Վաղը' },
+  now: { ru: 'по настоящее время', en: 'until now', 'hy-AM': 'մինչ այժմ' },
 }
 
 export const langPlaceholders: ILangPlaceholders = {
@@ -104,7 +104,7 @@ export const langPlaceholders: ILangPlaceholders = {
         { title: 'пригласить на мероприятие', value: 3 },
       ],
     },
-    am: {
+    'hy-AM': {
       name: 'քո անունը',
       tel: 'կոնտակտային հեռախոսահամար',
       msg: 'Հաղորդագրություն',
@@ -118,7 +118,7 @@ export const langPlaceholders: ILangPlaceholders = {
 }
 
 export const langButtons: ILangUIConfig = {
-  sendButton: { ru: 'Отправить', en: 'Send', am: 'Ուղարկել' },
+  sendButton: { ru: 'Отправить', en: 'Send', 'hy-AM': 'Ուղարկել' },
 }
 
 export const colorShema: IColorShema = {

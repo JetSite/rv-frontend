@@ -16,9 +16,11 @@ import { IAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { API } from '@/api'
 import { IInterviewsData } from '@/utils/getInterviewsData'
 import { IData, IPagination } from '@/types'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   filterData: IFilterData
+  locale: Locale
   children: Array<ReactElement> | ReactElement
   data: { data: IAudioAndVideosData[] | IInterviewsData[]; source: string }
   formartDataCallback: (data: IData[]) => {
@@ -40,6 +42,7 @@ export const FilterVideo: FC<Props> = ({
   data,
   formartDataCallback,
   pagination,
+  locale,
 }) => {
   const initialFilter = { title: null, source: null, year: null }
   const [filters, setFilters] = useState<IFilters>(initialFilter)
@@ -50,7 +53,7 @@ export const FilterVideo: FC<Props> = ({
   const [fetchLink, setFetchLink] = useState<string>(
     `${API.baseUrl}/${data.source}?sort[0]=date:desc&populate[${
       data.source === 'interviews' ? 'person' : 'persons'
-    }][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2`,
+    }][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2&locale=${locale}`,
   )
   const [newData, setNewData] = useState<
     IAudioAndVideosData[] | IInterviewsData[]
@@ -95,7 +98,7 @@ export const FilterVideo: FC<Props> = ({
     }
     const resultLink = `${API.baseUrl}/${source}?sort[0]=date:desc&populate[${
       source === 'interviews' ? 'person' : 'persons'
-    }][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2${filtersString}`
+    }][populate][photo][fields][0]=url&populate[source][fields][1]=title&populate[source][fields][2]=link&pagination[pageSize]=2${filtersString}&locale=${locale}`
     const res = await fetch(resultLink)
 
     setFetchLink(resultLink)

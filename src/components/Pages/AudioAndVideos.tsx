@@ -10,14 +10,21 @@ import {
   getAudioAndVideosData,
 } from '@/utils/getAudioAndVideosData'
 import { IMeta } from '@/types'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data: { data: IAudioAndVideosData[]; source: string }
   meta: IMeta
   filterData: IFilterData
+  locale: Locale
 }
 
-export const AudioAndVideos: FC<Props> = ({ data, filterData, meta }) => {
+export const AudioAndVideos: FC<Props> = ({
+  data,
+  filterData,
+  meta,
+  locale,
+}) => {
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
@@ -38,6 +45,7 @@ export const AudioAndVideos: FC<Props> = ({ data, filterData, meta }) => {
           только звук, но и визуальную информацию.
         </p>
         <FilterVideo
+          locale={locale}
           data={data}
           filterData={filterData}
           formartDataCallback={getAudioAndVideosData}

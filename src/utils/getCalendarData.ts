@@ -1,4 +1,4 @@
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
@@ -29,7 +29,7 @@ export type IGetCalendarData = (
   year: number,
   month: number,
   format: 'yyyy-mm-dd' | 'yyyy-m-d',
-  locale: ILocale,
+  locale: Locale,
 ) => IGetCalendarDataResult
 
 export const getCalendarData: IGetCalendarData = (

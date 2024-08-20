@@ -1,23 +1,22 @@
 'use client'
 import React, { FC, useState } from 'react'
 import { Calendar } from './Calendar'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import { CalendarCarousel } from './CalendarCarousel'
 import { IStandartItem } from '@/types/item'
 
 interface Props {
   data: IStandartItem[]
+  lang: Locale
 }
 
-export const CalendarEvents: FC<Props> = ({ data }) => {
+export const CalendarEvents: FC<Props> = ({ data, lang }) => {
   const [selectMonth, setSelectMonth] = useState<number>(
     new Date().getMonth() + 1,
   )
   const [selectYear, setSelectYear] = useState<number>(new Date().getFullYear())
   const eventsDates = data.map(event => (event.date ? event.date : ''))
   const [selectEvent, setSelectEvent] = useState<string>(eventsDates[0])
-
-  const lang: ILocale = 'ru'
 
   return (
     <div className="flex max-w-content relative mobile:flex-col notDesktop:w-full tablet:flex-col">

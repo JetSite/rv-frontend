@@ -1,18 +1,18 @@
 'use client'
-import { IHomePageData } from '@/app/page'
 import { FC } from 'react'
 import { CarouselMainPage } from '../CarouselMainPage'
 import { WrapperMainPage } from '../Ui/Wrappers/WrapperMainPage'
 import { EventCard } from '../Cards/EventCard'
 import { NewsPriorityCard } from '../Cards/NewsPriorityCard'
 import { NewsCard } from '../Cards/NewsCard'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { ActivityCard } from '../Cards/ActivityCard'
 import classNames from '@/utils/classNames'
+import { IHomePageData } from '@/app/[lang]/page'
 
 interface Props extends IHomePageData {
-  locale: ILocale
+  locale: Locale
 }
 
 export const HomePage: FC<Props> = ({

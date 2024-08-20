@@ -3,11 +3,11 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 import { ContactForm } from '../Forms/ContactForm'
 import { langPlaceholders } from '@/config'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data: IContactData
-  locale: ILocale
+  locale: Locale
 }
 
 export const Contacts: FC<Props> = ({ data, locale }) => {

@@ -2,10 +2,13 @@
 import { SearchComponent } from '@/components/SearchComponent'
 import GlassesIcon from '@/components/Ui/Icons/GlassesIcon'
 import { langConfig } from '@/config'
+import { Locale, i18n } from '@/i18n-config'
 import { ISocialsItem } from '@/types/layout'
 import classNames from '@/utils/classNames'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FC, useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 
 interface ISoсialsWithLang {
   subKey?: string
@@ -20,7 +23,13 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   variant = 'standart',
   data,
 }) => {
-  const [select, setSelect] = useState('ru')
+  const [select, setSelect] = useState('')
+
+  useEffect(() => {
+    // Этот код выполнится только на клиенте
+    const lang = document.documentElement.getAttribute('lang') || 'ru'
+    setSelect(lang)
+  }, [])
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') !== 'default'
@@ -41,6 +50,19 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
 
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === 'default' ? 'readable' : 'default'))
+  }
+
+  const pathName = usePathname()
+  const redirectedPathName = (locale: Locale) => {
+    if (!pathName) return '/'
+    const segments = pathName.split('/')
+    segments[1] = locale
+    return segments.join('/')
+  }
+
+  const handleLocaleChange = (locale: Locale) => {
+    // Устанавливаем куку с новой локалью
+    Cookies.set('NEXT_LOCALE', locale, { path: '/' })
   }
 
   return (
@@ -104,13 +126,19 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           {langConfig.map((item, i) => (
             <li
               key={subKey + ' ' + item.value}
-              className="px-2 border-r-2 border-h last:border-none first:pl-0 last:pr-0 text-lg desktopOnly:text-xs opacity-40"
+              className="px-2 border-r-2 border-h last:border-none first:pl-0 last:pr-0 text-lg desktopOnly:text-xs"
             >
-              <div
-                className={select === item.value ? 'font-bold' : 'font-normal'}
+              <Link
+                id={item.value}
+                className={classNames(
+                  select === item.value ? 'font-bold' : 'font-normal',
+                  ' cursor-pointer',
+                )}
+                href={redirectedPathName(item.value as Locale)}
+                onClick={() => handleLocaleChange(item.value as Locale)}
               >
                 {select && Object.values(item.label)[i]}
-              </div>
+              </Link>
             </li>
           ))}
         </ul>

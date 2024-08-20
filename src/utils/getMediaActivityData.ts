@@ -14,18 +14,21 @@ export interface IMediaActivityData {
   pageMenu: IPageMenu[]
 }
 
-type IGetMediaActivityData = (data: IData) => IMediaActivityData
+type IGetMediaActivityData = (data: IData) => IMediaActivityData | null
 
-export const getMediaActivityData: IGetMediaActivityData = data => ({
-  id: data.id,
-  title: data.attributes.title,
-  subTitle: data.attributes.subTitle,
-  pageMenu: data.attributes.menu_items.data.map((e: IData) => ({
-    id: e.id,
-    title: e.attributes.itemName,
-    isActive: e.attributes.isActive,
-    slug: e.attributes.itemLink || '#',
-    text: e.attributes.shortDescription,
-    img: API.imgUrl + e.attributes.cover.data.attributes.url,
-  })),
-})
+export const getMediaActivityData: IGetMediaActivityData = data => {
+  if (!data) return null
+  return {
+    id: data.id,
+    title: data.attributes.title,
+    subTitle: data.attributes.subTitle,
+    pageMenu: data.attributes.menu_items.data.map((e: IData) => ({
+      id: e.id,
+      title: e.attributes.itemName,
+      isActive: e.attributes.isActive,
+      slug: e.attributes.itemLink || '#',
+      text: e.attributes.shortDescription,
+      img: API.imgUrl + e.attributes.cover.data.attributes.url,
+    })),
+  }
+}
