@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
-// import 'dayjs/locale/hy-AM'
 import { Locale } from '@/i18n-config'
 
 const locale = {
