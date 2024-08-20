@@ -5,15 +5,15 @@ import { Dispatch, FC, SetStateAction } from 'react'
 import PixelArrowIcon from '../Ui/Icons/PixelArrowIcon'
 import classNames from '@/utils/classNames'
 import { langUIConfig } from '@/config'
-import { ILocale } from '@/types'
 import Select from '../Ui/Dropdowns/Select'
 import { useStoreDate } from '@/store'
 import { getStoreData } from '@/utils/getStore'
+import { Locale } from '@/i18n-config'
 
 interface CalendarProps {
   year: number
   month: number
-  locale: ILocale
+  locale: Locale
   evens: string[]
   setSelectMonth: Dispatch<SetStateAction<number>>
   setSelectYear: Dispatch<SetStateAction<number>>

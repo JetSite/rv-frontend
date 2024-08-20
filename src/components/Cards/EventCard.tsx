@@ -2,12 +2,12 @@ import { IStandartItem } from '@/types/item'
 import Link from 'next/link'
 import { FC } from 'react'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 
 interface EventCardProps {
   item: IStandartItem
   link: string
-  locale: ILocale
+  locale: Locale
   sx?: string
 }
 

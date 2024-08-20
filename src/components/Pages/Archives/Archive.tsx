@@ -8,7 +8,7 @@ import { ISelectItem } from '../../Ui/Dropdowns/Select'
 import { IStoreData, IStoreDataItem, useStoreDate } from '@/store'
 import { getStoreData } from '@/utils/getStore'
 import classNames from '@/utils/classNames'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import { NewsCard } from '@/components/Cards/NewsCard'
 import { Scrollbar as ScrollbarType } from 'react-scrollbars-custom'
 
@@ -17,7 +17,7 @@ export interface ArchiveProps {
   subTitle: string
   itemsArchive: IStandartItem[]
   yearsList?: ISelectItem[]
-  locale: ILocale
+  locale: Locale
   link: string
   page: 'newsDate' | 'eventsDate' | 'detentionData'
   data: IStoreData
@@ -35,7 +35,7 @@ export const Archive: FC<ArchiveProps> = ({
 }) => {
   const [scroll, setScroll] = useState<number | undefined>(0)
   const [selectDate, setSelectDate] = useState<string | undefined | null>(
-    data.newsDate[0].months[0].value,
+    data.newsDate[0]?.months[0]?.value || null,
   )
   const scrollRef = useRef<ScrollbarType>(null)
   const elementsRefs = useRef<Array<HTMLLIElement | null>>([])
@@ -160,7 +160,7 @@ export const Archive: FC<ArchiveProps> = ({
                           onClick={handleSelectDate}
                           name={month.value}
                         >
-                          {titleMonth ? titleMonth['ru'] : ''}
+                          {titleMonth ? titleMonth[locale] : ''}
                         </button>
                       </li>
                     )

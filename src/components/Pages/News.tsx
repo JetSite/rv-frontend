@@ -3,6 +3,7 @@ import { CalendarEvents } from '@/components/Calendar/CalendarEvents'
 import { NewsCard } from '@/components/Cards/NewsCard'
 import { NewsPriorityCard } from '@/components/Cards/NewsPriorityCard'
 import { Wrapper } from '@/components/Ui/Wrappers/Wrapper'
+import { Locale } from '@/i18n-config'
 import { IStandartItem } from '@/types/item'
 import { changeElementPosition } from '@/utils/changeElementPosition'
 import classNames from '@/utils/classNames'
@@ -12,12 +13,12 @@ interface Props {
   data: IStandartItem[]
   eventsData: IStandartItem[]
   detention?: boolean
+  locale: Locale
 }
 
-export const News: FC<Props> = ({ data, eventsData, detention }) => {
+export const News: FC<Props> = ({ data, eventsData, detention, locale }) => {
   const arr = changeElementPosition(data, [0, 1, 6, 13])
   const itemsCount = arr.length
-  const locale = 'ru'
   return (
     <>
       <Wrapper
@@ -87,7 +88,7 @@ export const News: FC<Props> = ({ data, eventsData, detention }) => {
           </h2>
         }
       >
-        <CalendarEvents data={eventsData} />
+        <CalendarEvents lang={locale} data={eventsData} />
       </Wrapper>
     </>
   )

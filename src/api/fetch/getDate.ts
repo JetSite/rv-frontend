@@ -1,12 +1,13 @@
 import { YearsWithMonths } from '@/types/item'
 import { API } from '..'
 import { IStoreDataItem } from '@/store'
+import { Locale } from '@/i18n-config'
 
 interface IArr {
   attributes: { date: string }
 }
 
-export const getDate = async (detention?: boolean) => {
+export const getDate = async (lang: Locale, detention?: boolean) => {
   try {
     let allDate: { newsDate: string[]; eventsDate: string[] } = {
       newsDate: [],
@@ -20,8 +21,8 @@ export const getDate = async (detention?: boolean) => {
     while (currentNewsPage <= totalNewsPages) {
       const resNews = await fetch(
         detention
-          ? `${API.baseUrl}/news/?filters[categories][id]=5&pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`
-          : `${API.baseUrl}/news/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date`,
+          ? `${API.baseUrl}/news/?filters[categories][slug]=detention&pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date&locale=${lang}`
+          : `${API.baseUrl}/news/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentNewsPage}&[fields][0]=date&locale=${lang}`,
         { cache: 'no-cache' },
       )
       if (!resNews.ok) {
@@ -39,9 +40,13 @@ export const getDate = async (detention?: boolean) => {
     while (currentEventsPage <= totalEventsPages) {
       const resEvent = await fetch(
         detention
-          ? `${API.baseUrl}/events/?filters[categories][id]=3&pagination[pageSize]=100&sort[0]=date:desc&[fields][0]=date`
-          : `${API.baseUrl}/events/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentEventsPage}&[fields][0]=date`,
+          ? `${API.baseUrl}/events/?filters[categories][slug]=detention&pagination[pageSize]=100&sort[0]=date:desc&[fields][0]=date&locale=${lang}`
+          : `${API.baseUrl}/events/?pagination[pageSize]=100&sort[0]=date:desc&pagination[page]=${currentEventsPage}&[fields][0]=date&locale=${lang}`,
+        {
+          cache: 'no-cache',
+        },
       )
+
       if (!resEvent.ok) {
         throw new Error(`Ошибка при запросе: ${resEvent.statusText}`)
       }

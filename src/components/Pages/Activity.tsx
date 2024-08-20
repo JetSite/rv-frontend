@@ -6,12 +6,12 @@ import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import BoldCHevronIcon from '../Ui/Icons/BoldCHevronIcon'
 import PixelArrowIcon from '../Ui/Icons/PixelArrowIcon'
 import classNames from '@/utils/classNames'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import { langUIConfig } from '@/config'
 
 interface Props {
   data: IActivityData
-  locale: ILocale
+  locale: Locale
 }
 
 export const Activity: FC<Props> = ({ data, locale }) => {

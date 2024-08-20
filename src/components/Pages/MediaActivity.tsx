@@ -9,15 +9,23 @@ import { getVideoId } from '@/utils/getVideoId'
 import { IInterviewsData } from '@/utils/getInterviewsData'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
 import Link from 'next/link'
+import { Locale } from '@/i18n-config'
 
 interface Props {
-  data: IMediaActivityData
+  data: IMediaActivityData | null
   videos: IAudioAndVideosData[]
   interviews: IInterviewsData[]
+  locale: Locale
 }
 
-export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
+export const MediaActivity: FC<Props> = ({
+  data,
+  videos,
+  interviews,
+  locale,
+}) => {
   const firstValidVideo = videos.find(video => typeof video.link === 'string')
+  if (!data) return null
   return (
     <Wrapper
       sx=" notDesktop:px-8 desktop:mb-8"
@@ -43,7 +51,7 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
             className="w-[25%] px-1 first:pl-0 last:pr-0 mobile:w-full mobile:p-0"
             key={item.title}
           >
-            <PriorityCard slug={item.slug} locale="ru" item={item} />
+            <PriorityCard slug={item.slug} locale={locale} item={item} />
           </li>
         ))}
       </ul>
@@ -66,7 +74,7 @@ export const MediaActivity: FC<Props> = ({ data, videos, interviews }) => {
                       {interview.description}
                     </p>
                     <p className="text-end text-first mt-2 font-medium desktopOnly:text-sm">
-                      {getNormalizeDate(interview.date, 'ru')}
+                      {getNormalizeDate(interview.date, locale)}
                     </p>
                   </Link>
                 </li>

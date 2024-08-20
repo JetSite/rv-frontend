@@ -5,14 +5,14 @@ import classNames from '@/utils/classNames'
 import Link from 'next/link'
 import { FC, useEffect, useState } from 'react'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 
 export interface NewsCardProps {
   item: IStandartItem
   showText?: boolean
   mainPage?: boolean
   link: string
-  locale: ILocale
+  locale: Locale
 }
 
 export const NewsCard: FC<NewsCardProps> = ({

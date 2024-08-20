@@ -6,14 +6,16 @@ import { IInterviewsData, getInterviewData } from '@/utils/getInterviewsData'
 import { FilterVideo } from '../Filters/FilterVideo'
 import { IFilterData } from '@/api/fetch/getFilterData'
 import { IMeta } from '@/types'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data: { data: IInterviewsData[]; source: string }
   filterData: IFilterData
   meta: IMeta
+  locale: Locale
 }
 
-export const Interviews: FC<Props> = ({ data, filterData, meta }) => {
+export const Interviews: FC<Props> = ({ data, filterData, meta, locale }) => {
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
@@ -32,6 +34,7 @@ export const Interviews: FC<Props> = ({ data, filterData, meta }) => {
           интересны широкой аудитории.
         </p>
         <FilterVideo
+          locale={locale}
           filterData={filterData}
           data={data}
           formartDataCallback={getInterviewData}

@@ -21,7 +21,7 @@ import 'dayjs/locale/ru'
 import 'dayjs/locale/en'
 import 'dayjs/locale/am'
 import { langUIConfig } from '@/config'
-import { ILocale } from '@/types'
+import { Locale } from '@/i18n-config'
 import { IStandartItem } from '@/types/item'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
 import Link from 'next/link'
@@ -30,7 +30,7 @@ import classNames from '@/utils/classNames'
 interface Props {
   selectEvent: string
   setSelectEvent: Dispatch<SetStateAction<string>>
-  locale: ILocale
+  locale: Locale
   arr: IStandartItem[]
 }
 

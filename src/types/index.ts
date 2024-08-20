@@ -1,3 +1,4 @@
+import { Locale } from '@/i18n-config'
 import { NextPage } from 'next'
 import { FC, ReactElement } from 'react'
 
@@ -38,11 +39,9 @@ export interface ILogo {
 export type IID = string | number
 
 export interface INextPage {
-  params: { [K: string]: string | undefined }
+  params: { lang: Locale; [K: string]: string | undefined }
   searchParams: { [key: string]: string | string[] | undefined }
 }
-
-export type ILocale = 'ru' | 'en' | 'am'
 
 export interface IComponentWithChildren {
   children?: IChildren
