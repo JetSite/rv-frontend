@@ -8,6 +8,7 @@ import { Locale } from '@/i18n-config'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
 import { Content } from '../Ui/Content'
 import { IInterviewsData } from '@/utils/getInterviewsData'
+import { ISeoData } from '@/utils/parsedData/getSeoData'
 
 interface Props {
   data: IStandartItem
@@ -15,6 +16,7 @@ interface Props {
   events: IStandartItem[]
   locale: Locale
   interviews: IInterviewsData[]
+  seoData: ISeoData
 }
 
 export const SingleItem: FC<Props> = ({
@@ -23,6 +25,7 @@ export const SingleItem: FC<Props> = ({
   events,
   locale = 'ru',
   interviews,
+  seoData,
 }) => {
   return (
     <div>
@@ -54,7 +57,7 @@ export const SingleItem: FC<Props> = ({
           ) : null}
           {data.source ? (
             <p className="text-grey-400">
-              <span>Источник: </span>
+              <span>{seoData.sourceTitle} </span>
               <span>{data?.source}</span>
             </p>
           ) : null}
@@ -65,7 +68,7 @@ export const SingleItem: FC<Props> = ({
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
             <h2 className="text-1.5xl text-first font-bold  mobile:text-lg whitespace-nowrap">
-              Медиа-активность
+              {seoData.mediaActivityTitle}
             </h2>
             <hr className="w-full border-gray-300 notDesktop:hidden" />
           </div>
@@ -96,7 +99,7 @@ export const SingleItem: FC<Props> = ({
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
             <h2 className="text-1.5xl text-first font-bold  mobile:text-lg whitespace-nowrap">
-              События
+              {seoData.eventsTitle}
             </h2>
             <hr className="w-full border-gray-300 notDesktop:hidden" />
           </div>
@@ -127,7 +130,7 @@ export const SingleItem: FC<Props> = ({
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
             <h2 className="text-1.5xl text-first font-bold  mobile:text-lg whitespace-nowrap">
-              Новости
+              {seoData.newsTitle}
             </h2>
             <hr className="w-full border-gray-300 notDesktop:hidden" />
           </div>

@@ -25,12 +25,13 @@ export interface IContactData {
   formData: IContactFormData
 }
 
-type IGetContactsData = (data: IData) => IContactData
+type IGetContactsData = (data: IData) => IContactData | null
 
 export const getContactsData: IGetContactsData = data => {
+  if (!data) return null
   const importantContacts: ContactItem[] = []
   const contacts: ContactItem[] = []
-  data.attributes.Contacts.forEach((e: any) => {
+  data.attributes.Contacts?.forEach((e: any) => {
     if (e.important) {
       importantContacts.push({
         id: e.id,

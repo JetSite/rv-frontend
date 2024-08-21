@@ -10,9 +10,11 @@ import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { ActivityCard } from '../Cards/ActivityCard'
 import classNames from '@/utils/classNames'
 import { IHomePageData } from '@/app/[lang]/page'
+import { ISeoData } from '@/utils/parsedData/getSeoData'
 
-interface Props extends IHomePageData {
+interface Props extends Omit<IHomePageData, 'seoData'> {
   locale: Locale
+  seoData: ISeoData
 }
 
 export const HomePage: FC<Props> = ({
@@ -21,6 +23,7 @@ export const HomePage: FC<Props> = ({
   newsData,
   eventData,
   activitiesData,
+  seoData,
 }) => {
   const priorityNews = newsData.find(item => item.important)
   const prepareNewsData = newsData
@@ -33,8 +36,12 @@ export const HomePage: FC<Props> = ({
       {eventData.length ? (
         <WrapperMainPage
           titleStyles="bg-gray-400"
-          endLink={{ title: 'Календарь событий >', slug: 'events' }}
-          title={<h2 className="text-first font-semibold">ВАЖНОЕ</h2>}
+          endLink={{ title: seoData.EventCalendarText + ' >', slug: 'events' }}
+          title={
+            <h2 className="text-first font-semibold">
+              {seoData.ImportantBlockTitle}
+            </h2>
+          }
         >
           <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 tablet:h-[192px] flex-wrap justify-between overflow-hidden tablet:px-8">
             {eventData.map(item => (
@@ -56,8 +63,12 @@ export const HomePage: FC<Props> = ({
       {newsData.length ? (
         <WrapperMainPage
           titleStyles="bg-first"
-          endLink={{ title: 'Все новости >', slug: 'news' }}
-          title={<h2 className="text-white font-semibold">НОВОСТИ</h2>}
+          endLink={{ title: seoData.AllNewsText + ' >', slug: 'news' }}
+          title={
+            <h2 className="text-white font-semibold">
+              {seoData.NewsBlockTitle}
+            </h2>
+          }
         >
           <ul className="desktop:grid tablet:grid flex flex-col grid-cols-4 tablet:grid-cols-3 grid-rows-6 grid-flow-col">
             {priorityNews ? (
@@ -123,7 +134,7 @@ export const HomePage: FC<Props> = ({
           sx="bg-first"
           title={
             <h2 className="text-white text-5xl desktopOnly:text-3.5xl font-bold pt-10 mb-6 block mobile:text-2xl notDesktop:px-7 notDesktop:pt-4 ">
-              Деятельность
+              {seoData.ActivityBlockTitle}
             </h2>
           }
         >

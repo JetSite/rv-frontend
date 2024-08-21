@@ -23,7 +23,7 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
+  const { pathname, searchParams } = request.nextUrl
 
   // Проверяем, если в запросе уже есть поддерживаемая локаль
   const pathnameIsMissingLocale = i18n.locales.every(
@@ -37,12 +37,15 @@ export function middleware(request: NextRequest) {
 
     let locale = cookieLocale || getLocale(request)
 
+    const searchParamsString = searchParams.toString()
+    const query = searchParamsString ? `?${searchParamsString}` : ''
+
     // Если куки не установлены, то используем определенную локаль
     if (!cookieLocale) {
       // Сохраняем локаль в куки
       const response = NextResponse.redirect(
         new URL(
-          `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
+          `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}${query}`,
           request.url,
         ),
       )
@@ -53,7 +56,7 @@ export function middleware(request: NextRequest) {
 
     return NextResponse.redirect(
       new URL(
-        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
+        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}${query}`,
         request.url,
       ),
     )

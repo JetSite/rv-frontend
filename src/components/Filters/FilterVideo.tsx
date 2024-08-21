@@ -17,9 +17,11 @@ import { API } from '@/api'
 import { IInterviewsData } from '@/utils/getInterviewsData'
 import { IData, IPagination } from '@/types'
 import { Locale } from '@/i18n-config'
+import { ISeoData } from '@/utils/parsedData/getSeoData'
 
 interface Props {
   filterData: IFilterData
+  seoData: ISeoData
   locale: Locale
   children: Array<ReactElement> | ReactElement
   data: { data: IAudioAndVideosData[] | IInterviewsData[]; source: string }
@@ -28,6 +30,9 @@ interface Props {
     source: string
   }
   pagination: IPagination
+  fetchLinkTitle: string
+  loadingTitle: string
+  nothingWasFoundText: string
 }
 
 export interface IFilters {
@@ -43,6 +48,10 @@ export const FilterVideo: FC<Props> = ({
   formartDataCallback,
   pagination,
   locale,
+  seoData,
+  fetchLinkTitle,
+  loadingTitle,
+  nothingWasFoundText,
 }) => {
   const initialFilter = { title: null, source: null, year: null }
   const [filters, setFilters] = useState<IFilters>(initialFilter)
@@ -60,9 +69,9 @@ export const FilterVideo: FC<Props> = ({
   >(data.data)
 
   const partners: ITheme[] = [
-    { title: 'Рубен Варданян', value: 3 },
-    { title: 'Партнёры', value: 2 },
-    { title: 'Все', value: 1 },
+    { title: seoData.speakerRubenVardanyanButtonText, value: 3 },
+    { title: seoData.speakerPartnersButtonText, value: 2 },
+    { title: seoData.speakerAllButtonText, value: 1 },
   ]
   const [selectRadioItem, setSelectRadioItem] = useState<ITheme>(
     partners.find(e => e.value === 1) || partners[0],
@@ -138,7 +147,7 @@ export const FilterVideo: FC<Props> = ({
               setDisabled(false)
             }}
             className="w-[240px] desktopOnly:w-[180px] bg-gray-100 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 py-4 desktopOnly:py-3 relative"
-            placeholder="Проект"
+            placeholder={seoData.projectPlaceholder}
             name="title"
             items={filterData.titles}
           />
@@ -146,7 +155,7 @@ export const FilterVideo: FC<Props> = ({
             setFilters={setFilters}
             className="w-[100px] desktopOnly:w-[70px] bg-first bg-opacity-5 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
             name="year"
-            placeholder="Год"
+            placeholder={seoData.yearPlaceholder}
             handleSelect={value => {
               setDisabled(false)
               setFilters(prev => ({ ...prev, year: value }))
@@ -161,7 +170,7 @@ export const FilterVideo: FC<Props> = ({
             setFilters={setFilters}
             className="w-[152px] desktopOnly:w-[112px] bg-first bg-opacity-5 text-sm desktopOnly:text-xs placeholder:opacity-60 px-7 desktopOnly:pl-5 desktopOnly:pr-6 desktopOnly:py-3 py-4"
             name="source"
-            placeholder="Источник"
+            placeholder={seoData.sourcePlaceholder}
             type="text"
             handleSelect={value => {
               setFilters(prev => ({ ...prev, source: value }))
@@ -180,12 +189,12 @@ export const FilterVideo: FC<Props> = ({
               disabled={loading || disabled}
               className="w-full h-full max-w-[475px] desktopOnly:max-w-[380px] text-sm desktopOnly:text-xs leading-none text-white bg-first py-2 disabled:bg-opacity-60 hover:bg-opacity-80"
             >
-              {loading ? 'ЗАГРУЗКА...' : 'ПОИСК'}
+              {loading ? seoData.loadingButtonText : seoData.searchButtonText}
             </button>
           </div>
         </div>
         <div className="flex gap-6 text-sm desktopOnly:text-xs mobile:flex-col mobile:gap-2">
-          <p className="text-first opacity-60">Спикер:</p>
+          <p className="text-first opacity-60">{seoData.speakerLabelText}</p>
           <ul className=" flex flex-row justify-between gap-14 desktopOnly:gap-8 mobile:flex-wrap mobile:gap-2">
             {partners.map((item, i) => (
               <li key={i}>
@@ -210,6 +219,9 @@ export const FilterVideo: FC<Props> = ({
           fetchLink,
           setPaginationState,
           paginationState,
+          fetchLinkTitle,
+          loadingTitle,
+          nothingWasFoundText,
         }),
       )}
     </>

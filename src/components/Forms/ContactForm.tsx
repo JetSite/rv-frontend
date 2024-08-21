@@ -4,32 +4,19 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import Input from '../Ui/Inputs/Input'
 import TextArea from '../Ui/Inputs/TextArea'
-import { ITheme, langButtons } from '@/config'
-import { Locale } from '@/i18n-config'
+import { ITheme,  } from '@/config'
 import { RadioButton } from '../Ui/Inputs/RadioButton'
 import { API } from '@/api'
 import Loader from '../Ui/Loader'
 import XIcon from '../Ui/Icons/XIcon'
 import Link from 'next/link'
-const FormSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, 'Имя должно быть не менее 3 символов')
-    .required('Это поле обязательно'),
-  tel: Yup.number()
-    .typeError('Только цифры')
-    .min(1000000, 'Телефонный номер должен содержать не менее 7 цифр')
-    .required('Это поле обязательно'),
-  msg: Yup.string()
-    .min(8, 'Сообщение должно быть не менее 8 символов')
-    .required('Это поле обязательно'),
-})
 
 export const ContactForm = ({
   placeholders,
-  locale,
+  localeStrings,
 }: {
   placeholders: { name: string; tel: string; msg: string; theme: ITheme[] }
-  locale: Locale
+  localeStrings: { [K: string]: string }
 }) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [selectTheme, setSelectTheme] = useState<ITheme>(placeholders.theme[0])
@@ -39,6 +26,20 @@ export const ContactForm = ({
     tel: '',
     msg: '',
   }
+
+  const FormSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(3, 'Имя должно быть не менее 3 символов')
+      .required(localeStrings.FormRequired),
+    tel: Yup.number()
+      .typeError('Только цифры')
+      .min(1000000, 'Телефонный номер должен содержать не менее 7 цифр')
+      .required(localeStrings.FormRequired),
+    msg: Yup.string()
+      .min(8, localeStrings.FormMessageNotification)
+      .required(localeStrings.FormRequired),
+  })
+
   const {
     values,
     errors,
@@ -147,17 +148,16 @@ export const ContactForm = ({
             {loading ? (
               <Loader className="mx-auto" />
             ) : (
-              langButtons.sendButton[locale]
+              localeStrings.FormButtonText
             )}
           </button>
           <p className="text-xxs text-first mt-3 text-center">
-            Отправляя запрос, вы автоматически соглашаетесь на обработку ваших
-            персональных данных.
+            {localeStrings.FormPersanalDataText}
           </p>
         </div>
       </form>
       {showModal && (
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-30 flex items-center justify-center">
+        <div className="fixed z-10 inset-0 bg-gray-900 bg-opacity-30 flex items-center justify-center">
           <div className="bg-white shadow-md p-4 w-[385px] text-center flex flex-col">
             <button
               onClick={() => setShowModal(!showModal)}
