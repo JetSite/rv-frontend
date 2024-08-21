@@ -25,6 +25,7 @@ export const MediaActivity: FC<Props> = ({
   locale,
 }) => {
   const firstValidVideo = videos.find(video => typeof video.link === 'string')
+
   if (!data) return null
   return (
     <Wrapper

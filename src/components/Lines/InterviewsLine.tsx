@@ -16,6 +16,7 @@ interface Props {
     source: string
   }
   fetchLink?: string
+  fetchLinkTitle?: string
 }
 
 export const InterviewsLine: FC<Props> = ({
@@ -25,6 +26,7 @@ export const InterviewsLine: FC<Props> = ({
   paginationState,
   formartDataCallback,
   fetchLink,
+  fetchLinkTitle,
 }) => {
   return data?.length ? (
     <>
@@ -71,7 +73,7 @@ export const InterviewsLine: FC<Props> = ({
         setNewData={setNewData}
         setPaginationState={setPaginationState}
         paginationState={paginationState}
-        title={'Больше интервью'}
+        title={fetchLinkTitle ?? 'Больше интервью'}
       />
     </>
   ) : (

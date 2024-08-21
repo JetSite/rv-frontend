@@ -1,6 +1,5 @@
 import { API } from '@/api'
 import { MediaActivity } from '@/components/Pages/MediaActivity'
-import { Locale } from '@/i18n-config'
 import { INextPage } from '@/types'
 import { getAudioAndVideosData } from '@/utils/getAudioAndVideosData'
 import { getInterviewData } from '@/utils/getInterviewsData'
@@ -15,6 +14,7 @@ const MediaActivityPage: FC<INextPage> = async ({ params }) => {
         cache: 'no-cache',
       },
     )
+
     const data = await res.json()
 
     const resVideo = await fetch(

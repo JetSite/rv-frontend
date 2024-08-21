@@ -33,9 +33,10 @@ export interface IActivityData {
   groupedCategory: IActivityGroupedCategory[] | null
 }
 
-type IGetActivityData = (data: IData) => IActivityData
+type IGetActivityData = (data: IData) => IActivityData | null
 
 export const getActivityData: IGetActivityData = data => {
+  if (!data) return null
   function getCategoriesGroup(array: IData[]) {
     const groupedCategories: Record<number | 'null', IActivityGroupedCategory> =
       array.reduce(

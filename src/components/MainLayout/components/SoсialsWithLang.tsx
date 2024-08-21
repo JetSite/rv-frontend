@@ -23,12 +23,12 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   variant = 'standart',
   data,
 }) => {
-  const [select, setSelect] = useState('')
+  const [select, setSelect] = useState<Locale | null>(null)
 
   useEffect(() => {
     // Этот код выполнится только на клиенте
     const lang = document.documentElement.getAttribute('lang') || 'ru'
-    setSelect(lang)
+    setSelect(lang as Locale)
   }, [])
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -67,7 +67,9 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
 
   return (
     <div className={classNames(className, 'text-h')}>
-      {variant === 'footer' ? <SearchComponent /> : null}
+      {variant === 'footer' ? (
+        <SearchComponent locale={select || 'ru'} />
+      ) : null}
       <ul
         className={
           {

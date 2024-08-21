@@ -13,6 +13,9 @@ interface Props {
     source: string
   }
   fetchLink?: string
+  fetchLinkTitle?: string
+  loadingTitle?: string
+  nothingWasFoundText?: string
 }
 
 export const VideosLine: FC<Props> = ({
@@ -22,6 +25,9 @@ export const VideosLine: FC<Props> = ({
   setPaginationState,
   setNewData,
   fetchLink,
+  fetchLinkTitle,
+  loadingTitle,
+  nothingWasFoundText,
 }) => {
   return data?.length ? (
     <>
@@ -53,12 +59,13 @@ export const VideosLine: FC<Props> = ({
         setNewData={setNewData}
         setPaginationState={setPaginationState}
         paginationState={paginationState}
-        title={'Больше видео'}
+        title={fetchLinkTitle ?? 'Больше видео'}
+        loadingTitle={loadingTitle}
       />
     </>
   ) : (
     <div className="w-full flex-col my-10 flex items-center">
-      <p className="text-h flex font-bold text-lg">Ничего не найдено</p>
+      <p className="text-h flex font-bold text-lg">{nothingWasFoundText}</p>
     </div>
   )
 }

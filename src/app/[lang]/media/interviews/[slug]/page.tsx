@@ -1,6 +1,9 @@
 import { API } from '@/api'
 import { SingleInterview } from '@/components/Pages/SingleInterview'
+import { INextPage } from '@/types'
 import { getInterviewData } from '@/utils/getInterviewsData'
+import { getSeoData } from '@/utils/parsedData/getSeoData'
+import { redirect } from 'next/navigation'
 import { FC } from 'react'
 
 export async function generateStaticParams() {
@@ -12,27 +15,42 @@ export async function generateStaticParams() {
   }))
 }
 
-interface Props {
-  params: { slug: string }
-}
+interface Props extends INextPage {}
 
 const SingleInterviewPage: FC<Props> = async ({ params }) => {
   const fetchSingleInterviewData = async () => {
-    const resData = await fetch(
-      `${API.baseUrl}/interviews?filters[slug][$eq]=${params.slug}&populate[person][populate][photo][fields][0]=url`,
-      {
-        cache: 'default',
-      },
-    )
-    const data = await resData.json()
-    return data
+    try {
+      const resData = await fetch(
+        `${API.baseUrl}/interviews?filters[slug][$eq]=${params.slug}&populate[person][populate][photo][fields][0]=url&locale=${params.lang}`,
+        {
+          cache: 'default',
+        },
+      )
+      const data = await resData.json()
+      // const seoRes = await fetch(
+      //   `${API.baseUrl}/seo-and-translates/?populate=*&locale=${params.lang}&filters[pageTitle]=Событие`,
+      // )
+
+      // const seoData = await seoRes.json()
+
+      return {
+        data: getInterviewData(data.data).data[0],
+        // seoData: getSeoData(seoData.data),
+      }
+    } catch (error) {
+      console.error('Failed to fetch data:', error)
+      return {
+        data: null,
+        // seoData: null,
+      }
+    }
   }
 
-  const data = await fetchSingleInterviewData()
+  const { data } = await fetchSingleInterviewData()
 
-  return (
-    <SingleInterview data={getInterviewData(data.data).data[0]} />
-  )
+  if (!data) return redirect('/error-page')
+
+  return <SingleInterview data={data} />
 }
 
 export default SingleInterviewPage

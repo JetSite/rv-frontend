@@ -3,6 +3,7 @@ import { Activity } from '@/components/Pages/Activity'
 import { Locale } from '@/i18n-config'
 import { INextPage } from '@/types'
 import { getActivityData } from '@/utils/getActivityData'
+import { redirect } from 'next/navigation'
 import { FC } from 'react'
 
 export async function generateStaticParams({
@@ -38,12 +39,14 @@ const ActivityPage: FC<Props> = async ({ params }) => {
     )
     const data = await resData.json()
 
-    return data
+    return { data: getActivityData(data.data[0]) }
   }
 
-  const data = await fetchActivityPageData()
+  const { data } = await fetchActivityPageData()
 
-  return <Activity data={getActivityData(data.data[0])} locale={params.lang} />
+  if (!data) return redirect('/error-page')
+
+  return <Activity data={data} locale={params.lang} />
 }
 
 export default ActivityPage

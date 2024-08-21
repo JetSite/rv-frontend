@@ -7,6 +7,7 @@ import { Locale } from '@/i18n-config'
 import { IStandartItem } from '@/types/item'
 import { changeElementPosition } from '@/utils/changeElementPosition'
 import classNames from '@/utils/classNames'
+import { ISeoData } from '@/utils/parsedData/getSeoData'
 import { FC } from 'react'
 
 interface Props {
@@ -14,19 +15,30 @@ interface Props {
   eventsData: IStandartItem[]
   detention?: boolean
   locale: Locale
+  seoData: ISeoData
 }
 
-export const News: FC<Props> = ({ data, eventsData, detention, locale }) => {
+export const News: FC<Props> = ({
+  data,
+  eventsData,
+  detention,
+  locale,
+  seoData,
+}) => {
   const arr = changeElementPosition(data, [0, 1, 6, 13])
   const itemsCount = arr.length
+
   return (
     <>
       <Wrapper
         sx="tablet:px-8"
-        endLink={{ title: 'Архив новостей >', slug: '/news/archive' }}
+        endLink={{
+          title: seoData.newsArchiveButtonText + ' >',
+          slug: '/news/archive',
+        }}
         title={
           <h2 className="text-first text-5xl desktopOnly:text-3.5xl font-bold pt-10 mb-6 block mobile:text-2xl mobile:px-7 mobile:pt-4">
-            Новости
+            {seoData.pageTitle}
           </h2>
         }
       >
@@ -84,7 +96,7 @@ export const News: FC<Props> = ({ data, eventsData, detention, locale }) => {
         sx="mobile:px-7 tablet:px-8"
         title={
           <h2 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-1.5xl font-bold notDesktop:text-lg mobile:mt-5">
-            Календарь событий
+            {seoData.eventCalendarTitle}
           </h2>
         }
       >

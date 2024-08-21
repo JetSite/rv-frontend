@@ -37,6 +37,7 @@ export const Activity: FC<Props> = ({ data, locale }) => {
     }
   }
 
+
   const selectCategory = (id: number) => {
     if (showCategory) {
       if (showCategory?.includes(id)) {

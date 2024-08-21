@@ -1,3 +1,4 @@
+'use client'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { NewsCard } from '../Cards/NewsCard'
@@ -7,36 +8,77 @@ import { EventCard } from '../Cards/EventCard'
 import { langUIConfig } from '@/config'
 import { SearchComponent } from '../SearchComponent'
 import { IPrepereSearchData } from '@/utils/parsedData/getSearchData'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data: IPrepereSearchData
   searchWord: string
+  locale: Locale
 }
 
-export const Search: FC<Props> = ({ data, searchWord }) => {
+const mockLocale = {
+  by_request: {
+    ru: 'По запросу',
+    en: 'By request',
+    'hy-AM': 'Հարցման արդյունքում',
+  },
+  found: {
+    ru: 'найдено',
+    en: 'found',
+    'hy-AM': 'գտնված է',
+  },
+  pieces: {
+    ru: 'шт.',
+    en: 'pcs.',
+    'hy-AM': 'հատ.',
+  },
+  news: {
+    ru: 'Новости:',
+    en: 'News:',
+    'hy-AM': 'Լուրեր:',
+  },
+  events: {
+    ru: 'События:',
+    en: 'Events:',
+    'hy-AM': 'Միջոցառումներ:',
+  },
+  interviews: {
+    ru: 'Интервью:',
+    en: 'Interviews:',
+    'hy-AM': 'Հարցազրույցներ:',
+  },
+  activities: {
+    ru: 'Деятельность:',
+    en: 'Activities:',
+    'hy-AM': 'Գործունեություն:',
+  },
+}
+
+export const Search: FC<Props> = ({ data, searchWord, locale }) => {
   const { news, activities, interviews, events, countItems } = data
-  const locale = 'ru'
 
   return (
     <>
       <Wrapper sx="mobile:px-7 tablet:px-8">
         <div className="w-1/2 my-4">
-          <SearchComponent />
+          <SearchComponent locale={locale} />
         </div>
       </Wrapper>
       <Wrapper
         sx="mobile:px-7 tablet:px-8 "
         title={
           <h2 className="block mt-10 mb-2.5 text-first text-5xl desktopOnly:text-3.5xl notDesktop:text-2xl mobile:mt-5 max-w-[80%]">
-            По запросу <span className="font-bold">{searchWord}</span> найдено{' '}
-            <span>{countItems}</span> шт.
+            {mockLocale.by_request[locale]}{' '}
+            <span className="font-bold">{searchWord}</span>{' '}
+            {mockLocale.found[locale]} <span>{countItems}</span>{' '}
+            {mockLocale.pieces[locale]}
           </h2>
         }
       >
         {news.length ? (
           <section className="mb-6">
             <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
-              Новости:
+              {mockLocale.news[locale]}
             </p>
             <ul
               className={classNames(
@@ -82,7 +124,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
         {events.length ? (
           <section className="mb-6">
             <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
-              События:
+              {mockLocale.events[locale]}
             </p>
             <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 flex-wrap overflow-hidden tablet:px-8">
               {events.map((item, i) => (
@@ -105,7 +147,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
         {interviews.length ? (
           <section className="mb-6">
             <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
-              Интервью:
+              {mockLocale.interviews[locale]}
             </p>
             <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 flex-wrap overflow-hidden tablet:px-8">
               {interviews.map((item, i) => (
@@ -128,7 +170,7 @@ export const Search: FC<Props> = ({ data, searchWord }) => {
         {activities.length ? (
           <section className="mb-6">
             <p className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-6">
-              Деятельность:
+              {mockLocale.activities[locale]}
             </p>
             <ul className="flex gap-3.5 mobile:flex-col w-full tablet:gap-1 flex-col overflow-hidden tablet:px-8">
               {activities.map((e, i) => (

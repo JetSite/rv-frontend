@@ -6,9 +6,11 @@ import { FC } from 'react'
 
 interface Props extends INextPage {}
 
-const SearchPage: FC<Props> = async ({ searchParams }) => {
+const SearchPage: FC<Props> = async ({ searchParams, params }) => {
   const searchWord: string = encodeURIComponent(searchParams.search as string)
   const fetchPageData = async () => {
+    console.log(`${API.baseUrl}/fuzzy-search/search?query=${searchWord}`)
+
     const resData = await fetch(
       `${API.baseUrl}/fuzzy-search/search?query=${searchWord}`,
       {
@@ -25,6 +27,7 @@ const SearchPage: FC<Props> = async ({ searchParams }) => {
     <Search
       searchWord={searchParams.search as string}
       data={getSearchData(data.data)}
+      locale={params.lang}
     />
   )
 }

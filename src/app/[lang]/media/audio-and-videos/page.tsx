@@ -3,6 +3,8 @@ import { IResponseData, getFilterData } from '@/api/fetch/getFilterData'
 import { AudioAndVideos } from '@/components/Pages/AudioAndVideos'
 import { INextPage } from '@/types'
 import { getAudioAndVideosData } from '@/utils/getAudioAndVideosData'
+import { getSeoData } from '@/utils/parsedData/getSeoData'
+import { redirect } from 'next/navigation'
 import { FC } from 'react'
 
 const AudioAndVideosPage: FC<INextPage> = async ({ params }) => {
@@ -12,10 +14,17 @@ const AudioAndVideosPage: FC<INextPage> = async ({ params }) => {
       { cache: 'no-cache' },
     )
     const data: IResponseData = await res.json()
-    return data
+    const seoRes = await fetch(
+      `${API.baseUrl}/seo-and-translates/?populate=*&locale=${params.lang}&filters[pageTitle]=Аудио и видео`,
+    )
+    const seoData = await seoRes.json()
+
+    return { data, seoData: getSeoData(seoData.data) }
   }
 
-  const data = await getMediaItems()
+  const { data, seoData } = await getMediaItems()
+
+  if (!data || !seoData) return redirect('/error-page')
 
   return (
     <AudioAndVideos
@@ -23,6 +32,7 @@ const AudioAndVideosPage: FC<INextPage> = async ({ params }) => {
       filterData={await getFilterData(data.meta.pagination, 'audio-and-videos')}
       data={getAudioAndVideosData(data.data)}
       meta={data.meta}
+      seoData={seoData}
     />
   )
 }
