@@ -11,13 +11,15 @@ import SwiperCore from 'swiper/core'
 import { IDataMainSlider } from '@/utils/getDataMainSlider'
 import classNames from '@/utils/classNames'
 import Link from 'next/link'
+import { Locale } from '@/i18n-config'
 
 export interface CarouselProps {
   arr: IDataMainSlider[]
   className?: string
+  locale: Locale
 }
 
-export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
+export const CarouselMainPage: FC<CarouselProps> = ({ arr, locale }) => {
   const [swiper, setSwiper] = useState<SwiperCore | null>(null)
 
   return (
@@ -34,7 +36,7 @@ export const CarouselMainPage: FC<CarouselProps> = ({ arr }) => {
     >
       {arr.map(item => (
         <SwiperSlide key={item.title}>
-          <Link href={item.link} className="flex h-full">
+          <Link href={'/' + locale + item.link} className="flex h-full">
             {!!item.img && (
               <img className="w-full object-cover object-top" src={item.img} />
             )}

@@ -1,13 +1,15 @@
 import { MainLink } from '@/components/Ui/MainLink'
 import { colorShema } from '@/config'
+import { Locale } from '@/i18n-config'
 import { INavItem } from '@/types/layout'
 import { FC } from 'react'
 
 interface Props {
   data: INavItem[]
+  locale: Locale
 }
 
-export const FooterNav: FC<Props> = ({ data }) => {
+export const FooterNav: FC<Props> = ({ data, locale }) => {
   return (
     <ul className="flex w-full flex-1 justify-between text-h  notDesktop:hidden">
       {data.map(item => {
@@ -16,14 +18,14 @@ export const FooterNav: FC<Props> = ({ data }) => {
             key={item.title}
             className="gap-4 block text-sm font-bold desktopLarge:text-xl"
           >
-            <MainLink item={item} />
+            <MainLink locale={locale} item={item} />
             <ul className="flex flex-col mt-6 gap-2.5">
               {item.children.map(children => (
                 <li
                   className="block text-xxs desktopLarge:text-base font-normal"
                   key={children.title}
                 >
-                  <MainLink item={children} />
+                  <MainLink locale={locale} item={children} />
                 </li>
               ))}
             </ul>

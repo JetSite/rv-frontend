@@ -14,7 +14,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
     return (
       <Link
         className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden"
-        href={link}
+        href={'/' + locale + link}
       >
         {!!item.img && (
           <Image
@@ -41,7 +41,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
   return (
     <Link
       className="p-1.5 flex gap-5 transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:w-full mobile:flex-col h-full"
-      href={link}
+      href={'/' + locale + link}
     >
       {!!item.img && (
         <img

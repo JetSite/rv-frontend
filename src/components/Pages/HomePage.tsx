@@ -32,11 +32,12 @@ export const HomePage: FC<Props> = ({
 
   return (
     <>
-      <CarouselMainPage arr={mainSliderData}></CarouselMainPage>
+      <CarouselMainPage locale={locale} arr={mainSliderData}></CarouselMainPage>
       {eventData.length ? (
         <WrapperMainPage
+          locale={locale}
           titleStyles="bg-gray-400"
-          endLink={{ title: seoData.EventCalendarText + ' >', slug: 'events' }}
+          endLink={{ title: seoData.EventCalendarText + ' >', slug: '/events' }}
           title={
             <h2 className="text-first font-semibold">
               {seoData.ImportantBlockTitle}
@@ -62,8 +63,9 @@ export const HomePage: FC<Props> = ({
 
       {newsData.length ? (
         <WrapperMainPage
+          locale={locale}
           titleStyles="bg-first"
-          endLink={{ title: seoData.AllNewsText + ' >', slug: 'news' }}
+          endLink={{ title: seoData.AllNewsText + ' >', slug: '/news' }}
           title={
             <h2 className="text-white font-semibold">
               {seoData.NewsBlockTitle}
@@ -145,7 +147,7 @@ export const HomePage: FC<Props> = ({
                 key={item.title}
               >
                 <ActivityCard
-                  slug={'/activity/' + item.slug || '#'}
+                  slug={'/' + locale + '/activity/' + item.slug || '#'}
                   item={item}
                 />
               </li>

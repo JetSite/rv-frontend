@@ -32,6 +32,7 @@ export const News: FC<Props> = ({
     <>
       <Wrapper
         sx="tablet:px-8"
+        locale={locale}
         endLink={{
           title: seoData.newsArchiveButtonText + ' >',
           slug: '/news/archive',

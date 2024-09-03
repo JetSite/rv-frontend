@@ -9,14 +9,16 @@ import { IStoreData, useStoreDate } from '@/store'
 import classNames from '@/utils/classNames'
 import { IColorShema } from './MainNavDropdown'
 import { MobileNavNotLinkButtons } from './MobileNavNotLinkButtons'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data: INavItem[]
   socials: ISocialsItem[]
   settings?: IHeaderNavSettings
+  locale: Locale
 }
 
-export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
+export const MobileNav: FC<Props> = ({ data, socials, settings, locale }) => {
   const [open, setOpen] = useState<boolean>(false)
 
   const [showSubMenu, setShowSubMenu] = useState<string | null>(null)
@@ -64,7 +66,11 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                         onMouseLeave={() => setShowSubMenu(null)}
                       >
                         {item.isActive ? (
-                          <MainLink item={item} colorShema={colorShema} />
+                          <MainLink
+                            locale={locale}
+                            item={item}
+                            colorShema={colorShema}
+                          />
                         ) : (
                           <MobileNavNotLinkButtons
                             item={item}
@@ -77,6 +83,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                             {item.children.map(subItem => (
                               <li key={subItem.id}>
                                 <MainLink
+                                  locale={locale}
                                   sx="font-normal"
                                   item={subItem}
                                   colorShema={colorShema}
@@ -100,7 +107,11 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                         onMouseLeave={() => setShowSubMenu(null)}
                       >
                         {item.isActive ? (
-                          <MainLink item={item} colorShema={colorShema} />
+                          <MainLink
+                            locale={locale}
+                            item={item}
+                            colorShema={colorShema}
+                          />
                         ) : (
                           <MobileNavNotLinkButtons
                             item={item}
@@ -112,7 +123,11 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
                           <ul className="flex w-full flex-1 justify-between items-center mt-4 flex-col origin-top transition-all gap-2">
                             {item.children.map(subItem => (
                               <li key={subItem.id} className="main-nav">
-                                <MainLink sx="font-normal" item={subItem} />
+                                <MainLink
+                                  locale={locale}
+                                  sx="font-normal"
+                                  item={subItem}
+                                />
                               </li>
                             ))}
                           </ul>
@@ -123,6 +138,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings }) => {
               </ul>
             </div>
             <SoсialsWithLang
+              locale={locale}
               data={socials}
               variant="footer"
               className="flex gap-5 items-center flex-col mt-16 text-h"

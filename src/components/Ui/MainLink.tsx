@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import React, { FC, useState } from 'react'
 import { IColorShema } from '../MainLayout/components/MainNavDropdown'
 import { colorShema as colorShemaConfig } from '@/config'
+import { Locale } from '@/i18n-config'
 
 interface MainLinkProps {
   item: ILink
@@ -13,6 +14,7 @@ interface MainLinkProps {
   sx?: string
   disabled?: boolean
   colorShema?: IColorShema | null
+  locale: Locale
 }
 
 export const MainLink: FC<MainLinkProps> = ({
@@ -21,10 +23,15 @@ export const MainLink: FC<MainLinkProps> = ({
   sx,
   disabled = false,
   colorShema,
+  locale,
 }) => {
   const pathname = usePathname()
   const show: boolean = pathname === item.slug
   const [hover, setHover] = useState(false)
+
+  const href = slug
+    ? '/' + locale + '/' + slug + '/' + item.slug
+    : '/' + locale + item.slug
 
   return disabled ? (
     <p
@@ -38,7 +45,7 @@ export const MainLink: FC<MainLinkProps> = ({
           : colorShema?.default,
       }}
       className={classNames(
-        'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85]',
+        'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85] ',
         !colorShema?.active &&
           (show ? 'before:w-full ' : 'hover:before:w-full'),
       )}
@@ -57,11 +64,11 @@ export const MainLink: FC<MainLinkProps> = ({
           : colorShema?.default,
       }}
       className={classNames(
-        'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85]',
+        'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85] ',
         !colorShema?.active &&
           (show ? 'before:w-full ' : 'hover:before:w-full'),
       )}
-      href={slug ? slug + '/' + item.slug : item.slug}
+      href={href}
     >
       <span className={sx}>{item.title}</span>
     </Link>

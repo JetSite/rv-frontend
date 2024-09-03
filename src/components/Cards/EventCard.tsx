@@ -18,7 +18,7 @@ export const EventCard: FC<EventCardProps> = ({
   sx = 'p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 overflow-hidden',
 }) => {
   return (
-    <Link href={link} className={sx}>
+    <Link href={'/' + locale + link} className={sx}>
       <p className="text-first font-bold text-lg flex flex-row notDesktop:text-sm notDesktop:mb-0.5 notDesktop:justify-between desktopOnly:text-sm">
         {!!item.date && (
           <span className="min-w-max">

@@ -33,6 +33,7 @@
     "react-responsive": "^9.0.2",
     "react-scrollbars-custom": "^4.1.1",
     "react-youtube": "^10.1.0",
+    "sharp": "^0.33.5",
     "swiper": "^11.0.6",
     "yup": "^1.2.0",
     "zustand": "^4.3.8"

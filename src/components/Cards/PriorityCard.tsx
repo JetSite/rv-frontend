@@ -20,7 +20,7 @@ export const PriorityCard: FC<PriorityCardProps> = ({ item, locale, slug }) => {
       )}
       <Link
         className="pl-5 w-3/4 bg-first hover:bg-second flex relative -top-8 desktopOnly:-top-6 justify-between pr-2 items-center tablet:static tablet:w-full"
-        href={slug}
+        href={'/' + locale + slug}
       >
         <h3 className="text-white font-bold text-2.5xl notDesktop:text-sm desktopOnly:text-lg">
           {item.title}

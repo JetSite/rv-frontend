@@ -67,7 +67,9 @@ export const MediaActivity: FC<Props> = ({
                   key={interview.id}
                   className="hover:shadow-xl hover:bg-gray-100 hover:bg-opacity-60"
                 >
-                  <Link href={'/media/interviews/' + interview.slug}>
+                  <Link
+                    href={'/' + locale + '/media/interviews/' + interview.slug}
+                  >
                     <h4 className="text-h text-lg desktopOnly:text-base font-bold mt-3">
                       {interview.title}
                     </h4>

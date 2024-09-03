@@ -38,10 +38,12 @@ const RootLayout: FC<
   // className={inter.className}
 
   return (
-    <html lang={params.lang}>
+    <html lang={params.lang} data-theme="default">
       <body className="font-main text-h">
         <NextTopLoader />
-        <MainLayout data={getLayoutData(data)}>{children}</MainLayout>
+        <MainLayout locale={params.lang} data={getLayoutData(data)}>
+          {children}
+        </MainLayout>
       </body>
     </html>
   )
