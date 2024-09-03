@@ -31,7 +31,7 @@ export const langConfig: ILangConfig[] = [
   },
   {
     value: 'hy-AM',
-    alt: 'English',
+    alt: 'Armenian',
     label: {
       ru: 'RU',
       en: 'EN',

@@ -5,6 +5,7 @@ import { IInterviewsData } from '@/utils/getInterviewsData'
 import { AvatarInLine } from '../Ui/AvatarInLine'
 import { MoreDataLink } from '../Ui/MoreDataLink'
 import { IData, IPagination } from '@/types'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data?: IInterviewsData[]
@@ -17,6 +18,7 @@ interface Props {
   }
   fetchLink?: string
   fetchLinkTitle?: string
+  locale: Locale
 }
 
 export const InterviewsLine: FC<Props> = ({
@@ -27,6 +29,7 @@ export const InterviewsLine: FC<Props> = ({
   formartDataCallback,
   fetchLink,
   fetchLinkTitle,
+  locale,
 }) => {
   return data?.length ? (
     <>
@@ -46,7 +49,7 @@ export const InterviewsLine: FC<Props> = ({
                 <VideoIcon className="absolute -left-[14px]" />
               </div>
               <Link
-                href={'/media/interviews/' + interview.slug}
+                href={'/' + locale + '/media/interviews/' + interview.slug}
                 className="w-full pb-14 desktopOnly:pb-12"
               >
                 <h3 className="text-lg desktopOnly:text-base text-first mb-1.5">

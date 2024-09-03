@@ -32,7 +32,7 @@ export const NewsCard: FC<NewsCardProps> = ({
   return (
     <Link
       className="p-1.5 transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden tablet:max-h-1/2 h-full flex flex-col"
-      href={link}
+      href={'/' + locale + link}
     >
       <h3 className="text-first font-bold text-lg notDesktop:text-sm leading-none desktopOnly:text-sm line-clamp-1 mb-4">
         {item.title}

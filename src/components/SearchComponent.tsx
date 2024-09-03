@@ -27,7 +27,7 @@ export const SearchComponent: FC<Props> = ({ locale }) => {
       {searchValue.length > 3 ? (
         <Link
           href={{
-            pathname: '/search',
+            pathname: '/' + locale + '/search',
             query: { search: searchValue },
           }}
           type="button"
@@ -43,7 +43,7 @@ export const SearchComponent: FC<Props> = ({ locale }) => {
       )}
       <Input
         onPressEnter={e => {
-          router.push(`/search?search=${searchValue}`)
+          router.push('/' + locale + `/search?search=${searchValue}`)
           setSearchValue('')
         }}
         sx={classNames(

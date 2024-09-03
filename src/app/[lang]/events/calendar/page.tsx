@@ -38,6 +38,7 @@ const EventsPage: FC<INextPage> = async ({ params }) => {
 
       <Wrapper
         sx=" tablet:px-8"
+        locale={locale}
         endLink={{ title: 'Архив событий >', slug: '/events/archive' }}
         title={
           <div className="flex items-center pt-10 mb-6 mobile:px-7 mobile:pt-4 gap-4">
@@ -71,6 +72,7 @@ const EventsPage: FC<INextPage> = async ({ params }) => {
 
       <Wrapper
         sx="tablet:px-8"
+        locale={locale}
         endLink={{ title: 'Архив новостей >', slug: '/news/archive' }}
         title={
           <h2 className="text-first text-5xl font-bold pt-10 mb-6 block notDesktop:text-2xl mobile:px-7 mobile:pt-4  desktopOnly:text-1.5xl">

@@ -24,7 +24,6 @@ export const Interviews: FC<Props> = ({
   locale,
   seoData,
 }) => {
-
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
@@ -49,7 +48,7 @@ export const Interviews: FC<Props> = ({
           loadingTitle={seoData.moreVideoLoadingText}
           nothingWasFoundText={seoData.nothingWasFoundText}
         >
-          <InterviewsLine />
+          <InterviewsLine locale={locale} />
         </FilterVideo>
       </div>
     </Wrapper>

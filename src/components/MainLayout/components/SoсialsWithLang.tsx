@@ -15,6 +15,7 @@ interface ISoсialsWithLang {
   className?: string
   variant?: 'footer' | 'tablet' | 'standart'
   data: ISocialsItem[]
+  locale: Locale
 }
 
 export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
@@ -22,30 +23,30 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   subKey = 'header',
   variant = 'standart',
   data,
+  locale,
 }) => {
-  const [select, setSelect] = useState<Locale | null>(null)
+  const [select, setSelect] = useState<Locale | null>(locale || 'ru')
+
+  const [theme, setTheme] = useState('default')
 
   useEffect(() => {
-    // Этот код выполнится только на клиенте
-    const lang = document.documentElement.getAttribute('lang') || 'ru'
-    setSelect(lang as Locale)
-  }, [])
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') !== 'default'
-        ? 'readable'
-        : 'default'
+    // Проверка доступности window и document, так как этот код выполнится только на клиенте
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme')
+      const initialTheme =
+        savedTheme && savedTheme === 'readable' ? 'readable' : 'default'
+      setTheme(initialTheme)
+      document.documentElement.setAttribute('data-theme', initialTheme)
     }
-    return typeof document !== 'undefined'
-      ? document.documentElement.getAttribute('data-theme') !== 'default'
-        ? 'readable'
-        : 'default'
-      : 'default'
-  })
+  }, []) // Пустой массив зависимостей, чтобы этот useEffect вызвался только один раз на монтирование
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', theme)
+    }
   }, [theme])
 
   const toggleTheme = () => {
@@ -62,7 +63,8 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
 
   const handleLocaleChange = (locale: Locale) => {
     // Устанавливаем куку с новой локалью
-    Cookies.set('NEXT_LOCALE', locale, { path: '/' })
+    Cookies.set('LOCALE', locale, { path: '/' })
+    setSelect(locale)
   }
 
   return (

@@ -1,11 +1,13 @@
 import { IChildren, IComponentWithChildren } from '@/types'
 import { FC } from 'react'
 import { MainLink } from '../MainLink'
+import { Locale } from '@/i18n-config'
 
 interface WrapperMainPageProps extends IComponentWithChildren {
   title: IChildren
   titleStyles: string
   endLink?: { title: string; slug: string }
+  locale: Locale
 }
 
 export const WrapperMainPage: FC<WrapperMainPageProps> = ({
@@ -13,6 +15,7 @@ export const WrapperMainPage: FC<WrapperMainPageProps> = ({
   title,
   titleStyles,
   endLink,
+  locale,
 }) => {
   return (
     <section
@@ -31,7 +34,7 @@ export const WrapperMainPage: FC<WrapperMainPageProps> = ({
         {endLink ? (
           <div className="flex gap-2.5 mt-2 items-center text-first notDesktop:mr-7">
             <hr className="w-full border-first" />
-            <MainLink item={{ ...endLink }} />
+            <MainLink locale={locale} item={{ ...endLink }} />
           </div>
         ) : null}
       </div>

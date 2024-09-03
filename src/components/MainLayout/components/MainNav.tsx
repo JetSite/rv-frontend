@@ -3,13 +3,15 @@ import { MainLink } from '@/components/Ui/MainLink'
 import { IHeaderNavSettings, INavItem } from '@/types/layout'
 import { FC } from 'react'
 import { IColorShema, MainNavDropdown } from './MainNavDropdown'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data: INavItem[]
   settings?: IHeaderNavSettings
+  locale: Locale
 }
 
-export const MainNav: FC<Props> = ({ data, settings }) => {
+export const MainNav: FC<Props> = ({ data, settings, locale }) => {
   const colorShema: IColorShema | null = settings
     ? {
         hover: settings.linkColorHover.trim(),
@@ -24,6 +26,7 @@ export const MainNav: FC<Props> = ({ data, settings }) => {
         item.children.length ? (
           <li key={item.id} className="main-nav">
             <MainNavDropdown
+              locale={locale}
               colorShema={colorShema}
               item={item}
               data={item.children}
@@ -31,7 +34,7 @@ export const MainNav: FC<Props> = ({ data, settings }) => {
           </li>
         ) : (
           <li key={item.id} className="main-nav">
-            <MainLink item={item} colorShema={colorShema} />
+            <MainLink locale={locale} item={item} colorShema={colorShema} />
           </li>
         ),
       )}

@@ -32,7 +32,7 @@ const ArchiveEvents: FC<INextPage> = async ({ params }) => {
           itemsArchive={normalizeData}
           title={title}
           subTitle={subTitle}
-          locale="ru"
+          locale={params.lang}
           page="eventsDate"
         />
       </div>
@@ -43,7 +43,7 @@ const ArchiveEvents: FC<INextPage> = async ({ params }) => {
           itemsArchive={normalizeData}
           title={title}
           subTitle={subTitle}
-          locale="ru"
+          locale={params.lang}
           page="eventsDate"
         />
       </div>
