@@ -1,5 +1,7 @@
 import { API } from '@/api'
 import { IData, IID } from '@/types'
+import { IInterviewsData } from './getInterviewsData'
+import { IAudioAndVideosData } from './getAudioAndVideosData'
 export interface IProjectPageData {
   id: IID
   slug: string
@@ -13,10 +15,13 @@ interface ICategory {
   id: IID
   title: string | null
   text: string | null
-  projects: IProject[]
+  projects: Omit<
+    IProject,
+    'gallery' | 'partners' | 'interview' | 'audio_i_videos'
+  >[]
 }
 
-interface IProject {
+export interface IProject {
   id: IID
   slug: string
   img: string
@@ -27,6 +32,19 @@ interface IProject {
   partner: string
   link: string
   galleryTitle: string
+  gallery: { id: IID; img: string }[] | null
+  partners: IPartner[]
+  interview: IInterviewsData[] | null
+  audio_i_videos: IAudioAndVideosData[] | null
+}
+
+export interface IPartner {
+  id: IID
+  slug: string
+  name: string
+  type: string
+  description: string | null
+  link: string | null
 }
 
 export type IgetProjectsData = (props: IData) => IProjectPageData

@@ -10,12 +10,14 @@ const ProjectsPage: FC<Props> = async ({ params }) => {
   const fetchProjects = async () => {
     const res = await fetch(
       `${API.baseUrl}/projects-page?populate[categories][populate][projects][populate][1]=logo&locale=${params.lang}`,
+      { cache: 'no-cache' },
     )
+
     const data = await res.json()
     return data
   }
   const data = await fetchProjects()
-  return <Projects data={getProjectsData(data.data)} />
+  return <Projects locale={params.lang} data={getProjectsData(data.data)} />
 }
 
 export default ProjectsPage
