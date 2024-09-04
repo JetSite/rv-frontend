@@ -1,16 +1,16 @@
-'use client'
 import { FC } from 'react'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
 import { IProjectPageData } from '@/utils/getProjectsData'
 import Link from 'next/link'
-import { getValidUrl } from '@/utils/checkUrls'
 import classNames from '@/utils/classNames'
+import { Locale } from '@/i18n-config'
 
 interface Props {
   data: IProjectPageData
+  locale: Locale
 }
 
-export const Projects: FC<Props> = ({ data }) => {
+export const Projects: FC<Props> = ({ data, locale }) => {
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8 "
@@ -38,22 +38,12 @@ export const Projects: FC<Props> = ({ data }) => {
             ) : null}
             <ul className="flex flex-wrap justify-between gap-14 desktopOnly:gap-10 tablet:gap-4 mobile:flex-col mobile:items-center mb-8 desktopOnly:mb-6">
               {category.projects.map(project => {
-                const validLink = getValidUrl(project.link)
                 return (
                   <li
                     key={project.id}
                     className="w-[300px] desktopOnly:w-[220px] mb-8 desktopOnly:mb-6 last:mr-auto shadow-lg hover:bg-gray-100 hover:shadow-xl hover:bg-opacity-60 p-2 cur"
                   >
-                    <Link
-                      onClick={e => {
-                        validLink === '#' && e.preventDefault()
-                      }}
-                      target={validLink === '#' ? undefined : '_blank'}
-                      className={classNames(
-                        validLink === '#' ? 'cursor-default' : '',
-                      )}
-                      href={validLink}
-                    >
+                    <Link href={'projects/' + project.slug}>
                       <img
                         width={250}
                         height={334}
