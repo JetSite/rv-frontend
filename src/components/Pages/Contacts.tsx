@@ -1,5 +1,5 @@
 'use client'
-import { IContactData } from '@/utils/getContactsData'
+import { IContactData, getContactsData } from '@/utils/getContactsData'
 import React, { FC } from 'react'
 import Link from 'next/link'
 import { ContactForm } from '../Forms/ContactForm'
