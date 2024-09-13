@@ -14,6 +14,7 @@ const ContactsPage: FC<INextPage> = async ({ params }) => {
     try {
       const res = await fetch(
         `${API.baseUrl}/contact?[populate][Contacts][populate]=*&locale=${params.lang}`,
+        { cache: 'no-cache' },
       )
       const data = await res.json()
 

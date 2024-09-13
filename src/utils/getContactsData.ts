@@ -36,15 +36,15 @@ export const getContactsData: IGetContactsData = data => {
       importantContacts.push({
         id: e.id,
         title: e.contactsName,
-        link: e.contactsLink || '#',
-        img: API.imgUrl + e.contactsLogo.data.attributes.url,
+        link: e.contactsLink || '/#',
+        img: API.imgUrl + (e.contactsLogo.data?.attributes.url || '/#'),
       })
     } else {
       contacts.push({
         id: e.id,
         title: e.contactsName,
-        link: e.contactsLink || '#',
-        img: API.imgUrl + e.contactsLogo.data.attributes.url,
+        link: e.contactsLink || '/#',
+        img: API.imgUrl + (e.contactsLogo.data?.attributes.url || '/#'),
       })
     }
   })
