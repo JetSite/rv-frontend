@@ -51,10 +51,11 @@ export const Contacts: FC<Props> = ({ data, seoData }) => {
           {pageData.contacts.map(contact => (
             <li key={contact.id}>
               <Link
+                target="_blank"
                 href={contact.link}
                 className="flex gap-4 desktopOnly:gap-3 items-center relative w-fit hover:opacity-100 opacity-90"
               >
-                <img className="desktopOnly:w-8" src={contact.img} />
+                <img className="w-10 desktopOnly:w-8" src={contact.img} />
                 <span className="text-2xl desktopOnly:text-lg font-medium text-first">
                   {contact.title}
                 </span>
