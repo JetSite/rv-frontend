@@ -41,8 +41,6 @@ const MediaActivityPage: FC<INextPage> = async ({ params }) => {
   }
   const data = await fetchMediaActivity()
 
-  console.log('res', data.interviewsData)
-
   return (
     <MediaActivity
       locale={params.lang}
