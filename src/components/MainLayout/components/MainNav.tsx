@@ -40,10 +40,14 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
   }, [locale, data])
 
   return (
-    <nav className="relative flex items-center w-full max-w-[790px]">
+    <nav
+      className="relative flex items-center 
+     w-full max-w-[790px]
+    "
+    >
       <ul
         ref={navRef}
-        className="flex w-full  max-w-[100%] flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-sm text-h gap-3 desktopLarge:text-xl desktopLarge:gap-4"
+        className="flex w-full  max-w-[100%] flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-sm text-h gap-3 desktopLarge:text-xl desktopLarge:gap-4 desktopOnly:max-w-[450px]"
       >
         {data.map(item =>
           item.children.length ? (
