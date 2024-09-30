@@ -39,8 +39,6 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
     }
   }, [locale, data])
 
-  console.log(hiddenItems)
-
   return (
     <nav
       className="relative flex items-center 
