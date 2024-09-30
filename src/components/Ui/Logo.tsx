@@ -19,7 +19,7 @@ const Logo: FC<Props> = ({
   return (
     <Link
       href={'/' + locale}
-      className="flex items-center gap-2 tablet:gap-3 desktopOnly:gap-3 desktopLarge:gap-5 w-max"
+      className="flex items-center gap-2 tablet:gap-3 desktopOnly:gap-3 desktopLarge:gap-5 min-w-max "
     >
       <div className="">
         <img src={data?.img} alt={data?.title} className={logoSx} />
