@@ -13,6 +13,7 @@ export interface NewsCardProps {
   mainPage?: boolean
   link: string
   locale: Locale
+  imageSX?: string
 }
 
 export const NewsCard: FC<NewsCardProps> = ({

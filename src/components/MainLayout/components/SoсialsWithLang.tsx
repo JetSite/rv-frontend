@@ -68,7 +68,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   }
 
   return (
-    <div className={classNames(className, 'text-h')}>
+    <div className={classNames(className, 'text-h min-w-max')}>
       {variant === 'footer' ? (
         <SearchComponent locale={select || 'ru'} />
       ) : null}

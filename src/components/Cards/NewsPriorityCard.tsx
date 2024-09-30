@@ -3,12 +3,14 @@ import { FC } from 'react'
 import { NewsCardProps } from './NewsCard'
 import { getNormalizeDate } from '@/utils/getNormalizeDate'
 import Image from 'next/image'
+import classNames from '@/utils/classNames'
 
 export const NewsPriorityCard: FC<NewsCardProps> = ({
   item,
   mainPage,
   link = '#',
   locale,
+  imageSX = 'block mb-2.5 desktop:max-h-[200px] object-cover w-full tablet:h-[163px]',
 }) => {
   if (mainPage) {
     return (
@@ -21,7 +23,7 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
             width={item.image?.width}
             height={item.image?.height}
             alt={item.title}
-            className="block mb-2.5 desktop:max-h-[200px] object-cover w-full tablet:h-[163px]"
+            className={classNames(imageSX)}
             src={item.img}
           />
         )}
