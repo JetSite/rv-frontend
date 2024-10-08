@@ -1,4 +1,4 @@
-import { IColorShema } from '@/components/MainLayout/components/MainNavDropdown'
+import { IColorScheme } from '@/components/MainLayout/components/MainNavDropdown'
 import { number } from 'prop-types'
 
 export interface ILangConfig {
@@ -121,7 +121,7 @@ export const langButtons: ILangUIConfig = {
   sendButton: { ru: 'Отправить', en: 'Send', 'hy-AM': 'Ուղարկել' },
 }
 
-export const colorShema: IColorShema = {
+export const colorScheme: IColorScheme = {
   hover: 'before:bg-h',
   default: 'text-inherit',
   active: 'text-h',

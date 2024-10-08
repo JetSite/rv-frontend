@@ -52,6 +52,11 @@ export function middleware(request: NextRequest) {
   )
   console.log('pathname', pathname) // Лог для проверки текущего пути
 
+  if (pathname === '.favicons/favicon.ico') {
+    console.log('Favicon requested:', pathname)
+    return NextResponse.next() // Пропускаем запросы к favicon.ico
+  }
+
   // Получение сохраненной локали из куки (если есть)
   const cookieLocale = request.cookies.get('LOCALE')?.value || null
 
@@ -96,5 +101,7 @@ export function middleware(request: NextRequest) {
 // Конфигурация для исключения некоторых путей из обработки middleware
 export const config = {
   // Исключаем из обработки API запросы и статические файлы
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|fonts).*)'],
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|fonts|favicons/.*).*)',
+  ],
 }

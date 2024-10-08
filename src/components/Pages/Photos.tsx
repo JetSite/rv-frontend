@@ -1,14 +1,26 @@
 'use client'
-import { IPhotoPageData } from '@/utils/getPhotosPageData'
-import { FC } from 'react'
+import { IGallery, IPhotoPageData } from '@/utils/getPhotosPageData'
+import { FC, useState } from 'react'
 import { PhotoAlbum } from 'react-photo-album'
 import { Wrapper } from '../Ui/Wrappers/Wrapper'
+import Lightbox from 'react-image-lightbox'
+import 'react-image-lightbox/style.css'
 
 interface Props {
   data: IPhotoPageData
 }
 
 export const Photos: FC<Props> = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [photoIndex, setPhotoIndex] = useState<number>(0)
+  const [selectGallery, setSelectGallery] = useState<IGallery | null>(null)
+
+  const handlePhotoClick = (galleryIndex: number, photoIndex: number) => {
+    setPhotoIndex(photoIndex)
+    setSelectGallery(data.galleries[galleryIndex])
+    setIsOpen(true)
+  }
+
   return (
     <Wrapper
       sx="mobile:px-7 tablet:px-8"
@@ -22,7 +34,7 @@ export const Photos: FC<Props> = ({ data }) => {
         {data.description}
       </p>
       <ul>
-        {data.galleries.map(gallery => (
+        {data.galleries.map((gallery, i) => (
           <li className="gallery mb-20 w-full" key={gallery.id}>
             <h3 className="text-h text-2xl desktopOnly:text-lg font-medium mb-4 desktopOnly:mb-4">
               {gallery.title}
@@ -38,17 +50,16 @@ export const Photos: FC<Props> = ({ data }) => {
               padding={0}
               photos={gallery.photos}
               renderPhoto={({ photo, layout }) => (
-                <div className="relative group" style={{ ...layout }}>
+                <div
+                  onClick={() => {
+                    handlePhotoClick(i, layout.index)
+                  }}
+                  className="relative group"
+                  style={{ ...layout }}
+                >
                   <img
+                    className="w-full h-full object-cover relative cursor-pointer hover:opacity-90"
                     src={photo.src}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                    }}
                   />
                   {photo.title ? (
                     <div className="absolute overflow-hidden flex-col bottom-0 h-1/2 inset-x-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity px-2 py-1">
@@ -66,6 +77,50 @@ export const Photos: FC<Props> = ({ data }) => {
           </li>
         ))}
       </ul>
+      {isOpen && selectGallery ? (
+        <Lightbox
+          mainSrc={selectGallery.photos[photoIndex].src}
+          nextSrc={
+            selectGallery.photos[(photoIndex + 1) % selectGallery.photos.length]
+              .src
+          }
+          prevSrc={
+            selectGallery.photos[
+              (photoIndex + selectGallery.photos.length - 1) %
+                selectGallery.photos.length
+            ].src
+          }
+          onCloseRequest={() => {
+            setPhotoIndex(0)
+            setSelectGallery(null)
+            setIsOpen(false)
+          }}
+          onMovePrevRequest={() =>
+            setPhotoIndex(
+              (photoIndex + selectGallery.photos.length - 1) %
+                selectGallery.photos.length,
+            )
+          }
+          onMoveNextRequest={() =>
+            setPhotoIndex((photoIndex + 1) % selectGallery.photos.length)
+          }
+          toolbarButtons={[
+            <button
+              key="download"
+              className="text-sm opacity-80 hover:opacity-100"
+              onClick={() => {
+                const link = document.createElement('a')
+                link.setAttribute('target', '_blank')
+                link.href = selectGallery.photos[photoIndex].src
+                link.download = `image-${photoIndex}.jpg` // Название файла
+                link.click() // Программный клик для скачивания
+              }}
+            >
+              Скачать
+            </button>,
+          ]}
+        />
+      ) : null}
     </Wrapper>
   )
 }
