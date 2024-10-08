@@ -108,12 +108,20 @@ export const Photos: FC<Props> = ({ data }) => {
             <button
               key="download"
               className="text-sm opacity-80 hover:opacity-100"
-              onClick={() => {
+              onClick={async () => {
+                const response = await fetch(
+                  selectGallery.photos[photoIndex].src,
+                )
+                const blob = await response.blob()
+                const url = window.URL.createObjectURL(blob)
+
                 const link = document.createElement('a')
-                link.setAttribute('target', '_blank')
-                link.href = selectGallery.photos[photoIndex].src
-                link.download = `image-${photoIndex}.jpg` // Название файла
-                link.click() // Программный клик для скачивания
+                link.href = url
+                link.setAttribute('download', `image-${photoIndex}.jpg`) // Название файла
+                link.click()
+
+                // Освобождение URL после скачивания
+                window.URL.revokeObjectURL(url)
               }}
             >
               Скачать

@@ -7,14 +7,16 @@ import { Locale } from '@/i18n-config'
 import { DropdownOnHover } from '@/components/Ui/Dropdowns/DropdownOnHover'
 import MoreIcon from '@/components/Ui/Icons/MoreIcon'
 import { recalculateVisibleItems } from '@/utils/recalculateVisibleItems'
+import { IThema } from '@/utils/getTheme'
 
 interface Props {
   data: INavItem[]
   settings?: IHeaderNavSettings
   locale: Locale // Изменение языка
+  theme: IThema
 }
 
-export const MainNav: FC<Props> = ({ data, settings, locale }) => {
+export const MainNav: FC<Props> = ({ data, settings, locale, theme }) => {
   const navRef = useRef<HTMLUListElement>(null)
   const [show, setShow] = useState<boolean>(false)
   const [hiddenItems, setHiddenItems] = useState<INavItem[]>([])
@@ -40,21 +42,23 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [locale, data])
+  }, [locale, data, theme])
+
+  console.log(hiddenItems)
 
   return (
     <nav
       className="relative flex items-center 
-     w-full max-w-[790px]
+     w-full max-w-[790px] flex-grow min-w-0
     "
     >
       <ul
         ref={navRef}
-        className="flex w-full  max-w-[100%] flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-sm text-h gap-3 desktopLarge:text-xl desktopLarge:gap-4 desktopOnly:max-w-[450px]"
+        className="flex w-full max-w-[100%] flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-sm text-h gap-3 desktopLarge:text-xl desktopLarge:gap-4"
       >
         {data.map(item =>
           item.children.length ? (
-            <li key={item.id} data-id={item.id} className="main-nav">
+            <li key={item.id} data-id={item.id} className="main-nav shrink">
               <MainNavDropdown
                 locale={locale}
                 colorScheme={colorScheme}
@@ -63,50 +67,50 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
               />
             </li>
           ) : (
-            <li key={item.id} data-id={item.id} className="main-nav">
+            <li key={item.id} data-id={item.id} className="main-nav shrink">
               <MainLink locale={locale} item={item} colorScheme={colorScheme} />
             </li>
           ),
         )}
+        {hiddenItems.length > 0 ? (
+          <button className="shrink">
+            <DropdownOnHover
+              show={show}
+              setShow={setShow}
+              button={
+                <button className="text-center leading-[10px] flex items-center">
+                  <MoreIcon />
+                </button>
+              }
+            >
+              <div className="relative bg-white shadow-xl px-2 py-1 rounded-b-lg min-w-[98px]">
+                <ul className="">
+                  {hiddenItems.map(item =>
+                    item ? (
+                      <li key={item.id}>
+                        {item?.children.length ? (
+                          <MainNavDropdown
+                            locale={locale}
+                            colorScheme={colorScheme}
+                            item={item}
+                            data={item.children}
+                          />
+                        ) : (
+                          <MainLink
+                            locale={locale}
+                            item={item}
+                            colorScheme={colorScheme}
+                          />
+                        )}
+                      </li>
+                    ) : null,
+                  )}
+                </ul>
+              </div>
+            </DropdownOnHover>
+          </button>
+        ) : null}
       </ul>
-      {hiddenItems.length > 0 ? (
-        <div className="mx-3 desktopLarge:mx-4">
-          <DropdownOnHover
-            show={show}
-            setShow={setShow}
-            button={
-              <button className="text-center leading-[10px] flex items-center">
-                <MoreIcon />
-              </button>
-            }
-          >
-            <div className="relative">
-              <ul className="">
-                {hiddenItems.map(item =>
-                  item ? (
-                    <li key={item.id}>
-                      {item?.children.length ? (
-                        <MainNavDropdown
-                          locale={locale}
-                          colorScheme={colorScheme}
-                          item={item}
-                          data={item.children}
-                        />
-                      ) : (
-                        <MainLink
-                          locale={locale}
-                          item={item}
-                          colorScheme={colorScheme}
-                        />
-                      )}
-                    </li>
-                  ) : null,
-                )}
-              </ul>
-            </div>
-          </DropdownOnHover>
-        </div>
-      ) : null}
     </nav>
   )
 }
