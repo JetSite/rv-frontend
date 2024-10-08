@@ -30,10 +30,11 @@ export const MainNavDropdown: FC<Props> = ({
   const [show, setShow] = useState<boolean>(false)
   const [hover, setHover] = useState(false)
   const pathname = usePathname()
-  const showLine: boolean = pathname === item.slug
-  const showParentCurrentRout = item.children.find(e => e.slug === pathname)
-
   const href = '/' + item.slug ? '/' + locale + item.slug : '#'
+  const showParentCurrentRout =
+    item.children.find(e => '/' + locale + e.slug === pathname) ||
+    href === pathname
+  const showLine: boolean = pathname === href
 
   return (
     <DropdownOnHover

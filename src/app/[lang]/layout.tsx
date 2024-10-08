@@ -11,15 +11,17 @@ import { i18n, type Locale } from '../../i18n-config'
 
 // const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'RV-frontend',
-  description: '',
-  // viewport: 'width=device-width, initial-scale=1.0, user-scalable=no',
-}
-
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+}
+
+export const metadata: Metadata = {
+  title: 'RV-frontend',
+  description: '',
+  icons: {
+    icon: '/favicons/favicon.ico',
+  },
 }
 
 export async function generateStaticParams() {
@@ -33,8 +35,8 @@ const RootLayout: FC<
     `${API.baseUrl}/option?populate[header_menu][populate][menu][populate][0]=menu_item&populate[header_menu][populate][menu][populate][1]=submenu_items&populate[siteLogo][fields][0]=url&populate[social_medias][populate][mediaLogo][fields][1]=url&populate[footer_menus][populate][menu][populate][3]=menu_item&populate[header_menu][populate][menu][populate][4]=submenu_items&locale=${params.lang}`,
     { cache: 'no-cache' },
   )
-  const data = await res.json()
 
+  const data = await res.json()
   // className={inter.className}
 
   return (

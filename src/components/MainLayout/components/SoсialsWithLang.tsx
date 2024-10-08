@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC, useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
+import { IThema, getTheme } from '@/utils/getTheme'
 
 interface ISoсialsWithLang {
   subKey?: string
@@ -27,18 +28,12 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
 }) => {
   const [select, setSelect] = useState<Locale | null>(locale || 'ru')
 
-  const [theme, setTheme] = useState('default')
+  const [theme, setTheme] = useState<IThema>('default')
 
   useEffect(() => {
-    // Проверка доступности window и document, так как этот код выполнится только на клиенте
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme')
-      const initialTheme =
-        savedTheme && savedTheme === 'readable' ? 'readable' : 'default'
-      setTheme(initialTheme)
-      document.documentElement.setAttribute('data-theme', initialTheme)
-    }
-  }, []) // Пустой массив зависимостей, чтобы этот useEffect вызвался только один раз на монтирование
+    const initialThema = getTheme()
+    if (initialThema) setTheme(initialThema)
+  }, [])
 
   useEffect(() => {
     if (typeof document !== 'undefined') {

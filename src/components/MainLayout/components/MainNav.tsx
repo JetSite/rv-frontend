@@ -24,6 +24,9 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
         hover: settings.linkColorHover.trim(),
         default: settings.linkColor.trim(),
         active: settings.linkColorActive.trim(),
+        // hover: 'red',
+        // default: 'blue',
+        // active: 'green',
       }
     : null
 

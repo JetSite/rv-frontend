@@ -112,8 +112,8 @@ html[data-theme='readable'] .courusel-title {
 }
 
 html[data-theme='readable'] .main-nav a,
-.main-nav span,
-.main-nav button {
+html[data-theme='readable'] .main-nav span,
+html[data-theme='readable'] .main-nav button {
   color: rgb(var(--courusel-title-title), 1) !important;
 }
 
