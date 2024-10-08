@@ -2,7 +2,7 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import { MainLink } from '@/components/Ui/MainLink'
 import { IHeaderNavSettings, INavItem } from '@/types/layout'
-import { IColorShema, MainNavDropdown } from './MainNavDropdown'
+import { IColorScheme, MainNavDropdown } from './MainNavDropdown'
 import { Locale } from '@/i18n-config'
 import { DropdownOnHover } from '@/components/Ui/Dropdowns/DropdownOnHover'
 import MoreIcon from '@/components/Ui/Icons/MoreIcon'
@@ -19,7 +19,7 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
   const [show, setShow] = useState<boolean>(false)
   const [hiddenItems, setHiddenItems] = useState<INavItem[]>([])
 
-  const colorShema: IColorShema | null = settings
+  const colorScheme: IColorScheme | null = settings
     ? {
         hover: settings.linkColorHover.trim(),
         default: settings.linkColor.trim(),
@@ -57,14 +57,14 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
             <li key={item.id} data-id={item.id} className="main-nav">
               <MainNavDropdown
                 locale={locale}
-                colorShema={colorShema}
+                colorScheme={colorScheme}
                 item={item}
                 data={item.children}
               />
             </li>
           ) : (
             <li key={item.id} data-id={item.id} className="main-nav">
-              <MainLink locale={locale} item={item} colorShema={colorShema} />
+              <MainLink locale={locale} item={item} colorScheme={colorScheme} />
             </li>
           ),
         )}
@@ -88,7 +88,7 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
                       {item?.children.length ? (
                         <MainNavDropdown
                           locale={locale}
-                          colorShema={colorShema}
+                          colorScheme={colorScheme}
                           item={item}
                           data={item.children}
                         />
@@ -96,7 +96,7 @@ export const MainNav: FC<Props> = ({ data, settings, locale }) => {
                         <MainLink
                           locale={locale}
                           item={item}
-                          colorShema={colorShema}
+                          colorScheme={colorScheme}
                         />
                       )}
                     </li>

@@ -1,17 +1,17 @@
 import { FC, useState } from 'react'
-import { IColorShema } from './MainNavDropdown'
+import { IColorScheme } from './MainNavDropdown'
 import classNames from '@/utils/classNames'
 import { INavItem } from '@/types/layout'
 import { IID } from '@/types'
 
 interface Props {
-  colorShema: IColorShema | null
+  colorScheme: IColorScheme | null
   showSubMenu: IID | null
   item: INavItem
 }
 
 export const MobileNavNotLinkButtons: FC<Props> = ({
-  colorShema,
+  colorScheme,
   showSubMenu,
   item,
 }) => {
@@ -23,12 +23,12 @@ export const MobileNavNotLinkButtons: FC<Props> = ({
       onMouseLeave={() => setHover(false)}
       style={{
         color: hover
-          ? colorShema?.hover
-          : colorShema?.active || colorShema?.default,
+          ? colorScheme?.hover
+          : colorScheme?.active || colorScheme?.default,
       }}
       className={classNames(
         'whitespace-nowrap relative w-max  before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20 text-inherit',
-        !colorShema?.hover &&
+        !colorScheme?.hover &&
           (showSubMenu === item.id ? 'before:w-full' : 'hover:before:w-full'),
       )}
     >

@@ -1,5 +1,5 @@
 import { MainLink } from '@/components/Ui/MainLink'
-import { colorShema } from '@/config'
+import { colorScheme } from '@/config'
 import { Locale } from '@/i18n-config'
 import { INavItem } from '@/types/layout'
 import { FC } from 'react'

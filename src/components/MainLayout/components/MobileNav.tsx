@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { IHeaderNavSettings, INavItem, ISocialsItem } from '@/types/layout'
 import { IStoreData, useStoreDate } from '@/store'
 import classNames from '@/utils/classNames'
-import { IColorShema } from './MainNavDropdown'
+import { IColorScheme } from './MainNavDropdown'
 import { MobileNavNotLinkButtons } from './MobileNavNotLinkButtons'
 import { Locale } from '@/i18n-config'
 
@@ -23,7 +23,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings, locale }) => {
 
   const [showSubMenu, setShowSubMenu] = useState<string | null>(null)
   const pathname = usePathname()
-  const colorShema: IColorShema | null = settings
+  const colorScheme: IColorScheme | null = settings
     ? {
         hover: settings.linkColorHover.trim(),
         default: settings.linkColor.trim(),
@@ -69,12 +69,12 @@ export const MobileNav: FC<Props> = ({ data, socials, settings, locale }) => {
                           <MainLink
                             locale={locale}
                             item={item}
-                            colorShema={colorShema}
+                            colorScheme={colorScheme}
                           />
                         ) : (
                           <MobileNavNotLinkButtons
                             item={item}
-                            colorShema={colorShema}
+                            colorScheme={colorScheme}
                             showSubMenu={showSubMenu}
                           />
                         )}
@@ -86,7 +86,7 @@ export const MobileNav: FC<Props> = ({ data, socials, settings, locale }) => {
                                   locale={locale}
                                   sx="font-normal"
                                   item={subItem}
-                                  colorShema={colorShema}
+                                  colorScheme={colorScheme}
                                 />
                               </li>
                             ))}
@@ -110,12 +110,12 @@ export const MobileNav: FC<Props> = ({ data, socials, settings, locale }) => {
                           <MainLink
                             locale={locale}
                             item={item}
-                            colorShema={colorShema}
+                            colorScheme={colorScheme}
                           />
                         ) : (
                           <MobileNavNotLinkButtons
                             item={item}
-                            colorShema={colorShema}
+                            colorScheme={colorScheme}
                             showSubMenu={showSubMenu}
                           />
                         )}

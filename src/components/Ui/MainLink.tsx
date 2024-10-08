@@ -4,8 +4,8 @@ import classNames from '@/utils/classNames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { FC, useState } from 'react'
-import { IColorShema } from '../MainLayout/components/MainNavDropdown'
-import { colorShema as colorShemaConfig } from '@/config'
+import { IColorScheme } from '../MainLayout/components/MainNavDropdown'
+import { colorScheme as colorSchemeConfig } from '@/config'
 import { Locale } from '@/i18n-config'
 
 interface MainLinkProps {
@@ -13,7 +13,7 @@ interface MainLinkProps {
   slug?: string
   sx?: string
   disabled?: boolean
-  colorShema?: IColorShema | null
+  colorScheme?: IColorScheme | null
   locale: Locale
 }
 
@@ -22,7 +22,7 @@ export const MainLink: FC<MainLinkProps> = ({
   slug,
   sx,
   disabled = false,
-  colorShema,
+  colorScheme,
   locale,
 }) => {
   const pathname = usePathname()
@@ -40,17 +40,17 @@ export const MainLink: FC<MainLinkProps> = ({
       onMouseLeave={() => setHover(false)}
       className={classNames(
         'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85] ',
-        !colorShema?.active &&
+        !colorScheme?.active &&
           (show ? 'before:w-full ' : 'hover:before:w-full'),
       )}
     >
       <span
         style={{
           color: hover
-            ? colorShema?.hover
+            ? colorScheme?.hover
             : show
-            ? colorShema?.active
-            : colorShema?.default,
+            ? colorScheme?.active
+            : colorScheme?.default,
         }}
         className={sx}
       >
@@ -63,7 +63,7 @@ export const MainLink: FC<MainLinkProps> = ({
       onMouseLeave={() => setHover(false)}
       className={classNames(
         'whitespace-nowrap relative w-max before:absolute before:h-0.5 before:bg-h before:left-0 before:-bottom-[0.2rem] before:opacity-20  opacity-[0.85] ',
-        !colorShema?.active &&
+        !colorScheme?.active &&
           (show ? 'before:w-full ' : 'hover:before:w-full'),
       )}
       href={href}
@@ -71,10 +71,10 @@ export const MainLink: FC<MainLinkProps> = ({
       <span
         style={{
           color: hover
-            ? colorShema?.hover
+            ? colorScheme?.hover
             : show
-            ? colorShema?.active
-            : colorShema?.default,
+            ? colorScheme?.active
+            : colorScheme?.default,
         }}
         className={sx}
       >
