@@ -7,7 +7,7 @@ import { ISocialsItem } from '@/types/layout'
 import classNames from '@/utils/classNames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FC, useEffect, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { IThema, getTheme } from '@/utils/getTheme'
 
@@ -17,6 +17,7 @@ interface ISoсialsWithLang {
   variant?: 'footer' | 'tablet' | 'standart'
   data: ISocialsItem[]
   locale: Locale
+  setOutTheme?: Dispatch<SetStateAction<IThema>>
 }
 
 export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
@@ -25,9 +26,9 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   variant = 'standart',
   data,
   locale,
+  setOutTheme,
 }) => {
   const [select, setSelect] = useState<Locale | null>(locale || 'ru')
-
   const [theme, setTheme] = useState<IThema>('default')
 
   useEffect(() => {
@@ -38,9 +39,11 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
   useEffect(() => {
     if (typeof document !== 'undefined') {
       document.documentElement.setAttribute('data-theme', theme)
+      setOutTheme && setOutTheme(theme)
     }
     if (typeof window !== 'undefined') {
       localStorage.setItem('theme', theme)
+      setOutTheme && setOutTheme(theme)
     }
   }, [theme])
 
