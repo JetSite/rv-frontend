@@ -13,7 +13,7 @@ interface Props {
 
 export const Footer: FC<Props> = ({ data, locale }) => {
   return (
-    <footer className="flex flex-col tablet:flex-row justify-center tablet:justify-between items-center desktop:items-start pt-[50px] pb-14 tablet:px-8 gap-[72px] tablet:gap-4 max-w-[1480px] desktopOnly:max-w-[988px] desktop:mx-auto desktop:w-full desktop:flex-row ">
+    <footer className="flex flex-col tablet:flex-row justify-center tablet:justify-between items-center desktop:items-start pt-[50px] pb-14 tablet:px-8 gap-8 tablet:gap-4 max-w-[1480px] desktopOnly:max-w-[988px] desktop:mx-auto desktop:w-full desktop:flex-row ">
       <FooterNav locale={locale} data={data.navFooter} />
       <div className="desktop:hidden">
         <Logo
@@ -28,7 +28,7 @@ export const Footer: FC<Props> = ({ data, locale }) => {
         variant="footer"
         subKey="footer"
         locale={locale}
-        className="flex flex-col tablet:flex-row gap-3 items-center tablet:w-full tablet:justify-around"
+        className="flex flex-col tablet:flex-row gap-3 items-center tablet:w-full tablet:justify-around !min-w-0 w-full"
       />
     </footer>
   )

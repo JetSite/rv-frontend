@@ -10,9 +10,10 @@ export interface ILayoutData {
   settings?: { headerNav: IHeaderNavSettings }
 }
 
-type IGetLayoutData = (data: { data: IData }) => ILayoutData
+type IGetLayoutData = (data: { data: IData }) => ILayoutData | null
 
 export const getLayoutData: IGetLayoutData = data => {
+  if (!data) return null
   const headerMenu = data.data.attributes?.header_menu.data.attributes
   const res: ILayoutData = {
     settings: {
@@ -36,14 +37,15 @@ export const getLayoutData: IGetLayoutData = data => {
         })) || [],
     })),
     logo: {
-      img: API.imgUrl + data.data.attributes?.siteLogo.data.attributes.url,
+      img:
+        API.imgUrl + data.data.attributes?.siteLogo.data.attributes.url || '#',
       title: data.data.attributes?.logoText,
     },
     socials: data.data.attributes.social_medias?.data.map((item: any) => ({
       id: item.id,
       slug: item.attributes.mediaLink || '#',
       title: item.attributes.mediaTitle,
-      img: API.imgUrl + item.attributes.mediaLogo.data.attributes.url,
+      img: API.imgUrl + item.attributes.mediaLogo.data.attributes.url || '#',
     })),
     navFooter: data.data.attributes?.footer_menus.data.map((item: any) => ({
       id: item.id,

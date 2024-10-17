@@ -37,7 +37,7 @@ export const recalculateVisibleItems = (
   setHiddenItems: Dispatch<SetStateAction<INavItem[]>>,
 ) => {
   if (ref.current) {
-    const availableWidth = ref.current.offsetWidth - 40
+    const availableWidth = ref.current.offsetWidth - 60
     let totalWidth = 0
     const newHiddenItems: INavItem[] = []
 
@@ -46,14 +46,10 @@ export const recalculateVisibleItems = (
       child.classList.remove('hidden')
     })
 
-    console.log('availableWidth', availableWidth)
-
     // Проверяем видимые элементы
     Array.from(ref.current.children).forEach((children: Element) => {
       const child = children as HTMLElement
       totalWidth += child.offsetWidth
-
-      console.log('totalWidth', totalWidth)
 
       if (totalWidth > availableWidth) {
         // Если элемент не помещается, находим его в данных и скрываем

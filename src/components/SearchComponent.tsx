@@ -47,7 +47,7 @@ export const SearchComponent: FC<Props> = ({ locale }) => {
           setSearchValue('')
         }}
         sx={classNames(
-          'border-2 border-l-0 border-h px-2 py-0.5 text-sm font-medium text-gray-700 focus-visible:outline-0 focus:outline-0 active:outline-0 w-[100%]',
+          'border-2 border-l-0 border-h px-2 py-0.5 text-sm font-medium text-gray-700 focus-visible:outline-0 focus:outline-0 active:outline-0 w-[100%] min-w-12',
           searchValue.length > 3 ? '' : 'border-h/50 focus:border-h/50',
         )}
         id="search"
