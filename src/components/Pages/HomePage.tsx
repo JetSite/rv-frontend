@@ -141,7 +141,7 @@ export const HomePage: FC<Props> = ({
           }
         >
           <ul className="flex mobile:flex-col mobile:gap-5 tablet:px-8 tablet:flex-wrap -ml-1.5 text-white">
-            {activitiesData.splice(0, 4).map(item => (
+            {activitiesData.map(item => (
               <li
                 className="w-[25%] px-1 py-2 first:pl-0 last:pr-0 transition-all hover:bg-h hovet:bg-opacity-60 mb-16 mobile:w-full mobile:p-0 mobile:mb-8 tablet:w-1/2"
                 key={item.title}

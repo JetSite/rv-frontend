@@ -117,7 +117,7 @@ export const Photos: FC<Props> = ({ data }) => {
 
                 const link = document.createElement('a')
                 link.href = url
-                link.setAttribute('download', `image-${photoIndex}.jpg`) // Название файла
+                link.setAttribute('download', `image-${photoIndex}.jpg`)
                 link.click()
 
                 // Освобождение URL после скачивания

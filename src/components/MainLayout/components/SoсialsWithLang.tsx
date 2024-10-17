@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation'
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { IThema, getTheme } from '@/utils/getTheme'
+import SearchIcon from '@/components/Ui/Icons/SearchIcon'
 
 interface ISoсialsWithLang {
   subKey?: string
@@ -70,6 +71,11 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
       {variant === 'footer' ? (
         <SearchComponent locale={select || 'ru'} />
       ) : null}
+      {variant === 'standart' ? (
+        <Link className="ml-2" shallow href={`/${locale}/search`}>
+          <SearchIcon />
+        </Link>
+      ) : null}
       <ul
         className={
           {
@@ -109,7 +115,7 @@ export const SoсialsWithLang: FC<ISoсialsWithLang> = ({
           className={
             {
               footer: 'flex items-center justify-center',
-              standart: 'flex items-center justify-center',
+              standart: 'items-center justify-center hidden',
               tablet: 'flex items-center justify-center',
             }[variant]
           }

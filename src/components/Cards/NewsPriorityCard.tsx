@@ -12,19 +12,20 @@ export const NewsPriorityCard: FC<NewsCardProps> = ({
   locale,
   imageSX = 'block mb-2.5 desktop:max-h-[200px] object-cover w-full tablet:h-[163px]',
 }) => {
+
   if (mainPage) {
     return (
       <Link
         className="p-1.5 block transition-all hover:bg-gray-300 hover:bg-opacity-60 mobile:px-7 notDesktop:py-1 overflow-hidden"
         href={'/' + locale + link}
       >
-        {!!item.img && (
+        {!!item.image && (
           <Image
-            width={item.image?.width}
-            height={item.image?.height}
+            width={item.image?.width || 2}
+            height={item.image?.height || 2}
             alt={item.title}
             className={classNames(imageSX)}
-            src={item.img}
+            src={item.image.url}
           />
         )}
         <h3 className="text-first font-bold text-lg notDesktop:text-sm leading-none mb-5 desktopOnly:text-sm line-clamp-2 overflow-hidden">

@@ -44,8 +44,6 @@ export const MainNav: FC<Props> = ({ data, settings, locale, theme }) => {
     }
   }, [locale, data, theme])
 
-  console.log(hiddenItems)
-
   return (
     <nav
       className="relative flex items-center 
@@ -54,7 +52,7 @@ export const MainNav: FC<Props> = ({ data, settings, locale, theme }) => {
     >
       <ul
         ref={navRef}
-        className="flex w-full max-w-[100%] flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-sm text-h gap-3 desktopLarge:text-xl desktopLarge:gap-4"
+        className="flex w-full max-w-[100%] flex-1 justify-between notDesktop:hidden font-medium desktopOnly:text-sm text-h gap-3 desktopLarge:text-xl desktopLarge:gap-3"
       >
         {data.map(item =>
           item.children.length ? (

@@ -27,9 +27,9 @@ export const getDataArray: IGetDataArray = ({ data }) => {
     slug: item.attributes.slug || '#',
     id: item.id,
     date: item.attributes.date,
-    img: API.imgUrl + item.attributes.cover?.data?.attributes?.url,
+    img: API.imgUrl + item.attributes.cover?.data?.attributes?.url || '#',
     image: {
-      url: API.imgUrl + item.attributes.cover?.data?.attributes?.url,
+      url: API.imgUrl + item.attributes.cover?.data?.attributes?.url || '#',
       alt: item.attributes.cover?.data?.attributes?.alternativeText || '',
       width: item.attributes.cover?.data?.attributes?.width,
       height: item.attributes.cover?.data?.attributes?.height,
@@ -46,7 +46,7 @@ export const getDataArray: IGetDataArray = ({ data }) => {
     source: item.attributes.source,
     gallery: item.attributes?.gallery?.data.map((e: any) => ({
       key: e.id.toString(),
-      src: API.imgUrl + e.attributes.url,
+      src: API.imgUrl + e.attributes.url || '#',
       width: e.attributes.width,
       height: e.attributes.height,
     })),

@@ -11,7 +11,7 @@ interface Props {
 
 export const FooterNav: FC<Props> = ({ data, locale }) => {
   return (
-    <ul className="flex w-full flex-1 justify-between text-h  notDesktop:hidden">
+    <ul className="flex w-full flex-1 justify-between text-h gap-4 notDesktop:hidden mr-auto">
       {data.map(item => {
         return (
           <li

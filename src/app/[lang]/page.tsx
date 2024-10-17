@@ -36,7 +36,6 @@ const Home: FC<INextPageWithParams> = async ({ params }) => {
       const eventData = await eventRes.json()
 
       const newsRes = await fetch(
-        // `${API.baseUrl}/news?populate=*&sort[0]=date:desc`,
         `${API.baseUrl}/news?populate=*&sort[0]=date:desc&filters[categories][slug]=detention&locale=${params.lang}`,
 
         {
@@ -77,7 +76,7 @@ const Home: FC<INextPageWithParams> = async ({ params }) => {
       return {
         eventData: getDataArray(eventData),
         newsData: getDataArray(newsData),
-        activitiesData: getDataArray(activitiesData),
+        activitiesData: getDataArray(activitiesData).slice(0, 4),
         prioritiesData: getDataArray(prioritiesData),
         mainSliderData: getDataMainSlider(dataMainSlider.data),
         seoData: getSeoData(seoData.data),
